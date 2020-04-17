@@ -10,7 +10,7 @@ Project contributors listed chronologically.
   * Contributed LibGDX [collections](../collections) utilities.
 * [@sreich](https://github.com/sreich)
   * Contributed various utilities from the [Ore Infinium](https://github.com/sreich/ore-infinium) project.
-* [@raincole](https://github.com/raincole)
+* [@yhlai-code](https://github.com/yhlai-code) (_raincole_)
   * Contributed LibGDX [collections](../collections) utilities.
   * Provided insightful review of the [`Async`](../async) module.
 * [@Jkly](https://github.com/Jkly)
@@ -42,7 +42,11 @@ Project contributors listed chronologically.
   * Prepared several KTX template projects and showcases.
   * Improved [app](../app) utilities.
 * [@Quillraven](https://github.com/Quillraven)
+  * Author of the [Tiled](../tiled) module.
+  * Contributed [actors](../actors) utilities.
   * Wrote a complete [KTX tutorial](https://github.com/Quillraven/SimpleKtxGame/wiki) based on the original LibGDX introduction.
+  * Author of the [preferences](../preferences) module.
+  * Tested and reviewed the [assets async](../assets-async) module.
 * [@FocusPo1nt](https://github.com/FocusPo1nt)
   * Added utilities to [style module](../style).
 * [@maltaisn](https://github.com/maltaisn)
@@ -52,12 +56,16 @@ Project contributors listed chronologically.
 * [@kvonspiczak](https://github.com/kvonspiczak)
   * Contributed documentation fix.
 * [@cypherdare](https://github.com/cypherdare)
-  * Contributed to numerous utilities in [actors](../actors), [collections](../collections) and [graphics](../graphics) modules.
+  * Contributed to numerous utilities in [actors](../actors), [async](../async), [collections](../collections),
+  [graphics](../graphics) and [math](../math) modules.
   * Added `AssetGroup` API to [assets](../assets).
 * [@jakewilson](https://github.com/jakewilson)
   * Added utilities to [graphics module](../graphics).
 * [@rhutsaliuk](https://github.com/rhutsaliuk)
   * Contributed [json](../json) serializers utilities.
+* [@ImXico](https://github.com/ImXico)
+  * Author of the [Cyberpunk](https://github.com/ImXico/Cyberpunk) framework, which is another set of Kotlin LibGDX extensions.
+  * Utilities for profiling, text rendering, camera updating and taking screenshots were integrated into KTX with **@ImXico** permission.
 
 ### Metrics
 
