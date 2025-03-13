@@ -925,6 +925,54 @@ official APIs. In particular, `Texture.setAssetManager` and `Cubemap.setAssetMan
 If you heavily rely on these unsupported APIs or custom asset loaders, you might need to use `AsyncAssetManager`
 instead.
 
+##### Loading assets from multiple sources
+
+`AssetStorage` constructor takes a `FileHandleResolver` that defaults to the `InternalFileHandleResolver`.
+The resolver is passed to the default libGDX `AssetLoader` instances that handle the actual file loading.
+Whenever an asset is scheduled for loading using just its path or extra resources have to be loaded
+by an `AssetLoader` internally, the resolver is used to convert a string path into a `FileHandle`.
+
+To load files from a different source:
+
+* If all assets are meant to be loaded from a different source than the internal asset folder,
+  pass a different `FileHandleResolver` implementation to the `AssetStorage` constructor.
+
+```kotlin
+val assetStorage = AssetStorage(fileResolver = LocalFileHandleResolver())
+```
+
+* If only specific asset types are meant to be loaded from a different source, loaders can be overridden or
+  defined individually.
+
+```kotlin
+assetStorage.setLoader { MusicLoader(LocalFileHandleResolver()) }
+```
+
+* If some but not all assets of a specific type loaded are to be loaded from a different source, `AssetDescriptor`
+  with an overridden `FileHandle` can be used to customize file loading on a case by case basis.
+
+```kotlin
+val path = "local.png"
+val assetDescriptor = assetStorage.getAssetDescriptor<Texture>(path, fileHandle = Gdx.files.local(path))
+assetStorage.loadAsync(assetDescriptor)
+```
+
+The caveat is that if the underlying libGDX `AssetLoader` loads any extra files or otherwise uses the file resolver
+even if given a `FileHandle`, it might not work correctly. This is especially true for assets that consists of multiple
+files like `Skin` in which case the dependencies might have to be scheduled manually with a correct `FileHandle` before
+loading the actual asset. Please review the libGDX `AssetLoader` implementations associated with the loaded files before
+commiting to the customized asset descriptors.
+
+* If some assets are to be loaded from multiple sources with possible path clashes, it is recommended to maintain
+  separate `AssetStorage` instances with different `FileHandleResolver` implementations. Note that the `asyncContext`
+  necessary for the asynchronous operations can be safely reused between multiple storages.
+
+```kotlin
+val asyncContext = newAsyncContext(threads = 2, threadName = "AssetStorage")
+val internalAssetStorage = AssetStorage(asyncContext, InternalFileHandleResolver())
+val localAssetStorage = AssetStorage(asyncContext, LocalFileHandleResolver())
+```
+
 #### Synergy
 
 While [`ktx-assets`](../assets) module does provide some extensions to the `AssetManager`, which is a direct
