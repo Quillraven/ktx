@@ -1,15 +1,16 @@
-import ktx.*
-
-val junitPlatformVersion: String by project
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
 
 dependencies {
-  api("net.onedaybeard.artemis:artemis-odb:$artemisOdbVersion")
+  api(libs.artemis.odb)
 
-  testImplementation("org.jetbrains.spek:spek-api:$spekVersion")
-  testImplementation("org.assertj:assertj-core:$assertjVersion")
+  testImplementation(libs.spek.api)
+  testImplementation(libs.assertj.core)
 
-  testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
-  testRuntimeOnly("org.jetbrains.spek:spek-junit-platform-engine:$spekVersion")
+  testRuntimeOnly(libs.junit.platform.launcher)
+  testRuntimeOnly(libs.spek.junit.platform.engine)
 }
 
 tasks.withType<Test> {

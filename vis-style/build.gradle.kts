@@ -1,6 +1,9 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
 
 dependencies {
   api(project(":style"))
-  api("com.kotcrab.vis:vis-ui:$visUiVersion")
+  api(libs.vis.ui)
 }

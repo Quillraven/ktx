@@ -1,8 +1,10 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
 
 dependencies {
-  testImplementation("com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
-  // Includes Scene2D skin used in tests:
-  testImplementation("com.kotcrab.vis:vis-ui:$visUiVersion")
+  testImplementation(libs.gdx.backend.lwjgl)
+  testImplementation(variantOf(libs.gdx.platform) { classifier("natives-desktop") })
+  testImplementation(libs.vis.ui)
 }

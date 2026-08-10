@@ -1,7 +1,10 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
 
 dependencies {
-  api("com.badlogicgames.gdx:gdx-ai:$gdxAiVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
+  api(libs.gdx.ai)
+  testImplementation(libs.gdx.backend.lwjgl)
+  testImplementation(variantOf(libs.gdx.platform) { classifier("natives-desktop") })
 }

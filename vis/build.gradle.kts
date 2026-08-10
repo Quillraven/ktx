@@ -1,10 +1,17 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
+
+evaluationDependsOn(":scene2d")
+
+val scene2d = project(":scene2d")
 
 dependencies {
-  api(project(":scene2d"))
-  api("com.kotcrab.vis:vis-ui:$visUiVersion")
+  api(scene2d)
+  api(libs.vis.ui)
 
-  testImplementation(project(":scene2d").dependencyProject.sourceSets.test.get().output)
-  testImplementation("com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
+  testImplementation(scene2d.sourceSets.test.get().output)
+  testImplementation(libs.gdx.backend.lwjgl)
+  testImplementation(variantOf(libs.gdx.platform) { classifier("natives-desktop") })
 }

@@ -10,11 +10,11 @@ jobs:
 
     steps:
       - name: Repository checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: tommyettinger/gdx-liftoff
       - name: JDK setup
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: temurin
@@ -24,7 +24,7 @@ jobs:
           echo "LIFTOFF_VERSION=$(cat version.txt)" >> $GITHUB_ENV 
           echo "KTX_VERSION=$(curl https://raw.githubusercontent.com/libktx/ktx/master/version.txt)" >> $GITHUB_ENV
       - name: Gradle setup
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v4
       - name: Generate sample
         run: ./gradlew sample --args="ktx"
       - name: Prepare sample for release

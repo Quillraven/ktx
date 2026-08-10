@@ -1,12 +1,15 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
 
 dependencies {
-  api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+  api(libs.kotlinx.coroutines.core)
 
-  testImplementation("com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
-  testImplementation("me.alexpanov:free-port-finder:1.0") // Version unlikely to change, not parametrized.
-  testImplementation("com.github.tomakehurst:wiremock:$wireMockVersion")
-  testImplementation("org.slf4j:slf4j-nop:$slf4jVersion")
+  testImplementation(libs.gdx.backend.headless)
+  testImplementation(libs.gdx.backend.lwjgl)
+  testImplementation(variantOf(libs.gdx.platform) { classifier("natives-desktop") })
+  testImplementation(libs.free.port.finder)
+  testImplementation(libs.wiremock)
+  testImplementation(libs.slf4j.nop)
 }

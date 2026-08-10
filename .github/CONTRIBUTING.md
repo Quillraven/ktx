@@ -88,9 +88,10 @@ projectName=ktx-your-module
 projectDesc=Description of your module as it will appear in Maven Central.
 ```
 
-- Add a `build.gradle.kts` file. It should contain dependencies specific to your module. If there are none, you can
-leave it empty. By adding `import ktx.*` at the top of this file, you will be able to access the versions of major
-dependencies of the modules as defined in the [`buildSrc`](../buildSrc) directory.
+- Add a `build.gradle.kts` file. It should apply the shared `ktx.base` and `ktx.publish` convention plugins (defined in
+the [`build-logic`](../build-logic) directory) and declare the dependencies specific to your module. Dependency and
+plugin versions are managed in the version catalog [`gradle/libs.versions.toml`](../gradle/libs.versions.toml) and can
+be referenced with the `libs` accessor.
 - Add a `README.md` file describing your module. Refer to other `README.md` files for examples. `README.md` files
 can consist of the following sections:
   - _General description_ - in a single sentence, what problem does the module solve?
@@ -128,17 +129,17 @@ The following sections are for the maintainers of the repository.
 
 ### Updating dependencies
 
-Kotlin and plugin versions are stored in the [gradle.properties](../gradle.properties) file, while module dependencies
-versions are stored with the [`Versions.kt`](../buildSrc/src/main/kotlin/ktx/Versions.kt) file. Snapshot releases
-should keep all the dependencies (outside of testing scope) up-to-date. Major dependencies include:
+Kotlin and plugin versions are stored in the [version catalog](../gradle/libs.versions.toml) file, together with the
+module dependency versions. Snapshot releases should keep all the dependencies (outside of testing scope) up-to-date.
+Major dependencies include:
 
-- **libGDX**: update `gdxVersion` in the versions file and libGDX version in the tag on the top of the 
+- **libGDX**: update the `gdx` version in the version catalog and libGDX version in the tag on the top of the 
 [README.md](../README.md) file. Note that updating libGDX also affects the **KTX** version and milestones, so make sure
 to update the [version.txt](../version.txt) and [milestones](https://github.com/libktx/ktx/milestones) as well. After
 the release, update GitHub project's `Custom properties`.
-- **Kotlin**: update the `kotlinVersion` in the properties file and the Kotlin tag in the [README.md](../README.md).
+- **Kotlin**: update the `kotlin` version in the version catalog and the Kotlin tag in the [README.md](../README.md).
 After the release, update GitHub project's `Custom properties`.
-- **Kotlin Coroutines**: update `kotlinCoroutinesVersion` in the versions file and the tag in the
+- **Kotlin Coroutines**: update `kotlinxCoroutines` in the version catalog and the tag in the
 `ktx-async` [README.md](../async/README.md).
 - **Gradle**: run `gradle wrapper --distribution-type all` in the root project folder. Make sure that the
 [Gradle wrapper properties file](../gradle/wrapper/gradle-wrapper.properties) points the `all` Gradle release under

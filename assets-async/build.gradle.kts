@@ -1,15 +1,21 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
+
+evaluationDependsOn(":async")
 
 val async = project(":async")
 
 dependencies {
   api(project(":assets"))
   api(async)
-  api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+  api(libs.kotlinx.coroutines.core)
 
   testImplementation(async.sourceSets.test.get().output)
-  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinCoroutinesVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion")
-  testImplementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
+  testImplementation(libs.kotlinx.coroutines.jdk8)
+  testImplementation(libs.gdx.backend.headless)
+  testImplementation(libs.gdx.backend.lwjgl3)
+  testImplementation(variantOf(libs.gdx.platform) { classifier("natives-desktop") })
 }
+

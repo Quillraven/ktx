@@ -1,9 +1,19 @@
 pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-    }
+  repositories {
+    gradlePluginPortal()
+    mavenCentral()
+  }
 }
+
+dependencyResolutionManagement {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+  }
+}
+
+includeBuild("build-logic")
 
 include(
   "actors",

@@ -1,0 +1,124 @@
+import org.gradle.api.distribution.DistributionContainer
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.SourceSetContainer
+import org.gradle.plugins.signing.Sign
+
+plugins {
+  `maven-publish`
+  signing
+  id("org.jetbrains.dokka")
+}
+
+val projectName: String by project
+val projectDesc: String by project
+val ossrhUsername: String by project
+val ossrhPassword: String by project
+
+dokka {
+  dokkaPublications.html {
+    outputDirectory.set(layout.buildDirectory.dir("dokka/html"))
+  }
+}
+
+tasks.register<Zip>("dokkaZip") {
+  from(layout.buildDirectory.dir("dokka/html"))
+  dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+  archiveClassifier.set("javadoc")
+  from(layout.buildDirectory.dir("dokka/html"))
+  dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
+}
+
+val sourcesJar by tasks.registering(Jar::class) {
+  from(project.the<SourceSetContainer>().named("main").get().allSource)
+  archiveClassifier.set("sources")
+}
+
+configure<PublishingExtension> {
+  repositories {
+    maven {
+      name = "maven"
+      val releasesRepoUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+      val snapshotsRepoUrl = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+      url = if (project.version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+
+      credentials {
+        username = ossrhUsername
+        password = ossrhPassword
+      }
+    }
+  }
+
+  publications {
+    create<MavenPublication>("mavenKtx") {
+      artifactId = projectName
+      from(components["kotlin"])
+      artifact(sourcesJar)
+      artifact(javadocJar)
+
+      pom {
+        name.set(projectName)
+        description.set(projectDesc)
+        url.set("https://libktx.github.io/")
+
+        licenses {
+          license {
+            name.set("CC0-1.0")
+            url.set("https://creativecommons.org/publicdomain/zero/1.0/")
+          }
+        }
+
+        scm {
+          connection.set("scm:git:git@github.com:libktx/ktx.git")
+          developerConnection.set("scm:git:git@github.com:libktx/ktx.git")
+          url.set("https://github.com/libktx/ktx/")
+        }
+
+        developers {
+          developer {
+            id.set("mj")
+            name.set("MJ")
+          }
+        }
+      }
+    }
+  }
+}
+
+val isReleaseVersion = !project.version.toString().endsWith("SNAPSHOT")
+
+tasks.withType<Sign> {
+  onlyIf { isReleaseVersion }
+}
+
+signing {
+  setRequired { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+  sign(extensions.getByType(PublishingExtension::class.java).publications["mavenKtx"])
+}
+
+tasks.register("uploadSnapshot") {
+  if (!isReleaseVersion) {
+    finalizedBy(tasks.named("publishAllPublicationsToMavenRepository"))
+  }
+}
+
+afterEvaluate {
+  rootProject.extensions.getByType(DistributionContainer::class.java).named("main") {
+    distributionBaseName.set(project.version.toString())
+    contents {
+      into("lib") {
+        from(tasks.named("jar"))
+      }
+      into("doc") {
+        from(tasks.named("dokkaZip"))
+      }
+      into("src") {
+        from(tasks.named("sourcesJar"))
+      }
+    }
+  }
+}
+

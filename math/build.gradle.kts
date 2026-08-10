@@ -1,5 +1,8 @@
-import ktx.*
+plugins {
+  id("ktx.base")
+  id("ktx.publish")
+}
 
 dependencies {
-  testImplementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
+  testImplementation(variantOf(libs.gdx.platform) { classifier("natives-desktop") })
 }

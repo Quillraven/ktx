@@ -10,20 +10,20 @@ jobs:
 
     steps:
       - name: Repository checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: JDK setup
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
-          java-version: 11
+          java-version: 17
           distribution: temurin
       - name: Gradle setup
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v4
       - name: Tests
         run: ./gradlew check
         env:
           TEST_PROFILE: ci
       - name: Upload snapshot to Maven Central
-        run: ./gradlew build uploadSnapshot -x dokkaHtml
+        run: ./gradlew build uploadSnapshot -x dokkaGenerate
         env:
           ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.ossrhUsername }}
           ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.ossrhPassword }}
