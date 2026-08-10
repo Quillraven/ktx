@@ -22,17 +22,20 @@ dokka {
 }
 
 tasks.register<Zip>("dokkaZip") {
+  description = "Create a ZIP archive of the generated Dokka HTML documentation."
   from(layout.buildDirectory.dir("dokka/html"))
   dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
 val javadocJar = tasks.register<Jar>("javadocJar") {
+  description = "Create a JAR archive of the Dokka-generated Javadoc documentation."
   archiveClassifier.set("javadoc")
   from(layout.buildDirectory.dir("dokka/html"))
   dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
 val sourcesJar = tasks.register<Jar>("sourcesJar") {
+  description = "Create a JAR archive of the source code."
   from(project.the<SourceSetContainer>().named("main").get().allSource)
   archiveClassifier.set("sources")
 }
@@ -100,6 +103,7 @@ signing {
 }
 
 tasks.register("uploadSnapshot") {
+  description = "Upload a SNAPSHOT version of the library to the Maven repository."
   if (!isReleaseVersion) {
     finalizedBy(tasks.named("publishAllPublicationsToMavenRepository"))
   }
