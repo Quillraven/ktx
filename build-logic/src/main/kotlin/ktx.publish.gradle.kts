@@ -10,10 +10,10 @@ plugins {
   id("org.jetbrains.dokka")
 }
 
-val projectName: String by project
-val projectDesc: String by project
-val ossrhUsername: String by project
-val ossrhPassword: String by project
+val projectName = project.property("projectName") as String
+val projectDesc = project.property("projectDesc") as String
+val ossrhUsername = project.property("ossrhUsername") as String
+val ossrhPassword = project.property("ossrhPassword") as String
 
 dokka {
   dokkaPublications.html {
@@ -26,13 +26,13 @@ tasks.register<Zip>("dokkaZip") {
   dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
-val javadocJar by tasks.registering(Jar::class) {
+val javadocJar = tasks.register<Jar>("javadocJar") {
   archiveClassifier.set("javadoc")
   from(layout.buildDirectory.dir("dokka/html"))
   dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
-val sourcesJar by tasks.registering(Jar::class) {
+val sourcesJar = tasks.register<Jar>("sourcesJar") {
   from(project.the<SourceSetContainer>().named("main").get().allSource)
   archiveClassifier.set("sources")
 }

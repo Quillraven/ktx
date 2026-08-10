@@ -8,7 +8,7 @@ evaluationDependsOn(":scene2d")
 val scene2d = project(":scene2d")
 
 dependencies {
-  api(scene2d)
+  api(project(":scene2d"))
   api(libs.vis.ui)
 
   testImplementation(scene2d.sourceSets.test.get().output)

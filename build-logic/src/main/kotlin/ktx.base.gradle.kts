@@ -1,5 +1,3 @@
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -7,14 +5,14 @@ import org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  `java`
+  java
   jacoco
   id("org.jetbrains.kotlin.jvm")
 }
 
-val libs = the<VersionCatalogsExtension>().named("libs")
-val libGroup: String by project
-val projectName: String by project
+val libs: VersionCatalog = the<VersionCatalogsExtension>().named("libs")
+val libGroup = project.property("libGroup") as String
+val projectName = project.property("projectName") as String
 
 group = libGroup
 version = rootProject.file("version.txt").readText().trim()
@@ -48,7 +46,7 @@ tasks.named<KotlinCompile>("compileTestKotlin") {
   }
 }
 
-val linter = configurations.create("linter") {
+val linter: Configuration = configurations.create("linter") {
   isCanBeConsumed = false
   isCanBeResolved = true
 }

@@ -35,9 +35,9 @@ dependencies {
   dokka(project(":vis-style"))
 }
 
-val libGroup: String by project
-val ossrhUsername: String by project
-val ossrhPassword: String by project
+val libGroup = project.property("libGroup") as String
+val ossrhUsername = project.property("ossrhUsername") as String
+val ossrhPassword = project.property("ossrhPassword") as String
 
 nexusPublishing {
   repositories {

@@ -9,7 +9,7 @@ val async = project(":async")
 
 dependencies {
   api(project(":assets"))
-  api(async)
+  api(project(":async"))
   api(libs.kotlinx.coroutines.core)
 
   testImplementation(async.sourceSets.test.get().output)
