@@ -9,6 +9,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Repository checkout
         uses: actions/checkout@v4
@@ -28,8 +31,7 @@ jobs:
       - name: Publish GitHub pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          token: ${{ secrets.accessToken }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: build/dokka
-          repository-name: libktx/docs
           commit-message: 'Documentation of KTX ${{ env.KTX_VERSION }}.'
