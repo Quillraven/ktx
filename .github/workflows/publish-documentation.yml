@@ -33,5 +33,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: build/dokka
+          folder: build/dokka/html
           commit-message: 'Documentation of KTX ${{ env.KTX_VERSION }}.'
