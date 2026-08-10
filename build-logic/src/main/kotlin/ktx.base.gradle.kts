@@ -1,3 +1,4 @@
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -10,7 +11,7 @@ plugins {
   id("org.jetbrains.kotlin.jvm")
 }
 
-val libs: VersionCatalog = the<VersionCatalogsExtension>().named("libs")
+val libs = the<LibrariesForLibs>()
 val libGroup = project.property("libGroup") as String
 val projectName = project.property("projectName") as String
 
@@ -52,15 +53,15 @@ val linter: Configuration = configurations.create("linter") {
 }
 
 dependencies {
-  implementation(libs.findLibrary("kotlin-stdlib").get())
-  implementation(libs.findLibrary("gdx").get())
-  testImplementation(libs.findLibrary("kotlin-stdlib").get())
-  testImplementation(libs.findLibrary("junit").get())
-  testImplementation(libs.findLibrary("kotlintest").get())
-  testImplementation(libs.findLibrary("mockito-kotlin").get())
-  testImplementation(libs.findLibrary("kotlin-reflect").get())
+  implementation(libs.kotlin.stdlib)
+  implementation(libs.gdx)
+  testImplementation(libs.kotlin.stdlib)
+  testImplementation(libs.junit)
+  testImplementation(libs.kotlintest)
+  testImplementation(libs.mockito.kotlin)
+  testImplementation(libs.kotlin.reflect)
 
-  add("linter", libs.findLibrary("ktlint-cli").get())
+  add("linter", libs.ktlint.cli)
 }
 
 tasks.register<JavaExec>("lint") {
