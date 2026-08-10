@@ -1,0 +1,489 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.assets.async</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":assets-async/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":assets-async/main" data-filter=":assets-async/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="assets-async::ktx.assets.async////PointingToDeclaration//2132754610">
+  <div class="breadcrumbs"><a href="../index.html">assets-async</a><span class="delimiter">/</span><span class="current">ktx.assets.async</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1883940940%2FClasslikes%2F2132754610" anchor-label="AlreadyLoadedAssetException" id="-1883940940%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-already-loaded-asset-exception/index.html"><span>Already</span><wbr><span>Loaded</span><wbr><span>Asset</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1883940940%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-already-loaded-asset-exception/index.html">AlreadyLoadedAssetException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">identifier<span class="token operator">: </span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown by <a href="-asset-storage/add.html">AssetStorage.add</a> when attempting to add an asset with <a href="-identifier/index.html">Identifier</a> that is already present in the <a href="-asset-storage/index.html">AssetStorage</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-80121952%2FClasslikes%2F2132754610" anchor-label="Asset" id="-80121952%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-asset/index.html"><span><span>Asset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-80121952%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-asset/index.html">Asset</a><span class="token operator">&lt;</span><a href="-asset/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>descriptor<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><a href="-asset/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>identifier<span class="token operator">: </span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><a href="-asset/index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>descriptor.toIdentifier()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>reference<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CompletableDeferred///PointingToDeclaration/">CompletableDeferred</span><span class="token operator">&lt;</span><a href="-asset/index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>CompletableDeferred()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dependencies<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-asset/index.html">Asset</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>loader<span class="token operator">: </span><a href="-loader/index.html">Loader</a><span class="token operator">&lt;</span><a href="-asset/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>referenceCount<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Container for a single asset of type <a href="-asset/index.html">T</a> managed by <a href="-asset-storage/index.html">AssetStorage</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-182372755%2FClasslikes%2F2132754610" anchor-label="AssetLoadingException" id="-182372755%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-asset-loading-exception/index.html"><span>Asset</span><wbr><span>Loading</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-182372755%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-asset-loading-exception/index.html">AssetLoadingException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown by <a href="-asset-storage/load.html">AssetStorage.load</a> or <a href="-asset-storage/get.html">AssetStorage.get</a> when the asset failed to load due to an unexpected loading exception, usually thrown by the associated <span data-unresolved-link="com.badlogic.gdx.assets.loaders/AssetLoader///PointingToDeclaration/">AssetLoader</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2065660953%2FClasslikes%2F2132754610" anchor-label="AssetStorage" id="-2065660953%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-asset-storage/index.html"><span>Asset</span><wbr><span><span>Storage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2065660953%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-asset-storage/index.html">AssetStorage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>asyncContext<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a><span class="token operator"> = </span>newSingleThreadAsyncContext(threadName = "AssetStorage-Thread")<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileResolver<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.assets.loaders/FileHandleResolver///PointingToDeclaration/">FileHandleResolver</span><span class="token operator"> = </span>InternalFileHandleResolver()<span class="token punctuation">, </span></span><span class="parameter ">useDefaultLoaders<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>silenceAssetManagerWarnings<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="com.badlogic.gdx.utils/Disposable///PointingToDeclaration/">Disposable</span></div><div class="brief "><p class="paragraph">Asynchronous asset loader based on coroutines API. An <a href="../../assets-async/com.badlogic.gdx.assets/-asset-manager/index.html">AssetManager</a> alternative.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="956270572%2FClasslikes%2F2132754610" anchor-label="AssetStorageException" id="956270572%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-asset-storage-exception/index.html"><span>Asset</span><wbr><span>Storage</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="956270572%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-asset-storage-exception/index.html">AssetStorageException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="com.badlogic.gdx.utils/GdxRuntimeException///PointingToDeclaration/">GdxRuntimeException</span></div><div class="brief "><p class="paragraph">Thrown by <a href="-asset-storage/index.html">AssetStorage</a> and related services. <a href="../../assets-async/ktx.assets.async/-asset-storage-exception/--root--.html">message</a> describes the problem, while <a href="../../assets-async/ktx.assets.async/-asset-storage-exception/--root--.html">cause</a> is the optional cause of the exception.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1021664387%2FClasslikes%2F2132754610" anchor-label="AssetStorageSnapshot" id="1021664387%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-asset-storage-snapshot/index.html"><span>Asset</span><wbr><span>Storage</span><wbr><span><span>Snapshot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1021664387%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-asset-storage-snapshot/index.html">AssetStorageSnapshot</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>assets<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-asset/index.html">Asset</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stores a copy of state of an <a href="-asset-storage/index.html">AssetStorage</a>. For debugging purposes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="220294391%2FClasslikes%2F2132754610" anchor-label="AsyncAssetManager" id="220294391%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-async-asset-manager/index.html"><span>Async</span><wbr><span>Asset</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="220294391%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-async-asset-manager/index.html">AsyncAssetManager</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileResolver<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.assets.loaders/FileHandleResolver///PointingToDeclaration/">FileHandleResolver</span><span class="token operator"> = </span>InternalFileHandleResolver()<span class="token punctuation">, </span></span><span class="parameter ">useDefaultLoaders<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span> : <a href="../../assets-async/com.badlogic.gdx.assets/-asset-manager/index.html">AssetManager</a></div><div class="brief "><p class="paragraph">An extension of the <a href="../../assets-async/com.badlogic.gdx.assets/-asset-manager/index.html">AssetManager</a> providing asynchronous file loading methods compatible with the coroutine concurrency model.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1725917161%2FClasslikes%2F2132754610" anchor-label="AsynchronousLoader" id="-1725917161%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-asynchronous-loader/index.html"><span>Asynchronous</span><wbr><span><span>Loader</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1725917161%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-asynchronous-loader/index.html">AsynchronousLoader</a><span class="token operator">&lt;</span><a href="-asynchronous-loader/index.html">Asset</a><span class="token operator">&gt;</span><span class="token operator"> = </span><span data-unresolved-link="com.badlogic.gdx.assets.loaders/AsynchronousAssetLoader///PointingToDeclaration/">AsynchronousAssetLoader</span><span class="token operator">&lt;</span><a href="-asynchronous-loader/index.html">Asset</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-loader-parameters/index.html">AssetLoaderParameters</a><span class="token operator">&lt;</span><a href="-asynchronous-loader/index.html">Asset</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.assets.loaders/AsynchronousAssetLoader///PointingToDeclaration/">AsynchronousAssetLoader</span> with improved generics.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="461185812%2FClasslikes%2F2132754610" anchor-label="DependencyLoadingException" id="461185812%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dependency-loading-exception/index.html"><span>Dependency</span><wbr><span>Loading</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="461185812%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-dependency-loading-exception/index.html">DependencyLoadingException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">path<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">dependency<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">This exception can be thrown when accessing <span data-unresolved-link="kotlinx.coroutines/Deferred///PointingToDeclaration/">Deferred</span> instances returned by <a href="-async-asset-manager/index.html">AsyncAssetManager</a>. It occurs when an asset scheduled for asynchronous loading cannot be loaded due to the <a href="../../assets-async/ktx.assets.async/-dependency-loading-exception/--root--.html">cause</a> exception thrown during a dependency loading.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-998091095%2FClasslikes%2F2132754610" anchor-label="Identifier" id="-998091095%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-identifier/index.html"><span><span>Identifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-998091095%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><a href="-identifier/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>path<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><a href="-identifier/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Uniquely identifies a single asset stored in an <a href="-asset-storage/index.html">AssetStorage</a> by its <a href="../../assets-async/ktx.assets.async/-identifier/--root--.html">type</a> and <a href="../../assets-async/ktx.assets.async/-identifier/--root--.html">path</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1952004813%2FClasslikes%2F2132754610" anchor-label="InvalidLoaderException" id="1952004813%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-invalid-loader-exception/index.html"><span>Invalid</span><wbr><span>Loader</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1952004813%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invalid-loader-exception/index.html">InvalidLoaderException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">loader<span class="token operator">: </span><a href="-loader/index.html">Loader</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown by <a href="-asset-storage/load.html">AssetStorage.load</a> or <a href="-asset-storage/get.html">AssetStorage.get</a> when the asset failed to load due to invalid loader implementation. Since loaders are pre-validated during registration, normally this exception is extremely rare and caused by invalid <a href="-asset-storage/set-loader.html">AssetStorage.setLoader</a> usage.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="342116095%2FClasslikes%2F2132754610" anchor-label="Loader" id="342116095%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-loader/index.html"><span><span>Loader</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="342116095%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-loader/index.html">Loader</a><span class="token operator">&lt;</span><a href="-loader/index.html">Asset</a><span class="token operator">&gt;</span><span class="token operator"> = </span><span data-unresolved-link="com.badlogic.gdx.assets.loaders/AssetLoader///PointingToDeclaration/">AssetLoader</span><span class="token operator">&lt;</span><a href="-loader/index.html">Asset</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-loader-parameters/index.html">AssetLoaderParameters</a><span class="token operator">&lt;</span><a href="-loader/index.html">Asset</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.assets.loaders/AssetLoader///PointingToDeclaration/">AssetLoader</span> with improved generics.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1921068441%2FClasslikes%2F2132754610" anchor-label="LoadingProgress" id="-1921068441%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-loading-progress/index.html"><span>Loading</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1921068441%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-loading-progress/index.html">LoadingProgress</a></div><div class="brief "><p class="paragraph">Tracks the loading progress of the <a href="-asset-storage/index.html">AssetStorage</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1142194155%2FClasslikes%2F2132754610" anchor-label="MissingAssetException" id="1142194155%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-asset-exception/index.html"><span>Missing</span><wbr><span>Asset</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1142194155%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-asset-exception/index.html">MissingAssetException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">identifier<span class="token operator">: </span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown when the asset requested by an <a href="-asset-storage/get.html">AssetStorage.get</a> variant is not available in the <a href="-asset-storage/index.html">AssetStorage</a> at all or has not been loaded yet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-552113932%2FClasslikes%2F2132754610" anchor-label="MissingDependencyException" id="-552113932%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-dependency-exception/index.html"><span>Missing</span><wbr><span>Dependency</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-552113932%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-dependency-exception/index.html">MissingDependencyException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">This exception can be thrown by <a href="-asset-storage/load-sync.html">AssetStorage.loadSync</a> if dependencies of an asset were scheduled for asynchronous loading, but are not loaded yet. <a href="-asset-storage/load-sync.html">AssetStorage.loadSync</a> will not wait for the assets and instead will throw this exception.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1430294724%2FClasslikes%2F2132754610" anchor-label="MissingLoaderException" id="-1430294724%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-loader-exception/index.html"><span>Missing</span><wbr><span>Loader</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1430294724%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-loader-exception/index.html">MissingLoaderException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">descriptor<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown by <a href="-asset-storage/load.html">AssetStorage.load</a> when the <span data-unresolved-link="com.badlogic.gdx.assets.loaders/AssetLoader///PointingToDeclaration/">AssetLoader</span> for the requested asset type and path is unavailable. See <a href="-asset-storage/set-loader.html">AssetStorage.setLoader</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-493869868%2FClasslikes%2F2132754610" anchor-label="SynchronousLoader" id="-493869868%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-synchronous-loader/index.html"><span>Synchronous</span><wbr><span><span>Loader</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-493869868%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-synchronous-loader/index.html">SynchronousLoader</a><span class="token operator">&lt;</span><a href="-synchronous-loader/index.html">Asset</a><span class="token operator">&gt;</span><span class="token operator"> = </span><span data-unresolved-link="com.badlogic.gdx.assets.loaders/SynchronousAssetLoader///PointingToDeclaration/">SynchronousAssetLoader</span><span class="token operator">&lt;</span><a href="-synchronous-loader/index.html">Asset</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-loader-parameters/index.html">AssetLoaderParameters</a><span class="token operator">&lt;</span><a href="-synchronous-loader/index.html">Asset</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.assets.loaders/SynchronousAssetLoader///PointingToDeclaration/">SynchronousAssetLoader</span> with improved generics.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-74998379%2FClasslikes%2F2132754610" anchor-label="UnloadedAssetException" id="-74998379%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unloaded-asset-exception/index.html"><span>Unloaded</span><wbr><span>Asset</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-74998379%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-unloaded-asset-exception/index.html">UnloadedAssetException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">identifier<span class="token operator">: </span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown by <a href="-asset-storage/load.html">AssetStorage.load</a> or <a href="-asset-storage/get.html">AssetStorage.get</a> variant when the requested asset was unloaded asynchronously.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="204806617%2FClasslikes%2F2132754610" anchor-label="UnsupportedMethodException" id="204806617%2FClasslikes%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unsupported-method-exception/index.html"><span>Unsupported</span><wbr><span>Method</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="204806617%2FClasslikes%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-unsupported-method-exception/index.html">UnsupportedMethodException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">method<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-asset-storage-exception/index.html">AssetStorageException</a></div><div class="brief "><p class="paragraph">Thrown when unsupported methods are called on the <a href="../../assets-async/ktx.assets.async/-asset-manager-wrapper/index.html">AssetManagerWrapper</a>. It is typically only caused by <span data-unresolved-link="com.badlogic.gdx.assets.loaders/AssetLoader///PointingToDeclaration/">AssetLoader</span> instances or a <a href="../../assets-async/com.badlogic.gdx.assets/-asset-loader-parameters/-loaded-callback/index.html">AssetLoaderParameters.LoadedCallback</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1005204483%2FFunctions%2F2132754610" anchor-label="getDependencies" id="1005204483%2FFunctions%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-dependencies.html"><span>get</span><wbr><span><span>Dependencies</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1005204483%2FFunctions%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-loader/index.html">Loader</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="get-dependencies.html"><span class="token function">getDependencies</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">assetDescriptor<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Allows to use <span data-unresolved-link="com.badlogic.gdx.assets.loaders/AssetLoader/getDependencies/#kotlin.String#com.badlogic.gdx.files.FileHandle#TypeParam(bounds=[com.badlogic.gdx.assets.AssetLoaderParameters[TypeParam(bounds=[kotlin.Any])]])/PointingToDeclaration/">AssetLoader.getDependencies</span> method with <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a>. <a href="get-dependencies.html">assetDescriptor</a> contains asset data. Returns a <span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">com.badlogic.gdx.utils.Array</span> with asset dependencies described with <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a> instances. Null if here are no dependencies.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1575930405%2FFunctions%2F2132754610" anchor-label="load" id="1575930405%2FFunctions%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load.html"><span><span>load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1575930405%2FFunctions%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="load.html">Asset</a><span class="token operator">&gt; </span><a href="-synchronous-loader/index.html">SynchronousLoader</a><span class="token operator">&lt;</span><a href="load.html">Asset</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="load.html"><span class="token function">load</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">assetManager<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-manager/index.html">AssetManager</a><span class="token punctuation">, </span></span><span class="parameter ">assetDescriptor<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><a href="load.html">Asset</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="load.html">Asset</a></div><div class="brief "><p class="paragraph">Allows to use <span data-unresolved-link="com.badlogic.gdx.assets.loaders/SynchronousAssetLoader/load/#com.badlogic.gdx.assets.AssetManager#kotlin.String#com.badlogic.gdx.files.FileHandle#TypeParam(bounds=[com.badlogic.gdx.assets.AssetLoaderParameters[TypeParam(bounds=[kotlin.Any])]])/PointingToDeclaration/">SynchronousAssetLoader.load</span> method with <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a>. <a href="load.html">assetManager</a> provides asset dependencies for the loader. <a href="load.html">assetDescriptor</a> contains asset data. Returns fully loaded <a href="load.html">Asset</a> instance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="814156610%2FFunctions%2F2132754610" anchor-label="loadAsync" id="814156610%2FFunctions%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load-async.html"><span>load</span><wbr><span><span>Async</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="814156610%2FFunctions%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="load-async.html">Asset</a><span class="token operator">&gt; </span><a href="-asynchronous-loader/index.html">AsynchronousLoader</a><span class="token operator">&lt;</span><a href="load-async.html">Asset</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="load-async.html"><span class="token function">loadAsync</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">assetManager<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-manager/index.html">AssetManager</a><span class="token punctuation">, </span></span><span class="parameter ">assetDescriptor<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><a href="load-async.html">Asset</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Allows to use <span data-unresolved-link="com.badlogic.gdx.assets.loaders/AsynchronousAssetLoader/loadAsync/#com.badlogic.gdx.assets.AssetManager#kotlin.String#com.badlogic.gdx.files.FileHandle#TypeParam(bounds=[com.badlogic.gdx.assets.AssetLoaderParameters[TypeParam(bounds=[kotlin.Any])]])/PointingToDeclaration/">AsynchronousAssetLoader.loadAsync</span> method with <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a>. Performs the asynchronous asset loading part without yielding results. <a href="load-async.html">assetManager</a> provides asset dependencies for the loader. <a href="load-async.html">assetDescriptor</a> contains asset data.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1975641239%2FFunctions%2F2132754610" anchor-label="loadSync" id="1975641239%2FFunctions%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load-sync.html"><span>load</span><wbr><span><span>Sync</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1975641239%2FFunctions%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="load-sync.html">Asset</a><span class="token operator">&gt; </span><a href="-asynchronous-loader/index.html">AsynchronousLoader</a><span class="token operator">&lt;</span><a href="load-sync.html">Asset</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="load-sync.html"><span class="token function">loadSync</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">assetManager<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-manager/index.html">AssetManager</a><span class="token punctuation">, </span></span><span class="parameter ">assetDescriptor<span class="token operator">: </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><a href="load-sync.html">Asset</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="load-sync.html">Asset</a></div><div class="brief "><p class="paragraph">Allows to use <span data-unresolved-link="com.badlogic.gdx.assets.loaders/AsynchronousAssetLoader/loadSync/#com.badlogic.gdx.assets.AssetManager#kotlin.String#com.badlogic.gdx.files.FileHandle#TypeParam(bounds=[com.badlogic.gdx.assets.AssetLoaderParameters[TypeParam(bounds=[kotlin.Any])]])/PointingToDeclaration/">AsynchronousAssetLoader.loadSync</span> method with <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a>. Note that <a href="load-async.html">loadAsync</a> must have been called first with the same asset data. <a href="load-sync.html">assetManager</a> provides asset dependencies for the loader. <a href="load-sync.html">assetDescriptor</a> contains asset data. Returns fully loaded <a href="load-sync.html">Asset</a> instance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="16558030%2FFunctions%2F2132754610" anchor-label="toIdentifier" id="16558030%2FFunctions%2F2132754610" data-filterable-set=":assets-async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":assets-async/main" data-filterable-set=":assets-async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-identifier.html"><span>to</span><wbr><span><span>Identifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="16558030%2FFunctions%2F2132754610"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":assets-async/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="to-identifier.html">T</a><span class="token operator">&gt; </span><a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a><span class="token operator">&lt;</span><a href="to-identifier.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="to-identifier.html"><span class="token function">toIdentifier</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-identifier/index.html">Identifier</a><span class="token operator">&lt;</span><a href="to-identifier.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Converts this <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/index.html">AssetDescriptor</a> to an <a href="-identifier/index.html">AssetStorage</a>. Copies <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/type.html">AssetDescriptor.type</a> to <a href="-identifier/type.html">Identifier.type</a> and <a href="../../assets-async/com.badlogic.gdx.assets/-asset-descriptor/file-name.html">AssetDescriptor.fileName</a> to <a href="-identifier/path.html">Identifier.path</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

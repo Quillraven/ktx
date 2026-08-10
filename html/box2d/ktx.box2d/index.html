@@ -1,0 +1,628 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.box2d</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":box2d/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":box2d/main" data-filter=":box2d/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="box2d::ktx.box2d////PointingToDeclaration//-38839445">
+  <div class="breadcrumbs"><a href="../index.html">box2d</a><span class="delimiter">/</span><span class="current">ktx.box2d</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1707789045%2FClasslikes%2F-38839445" anchor-label="BodyDefinition" id="-1707789045%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-definition/index.html"><span>Body</span><wbr><span><span>Definition</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1707789045%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-body-definition/index.html">BodyDefinition</a> : <span data-unresolved-link="com.badlogic.gdx.physics.box2d/BodyDef///PointingToDeclaration/">BodyDef</span></div><div class="brief "><p class="paragraph">Box2D building DSL utility class. <span data-unresolved-link="com.badlogic.gdx.physics.box2d/BodyDef///PointingToDeclaration/">BodyDef</span> extension storing <span data-unresolved-link="com.badlogic.gdx.physics.box2d/FixtureDef///PointingToDeclaration/">FixtureDef</span> instances in <a href="-body-definition/fixture-definitions.html">fixtureDefinitions</a> collection. Provides inlined building methods that construct fixture definitions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1266913312%2FClasslikes%2F-38839445" anchor-label="Box2DDsl" id="1266913312%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-box2-d-dsl/index.html"><span><span>Box2DDsl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1266913312%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-dsl-marker/index.html"><span class="token annotation builtin">DslMarker</span></a></div><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-target/index.html"><span class="token annotation builtin">Target</span></a><span class="token punctuation">(</span><span>allowedTargets<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-c-l-a-s-s/index.html">AnnotationTarget.CLASS</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e_-p-a-r-a-m-e-t-e-r/index.html">AnnotationTarget.TYPE_PARAMETER</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-f-u-n-c-t-i-o-n/index.html">AnnotationTarget.FUNCTION</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e/index.html">AnnotationTarget.TYPE</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e-a-l-i-a-s/index.html">AnnotationTarget.TYPEALIAS</a></span><wbr><span class="token punctuation">]</span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-box2-d-dsl/index.html">Box2DDsl</a></div><div class="brief "><p class="paragraph">Marks KTX Box2D type-safe builders.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="578933062%2FClasslikes%2F-38839445" anchor-label="FixtureDefinition" id="578933062%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-fixture-definition/index.html"><span>Fixture</span><wbr><span><span>Definition</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="578933062%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-fixture-definition/index.html">FixtureDefinition</a> : <span data-unresolved-link="com.badlogic.gdx.physics.box2d/FixtureDef///PointingToDeclaration/">FixtureDef</span></div><div class="brief "><p class="paragraph">Box2D building DSL utility class. <span data-unresolved-link="com.badlogic.gdx.physics.box2d/FixtureDef///PointingToDeclaration/">FixtureDef</span> extension exposing new properties. Note that when using fixture builders from <a href="-body-definition/index.html">BodyDefinition</a>, <a href="-fixture-definition/index.html#-676526277%2FProperties%2F-38839445">FixtureDefinition.shape</a> field should not be modified - fixture's shape of the chosen type will already be set in the <a href="-fixture-definition/index.html">FixtureDefinition</a> instance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-786162494%2FClasslikes%2F-38839445" anchor-label="KtxQueryCallback" id="-786162494%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ktx-query-callback/index.html"><span>Ktx</span><wbr><span>Query</span><wbr><span><span>Callback</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-786162494%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-ktx-query-callback/index.html">KtxQueryCallback</a><span class="token operator"> = </span><span class="token punctuation">(</span>fixture<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Callback lambda for querying with an AABB.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1389994079%2FClasslikes%2F-38839445" anchor-label="KtxRayCastCallback" id="-1389994079%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ktx-ray-cast-callback/index.html"><span>Ktx</span><wbr><span>Ray</span><wbr><span>Cast</span><wbr><span><span>Callback</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1389994079%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-ktx-ray-cast-callback/index.html">KtxRayCastCallback</a><span class="token operator"> = </span><span class="token punctuation">(</span>fixture<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span><span class="token punctuation">, </span>point<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span>normal<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span>fraction<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Callback lambda for ray-casts.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1275464774%2FClasslikes%2F-38839445" anchor-label="Query" id="-1275464774%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-query/index.html"><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1275464774%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-query/index.html">Query</a></div><div class="brief "><p class="paragraph">Stores constants that can be returned by <a href="-ktx-query-callback/index.html">KtxQueryCallback</a> to control its behavior.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-827898663%2FClasslikes%2F-38839445" anchor-label="RayCast" id="-827898663%2FClasslikes%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ray-cast/index.html"><span>Ray</span><wbr><span><span>Cast</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-827898663%2FClasslikes%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-ray-cast/index.html">RayCast</a></div><div class="brief "><p class="paragraph">Stores constants that can be returned by <a href="-ktx-ray-cast-callback/index.html">KtxRayCastCallback</a> to control its behavior.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1431866629%2FProperties%2F-38839445" anchor-label="earthGravity" id="-1431866629%2FProperties%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="earth-gravity.html"><span>earth</span><wbr><span><span>Gravity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1431866629%2FProperties%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="earth-gravity.html">earthGravity</a><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span></div><div class="brief "><p class="paragraph">Roughly matches Earth gravity of 9.80665 m/s^2. Moves bodies down on the Y axis.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-337175793%2FFunctions%2F-38839445" anchor-label="body" id="-337175793%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="body.html"><span><span>body</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-337175793%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span><span class="token punctuation">.</span><a href="body.html"><span class="token function">body</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/BodyDef.BodyType///PointingToDeclaration/">BodyDef.BodyType</span><span class="token operator"> = </span>BodyType.StaticBody<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span></div><div class="brief "><p class="paragraph">Type-safe <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> building DSL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1719708896%2FFunctions%2F-38839445" anchor-label="box" id="-1719708896%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="box.html"><span><span>box</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1719708896%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="box.html"><span class="token function">box</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator"> = </span>Vector2.Zero<span class="token punctuation">, </span></span><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="box.html"><span class="token function">box</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator"> = </span>Vector2.Zero<span class="token punctuation">, </span></span><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span> set as box. Note that - contrary to <span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape/setAsBox/#kotlin.Float#kotlin.Float/PointingToDeclaration/">PolygonShape.setAsBox</span> methods - this method consumes actual <i>not halved</i> box width and height sizes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-450577602%2FFunctions%2F-38839445" anchor-label="chain" id="-450577602%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="chain.html"><span><span>chain</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-450577602%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="chain.html"><span class="token function">chain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="chain.html"><span class="token function">chain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span>. Note that this method consumes a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a> instead of array of <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span> instances, which might be less readable, but creates slightly less garbage. This method is advised to be used instead of the <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span>-consuming variant on mobile devices.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="chain.html"><span class="token function">chain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>vertices<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="chain.html"><span class="token function">chain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>vertices<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1224095174%2FFunctions%2F-38839445" anchor-label="circle" id="-1224095174%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="circle.html"><span><span>circle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1224095174%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="circle.html"><span class="token function">circle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator"> = </span>Vector2.Zero<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/CircleShape///PointingToDeclaration/">CircleShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="circle.html"><span class="token function">circle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator"> = </span>Vector2.Zero<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/CircleShape///PointingToDeclaration/">CircleShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/CircleShape///PointingToDeclaration/">CircleShape</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1918627101%2FFunctions%2F-38839445" anchor-label="create" id="1918627101%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create.html"><span><span>create</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1918627101%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span><span class="token punctuation">.</span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bodyDefinition<span class="token operator">: </span><a href="-body-definition/index.html">BodyDefinition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span></div><div class="brief "><p class="paragraph">Handles additional building properties provided by <a href="-body-definition/index.html">BodyDefinition</a> and <a href="-fixture-definition/index.html">FixtureDefinition</a>. Prefer this method over <span data-unresolved-link="com.badlogic.gdx.physics.box2d/World/createBody/#com.badlogic.gdx.physics.box2d.BodyDef/PointingToDeclaration/">World.createBody</span> when using <a href="-body-definition/index.html">BodyDefinition</a> directly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1368115179%2FFunctions%2F-38839445" anchor-label="createWorld" id="1368115179%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-world.html"><span>create</span><wbr><span><span>World</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1368115179%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-world.html"><span class="token function">createWorld</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">gravity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator"> = </span>Vector2.Zero<span class="token punctuation">, </span></span><span class="parameter ">allowSleep<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span> factory function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1588982492%2FFunctions%2F-38839445" anchor-label="distanceJointWith" id="1588982492%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="distance-joint-with.html"><span>distance</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1588982492%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="distance-joint-with.html"><span class="token function">distanceJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/DistanceJointDef///PointingToDeclaration/">DistanceJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/DistanceJoint///PointingToDeclaration/">DistanceJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/DistanceJoint///PointingToDeclaration/">DistanceJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="815937232%2FFunctions%2F-38839445" anchor-label="edge" id="815937232%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="edge.html"><span><span>edge</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="815937232%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="edge.html"><span class="token function">edge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">from<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">to<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/EdgeShape///PointingToDeclaration/">EdgeShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="edge.html"><span class="token function">edge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">from<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">to<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/EdgeShape///PointingToDeclaration/">EdgeShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/EdgeShape///PointingToDeclaration/">EdgeShape</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="edge.html"><span class="token function">edge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">fromY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">toX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">toY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/EdgeShape///PointingToDeclaration/">EdgeShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="edge.html"><span class="token function">edge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">fromY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">toX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">toY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/EdgeShape///PointingToDeclaration/">EdgeShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/EdgeShape///PointingToDeclaration/">EdgeShape</span>. Note that this method consumes floats instead of <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span> instances, which might be less concise, but also creates slightly less garbage. This method is advised to be used instead of the <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span>-consuming variant on mobile devices.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="482727081%2FFunctions%2F-38839445" anchor-label="filter" id="482727081%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="filter.html"><span><span>filter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="482727081%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/FixtureDef///PointingToDeclaration/">FixtureDef</span><span class="token punctuation">.</span><a href="filter.html"><span class="token function">filter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">filter<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Filter///PointingToDeclaration/">Filter</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Filter///PointingToDeclaration/">Filter</span></div><div class="brief "><p class="paragraph">Utility extension method for setting up of <a href="filter.html">FixtureDef.filter</a>. Allows to copy an existing <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Filter///PointingToDeclaration/">Filter</span> instance to avoid copying each property manually.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/FixtureDef///PointingToDeclaration/">FixtureDef</span><span class="token punctuation">.</span><a href="filter.html"><span class="token function">filter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Filter///PointingToDeclaration/">Filter</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Inlined utility extension method for setting up of <a href="filter.html">FixtureDef.filter</a>. Exposes <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Filter///PointingToDeclaration/">Filter</span> properties under <code class="lang-kotlin">this</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1230781788%2FFunctions%2F-38839445" anchor-label="fixture" id="-1230781788%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fixture.html"><span><span>fixture</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1230781788%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="fixture.html">S</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Shape///PointingToDeclaration/">Shape</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="fixture.html"><span class="token function">fixture</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="fixture.html">S</a><span class="token punctuation">, </span></span><span class="parameter ">disposeOfShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="fixture.html">S</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="fixture.html">ShapeType</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Shape///PointingToDeclaration/">Shape</span><span class="token operator">&gt; </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="fixture.html"><span class="token function">fixture</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="fixture.html">ShapeType</a><span class="token punctuation">, </span></span><span class="parameter ">disposeOfShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="fixture.html">ShapeType</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures of custom shape type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1080728956%2FFunctions%2F-38839445" anchor-label="frictionJointWith" id="1080728956%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friction-joint-with.html"><span>friction</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080728956%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="friction-joint-with.html"><span class="token function">frictionJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/FrictionJointDef///PointingToDeclaration/">FrictionJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/FrictionJoint///PointingToDeclaration/">FrictionJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/FrictionJoint///PointingToDeclaration/">FrictionJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1600520292%2FFunctions%2F-38839445" anchor-label="gearJointWith" id="-1600520292%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="gear-joint-with.html"><span>gear</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1600520292%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="gear-joint-with.html"><span class="token function">gearJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/GearJointDef///PointingToDeclaration/">GearJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/GearJoint///PointingToDeclaration/">GearJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/GearJoint///PointingToDeclaration/">GearJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1370890490%2FFunctions%2F-38839445" anchor-label="jointWith" id="-1370890490%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="joint-with.html"><span>joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1370890490%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="joint-with.html">J</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef///PointingToDeclaration/">JointDef</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="joint-with.html"><span class="token function">jointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">jointDefinition<span class="token operator">: </span><a href="joint-with.html">J</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="joint-with.html">J</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint///PointingToDeclaration/">Joint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint///PointingToDeclaration/">Joint</span> with custom <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef///PointingToDeclaration/">JointDef</span> instance. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-696750416%2FFunctions%2F-38839445" anchor-label="loop" id="-696750416%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="loop.html"><span><span>loop</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-696750416%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="loop.html"><span class="token function">loop</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="loop.html"><span class="token function">loop</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with looped <span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span>. Note that this method consumes a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a> instead of array of <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span> instances, which might be less readable, but creates slightly less garbage. This method is advised to be used instead of the <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span>-consuming variant on mobile devices.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="loop.html"><span class="token function">loop</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>vertices<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="loop.html"><span class="token function">loop</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>vertices<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with looped <span data-unresolved-link="com.badlogic.gdx.physics.box2d/ChainShape///PointingToDeclaration/">ChainShape</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1039687142%2FFunctions%2F-38839445" anchor-label="motorJointWith" id="-1039687142%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="motor-joint-with.html"><span>motor</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1039687142%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="motor-joint-with.html"><span class="token function">motorJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/MotorJointDef///PointingToDeclaration/">MotorJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/MotorJoint///PointingToDeclaration/">MotorJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/MotorJoint///PointingToDeclaration/">MotorJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-238254470%2FFunctions%2F-38839445" anchor-label="mouseJointWith" id="-238254470%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mouse-joint-with.html"><span>mouse</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-238254470%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="mouse-joint-with.html"><span class="token function">mouseJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/MouseJointDef///PointingToDeclaration/">MouseJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/MouseJoint///PointingToDeclaration/">MouseJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/MouseJoint///PointingToDeclaration/">MouseJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-868755400%2FFunctions%2F-38839445" anchor-label="polygon" id="-868755400%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="polygon.html"><span><span>polygon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-868755400%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="polygon.html"><span class="token function">polygon</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="polygon.html"><span class="token function">polygon</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span>. Note that this method consumes a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float-array/index.html">FloatArray</a> instead of array of <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span> instances, which might be less readable, but creates slightly less garbage. This method is advised to be used instead of the <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span>-consuming variant on mobile devices.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="polygon.html"><span class="token function">polygon</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>vertices<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Fixture///PointingToDeclaration/">Fixture</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-body-definition/index.html">BodyDefinition</a><span class="token punctuation">.</span><a href="polygon.html"><span class="token function">polygon</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>vertices<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-fixture-definition/index.html">FixtureDefinition</a></div><div class="brief "><p class="paragraph">Utility builder method for constructing fixtures with <span data-unresolved-link="com.badlogic.gdx.physics.box2d/PolygonShape///PointingToDeclaration/">PolygonShape</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1650437900%2FFunctions%2F-38839445" anchor-label="prismaticJointWith" id="1650437900%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="prismatic-joint-with.html"><span>prismatic</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1650437900%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="prismatic-joint-with.html"><span class="token function">prismaticJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/PrismaticJointDef///PointingToDeclaration/">PrismaticJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/PrismaticJoint///PointingToDeclaration/">PrismaticJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/PrismaticJoint///PointingToDeclaration/">PrismaticJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="754260892%2FFunctions%2F-38839445" anchor-label="pulleyJointWith" id="754260892%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pulley-joint-with.html"><span>pulley</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="754260892%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="pulley-joint-with.html"><span class="token function">pulleyJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/PulleyJointDef///PointingToDeclaration/">PulleyJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/PulleyJoint///PointingToDeclaration/">PulleyJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/PulleyJoint///PointingToDeclaration/">PulleyJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1885606379%2FFunctions%2F-38839445" anchor-label="query" id="-1885606379%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="query.html"><span><span>query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1885606379%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span><span class="token punctuation">.</span><a href="query.html"><span class="token function">query</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lowerX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">lowerY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">upperX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">upperY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><a href="-ktx-query-callback/index.html">KtxQueryCallback</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Query the world for all fixtures that potentially overlap the provided AABB (Axis-Aligned Bounding Box).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="352375754%2FFunctions%2F-38839445" anchor-label="rayCast" id="352375754%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ray-cast.html"><span>ray</span><wbr><span><span>Cast</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="352375754%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span><span class="token punctuation">.</span><a href="ray-cast.html"><span class="token function">rayCast</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">start<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">end<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><a href="-ktx-ray-cast-callback/index.html">KtxRayCastCallback</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/World///PointingToDeclaration/">World</span><span class="token punctuation">.</span><a href="ray-cast.html"><span class="token function">rayCast</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><a href="-ktx-ray-cast-callback/index.html">KtxRayCastCallback</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Ray-cast the world for all fixtures in the path of the ray.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1126231300%2FFunctions%2F-38839445" anchor-label="revoluteJointWith" id="-1126231300%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="revolute-joint-with.html"><span>revolute</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1126231300%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="revolute-joint-with.html"><span class="token function">revoluteJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/RevoluteJointDef///PointingToDeclaration/">RevoluteJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/RevoluteJoint///PointingToDeclaration/">RevoluteJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/RevoluteJoint///PointingToDeclaration/">RevoluteJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-387991428%2FFunctions%2F-38839445" anchor-label="ropeJointWith" id="-387991428%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rope-joint-with.html"><span>rope</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-387991428%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="rope-joint-with.html"><span class="token function">ropeJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/RopeJointDef///PointingToDeclaration/">RopeJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/RopeJoint///PointingToDeclaration/">RopeJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/RopeJoint///PointingToDeclaration/">RopeJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="182161660%2FFunctions%2F-38839445" anchor-label="weldJointWith" id="182161660%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="weld-joint-with.html"><span>weld</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="182161660%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="weld-joint-with.html"><span class="token function">weldJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/WeldJointDef///PointingToDeclaration/">WeldJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/WeldJoint///PointingToDeclaration/">WeldJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/WeldJoint///PointingToDeclaration/">WeldJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-931038362%2FFunctions%2F-38839445" anchor-label="wheelJointWith" id="-931038362%2FFunctions%2F-38839445" data-filterable-set=":box2d/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":box2d/main" data-filterable-set=":box2d/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="wheel-joint-with.html"><span>wheel</span><wbr><span>Joint</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-931038362%2FFunctions%2F-38839445"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":box2d/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">.</span><a href="wheel-joint-with.html"><span class="token function">wheelJointWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">body<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/WheelJointDef///PointingToDeclaration/">WheelJointDef</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/WheelJoint///PointingToDeclaration/">WheelJoint</span></div><div class="brief "><p class="paragraph">Allows to create a <span data-unresolved-link="com.badlogic.gdx.physics.box2d.joints/WheelJoint///PointingToDeclaration/">WheelJoint</span>. <code class="lang-kotlin">this</code> <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Body///PointingToDeclaration/">Body</span> will be set as the <span data-unresolved-link="com.badlogic.gdx.physics.box2d/JointDef/bodyA/#/PointingToDeclaration/">JointDef.bodyA</span> and will be available through <span data-unresolved-link="com.badlogic.gdx.physics.box2d/Joint/getBodyA/#/PointingToDeclaration/">Joint.getBodyA</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

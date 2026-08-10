@@ -1,0 +1,504 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.graphics</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":graphics/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":graphics/main" data-filter=":graphics/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="graphics::ktx.graphics////PointingToDeclaration//-1088692213">
+  <div class="breadcrumbs"><a href="../index.html">graphics</a><span class="delimiter">/</span><span class="current">ktx.graphics</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1218808297%2FClasslikes%2F-1088692213" anchor-label="LetterboxingViewport" id="1218808297%2FClasslikes%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-letterboxing-viewport/index.html"><span>Letterboxing</span><wbr><span><span>Viewport</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1218808297%2FClasslikes%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-letterboxing-viewport/index.html">LetterboxingViewport</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>targetPpiX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>defaultTargetPpi<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>targetPpiY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>defaultTargetPpi<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>aspectRatio<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>4f / 3f</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="com.badlogic.gdx.utils.viewport/ScalingViewport///PointingToDeclaration/">ScalingViewport</span></div><div class="brief "><p class="paragraph">Combines <span data-unresolved-link="com.badlogic.gdx.utils.viewport/ScreenViewport///PointingToDeclaration/">screen</span> and <span data-unresolved-link="com.badlogic.gdx.utils.viewport/FitViewport///PointingToDeclaration/">fit</span> viewports. Similarly to ScreenViewport, world size is changed on each update (resize), so <a href="-letterboxing-viewport/update.html">update</a> should be generally called with <code class="lang-kotlin">true</code> parameter (camera should be centered). Tries to keep the passed aspect ratio by applying letterboxing - horizontal or vertical black bars.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1123668747%2FFunctions%2F-1088692213" anchor-label="arc" id="-1123668747%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="arc.html"><span><span>arc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1123668747%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="arc.html"><span class="token function">arc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">start<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">degrees<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/arc/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.arc</span>. Estimates the number of segments needed for a smooth arc.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="arc.html"><span class="token function">arc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">start<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">degrees<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">segments<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/arc/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.arc</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="59331201%2FFunctions%2F-1088692213" anchor-label="begin" id="59331201%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="begin.html"><span><span>begin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="59331201%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="begin.html">B</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch///PointingToDeclaration/">Batch</span><span class="token operator">&gt; </span><a href="begin.html">B</a><span class="token punctuation">.</span><a href="begin.html"><span class="token function">begin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">camera<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets the batch's projection matrix to the camera's <span data-unresolved-link="com.badlogic.gdx.graphics/Camera/combined/#/PointingToDeclaration/">Camera.combined</span> matrix and calls <span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch/begin/#/PointingToDeclaration/">Batch.begin</span>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="begin.html">B</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch///PointingToDeclaration/">Batch</span><span class="token operator">&gt; </span><a href="begin.html">B</a><span class="token punctuation">.</span><a href="begin.html"><span class="token function">begin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">projectionMatrix<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Automatically calls <span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch/begin/#/PointingToDeclaration/">Batch.begin</span> with the provided matrix</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1251528307%2FFunctions%2F-1088692213" anchor-label="box" id="-1251528307%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="box.html"><span><span>box</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1251528307%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="box.html"><span class="token function">box</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">depth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/box/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.box</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="883967827%2FFunctions%2F-1088692213" anchor-label="center" id="883967827%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="center.html"><span><span>center</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="883967827%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">.</span><a href="center.html"><span class="token function">center</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>Gdx.graphics.width.toFloat()<span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>Gdx.graphics.height.toFloat()<span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Centers this <span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span> in the middle of the given rectangle. <a href="center.html">width</a> and <a href="center.html">height</a> represent the size of the rectangle in world (camera/viewport) units. <a href="center.html">x</a> and <a href="center.html">y</a> are optional offsets in world units that will modify camera position.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/BitmapFont///PointingToDeclaration/">BitmapFont</span><span class="token punctuation">.</span><a href="center.html"><span class="token function">center</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span></div><div class="brief "><p class="paragraph">Calculates center position of the chosen <a href="center.html">text</a> written with this <span data-unresolved-link="com.badlogic.gdx.graphics.g2d/BitmapFont///PointingToDeclaration/">BitmapFont</span> on an object with given <a href="center.html">width</a> and <a href="center.html">height</a> drawn at <a href="center.html">x</a> and <a href="center.html">y</a> coordinates.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="115835569%2FFunctions%2F-1088692213" anchor-label="circle" id="115835569%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="circle.html"><span><span>circle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="115835569%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="circle.html"><span class="token function">circle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/circle/#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.circle</span>. Estimates the number of segments needed for a smooth circle.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="circle.html"><span class="token function">circle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">segments<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/circle/#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.circle</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1746300251%2FFunctions%2F-1088692213" anchor-label="color" id="1746300251%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color.html"><span><span>color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1746300251%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="color.html"><span class="token function">color</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">red<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">green<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">blue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span></div><div class="brief "><p class="paragraph">Factory methods for libGDX <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> class. Allows using named parameters.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="25101176%2FFunctions%2F-1088692213" anchor-label="component1" id="25101176%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="component1.html"><span><span>component1</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="25101176%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">.</span><a href="component1.html"><span class="token function">component1</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the red component of the color. Allows using destructuring declarations when working with libGDX <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> class, for example:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="655559801%2FFunctions%2F-1088692213" anchor-label="component2" id="655559801%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="component2.html"><span><span>component2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="655559801%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">.</span><a href="component2.html"><span class="token function">component2</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the green component of the color. Allows using destructuring declarations when working with libGDX <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> class, for example:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1286018426%2FFunctions%2F-1088692213" anchor-label="component3" id="1286018426%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="component3.html"><span><span>component3</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1286018426%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">.</span><a href="component3.html"><span class="token function">component3</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the blue component of the color. Allows using destructuring declarations when working with libGDX <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> class, for example:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1916477051%2FFunctions%2F-1088692213" anchor-label="component4" id="1916477051%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="component4.html"><span><span>component4</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1916477051%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">.</span><a href="component4.html"><span class="token function">component4</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the alpha component of the color. Allows using destructuring declarations when working with libGDX <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> class, for example:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="484824253%2FFunctions%2F-1088692213" anchor-label="cone" id="484824253%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cone.html"><span><span>cone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="484824253%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="cone.html"><span class="token function">cone</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/cone/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.cone</span>. Estimates the number of segments needed for a smooth cone.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="cone.html"><span class="token function">cone</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">segments<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/cone/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.cone</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="913811058%2FFunctions%2F-1088692213" anchor-label="copy" id="913811058%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="copy.html"><span><span>copy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="913811058%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">.</span><a href="copy.html"><span class="token function">copy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">red<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">green<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">blue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span></div><div class="brief "><p class="paragraph">Allows to copy this <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> instance, optionally changing chosen properties.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1088929805%2FFunctions%2F-1088692213" anchor-label="ellipse" id="1088929805%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ellipse.html"><span><span>ellipse</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1088929805%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="ellipse.html"><span class="token function">ellipse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">degrees<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/ellipse/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.ellipse</span>. Estimates the number of segments needed for a smooth ellipse.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="ellipse.html"><span class="token function">ellipse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">degrees<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">segments<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/ellipse/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.ellipse</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-556986912%2FFunctions%2F-1088692213" anchor-label="lerpTo" id="-556986912%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="lerp-to.html"><span>lerp</span><wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-556986912%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">.</span><a href="lerp-to.html"><span class="token function">lerpTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">lerp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Will smoothly move the <span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span> at the selected <a href="lerp-to.html">target</a> coordinated. The <span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span> will follow a <a href="lerp-to.html">target</a> with a smooth linear interpolation, based on a <a href="lerp-to.html">lerp</a> amount. <a href="lerp-to.html">lerp</a> should be in range of 0 (slowest) to 1 (fastest). The lower that interpolation amount, the smoother - and thus slower - the following motion.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="670170506%2FFunctions%2F-1088692213" anchor-label="moveTo" id="670170506%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="move-to.html"><span>move</span><wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="670170506%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">.</span><a href="move-to.html"><span class="token function">moveTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Immediately moves <span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span> to the selected <a href="move-to.html">target</a> coordinates. Not suitable for all cases, as it may cause a very rough motion when used every frame. <a href="move-to.html">x</a> and <a href="move-to.html">y</a> are optional offsets in world units that will modify camera position.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-5684819%2FFunctions%2F-1088692213" anchor-label="rect" id="-5684819%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rect.html"><span><span>rect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-5684819%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="rect.html"><span class="token function">rect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">size<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="rect.html"><span class="token function">rect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/rect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.rect</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="846507486%2FFunctions%2F-1088692213" anchor-label="rectLine" id="846507486%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rect-line.html"><span>rect</span><wbr><span><span>Line</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="846507486%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="rect-line.html"><span class="token function">rectLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">positionA<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">positionB<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">colorA<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">, </span></span><span class="parameter ">colorB<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/rectLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.rectLine</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1051159887%2FFunctions%2F-1088692213" anchor-label="rotate" id="-1051159887%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rotate.html"><span><span>rotate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1051159887%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="rotate.html"><span class="token function">rotate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">axis<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token punctuation">, </span></span><span class="parameter ">degrees<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/rotate/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.rotate</span>. Multiplies the current transformation matrix by a rotation matrix.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-331684259%2FFunctions%2F-1088692213" anchor-label="scale" id="-331684259%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scale.html"><span><span>scale</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-331684259%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="scale.html"><span class="token function">scale</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scale<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/scale/#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.scale</span>. Multiplies the current transformation matrix by a scale matrix, with z not scaled.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="scale.html"><span class="token function">scale</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scale<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/scale/#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.scale</span>. Multiplies the current transformation matrix by a scale matrix.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1516006074%2FFunctions%2F-1088692213" anchor-label="takeScreenshot" id="-1516006074%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="take-screenshot.html"><span>take</span><wbr><span><span>Screenshot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1516006074%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="take-screenshot.html"><span class="token function">takeScreenshot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileHandle<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.files/FileHandle///PointingToDeclaration/">FileHandle</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Takes a screenshot of the entire screen and saves the image using the given <a href="take-screenshot.html">fileHandle</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-383657088%2FFunctions%2F-1088692213" anchor-label="translate" id="-383657088%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="translate.html"><span><span>translate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-383657088%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="translate.html"><span class="token function">translate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/translate/#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.translate</span>. Multiplies the current transformation matrix by a translation matrix.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1555828940%2FFunctions%2F-1088692213" anchor-label="triangle" id="-1555828940%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="triangle.html"><span><span>triangle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1555828940%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="triangle.html"><span class="token function">triangle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pointA<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">pointB<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">pointC<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token punctuation">.</span><a href="triangle.html"><span class="token function">triangle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pointA<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">pointB<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">pointC<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token punctuation">, </span></span><span class="parameter ">colorA<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">, </span></span><span class="parameter ">colorB<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span><span class="token punctuation">, </span></span><span class="parameter ">colorC<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">See <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/triangle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/">ShapeRenderer.triangle</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-424140037%2FFunctions%2F-1088692213" anchor-label="update" id="-424140037%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update.html"><span><span>update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-424140037%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">.</span><a href="update.html"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operation<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Inlines the <a href="update.html">operation</a>, which can update the camera position. Automatically calls <span data-unresolved-link="com.badlogic.gdx.graphics/Camera/update/#/PointingToDeclaration/">Camera.update</span> after the <a href="update.html">operation</a> is finished.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="825349278%2FFunctions%2F-1088692213" anchor-label="use" id="825349278%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="use.html"><span><span>use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="825349278%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">B</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/GLFrameBuffer///PointingToDeclaration/">GLFrameBuffer</span><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="use.html">B</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">B</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Automatically calls <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/GLFrameBuffer/begin/#/PointingToDeclaration/">GLFrameBuffer.begin</span> and <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/GLFrameBuffer/end/#/PointingToDeclaration/">GLFrameBuffer.end</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">S</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShaderProgram///PointingToDeclaration/">ShaderProgram</span><span class="token operator">&gt; </span><a href="use.html">S</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">S</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Automatically calls <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShaderProgram/bind/#/PointingToDeclaration/">ShaderProgram.bind</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">B</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch///PointingToDeclaration/">Batch</span><span class="token operator">&gt; </span><a href="use.html">B</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">camera<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">, </span></span><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">B</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">B</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch///PointingToDeclaration/">Batch</span><span class="token operator">&gt; </span><a href="use.html">B</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">projectionMatrix<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">B</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Automatically calls <span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch/begin/#/PointingToDeclaration/">Batch.begin</span> and <span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch/end/#/PointingToDeclaration/">Batch.end</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">SR</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token operator">&gt; </span><a href="use.html">SR</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer.ShapeType///PointingToDeclaration/">ShapeRenderer.ShapeType</span><span class="token punctuation">, </span></span><span class="parameter ">camera<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token punctuation">, </span></span><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">SR</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">SR</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer///PointingToDeclaration/">ShapeRenderer</span><span class="token operator">&gt; </span><a href="use.html">SR</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer.ShapeType///PointingToDeclaration/">ShapeRenderer.ShapeType</span><span class="token punctuation">, </span></span><span class="parameter ">projectionMatrix<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">SR</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Automatically calls <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/begin/#/PointingToDeclaration/">ShapeRenderer.begin</span> and <span data-unresolved-link="com.badlogic.gdx.graphics.glutils/ShapeRenderer/end/#/PointingToDeclaration/">ShapeRenderer.end</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

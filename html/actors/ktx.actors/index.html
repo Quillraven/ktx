@@ -1,0 +1,778 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.actors</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":actors/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":actors/main" data-filter=":actors/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="actors::ktx.actors////PointingToDeclaration//-978013986">
+  <div class="breadcrumbs"><a href="../index.html">actors</a><span class="delimiter">/</span><span class="current">ktx.actors</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="2136603248%2FClasslikes%2F-978013986" anchor-label="KtxInputListener" id="2136603248%2FClasslikes%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ktx-input-listener/index.html"><span>Ktx</span><wbr><span>Input</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2136603248%2FClasslikes%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-ktx-input-listener/index.html">KtxInputListener</a> : <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Extends <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">com.badlogic.gdx.scenes.scene2d.InputListener</span> for the sole purpose of getting guarantees on nullability. Provides no-op implementations of all methods, making them optional to implement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-2024459467%2FProperties%2F-978013986" anchor-label="alpha" id="-2024459467%2FProperties%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="alpha.html"><span><span>alpha</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2024459467%2FProperties%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">var </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="alpha.html">alpha</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Links to this actor's <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor/color/#/PointingToDeclaration/">Actor.color</span> instance. Allows to easily modify alpha color value.</p></div><div class="symbol monospace"><span class="token keyword">var </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span><span class="token punctuation">.</span><a href="alpha.html">alpha</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Links to this <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage/root/#/PointingToDeclaration/">Stage.root</span>.color instance. Allows to easily modify alpha color value of stage.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-297847369%2FProperties%2F-978013986" anchor-label="MAX_ALPHA" id="-297847369%2FProperties%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-m-a-x_-a-l-p-h-a.html"><span>MAX_</span><wbr><span>ALPHA</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-297847369%2FProperties%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-m-a-x_-a-l-p-h-a.html">MAX_ALPHA</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></div><div class="brief "><p class="paragraph">Max value of alpha in libGDX Color instances.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1961191671%2FProperties%2F-978013986" anchor-label="MIN_ALPHA" id="-1961191671%2FProperties%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-m-i-n_-a-l-p-h-a.html"><span>MIN_</span><wbr><span>ALPHA</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1961191671%2FProperties%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-m-i-n_-a-l-p-h-a.html">MIN_ALPHA</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></div><div class="brief "><p class="paragraph">Min value of alpha in libGDX Color instances.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1849496357%2FProperties%2F-978013986" anchor-label="txt" id="-1849496357%2FProperties%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="txt.html"><span><span>txt</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1849496357%2FProperties%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">var </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Label///PointingToDeclaration/">Label</span><span class="token punctuation">.</span><a href="txt.html">txt</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Allows to access and modify <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Label///PointingToDeclaration/">Label</span> text with idiomatic Kotlin property syntax.</p></div><div class="symbol monospace"><span class="token keyword">var </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextButton///PointingToDeclaration/">TextButton</span><span class="token punctuation">.</span><a href="txt.html">txt</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Allows to access and modify <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextButton///PointingToDeclaration/">TextButton</span> text with idiomatic Kotlin property syntax.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1883856218%2FFunctions%2F-978013986" anchor-label="along" id="-1883856218%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="along.html"><span><span>along</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1883856218%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span><span class="token punctuation">.</span><a href="along.html"><span class="token function">along</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span></div><div class="brief "><p class="paragraph">Wraps this action and the passed action with a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span>, executing them both at the same time.</p></div><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span><span class="token punctuation">.</span><a href="along.html"><span class="token function">along</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span></div><div class="brief "><p class="paragraph">Adds <a href="along.html">action</a> to this <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span>, so long as this isn't a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span>. If it is a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span>, it creates a new <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span> executing both actions in parallel.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1599578408%2FFunctions%2F-978013986" anchor-label="centerPosition" id="-1599578408%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="center-position.html"><span>center</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1599578408%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="center-position.html"><span class="token function">centerPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>this.stage.width<span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>this.stage.height<span class="token punctuation">, </span></span><span class="parameter ">normalize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Modifies this actor position to be centered within the passed bounds. Uses actor's size to calculate the offsets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2007337395%2FFunctions%2F-978013986" anchor-label="contains" id="-2007337395%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2007337395%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Group///PointingToDeclaration/">Group</span><span class="token punctuation">.</span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span><span class="token punctuation">.</span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1232087%2FFunctions%2F-978013986" anchor-label="div" id="-1232087%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="div.html"><span><span>div</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1232087%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span><span class="token punctuation">.</span><a href="div.html"><span class="token function">div</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span></div><div class="brief "><p class="paragraph">Wraps this action and the passed action with a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1582944889%2FFunctions%2F-978013986" anchor-label="isShown" id="1582944889%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-shown.html"><span>is</span><wbr><span><span>Shown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1582944889%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">?</span><span class="token punctuation">.</span><a href="is-shown.html"><span class="token function">isShown</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-717958129%2FFunctions%2F-978013986" anchor-label="keepWithinParent" id="-717958129%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="keep-within-parent.html"><span>keep</span><wbr><span>Within</span><wbr><span><span>Parent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-717958129%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="keep-within-parent.html"><span class="token function">keepWithinParent</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Checks this actor's position and size and makes sure that it is kept within its parent actor bounds (or <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1943557418%2FFunctions%2F-978013986" anchor-label="minusAssign" id="-1943557418%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="minus-assign.html"><span>minus</span><wbr><span><span>Assign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1943557418%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="minus-assign.html"><span class="token function">minusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor/removeAction/#com.badlogic.gdx.scenes.scene2d.Action/PointingToDeclaration/">Actor.removeAction</span> method. Allows to remove actions from the actor with -= operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Group///PointingToDeclaration/">Group</span><span class="token punctuation">.</span><a href="minus-assign.html"><span class="token function">minusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Group/removeActor/#com.badlogic.gdx.scenes.scene2d.Actor/PointingToDeclaration/">Group.removeActor</span> method. Allows to remove actors from the group with -= operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span><span class="token punctuation">.</span><a href="minus-assign.html"><span class="token function">minusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage/root/#/PointingToDeclaration/">Stage.root</span>.removeAction method. Removes global stage actions with -= operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span><span class="token punctuation">.</span><a href="minus-assign.html"><span class="token function">minusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes actors from root group of the stage. Allows to remove actors from the stage with -= operator. If actor is not added directly to the stage this method might have no effect.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1836531600%2FFunctions%2F-978013986" anchor-label="onChange" id="1836531600%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-change.html"><span>on</span><wbr><span><span>Change</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1836531600%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-change.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-change.html">T</a><span class="token punctuation">.</span><a href="on-change.html"><span class="token function">onChange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-change.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener///PointingToDeclaration/">ChangeListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener///PointingToDeclaration/">ChangeListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1269754264%2FFunctions%2F-978013986" anchor-label="onChangeEvent" id="-1269754264%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-change-event.html"><span>on</span><wbr><span>Change</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1269754264%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-change-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-change-event.html">T</a><span class="token punctuation">.</span><a href="on-change-event.html"><span class="token function">onChangeEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-change-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener.ChangeEvent///PointingToDeclaration/">ChangeListener.ChangeEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener///PointingToDeclaration/">ChangeListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener///PointingToDeclaration/">ChangeListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1926495600%2FFunctions%2F-978013986" anchor-label="onClick" id="1926495600%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-click.html"><span>on</span><wbr><span><span>Click</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1926495600%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-click.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-click.html">T</a><span class="token punctuation">.</span><a href="on-click.html"><span class="token function">onClick</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-click.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="89724104%2FFunctions%2F-978013986" anchor-label="onClickEvent" id="89724104%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-click-event.html"><span>on</span><wbr><span>Click</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="89724104%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-click-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-click-event.html">T</a><span class="token punctuation">.</span><a href="on-click-event.html"><span class="token function">onClickEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-click-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-click-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-click-event.html">T</a><span class="token punctuation">.</span><a href="on-click-event.html"><span class="token function">onClickEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-click-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1925614048%2FFunctions%2F-978013986" anchor-label="onEnter" id="-1925614048%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-enter.html"><span>on</span><wbr><span><span>Enter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1925614048%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-enter.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-enter.html">T</a><span class="token punctuation">.</span><a href="on-enter.html"><span class="token function">onEnter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-enter.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-304373143%2FFunctions%2F-978013986" anchor-label="onEnterEvent" id="-304373143%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-enter-event.html"><span>on</span><wbr><span>Enter</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-304373143%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-enter-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-enter-event.html">T</a><span class="token punctuation">.</span><a href="on-enter-event.html"><span class="token function">onEnterEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-enter-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1919715614%2FFunctions%2F-978013986" anchor-label="onExit" id="-1919715614%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-exit.html"><span>on</span><wbr><span><span>Exit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1919715614%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-exit.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-exit.html">T</a><span class="token punctuation">.</span><a href="on-exit.html"><span class="token function">onExit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-exit.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="531761323%2FFunctions%2F-978013986" anchor-label="onExitEvent" id="531761323%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-exit-event.html"><span>on</span><wbr><span>Exit</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="531761323%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-exit-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-exit-event.html">T</a><span class="token punctuation">.</span><a href="on-exit-event.html"><span class="token function">onExitEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-exit-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ClickListener///PointingToDeclaration/">ClickListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="505938453%2FFunctions%2F-978013986" anchor-label="onKey" id="505938453%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-key.html"><span>on</span><wbr><span><span>Key</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="505938453%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-key.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-key.html">T</a><span class="token punctuation">.</span><a href="on-key.html"><span class="token function">onKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-key.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>character<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char/index.html">Char</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for <code class="lang-kotlin">keyTyped</code> type events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1570902967%2FFunctions%2F-978013986" anchor-label="onKeyboardFocus" id="-1570902967%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-keyboard-focus.html"><span>on</span><wbr><span>Keyboard</span><wbr><span><span>Focus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1570902967%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-keyboard-focus.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-keyboard-focus.html">T</a><span class="token punctuation">.</span><a href="on-keyboard-focus.html"><span class="token function">onKeyboardFocus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-keyboard-focus.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>focused<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for keyboard focus events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2087426821%2FFunctions%2F-978013986" anchor-label="onKeyboardFocusEvent" id="-2087426821%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-keyboard-focus-event.html"><span>on</span><wbr><span>Keyboard</span><wbr><span>Focus</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2087426821%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-keyboard-focus-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-keyboard-focus-event.html">T</a><span class="token punctuation">.</span><a href="on-keyboard-focus-event.html"><span class="token function">onKeyboardFocusEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-keyboard-focus-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/FocusListener.FocusEvent///PointingToDeclaration/">FocusListener.FocusEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for keyboard focus events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1770984160%2FFunctions%2F-978013986" anchor-label="onKeyDown" id="-1770984160%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-key-down.html"><span>on</span><wbr><span>Key</span><wbr><span><span>Down</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1770984160%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-key-down.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-key-down.html">T</a><span class="token punctuation">.</span><a href="on-key-down.html"><span class="token function">onKeyDown</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-key-down.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>keyCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for <code class="lang-kotlin">keyDown</code> type events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-212734297%2FFunctions%2F-978013986" anchor-label="onKeyDownEvent" id="-212734297%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-key-down-event.html"><span>on</span><wbr><span>Key</span><wbr><span>Down</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-212734297%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-key-down-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-key-down-event.html">T</a><span class="token punctuation">.</span><a href="on-key-down-event.html"><span class="token function">onKeyDownEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-key-down-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>keyCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for <code class="lang-kotlin">keyDown</code> type events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2124317330%2FFunctions%2F-978013986" anchor-label="onKeyEvent" id="-2124317330%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-key-event.html"><span>on</span><wbr><span>Key</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2124317330%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-key-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-key-event.html">T</a><span class="token punctuation">.</span><a href="on-key-event.html"><span class="token function">onKeyEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-key-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>character<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char/index.html">Char</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for <code class="lang-kotlin">keyTyped</code> type events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-736299065%2FFunctions%2F-978013986" anchor-label="onKeyUp" id="-736299065%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-key-up.html"><span>on</span><wbr><span>Key</span><wbr><span><span>Up</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-736299065%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-key-up.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-key-up.html">T</a><span class="token punctuation">.</span><a href="on-key-up.html"><span class="token function">onKeyUp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-key-up.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>keyCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for <code class="lang-kotlin">keyUp</code> type events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1144688818%2FFunctions%2F-978013986" anchor-label="onKeyUpEvent" id="-1144688818%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-key-up-event.html"><span>on</span><wbr><span>Key</span><wbr><span>Up</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1144688818%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-key-up-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-key-up-event.html">T</a><span class="token punctuation">.</span><a href="on-key-up-event.html"><span class="token function">onKeyUpEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-key-up-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>keyCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for <code class="lang-kotlin">keyUp</code> type events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1416381137%2FFunctions%2F-978013986" anchor-label="onScrollFocus" id="-1416381137%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-scroll-focus.html"><span>on</span><wbr><span>Scroll</span><wbr><span><span>Focus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1416381137%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-scroll-focus.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-scroll-focus.html">T</a><span class="token punctuation">.</span><a href="on-scroll-focus.html"><span class="token function">onScrollFocus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-scroll-focus.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>focused<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for scroll focus events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="487872469%2FFunctions%2F-978013986" anchor-label="onScrollFocusEvent" id="487872469%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-scroll-focus-event.html"><span>on</span><wbr><span>Scroll</span><wbr><span>Focus</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="487872469%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-scroll-focus-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-scroll-focus-event.html">T</a><span class="token punctuation">.</span><a href="on-scroll-focus-event.html"><span class="token function">onScrollFocusEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">catchEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-scroll-focus-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/FocusListener.FocusEvent///PointingToDeclaration/">FocusListener.FocusEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/EventListener///PointingToDeclaration/">EventListener</span> optimized to listen for scroll focus events fired for this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1345075461%2FFunctions%2F-978013986" anchor-label="onSelectionChange" id="-1345075461%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-selection-change.html"><span>on</span><wbr><span>Selection</span><wbr><span><span>Change</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1345075461%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-selection-change.html">N</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Tree.Node///PointingToDeclaration/">Tree.Node</span><span class="token operator">&lt;</span><a href="on-selection-change.html">N</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Tree///PointingToDeclaration/">Tree</span><span class="token operator">&lt;</span><a href="on-selection-change.html">N</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="on-selection-change.html"><span class="token function">onSelectionChange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/Selection///PointingToDeclaration/">Selection</span><span class="token operator">&lt;</span><a href="on-selection-change.html">N</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener///PointingToDeclaration/">ChangeListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.utils/ChangeListener///PointingToDeclaration/">ChangeListener</span> to this <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Tree///PointingToDeclaration/">Tree</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="827658391%2FFunctions%2F-978013986" anchor-label="onTouchDown" id="827658391%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-touch-down.html"><span>on</span><wbr><span>Touch</span><wbr><span><span>Down</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="827658391%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-down.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-down.html">T</a><span class="token punctuation">.</span><a href="on-touch-down.html"><span class="token function">onTouchDown</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-touch-down.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1504213790%2FFunctions%2F-978013986" anchor-label="onTouchEvent" id="-1504213790%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-touch-event.html"><span>on</span><wbr><span>Touch</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1504213790%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><a href="on-touch-event.html"><span class="token function">onTouchEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><a href="on-touch-event.html"><span class="token function">onTouchEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span> to this actor. Retrieve the <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent/type/#/PointingToDeclaration/">InputEvent.type</span> to distinguish between <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent.Type.touchDown///PointingToDeclaration/{&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;:{&quot;key&quot;:&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;}}">touchDown</span> and <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent.Type.touchUp///PointingToDeclaration/{&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;:{&quot;key&quot;:&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;}}">touchUp</span> events.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><a href="on-touch-event.html"><span class="token function">onTouchEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>pointer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>button<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span> to this actor. Retrieve the <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent/type/#/PointingToDeclaration/">InputEvent.type</span> to distinguish between <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent.Type.touchDown///PointingToDeclaration/{&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;:{&quot;key&quot;:&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;}}">touchDown</span> and <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent.Type.touchUp///PointingToDeclaration/{&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;:{&quot;key&quot;:&quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&quot;}}">touchUp</span> events.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><a href="on-touch-event.html"><span class="token function">onTouchEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>onDown<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onUp<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><a href="on-touch-event.html"><span class="token function">onTouchEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>onDown<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onUp<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-event.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><a href="on-touch-event.html"><span class="token function">onTouchEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>onDown<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>pointer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>button<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onUp<span class="token operator">: </span><a href="on-touch-event.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span>event<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputEvent///PointingToDeclaration/">InputEvent</span><span class="token punctuation">, </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>pointer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>button<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1074800126%2FFunctions%2F-978013986" anchor-label="onTouchUp" id="1074800126%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-touch-up.html"><span>on</span><wbr><span>Touch</span><wbr><span><span>Up</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1074800126%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-touch-up.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token operator">&gt; </span><a href="on-touch-up.html">T</a><span class="token punctuation">.</span><a href="on-touch-up.html"><span class="token function">onTouchUp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>listener<span class="token operator">: </span><a href="on-touch-up.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span></div><div class="brief "><p class="paragraph">Attaches an <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/InputListener///PointingToDeclaration/">InputListener</span> to this actor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1878258522%2FFunctions%2F-978013986" anchor-label="plus" id="-1878258522%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plus.html"><span><span>plus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1878258522%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span><span class="token punctuation">.</span><a href="plus.html"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span></div><div class="brief "><p class="paragraph">Wraps this action and the passed action in a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="124923006%2FFunctions%2F-978013986" anchor-label="plusAssign" id="124923006%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plus-assign.html"><span>plus</span><wbr><span><span>Assign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="124923006%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor/addAction/#com.badlogic.gdx.scenes.scene2d.Action/PointingToDeclaration/">Actor.addAction</span> method. Allows to add actions to the actor with += operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Group///PointingToDeclaration/">Group</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Group/addActor/#com.badlogic.gdx.scenes.scene2d.Actor/PointingToDeclaration/">Group.addActor</span> method. Allows to add actors to the group with += operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage/addAction/#com.badlogic.gdx.scenes.scene2d.Action/PointingToDeclaration/">Stage.addAction</span> method. Allows to add global actions to the stage with += operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage/addActor/#com.badlogic.gdx.scenes.scene2d.Actor/PointingToDeclaration/">Stage.addActor</span> method. Allows to add actors to the stage with += operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds another <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span> to this <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/ParallelAction///PointingToDeclaration/">ParallelAction</span>.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds <a href="plus-assign.html">action</a> to this <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="659982773%2FFunctions%2F-978013986" anchor-label="repeat" id="659982773%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="repeat.html"><span><span>repeat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659982773%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span><span class="token punctuation">.</span><a href="repeat.html"><span class="token function">repeat</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">times<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/RepeatAction///PointingToDeclaration/">RepeatAction</span></div><div class="brief "><p class="paragraph">This action will be wrapped wit ha <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/RepeatAction///PointingToDeclaration/">RepeatAction</span> that repeats itself for the given amount of <a href="repeat.html">times</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1812980768%2FFunctions%2F-978013986" anchor-label="repeatForever" id="1812980768%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="repeat-forever.html"><span>repeat</span><wbr><span><span>Forever</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1812980768%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span><span class="token punctuation">.</span><a href="repeat-forever.html"><span class="token function">repeatForever</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/RepeatAction///PointingToDeclaration/">RepeatAction</span></div><div class="brief "><p class="paragraph">This action will be wrapped with a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/RepeatAction///PointingToDeclaration/">RepeatAction</span> that repeats itself "forever" (until the action is removed or the actor is no longer updated on the stage).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1597315991%2FFunctions%2F-978013986" anchor-label="setKeyboardFocus" id="-1597315991%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-keyboard-focus.html"><span>set</span><wbr><span>Keyboard</span><wbr><span><span>Focus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1597315991%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="set-keyboard-focus.html"><span class="token function">setKeyboardFocus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">focus<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Modifies current stage keyboard focus if this actor is currently shown.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1630903495%2FFunctions%2F-978013986" anchor-label="setPosition" id="-1630903495%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-position.html"><span>set</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1630903495%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="set-position.html"><span class="token function">setPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Utility method overload. Allows to set actor's position with ints rather than floats.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-921111293%2FFunctions%2F-978013986" anchor-label="setScrollFocus" id="-921111293%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-scroll-focus.html"><span>set</span><wbr><span>Scroll</span><wbr><span><span>Focus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-921111293%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Actor///PointingToDeclaration/">Actor</span><span class="token punctuation">.</span><a href="set-scroll-focus.html"><span class="token function">setScrollFocus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">focus<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Modifies current stage scroll focus if this actor is currently shown.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-232516800%2FFunctions%2F-978013986" anchor-label="stage" id="-232516800%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stage.html"><span><span>stage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-232516800%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="stage.html"><span class="token function">stage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">batch<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/Batch///PointingToDeclaration/">Batch</span><span class="token operator"> = </span>SpriteBatch()<span class="token punctuation">, </span></span><span class="parameter ">viewport<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils.viewport/Viewport///PointingToDeclaration/">Viewport</span><span class="token operator"> = </span>getDefaultViewport()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span></div><div class="brief "><p class="paragraph">Allows to leverage named and default parameters to initiate a custom <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span>. <a href="stage.html">batch</a> will be used to render the <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span>, while <a href="stage.html">viewport</a>'s camera will affect how the <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span> is rendered. If any of the parameters are not given, the used default values match <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Stage///PointingToDeclaration/">Stage</span> no-arg constructor.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1637683294%2FFunctions%2F-978013986" anchor-label="then" id="1637683294%2FFunctions%2F-978013986" data-filterable-set=":actors/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":actors/main" data-filterable-set=":actors/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="then.html"><span><span>then</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1637683294%2FFunctions%2F-978013986"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":actors/main"><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span><span class="token punctuation">.</span><a href="then.html"><span class="token function">then</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span></div><div class="brief "><p class="paragraph">Wraps this action and the passed action in a <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span>.</p></div><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span><span class="token punctuation">.</span><a href="then.html"><span class="token function">then</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d/Action///PointingToDeclaration/">Action</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span></div><div class="brief "><p class="paragraph">Adds <a href="then.html">action</a> to this <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.actions/SequenceAction///PointingToDeclaration/">SequenceAction</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

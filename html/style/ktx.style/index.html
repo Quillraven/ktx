@@ -1,0 +1,598 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.style</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":style/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":style/main" data-filter=":style/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="style::ktx.style////PointingToDeclaration//1324575647">
+  <div class="breadcrumbs"><a href="../index.html">style</a><span class="delimiter">/</span><span class="current">ktx.style</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1906997618%2FClasslikes%2F1324575647" anchor-label="SkinDsl" id="-1906997618%2FClasslikes%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-skin-dsl/index.html"><span>Skin</span><wbr><span><span>Dsl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1906997618%2FClasslikes%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-dsl-marker/index.html"><span class="token annotation builtin">DslMarker</span></a></div><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-target/index.html"><span class="token annotation builtin">Target</span></a><span class="token punctuation">(</span><span>allowedTargets<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-c-l-a-s-s/index.html">AnnotationTarget.CLASS</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e_-p-a-r-a-m-e-t-e-r/index.html">AnnotationTarget.TYPE_PARAMETER</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-f-u-n-c-t-i-o-n/index.html">AnnotationTarget.FUNCTION</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e/index.html">AnnotationTarget.TYPE</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e-a-l-i-a-s/index.html">AnnotationTarget.TYPEALIAS</a></span><wbr><span class="token punctuation">]</span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-skin-dsl/index.html">SkinDsl</a></div><div class="brief "><p class="paragraph">Should annotate builder methods of Scene2D <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1317363589%2FProperties%2F1324575647" anchor-label="defaultStyle" id="-1317363589%2FProperties%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-style.html"><span>default</span><wbr><span><span>Style</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1317363589%2FProperties%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="default-style.html">defaultStyle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Name of default resources in <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span>. Often used as default Scene2D actor style names.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-956028453%2FFunctions%2F1324575647" anchor-label="add" id="-956028453%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-956028453%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="add.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="add.html"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">resource<span class="token operator">: </span><a href="add.html">Resource</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Utility function that makes it easier to add <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="930448007%2FFunctions%2F1324575647" anchor-label="addStyle" id="930448007%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-style.html"><span>add</span><wbr><span><span>Style</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="930448007%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="add-style.html">Style</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="add-style.html"><span class="token function">addStyle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">style<span class="token operator">: </span><a href="add-style.html">Style</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="add-style.html">Style</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="add-style.html">Style</a></div><div class="brief "><p class="paragraph">Utility function for adding existing styles to the skin. Mostly for internal use.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1049847125%2FFunctions%2F1324575647" anchor-label="button" id="1049847125%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button.html"><span><span>button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1049847125%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="button.html"><span class="token function">button</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Button.ButtonStyle///PointingToDeclaration/">Button.ButtonStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Button.ButtonStyle///PointingToDeclaration/">Button.ButtonStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1354040870%2FFunctions%2F1324575647" anchor-label="checkBox" id="1354040870%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-box.html"><span>check</span><wbr><span><span>Box</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1354040870%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="check-box.html"><span class="token function">checkBox</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/CheckBox.CheckBoxStyle///PointingToDeclaration/">CheckBox.CheckBoxStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/CheckBox.CheckBoxStyle///PointingToDeclaration/">CheckBox.CheckBoxStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="165831129%2FFunctions%2F1324575647" anchor-label="color" id="165831129%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color.html"><span><span>color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="165831129%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="color.html"><span class="token function">color</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">red<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">green<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">blue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span></div><div class="brief "><p class="paragraph">Adds a new <span data-unresolved-link="com.badlogic.gdx.graphics/Color///PointingToDeclaration/">Color</span> instance to the skin.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-431215020%2FFunctions%2F1324575647" anchor-label="get" id="-431215020%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-431215020%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="get.html">E</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="get.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="get.html">E</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">Resource</a></div><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">Resource</a></div><div class="brief "><p class="paragraph">Utility function that makes it easier to access <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1125524983%2FFunctions%2F1324575647" anchor-label="getAll" id="1125524983%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all.html"><span>get</span><wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1125524983%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get-all.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="get-all.html"><span class="token function">getAll</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/ObjectMap///PointingToDeclaration/">ObjectMap</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="get-all.html">Resource</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Utility function that makes it easier to access all <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets of a certain type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="955579138%2FFunctions%2F1324575647" anchor-label="has" id="955579138%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has.html"><span><span>has</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="955579138%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="has.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="has.html"><span class="token function">has</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Utility function that makes it easier to check if <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> contains assets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1469468846%2FFunctions%2F1324575647" anchor-label="imageButton" id="1469468846%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="image-button.html"><span>image</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1469468846%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="image-button.html"><span class="token function">imageButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ImageButton.ImageButtonStyle///PointingToDeclaration/">ImageButton.ImageButtonStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ImageButton.ImageButtonStyle///PointingToDeclaration/">ImageButton.ImageButtonStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1410407647%2FFunctions%2F1324575647" anchor-label="imageTextButton" id="-1410407647%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="image-text-button.html"><span>image</span><wbr><span>Text</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1410407647%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="image-text-button.html"><span class="token function">imageTextButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ImageTextButton.ImageTextButtonStyle///PointingToDeclaration/">ImageTextButton.ImageTextButtonStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ImageTextButton.ImageTextButtonStyle///PointingToDeclaration/">ImageTextButton.ImageTextButtonStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1625374169%2FFunctions%2F1324575647" anchor-label="label" id="-1625374169%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="label.html"><span><span>label</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1625374169%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="label.html"><span class="token function">label</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Label.LabelStyle///PointingToDeclaration/">Label.LabelStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Label.LabelStyle///PointingToDeclaration/">Label.LabelStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-647560383%2FFunctions%2F1324575647" anchor-label="list" id="-647560383%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="list.html"><span><span>list</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-647560383%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="list.html"><span class="token function">list</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/List.ListStyle///PointingToDeclaration/">List.ListStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/List.ListStyle///PointingToDeclaration/">List.ListStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1333543400%2FFunctions%2F1324575647" anchor-label="optional" id="-1333543400%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="optional.html"><span><span>optional</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1333543400%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="optional.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="optional.html"><span class="token function">optional</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="optional.html">Resource</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Utility function that makes it easier to access <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets or return null if they don't exist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1064385762%2FFunctions%2F1324575647" anchor-label="plusAssign" id="1064385762%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plus-assign.html"><span>plus</span><wbr><span><span>Assign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1064385762%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="plus-assign.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">resource<span class="token operator">: </span><a href="plus-assign.html">Resource</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Utility function that makes it easier to add <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets under the <a href="default-style.html">defaultStyle</a> name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1114239733%2FFunctions%2F1324575647" anchor-label="progressBar" id="1114239733%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="progress-bar.html"><span>progress</span><wbr><span><span>Bar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1114239733%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="progress-bar.html"><span class="token function">progressBar</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ProgressBar.ProgressBarStyle///PointingToDeclaration/">ProgressBar.ProgressBarStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ProgressBar.ProgressBarStyle///PointingToDeclaration/">ProgressBar.ProgressBarStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1216081943%2FFunctions%2F1324575647" anchor-label="register" id="1216081943%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="register.html"><span><span>register</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1216081943%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="register.html"><span class="token function">register</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">styles<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Allows to create new UI component styles with the KTX DSL. This method is very similar to the <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/index.html">apply</a> extension method from the standard library, but supports the DSL annotation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="204766964%2FFunctions%2F1324575647" anchor-label="remove" id="204766964%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove.html"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="204766964%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="remove.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Utility function that makes it easier to remove <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1396563160%2FFunctions%2F1324575647" anchor-label="scrollPane" id="1396563160%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scroll-pane.html"><span>scroll</span><wbr><span><span>Pane</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1396563160%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="scroll-pane.html"><span class="token function">scrollPane</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ScrollPane.ScrollPaneStyle///PointingToDeclaration/">ScrollPane.ScrollPaneStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/ScrollPane.ScrollPaneStyle///PointingToDeclaration/">ScrollPane.ScrollPaneStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1980849964%2FFunctions%2F1324575647" anchor-label="selectBox" id="1980849964%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="select-box.html"><span>select</span><wbr><span><span>Box</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1980849964%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="select-box.html"><span class="token function">selectBox</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/SelectBox.SelectBoxStyle///PointingToDeclaration/">SelectBox.SelectBoxStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/SelectBox.SelectBoxStyle///PointingToDeclaration/">SelectBox.SelectBoxStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1678397640%2FFunctions%2F1324575647" anchor-label="set" id="1678397640%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set.html"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1678397640%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="set.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="set.html">E</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="set.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="set.html"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="set.html">E</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="set.html">Resource</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">inline operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="set.html">Resource</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="set.html"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="set.html">Resource</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Utility function that makes it easier to add <span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span> assets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1829433892%2FFunctions%2F1324575647" anchor-label="skin" id="-1829433892%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="skin.html"><span><span>skin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1829433892%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="skin.html"><span class="token function">skin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="skin.html"><span class="token function">skin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">atlas<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics.g2d/TextureAtlas///PointingToDeclaration/">TextureAtlas</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-310721564%2FFunctions%2F1324575647" anchor-label="slider" id="-310721564%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="slider.html"><span><span>slider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-310721564%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="slider.html"><span class="token function">slider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Slider.SliderStyle///PointingToDeclaration/">Slider.SliderStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Slider.SliderStyle///PointingToDeclaration/">Slider.SliderStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1188182777%2FFunctions%2F1324575647" anchor-label="splitPane" id="1188182777%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="split-pane.html"><span>split</span><wbr><span><span>Pane</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1188182777%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="split-pane.html"><span class="token function">splitPane</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/SplitPane.SplitPaneStyle///PointingToDeclaration/">SplitPane.SplitPaneStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/SplitPane.SplitPaneStyle///PointingToDeclaration/">SplitPane.SplitPaneStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1137707006%2FFunctions%2F1324575647" anchor-label="textButton" id="-1137707006%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="text-button.html"><span>text</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1137707006%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="text-button.html"><span class="token function">textButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextButton.TextButtonStyle///PointingToDeclaration/">TextButton.TextButtonStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextButton.TextButtonStyle///PointingToDeclaration/">TextButton.TextButtonStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1422486798%2FFunctions%2F1324575647" anchor-label="textField" id="1422486798%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="text-field.html"><span>text</span><wbr><span><span>Field</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422486798%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="text-field.html"><span class="token function">textField</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextField.TextFieldStyle///PointingToDeclaration/">TextField.TextFieldStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextField.TextFieldStyle///PointingToDeclaration/">TextField.TextFieldStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="243841925%2FFunctions%2F1324575647" anchor-label="textTooltip" id="243841925%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="text-tooltip.html"><span>text</span><wbr><span><span>Tooltip</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="243841925%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="text-tooltip.html"><span class="token function">textTooltip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextTooltip.TextTooltipStyle///PointingToDeclaration/">TextTooltip.TextTooltipStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/TextTooltip.TextTooltipStyle///PointingToDeclaration/">TextTooltip.TextTooltipStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2123246039%2FFunctions%2F1324575647" anchor-label="touchpad" id="2123246039%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="touchpad.html"><span><span>touchpad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2123246039%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="touchpad.html"><span class="token function">touchpad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Touchpad.TouchpadStyle///PointingToDeclaration/">Touchpad.TouchpadStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Touchpad.TouchpadStyle///PointingToDeclaration/">Touchpad.TouchpadStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="312239681%2FFunctions%2F1324575647" anchor-label="tree" id="312239681%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tree.html"><span><span>tree</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="312239681%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="tree.html"><span class="token function">tree</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Tree.TreeStyle///PointingToDeclaration/">Tree.TreeStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Tree.TreeStyle///PointingToDeclaration/">Tree.TreeStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-153370669%2FFunctions%2F1324575647" anchor-label="window" id="-153370669%2FFunctions%2F1324575647" data-filterable-set=":style/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":style/main" data-filterable-set=":style/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="window.html"><span><span>window</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-153370669%2FFunctions%2F1324575647"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":style/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Skin///PointingToDeclaration/">Skin</span><span class="token punctuation">.</span><a href="window.html"><span class="token function">window</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultStyle<span class="token punctuation">, </span></span><span class="parameter ">extend<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Window.WindowStyle///PointingToDeclaration/">Window.WindowStyle</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.scenes.scene2d.ui/Window.WindowStyle///PointingToDeclaration/">Window.WindowStyle</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

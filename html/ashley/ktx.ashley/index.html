@@ -1,0 +1,684 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.ashley</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ashley/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ashley/main" data-filter=":ashley/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ashley::ktx.ashley////PointingToDeclaration//824342442">
+  <div class="breadcrumbs"><a href="../index.html">ashley</a><span class="delimiter">/</span><span class="current">ktx.ashley</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="614930820%2FClasslikes%2F824342442" anchor-label="AshleyDsl" id="614930820%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ashley-dsl/index.html"><span>Ashley</span><wbr><span><span>Dsl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="614930820%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-dsl-marker/index.html"><span class="token annotation builtin">DslMarker</span></a></div><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-target/index.html"><span class="token annotation builtin">Target</span></a><span class="token punctuation">(</span><span>allowedTargets<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-c-l-a-s-s/index.html">AnnotationTarget.CLASS</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e/index.html">AnnotationTarget.TYPE</a></span><wbr><span class="token punctuation">]</span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-ashley-dsl/index.html">AshleyDsl</a></div><div class="brief "><p class="paragraph">Marks KTX Ashley type-safe builders.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="934381109%2FClasslikes%2F824342442" anchor-label="ComponentDelegate" id="934381109%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-component-delegate/index.html"><span>Component</span><wbr><span><span>Delegate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="934381109%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-component-delegate/index.html">ComponentDelegate</a><span class="token operator">&lt;</span><a href="-component-delegate/index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="-component-delegate/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Property delegate for an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> wrapping around a <span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span>. Allows accessing components assigned to entities with the property syntax. Designed for non-nullable components that are available for all entities without the risk of a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-null-pointer-exception/index.html">NullPointerException</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="775684573%2FClasslikes%2F824342442" anchor-label="CreateComponentException" id="775684573%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-create-component-exception/index.html"><span>Create</span><wbr><span>Component</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="775684573%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-create-component-exception/index.html">CreateComponentException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/RuntimeException.html">RuntimeException</a></div><div class="brief "><p class="paragraph">Thrown when unable to create a component of given type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2091691494%2FClasslikes%2F824342442" anchor-label="EngineEntity" id="2091691494%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-engine-entity/index.html"><span>Engine</span><wbr><span><span>Entity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2091691494%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-engine-entity/index.html">EngineEntity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>engine<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">An <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> created by the provided <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-857081832%2FClasslikes%2F824342442" anchor-label="EntityAdditionListener" id="-857081832%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-entity-addition-listener/index.html"><span>Entity</span><wbr><span>Addition</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-857081832%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-entity-addition-listener/index.html">EntityAdditionListener</a> : <span data-unresolved-link="com.badlogic.ashley.core/EntityListener///PointingToDeclaration/">EntityListener</span></div><div class="brief "><p class="paragraph">An <span data-unresolved-link="com.badlogic.ashley.core/EntityListener///PointingToDeclaration/">EntityListener</span> only requiring an implementation of the <a href="-entity-addition-listener/entity-added.html">entityAdded</a> method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-198842662%2FClasslikes%2F824342442" anchor-label="EntityRemovalListener" id="-198842662%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-entity-removal-listener/index.html"><span>Entity</span><wbr><span>Removal</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-198842662%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-entity-removal-listener/index.html">EntityRemovalListener</a> : <span data-unresolved-link="com.badlogic.ashley.core/EntityListener///PointingToDeclaration/">EntityListener</span></div><div class="brief "><p class="paragraph">An <span data-unresolved-link="com.badlogic.ashley.core/EntityListener///PointingToDeclaration/">EntityListener</span> only requiring an implementation of the <a href="-entity-removal-listener/entity-removed.html">entityRemoved</a> method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1254657898%2FClasslikes%2F824342442" anchor-label="Mapper" id="1254657898%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mapper/index.html"><span><span>Mapper</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1254657898%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-mapper/index.html">Mapper</a><span class="token operator">&lt;</span><a href="-mapper/index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A utility abstract class for companion objects of <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>s. Defines a static <a href="-mapper/mapper.html">mapper</a> available of a chosen <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="478806068%2FClasslikes%2F824342442" anchor-label="MissingEntitySystemException" id="478806068%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-entity-system-exception/index.html"><span>Missing</span><wbr><span>Entity</span><wbr><span>System</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="478806068%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-entity-system-exception/index.html">MissingEntitySystemException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/EntitySystem///PointingToDeclaration/">EntitySystem</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="com.badlogic.gdx.utils/GdxRuntimeException///PointingToDeclaration/">GdxRuntimeException</span></div><div class="brief "><p class="paragraph">Thrown when accessing an <span data-unresolved-link="com.badlogic.ashley.core/EntitySystem///PointingToDeclaration/">EntitySystem</span> via <a href="get-system.html">getSystem</a> that does not exist in the <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1214369867%2FClasslikes%2F824342442" anchor-label="OptionalComponentDelegate" id="-1214369867%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-optional-component-delegate/index.html"><span>Optional</span><wbr><span>Component</span><wbr><span><span>Delegate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1214369867%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-optional-component-delegate/index.html">OptionalComponentDelegate</a><span class="token operator">&lt;</span><a href="-optional-component-delegate/index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="-optional-component-delegate/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">componentClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><a href="-optional-component-delegate/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Property delegate for an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> wrapping around a <span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span>. Designed for components that might not be defined for each entity and can be null. Attempting to assign a null value to the property will remove the component from the entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1852751689%2FClasslikes%2F824342442" anchor-label="ProviderTagDelegate" id="1852751689%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-provider-tag-delegate/index.html"><span>Provider</span><wbr><span>Tag</span><wbr><span><span>Delegate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1852751689%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-provider-tag-delegate/index.html">ProviderTagDelegate</a><span class="token operator">&lt;</span><a href="-provider-tag-delegate/index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="-provider-tag-delegate/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">componentClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><a href="-provider-tag-delegate/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">defaultValueProvider<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="-provider-tag-delegate/index.html">T</a></span></span><span class="token punctuation">)</span> : <a href="-tag-delegate/index.html">TagDelegate</a><span class="token operator">&lt;</span><a href="-provider-tag-delegate/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Property delegate for an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> wrapping around a <span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span>. Allows checking the presence of a <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> of an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span>. Automatically creates instances of the <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">T</span> if its value is set to <code class="lang-kotlin">true</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1623138985%2FClasslikes%2F824342442" anchor-label="SingletonTagDelegate" id="-1623138985%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-singleton-tag-delegate/index.html"><span>Singleton</span><wbr><span>Tag</span><wbr><span><span>Delegate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1623138985%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-singleton-tag-delegate/index.html">SingletonTagDelegate</a><span class="token operator">&lt;</span><a href="-singleton-tag-delegate/index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="-singleton-tag-delegate/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">componentClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><a href="-singleton-tag-delegate/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">defaultValue<span class="token operator">: </span><a href="-singleton-tag-delegate/index.html">T</a></span></span><span class="token punctuation">)</span> : <a href="-tag-delegate/index.html">TagDelegate</a><span class="token operator">&lt;</span><a href="-singleton-tag-delegate/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Property delegate for an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> wrapping around a <span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span>. Allows checking the presence of a <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> of an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span>. Automatically assigns a singleton instance of the <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">T</span> if its value is set to <code class="lang-kotlin">true</code>. This property delegate should be used only for stateless components without any mutable properties.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1481732024%2FClasslikes%2F824342442" anchor-label="TagDelegate" id="1481732024%2FClasslikes%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tag-delegate/index.html"><span>Tag</span><wbr><span><span>Delegate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1481732024%2FClasslikes%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-tag-delegate/index.html">TagDelegate</a><span class="token operator">&lt;</span><a href="-tag-delegate/index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Common interface for property delegates wrapping around flag components. These properties should generally wrap <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>s that do not have any fields, and instead their presence alone is used for filtering or associated logic. An example of such component could be a <code class="lang-kotlin">Visible</code> class that marks entities that should be rendered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-501070268%2FFunctions%2F824342442" anchor-label="add" id="-501070268%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-501070268%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="add.html"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configure<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Builder function for <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1226532511%2FFunctions%2F824342442" anchor-label="addComponent" id="-1226532511%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-component.html"><span>add</span><wbr><span><span>Component</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1226532511%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="add-component.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="add-component.html"><span class="token function">addComponent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">engine<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">, </span></span><span class="parameter ">configure<span class="token operator">: </span><a href="add-component.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="add-component.html">T</a></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> to this <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span>. If a <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> of the same type already exists, it will be replaced.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-143859691%2FFunctions%2F824342442" anchor-label="allOf" id="-143859691%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-of.html"><span>all</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-143859691%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="all-of.html"><span class="token function">allOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1556270897%2FFunctions%2F824342442" anchor-label="allOf" id="1556270897%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-of.html"><span>all</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1556270897%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span><span class="token punctuation">.</span><a href="all-of.html"><span class="token function">allOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-289532674%2FFunctions%2F824342442" anchor-label="configureEntity" id="-289532674%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="configure-entity.html"><span>configure</span><wbr><span><span>Entity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-289532674%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="configure-entity.html"><span class="token function">configureEntity</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">, </span></span><span class="parameter ">configure<span class="token operator">: </span><a href="-engine-entity/index.html">EngineEntity</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Allows to configure an existing <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> with this <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-701558066%2FFunctions%2F824342442" anchor-label="contains" id="-701558066%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-701558066%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="contains.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="contains.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> has the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-813971218%2FFunctions%2F824342442" anchor-label="create" id="-813971218%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create.html"><span><span>create</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-813971218%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="create.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configure<span class="token operator">: </span><a href="create.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="create.html">T</a></div><div class="brief "><p class="paragraph">Get or create a <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> by calling <span data-unresolved-link="com.badlogic.ashley.core/Engine/createComponent/#java.lang.Class[TypeParam(bounds=[com.badlogic.ashley.core.Component])]/PointingToDeclaration/">Engine.createComponent</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1412197061%2FFunctions%2F824342442" anchor-label="entity" id="1412197061%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entity.html"><span><span>entity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1412197061%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="entity.html"><span class="token function">entity</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configure<span class="token operator">: </span><a href="-engine-entity/index.html">EngineEntity</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span></div><div class="brief "><p class="paragraph">Create and add an <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> to the <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-741097897%2FFunctions%2F824342442" anchor-label="exclude" id="-741097897%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="exclude.html"><span><span>exclude</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-741097897%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="exclude.html"><span class="token function">exclude</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1714834095%2FFunctions%2F824342442" anchor-label="exclude" id="1714834095%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="exclude.html"><span><span>exclude</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1714834095%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span><span class="token punctuation">.</span><a href="exclude.html"><span class="token function">exclude</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1299965806%2FFunctions%2F824342442" anchor-label="get" id="1299965806%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1299965806%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Gets the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> from the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span>.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/EntitySystem///PointingToDeclaration/">EntitySystem</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">T</a><span class="token operator">?</span></div><br><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Gets the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> from the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> with a <span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="271171536%2FFunctions%2F824342442" anchor-label="getSystem" id="271171536%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-system.html"><span>get</span><wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="271171536%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get-system.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/EntitySystem///PointingToDeclaration/">EntitySystem</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="get-system.html"><span class="token function">getSystem</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get-system.html">T</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-69385129%2FFunctions%2F824342442" anchor-label="has" id="-69385129%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has.html"><span><span>has</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-69385129%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="has.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="has.html"><span class="token function">has</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="has.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> has the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-546584888%2FFunctions%2F824342442" anchor-label="hasNot" id="-546584888%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-not.html"><span>has</span><wbr><span><span>Not</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-546584888%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="has-not.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="has-not.html"><span class="token function">hasNot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="has-not.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> does not have the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="996949470%2FFunctions%2F824342442" anchor-label="mapperFor" id="996949470%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mapper-for.html"><span>mapper</span><wbr><span><span>For</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="996949470%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="mapper-for.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="mapper-for.html"><span class="token function">mapperFor</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="mapper-for.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a <span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span> for the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-999696927%2FFunctions%2F824342442" anchor-label="onEntityAdded" id="-999696927%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-entity-added.html"><span>on</span><wbr><span>Entity</span><wbr><span><span>Added</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-999696927%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.systems/IntervalIteratingSystem///PointingToDeclaration/">IntervalIteratingSystem</span><span class="token punctuation">.</span><a href="on-entity-added.html"><span class="token function">onEntityAdded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onAdded<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-addition-listener/index.html">EntityAdditionListener</a></div><div class="brief "><p class="paragraph">A wrapper for <a href="on-entity-added.html">Engine.onEntityAdded</a> that uses this <span data-unresolved-link="com.badlogic.ashley.systems/IntervalIteratingSystem///PointingToDeclaration/">IntervalIteratingSystem</span>'s <span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span> as a filter for the <a href="-entity-addition-listener/index.html">EntityAdditionListener</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.systems/IteratingSystem///PointingToDeclaration/">IteratingSystem</span><span class="token punctuation">.</span><a href="on-entity-added.html"><span class="token function">onEntityAdded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onAdded<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-addition-listener/index.html">EntityAdditionListener</a></div><div class="brief "><p class="paragraph">A wrapper for <a href="on-entity-added.html">Engine.onEntityAdded</a> that uses this <span data-unresolved-link="com.badlogic.ashley.systems/IteratingSystem///PointingToDeclaration/">IteratingSystem</span>'s <span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span> as a filter for the <a href="-entity-addition-listener/index.html">EntityAdditionListener</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.systems/SortedIteratingSystem///PointingToDeclaration/">SortedIteratingSystem</span><span class="token punctuation">.</span><a href="on-entity-added.html"><span class="token function">onEntityAdded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onAdded<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-addition-listener/index.html">EntityAdditionListener</a></div><div class="brief "><p class="paragraph">A wrapper for <a href="on-entity-added.html">Engine.onEntityAdded</a> that uses this <span data-unresolved-link="com.badlogic.ashley.systems/SortedIteratingSystem///PointingToDeclaration/">SortedIteratingSystem</span>'s <span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span> as a filter for the <a href="-entity-addition-listener/index.html">EntityAdditionListener</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="on-entity-added.html"><span class="token function">onEntityAdded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">family<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span><span class="token operator"> = </span>anyFamily<span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onAdded<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-addition-listener/index.html">EntityAdditionListener</a></div><div class="brief "><p class="paragraph">Adds an <a href="-entity-addition-listener/index.html">EntityAdditionListener</a> to this <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span> and returns a reference to the new listener instance. The listener calls <a href="on-entity-added.html">onAdded</a> lambda every time an entity addition event is triggered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="698623777%2FFunctions%2F824342442" anchor-label="onEntityRemoved" id="698623777%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-entity-removed.html"><span>on</span><wbr><span>Entity</span><wbr><span><span>Removed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="698623777%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.systems/IntervalIteratingSystem///PointingToDeclaration/">IntervalIteratingSystem</span><span class="token punctuation">.</span><a href="on-entity-removed.html"><span class="token function">onEntityRemoved</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onRemoved<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-removal-listener/index.html">EntityRemovalListener</a></div><div class="brief "><p class="paragraph">A wrapper for <a href="on-entity-removed.html">Engine.onEntityRemoved</a> that uses this <span data-unresolved-link="com.badlogic.ashley.systems/IntervalIteratingSystem///PointingToDeclaration/">IntervalIteratingSystem</span>'s <span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span> as a filter for the <a href="-entity-removal-listener/index.html">EntityRemovalListener</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.systems/IteratingSystem///PointingToDeclaration/">IteratingSystem</span><span class="token punctuation">.</span><a href="on-entity-removed.html"><span class="token function">onEntityRemoved</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onRemoved<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-removal-listener/index.html">EntityRemovalListener</a></div><div class="brief "><p class="paragraph">A wrapper for <a href="on-entity-removed.html">Engine.onEntityRemoved</a> that uses this <span data-unresolved-link="com.badlogic.ashley.systems/IteratingSystem///PointingToDeclaration/">IteratingSystem</span>'s <span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span> as a filter for the <a href="-entity-removal-listener/index.html">EntityRemovalListener</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.systems/SortedIteratingSystem///PointingToDeclaration/">SortedIteratingSystem</span><span class="token punctuation">.</span><a href="on-entity-removed.html"><span class="token function">onEntityRemoved</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onRemoved<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-removal-listener/index.html">EntityRemovalListener</a></div><div class="brief "><p class="paragraph">A wrapper for <a href="on-entity-removed.html">Engine.onEntityRemoved</a> that uses this <span data-unresolved-link="com.badlogic.ashley.systems/SortedIteratingSystem///PointingToDeclaration/">SortedIteratingSystem</span>'s <span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span> as a filter for the <a href="-entity-removal-listener/index.html">EntityRemovalListener</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span><span class="token punctuation">.</span><a href="on-entity-removed.html"><span class="token function">onEntityRemoved</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">family<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family///PointingToDeclaration/">Family</span><span class="token operator"> = </span>anyFamily<span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>onRemoved<span class="token operator">: </span><span class="token punctuation">(</span>entity<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-entity-removal-listener/index.html">EntityRemovalListener</a></div><div class="brief "><p class="paragraph">Adds an <a href="-entity-removal-listener/index.html">EntityRemovalListener</a> to this <span data-unresolved-link="com.badlogic.ashley.core/Engine///PointingToDeclaration/">Engine</span> and returns a reference to the new listener instance. The listener calls <a href="on-entity-removed.html">onRemoved</a> lambda every time an entity addition event is triggered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2095758502%2FFunctions%2F824342442" anchor-label="oneOf" id="-2095758502%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="one-of.html"><span>one</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2095758502%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="one-of.html"><span class="token function">oneOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1823279028%2FFunctions%2F824342442" anchor-label="oneOf" id="-1823279028%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="one-of.html"><span>one</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1823279028%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span><span class="token punctuation">.</span><a href="one-of.html"><span class="token function">oneOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Family.Builder///PointingToDeclaration/">Family.Builder</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1232287203%2FFunctions%2F824342442" anchor-label="optionalPropertyFor" id="1232287203%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="optional-property-for.html"><span>optional</span><wbr><span>Property</span><wbr><span><span>For</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1232287203%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="optional-property-for.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="optional-property-for.html"><span class="token function">optionalPropertyFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="optional-property-for.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>mapperFor()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-optional-component-delegate/index.html">OptionalComponentDelegate</a><span class="token operator">&lt;</span><a href="optional-property-for.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a delegated property for the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> class to access the given <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>. Allows accessing and setting optional components assigned to entities with the property syntax. Attempting to assign a null value to the property will remove the component it from the entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2014060419%2FFunctions%2F824342442" anchor-label="plusAssign" id="-2014060419%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plus-assign.html"><span>plus</span><wbr><span><span>Assign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2014060419%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">component<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a constructed <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> to this <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span>. If a <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> of the same type exists, it will be replaced.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="569368419%2FFunctions%2F824342442" anchor-label="propertyFor" id="569368419%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="property-for.html"><span>property</span><wbr><span><span>For</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="569368419%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property-for.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="property-for.html"><span class="token function">propertyFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mapper<span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/ComponentMapper///PointingToDeclaration/">ComponentMapper</span><span class="token operator">&lt;</span><a href="property-for.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>mapperFor()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-component-delegate/index.html">ComponentDelegate</a><span class="token operator">&lt;</span><a href="property-for.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a delegated property for the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> class to access the given <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span>. Allows accessing and setting mandatory components assigned to entities with the property syntax.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1319264702%2FFunctions%2F824342442" anchor-label="remove" id="-1319264702%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove.html"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1319264702%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="remove.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span><span class="token punctuation">.</span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Removes the specified <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> from the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1411039701%2FFunctions%2F824342442" anchor-label="tagFor" id="1411039701%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tag-for.html"><span>tag</span><wbr><span><span>For</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1411039701%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="tag-for.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="tag-for.html"><span class="token function">tagFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">component<span class="token operator">: </span><a href="tag-for.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-tag-delegate/index.html">TagDelegate</a><span class="token operator">&lt;</span><a href="tag-for.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="tag-for.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="tag-for.html"><span class="token function">tagFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">singleton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-tag-delegate/index.html">TagDelegate</a><span class="token operator">&lt;</span><a href="tag-for.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="tag-for.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="tag-for.html"><span class="token function">tagFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">singleton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">noinline </span>provider<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="tag-for.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-tag-delegate/index.html">TagDelegate</a><span class="token operator">&lt;</span><a href="tag-for.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a delegated property for the <span data-unresolved-link="com.badlogic.ashley.core/Entity///PointingToDeclaration/">Entity</span> class that check if the given <span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span> is present within the entity. Changing the boolean value of the property will either add or remove the component from the entity, depending on whether the value is <code class="lang-kotlin">true</code> or <code class="lang-kotlin">false</code> respectively.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1377306221%2FFunctions%2F824342442" anchor-label="with" id="1377306221%2FFunctions%2F824342442" data-filterable-set=":ashley/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ashley/main" data-filterable-set=":ashley/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with.html"><span><span>with</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1377306221%2FFunctions%2F824342442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ashley/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.ashley.core/Component///PointingToDeclaration/">Component</span><span class="token operator">&gt; </span><a href="-engine-entity/index.html">EngineEntity</a><span class="token punctuation">.</span><a href="with.html"><span class="token function">with</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configure<span class="token operator">: </span><a href="with.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="with.html">T</a></div><div class="brief "><p class="paragraph">Get or creates an instance of the component <a href="with.html">T</a> and adds it to this <a href="-engine-entity/index.html">entity</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

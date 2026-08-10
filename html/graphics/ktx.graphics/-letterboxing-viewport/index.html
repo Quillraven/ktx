@@ -1,0 +1,629 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>LetterboxingViewport</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":graphics/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":graphics/main" data-filter=":graphics/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="graphics::ktx.graphics/LetterboxingViewport///PointingToDeclaration//-1088692213">
+  <div class="breadcrumbs"><a href="../../index.html">graphics</a><span class="delimiter">/</span><a href="../index.html">ktx.graphics</a><span class="delimiter">/</span><span class="current">LetterboxingViewport</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Letterboxing</span><wbr><span><span>Viewport</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">LetterboxingViewport</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>targetPpiX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>defaultTargetPpi<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>targetPpiY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>defaultTargetPpi<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>aspectRatio<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>4f / 3f</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="com.badlogic.gdx.utils.viewport/ScalingViewport///PointingToDeclaration/">ScalingViewport</span></div><p class="paragraph">Combines <span data-unresolved-link="com.badlogic.gdx.utils.viewport/ScreenViewport///PointingToDeclaration/">screen</span> and <span data-unresolved-link="com.badlogic.gdx.utils.viewport/FitViewport///PointingToDeclaration/">fit</span> viewports. Similarly to ScreenViewport, world size is changed on each update (resize), so <a href="update.html">update</a> should be generally called with <code class="lang-kotlin">true</code> parameter (camera should be centered). Tries to keep the passed aspect ratio by applying letterboxing - horizontal or vertical black bars.</p><p class="paragraph">On contrary to regular ScreenViewport, this viewport analyzes screen density (pixel per inch ratio) to preserve correct look on every platform, including mobiles. This is very convenient for GUIs (especially when using fit viewport with the same aspect ratio for game logic rendering), as they will not be scaled when the screen is resized (comparably to using similarly to screen viewport), and yet should still look acceptable on mobile devices (comparably to using fit viewport with a fixed world size).</p><p class="paragraph">It is advised to pair this viewport with FitViewport - LetterboxingViewport can be used for the GUI, while FitViewport is excellent for the actual (2D) game rendering.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>target</span><wbr><span>Ppi</span><wbr><span><span>X</span></span></u></div></span></div><div><div class="title"><p class="paragraph">this is the targeted pixel per inch ratio on X axis, which allows to scale the viewport     correctly on different devices. Usually about 96 for desktop and WebGL platforms, 160 for mobiles.     Make sure to call <a href="update-scale.html">updateScale</a> after changing this variable.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>target</span><wbr><span>Ppi</span><wbr><span><span>Y</span></span></u></div></span></div><div><div class="title"><p class="paragraph">targeted pixel per inch ratio on Y axis. Usually about 96 for desktop and WebGL platforms, 160     for mobiles. Make sure to call <a href="update-scale.html">updateScale</a> after changing this variable.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>aspect</span><wbr><span><span>Ratio</span></span></u></div></span></div><div><div class="title"><p class="paragraph">width divided by height. Will preserve this aspect ratio by applying letterboxing.</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-930562844%2FConstructors%2F-1088692213" anchor-label="LetterboxingViewport" id="-930562844%2FConstructors%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-letterboxing-viewport.html"><span>Letterboxing</span><wbr><span><span>Viewport</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-930562844%2FConstructors%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">targetPpiX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>defaultTargetPpi<span class="token punctuation">, </span></span><span class="parameter ">targetPpiY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>defaultTargetPpi<span class="token punctuation">, </span></span><span class="parameter ">aspectRatio<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>4f / 3f</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1889177841%2FProperties%2F-1088692213" anchor-label="aspectRatio" id="1889177841%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="aspect-ratio.html"><span>aspect</span><wbr><span><span>Ratio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1889177841%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="aspect-ratio.html">aspectRatio</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1047009512%2FProperties%2F-1088692213" anchor-label="bottomGutterHeight" id="-1047009512%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1047009512%2FProperties%2F-1088692213"><span>bottom</span><wbr><span>Gutter</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1047009512%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#-1047009512%2FProperties%2F-1088692213">bottomGutterHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-961824%2FProperties%2F-1088692213" anchor-label="camera" id="-961824%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-961824%2FProperties%2F-1088692213"><span><span>camera</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-961824%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#-961824%2FProperties%2F-1088692213">camera</a><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/Camera///PointingToDeclaration/">Camera</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="405403569%2FProperties%2F-1088692213" anchor-label="leftGutterWidth" id="405403569%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#405403569%2FProperties%2F-1088692213"><span>left</span><wbr><span>Gutter</span><wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="405403569%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#405403569%2FProperties%2F-1088692213">leftGutterWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="508977558%2FProperties%2F-1088692213" anchor-label="rightGutterWidth" id="508977558%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#508977558%2FProperties%2F-1088692213"><span>right</span><wbr><span>Gutter</span><wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="508977558%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#508977558%2FProperties%2F-1088692213">rightGutterWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-450239836%2FProperties%2F-1088692213" anchor-label="rightGutterX" id="-450239836%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-450239836%2FProperties%2F-1088692213"><span>right</span><wbr><span>Gutter</span><wbr><span><span>X</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-450239836%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#-450239836%2FProperties%2F-1088692213">rightGutterX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2212248%2FProperties%2F-1088692213" anchor-label="scaleX" id="-2212248%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scale-x.html"><span>scale</span><wbr><span><span>X</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2212248%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="scale-x.html">scaleX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">You can directly modify unit per pixel ratio (bypassing PPI check) by modifying this value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="28807559%2FProperties%2F-1088692213" anchor-label="scaleY" id="28807559%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scale-y.html"><span>scale</span><wbr><span><span>Y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="28807559%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="scale-y.html">scaleY</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">You can directly modify unit per pixel ratio (bypassing PPI check) by modifying this value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="309555625%2FProperties%2F-1088692213" anchor-label="scaling" id="309555625%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#309555625%2FProperties%2F-1088692213"><span><span>scaling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="309555625%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#309555625%2FProperties%2F-1088692213">scaling</a><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Scaling///PointingToDeclaration/">Scaling</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1379829998%2FProperties%2F-1088692213" anchor-label="screenHeight" id="-1379829998%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1379829998%2FProperties%2F-1088692213"><span>screen</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1379829998%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#-1379829998%2FProperties%2F-1088692213">screenHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-420543845%2FProperties%2F-1088692213" anchor-label="screenWidth" id="-420543845%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-420543845%2FProperties%2F-1088692213"><span>screen</span><wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-420543845%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#-420543845%2FProperties%2F-1088692213">screenWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2007118295%2FProperties%2F-1088692213" anchor-label="screenX" id="-2007118295%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2007118295%2FProperties%2F-1088692213"><span>screen</span><wbr><span><span>X</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2007118295%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#-2007118295%2FProperties%2F-1088692213">screenX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1976098488%2FProperties%2F-1088692213" anchor-label="screenY" id="-1976098488%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1976098488%2FProperties%2F-1088692213"><span>screen</span><wbr><span><span>Y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1976098488%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#-1976098488%2FProperties%2F-1088692213">screenY</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="732446262%2FProperties%2F-1088692213" anchor-label="targetPpiX" id="732446262%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="target-ppi-x.html"><span>target</span><wbr><span>Ppi</span><wbr><span><span>X</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="732446262%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="target-ppi-x.html">targetPpiX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="763466069%2FProperties%2F-1088692213" anchor-label="targetPpiY" id="763466069%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="target-ppi-y.html"><span>target</span><wbr><span>Ppi</span><wbr><span><span>Y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="763466069%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="target-ppi-y.html">targetPpiY</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-549032482%2FProperties%2F-1088692213" anchor-label="topGutterHeight" id="-549032482%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-549032482%2FProperties%2F-1088692213"><span>top</span><wbr><span>Gutter</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-549032482%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#-549032482%2FProperties%2F-1088692213">topGutterHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-800187652%2FProperties%2F-1088692213" anchor-label="topGutterY" id="-800187652%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-800187652%2FProperties%2F-1088692213"><span>top</span><wbr><span>Gutter</span><wbr><span><span>Y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-800187652%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#-800187652%2FProperties%2F-1088692213">topGutterY</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1702584100%2FProperties%2F-1088692213" anchor-label="worldHeight" id="-1702584100%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1702584100%2FProperties%2F-1088692213"><span>world</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1702584100%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#-1702584100%2FProperties%2F-1088692213">worldHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="261781393%2FProperties%2F-1088692213" anchor-label="worldWidth" id="261781393%2FProperties%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#261781393%2FProperties%2F-1088692213"><span>world</span><wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="261781393%2FProperties%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#261781393%2FProperties%2F-1088692213">worldWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1722000945%2FFunctions%2F-1088692213" anchor-label="apply" id="1722000945%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1901218713%2FFunctions%2F-1088692213"><span><span>apply</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1722000945%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1901218713%2FFunctions%2F-1088692213"><span class="token function">apply</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-304718996%2FFunctions%2F-1088692213"><span class="token function">apply</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">centerCamera<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-664286496%2FFunctions%2F-1088692213" anchor-label="calculateScissors" id="-664286496%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-664286496%2FFunctions%2F-1088692213"><span>calculate</span><wbr><span><span>Scissors</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-664286496%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-664286496%2FFunctions%2F-1088692213"><span class="token function">calculateScissors</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">batchTransform<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">area<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Rectangle///PointingToDeclaration/">Rectangle</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">scissor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Rectangle///PointingToDeclaration/">Rectangle</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1663214125%2FFunctions%2F-1088692213" anchor-label="getPickRay" id="1663214125%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1663214125%2FFunctions%2F-1088692213"><span>get</span><wbr><span>Pick</span><wbr><span><span>Ray</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1663214125%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1663214125%2FFunctions%2F-1088692213"><span class="token function">getPickRay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">touchX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">touchY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math.collision/Ray///PointingToDeclaration/">Ray</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="67803799%2FFunctions%2F-1088692213" anchor-label="project" id="67803799%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2001331294%2FFunctions%2F-1088692213"><span><span>project</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="67803799%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-2001331294%2FFunctions%2F-1088692213"><span class="token function">project</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">worldCoords<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator">?</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-2068338047%2FFunctions%2F-1088692213"><span class="token function">project</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">worldCoords<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1138392915%2FFunctions%2F-1088692213" anchor-label="setScreenBounds" id="-1138392915%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1138392915%2FFunctions%2F-1088692213"><span>set</span><wbr><span>Screen</span><wbr><span><span>Bounds</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1138392915%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1138392915%2FFunctions%2F-1088692213"><span class="token function">setScreenBounds</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="27731585%2FFunctions%2F-1088692213" anchor-label="setScreenPosition" id="27731585%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#27731585%2FFunctions%2F-1088692213"><span>set</span><wbr><span>Screen</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="27731585%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#27731585%2FFunctions%2F-1088692213"><span class="token function">setScreenPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1175814567%2FFunctions%2F-1088692213" anchor-label="setScreenSize" id="-1175814567%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1175814567%2FFunctions%2F-1088692213"><span>set</span><wbr><span>Screen</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1175814567%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1175814567%2FFunctions%2F-1088692213"><span class="token function">setScreenSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-846863093%2FFunctions%2F-1088692213" anchor-label="setWorldSize" id="-846863093%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-846863093%2FFunctions%2F-1088692213"><span>set</span><wbr><span>World</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-846863093%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-846863093%2FFunctions%2F-1088692213"><span class="token function">setWorldSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">worldWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">worldHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1808454040%2FFunctions%2F-1088692213" anchor-label="toScreenCoordinates" id="1808454040%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1808454040%2FFunctions%2F-1088692213"><span>to</span><wbr><span>Screen</span><wbr><span><span>Coordinates</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1808454040%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1808454040%2FFunctions%2F-1088692213"><span class="token function">toScreenCoordinates</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">worldCoords<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">transformMatrix<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1808435099%2FFunctions%2F-1088692213" anchor-label="unproject" id="-1808435099%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-536479319%2FFunctions%2F-1088692213"><span><span>unproject</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1808435099%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-536479319%2FFunctions%2F-1088692213"><span class="token function">unproject</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">touchCoords<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span><span class="token operator">?</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-603486072%2FFunctions%2F-1088692213"><span class="token function">unproject</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenCoords<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector3///PointingToDeclaration/">Vector3</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="316044635%2FFunctions%2F-1088692213" anchor-label="update" id="316044635%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1267762371%2FFunctions%2F-1088692213"><span><span>update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="316044635%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1267762371%2FFunctions%2F-1088692213"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="update.html"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">screenHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">centerCamera<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1525937475%2FFunctions%2F-1088692213" anchor-label="updateScale" id="1525937475%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update-scale.html"><span>update</span><wbr><span><span>Scale</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1525937475%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="update-scale.html"><span class="token function">updateScale</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Forces update of current pixel per unit ratio according to screen density.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="82450426%2FFunctions%2F-1088692213" anchor-label="updateWorldSize" id="82450426%2FFunctions%2F-1088692213" data-filterable-set=":graphics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":graphics/main" data-filterable-set=":graphics/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update-world-size.html"><span>update</span><wbr><span>World</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="82450426%2FFunctions%2F-1088692213"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":graphics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="update-world-size.html"><span class="token function">updateWorldSize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Forces update of current world size according to window size. Will try to keep the set aspect ratio.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

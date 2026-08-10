@@ -1,0 +1,1053 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ImmutableVector2</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":math/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":math/main" data-filter=":math/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="math::ktx.math/ImmutableVector2///PointingToDeclaration//-995197688">
+  <div class="breadcrumbs"><a href="../../index.html">math</a><span class="delimiter">/</span><a href="../index.html">ktx.math</a><span class="delimiter">/</span><span class="current">ImmutableVector2</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Immutable</span><wbr><span><span>Vector2</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span> : <a href="../-immutable-vector/index.html">ImmutableVector</a><span class="token operator">&lt;</span><a href="index.html">ImmutableVector2</a><span class="token operator">&gt; </span></div><p class="paragraph">Represent an immutable vector 2D</p><p class="paragraph">You may use <a href="../to-mutable.html">ImmutableVector2.toMutable</a> to create a (mutable) <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span> from a an <a href="index.html">ImmutableVector2</a>. And an <a href="index.html">ImmutableVector2</a> can be created from a <span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span> with <a href="../to-immutable.html">Vector2.toImmutable</a>.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="207086057%2FConstructors%2F-995197688" anchor-label="ImmutableVector2" id="207086057%2FConstructors%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-immutable-vector2.html"><span>Immutable</span><wbr><span><span>Vector2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="207086057%2FConstructors%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1561474530%2FClasslikes%2F-995197688" anchor-label="Companion" id="-1561474530%2FClasslikes%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1561474530%2FClasslikes%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1735336070%2FProperties%2F-995197688" anchor-label="len" id="-1735336070%2FProperties%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/len.html"><span><span>len</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1735336070%2FProperties%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-immutable-vector/len.html">len</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the euclidean length</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1948007354%2FProperties%2F-995197688" anchor-label="len2" id="-1948007354%2FProperties%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="len2.html"><span><span>len2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1948007354%2FProperties%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="len2.html">len2</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the squared euclidean length</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1347172698%2FProperties%2F-995197688" anchor-label="nor" id="-1347172698%2FProperties%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="nor.html"><span><span>nor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1347172698%2FProperties%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="nor.html">nor</a><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the unit vector of same direction or this vector if it is zero.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-606361249%2FProperties%2F-995197688" anchor-label="x" id="-606361249%2FProperties%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="x.html"><span><span>x</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-606361249%2FProperties%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="x.html">x</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">the x-component of this vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-575341442%2FProperties%2F-995197688" anchor-label="y" id="-575341442%2FProperties%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="y.html"><span><span>y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-575341442%2FProperties%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="y.html">y</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">the y-component of this vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-842404300%2FFunctions%2F-995197688" anchor-label="add" id="-842404300%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-842404300%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/add.html"><span class="token function"><strike>add</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">v<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="195353450%2FFunctions%2F-995197688" anchor-label="angle" id="195353450%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="angle.html"><span><span>angle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="195353450%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="angle.html"><span class="token function"><strike>angle</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reference<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token operator"> = </span>X</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1994589061%2FFunctions%2F-995197688" anchor-label="angleDeg" id="-1994589061%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../angle-deg.html"><span>angle</span><wbr><span><span>Deg</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1994589061%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../angle-deg.html"><span class="token function">angleDeg</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reference<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token operator"> = </span>ImmutableVector2.X</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the angle in degrees of this vector relative to the <a href="../angle-deg.html">reference</a>. Angles are towards the positive y-axis (typically counter-clockwise) between -180 and +180</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../angle-deg.html"><span class="token function">angleDeg</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">referenceX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">referenceY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the angle in degrees of this vector relative to the reference vector described by <a href="../angle-deg.html">referenceX</a> and <a href="../angle-deg.html">referenceY</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2000781473%2FFunctions%2F-995197688" anchor-label="angleRad" id="-2000781473%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="angle-rad.html"><span>angle</span><wbr><span><span>Rad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2000781473%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="angle-rad.html"><span class="token function">angleRad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reference<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token operator"> = </span>X</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the angle in radians of this vector relative to the <a href="angle-rad.html">reference</a>. Angles are towards the positive y-axis. (typically counter-clockwise)</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="angle-rad.html"><span class="token function">angleRad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">referenceX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">referenceY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the angle in radians of this vector relative to the (<a href="angle-rad.html">referenceX</a>, <a href="angle-rad.html">referenceY</a>) reference. Angles are towards the positive y-axis. (typically counter-clockwise)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="19179275%2FFunctions%2F-995197688" anchor-label="clamp" id="19179275%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/clamp.html"><span><span>clamp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="19179275%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/clamp.html"><span class="token function"><strike>clamp</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">min<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">max<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-122966445%2FFunctions%2F-995197688" anchor-label="compareTo" id="-122966445%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/compare-to.html"><span>compare</span><wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122966445%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-immutable-vector/compare-to.html"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1661285333%2FFunctions%2F-995197688" anchor-label="cpy" id="-1661285333%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cpy.html"><span><span>cpy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1661285333%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="cpy.html"><span class="token function"><strike>cpy</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1935855604%2FFunctions%2F-995197688" anchor-label="crs" id="-1935855604%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="crs.html"><span><span>crs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1935855604%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="crs.html"><span class="token function">crs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">otherX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">otherY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Calculates the 2D cross product between this and the (<a href="crs.html">otherX</a>, <a href="crs.html">otherY</a>) vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1745252834%2FFunctions%2F-995197688" anchor-label="crs" id="-1745252834%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../crs.html"><span><span>crs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1745252834%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">infix inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../crs.html"><span class="token function">crs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Calculates the 2D cross product between this and the <a href="../crs.html">other</a> vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-291309931%2FFunctions%2F-995197688" anchor-label="dec" id="-291309931%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dec.html"><span><span>dec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-291309931%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="dec.html"><span class="token function">dec</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a new vector instance with all members decremented by 1</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-769928229%2FFunctions%2F-995197688" anchor-label="dot" id="-769928229%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dot.html"><span><span>dot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-769928229%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">infix override </span><span class="token keyword">fun </span><a href="dot.html"><span class="token function">dot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the dot product of this vector by the given <a href="../-immutable-vector/dot.html">vector</a></p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="dot.html"><span class="token function">dot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">otherX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">otherY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the dot product of this vector by the given (<a href="dot.html">otherX</a>, <a href="dot.html">otherY</a>) vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1959028307%2FFunctions%2F-995197688" anchor-label="dst" id="-1959028307%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dst.html"><span><span>dst</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1959028307%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="dst.html"><span class="token function">dst</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">otherX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">otherY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2048130485%2FFunctions%2F-995197688" anchor-label="dst2" id="2048130485%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dst2.html"><span><span>dst2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2048130485%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">infix override </span><span class="token keyword">fun </span><a href="dst2.html"><span class="token function">dst2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the squared distance between this and the other <a href="../-immutable-vector/dst2.html">vector</a></p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="dst2.html"><span class="token function">dst2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">otherX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">otherY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Returns the squared distance between this and the (<a href="dst2.html">otherX</a>, <a href="dst2.html">otherY</a>) vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1263283165%2FFunctions%2F-995197688" anchor-label="epsilonEquals" id="-1263283165%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="epsilon-equals.html"><span>epsilon</span><wbr><span><span>Equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1263283165%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="epsilon-equals.html"><span class="token function">epsilonEquals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">epsilon<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Compares this vector with the <a href="../-immutable-vector/epsilon-equals.html">other</a> vector, using the supplied <a href="../-immutable-vector/epsilon-equals.html">epsilon</a> for fuzzy equality testing</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="epsilon-equals.html"><span class="token function">epsilonEquals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">otherX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">otherY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">epsilon<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Compares this vector with the (<a href="epsilon-equals.html">otherX</a>, <a href="epsilon-equals.html">otherY</a>) vector, using the supplied <a href="epsilon-equals.html">epsilon</a> for fuzzy equality testing</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1500401095%2FFunctions%2F-995197688" anchor-label="inc" id="-1500401095%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inc.html"><span><span>inc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1500401095%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="inc.html"><span class="token function">inc</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a new vector instance with all members incremented by 1</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1828393754%2FFunctions%2F-995197688" anchor-label="interpolate" id="-1828393754%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/interpolate.html"><span><span>interpolate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1828393754%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/interpolate.html"><span class="token function"><strike>interpolate</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">interpolator<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Interpolation///PointingToDeclaration/">Interpolation</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="137087560%2FFunctions%2F-995197688" anchor-label="isOnLine" id="137087560%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-on-line.html"><span>is</span><wbr><span>On</span><wbr><span><span>Line</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="137087560%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="is-on-line.html"><span class="token function">isOnLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">epsilon<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>MathUtils.FLOAT_ROUNDING_ERROR</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns true if this vector is on-line with the <a href="../-immutable-vector/is-on-line.html">other</a> vector (either in the same or the opposite direction)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="52251214%2FFunctions%2F-995197688" anchor-label="isUnit" id="52251214%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/is-unit.html"><span>is</span><wbr><span><span>Unit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="52251214%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/is-unit.html"><span class="token function">isUnit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">margin<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>MathUtils.FLOAT_ROUNDING_ERROR</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns whether this vector is a unit length vector within the given <a href="../-immutable-vector/is-unit.html">margin</a>. (no margin by default)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2055801410%2FFunctions%2F-995197688" anchor-label="isZero" id="2055801410%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-zero.html"><span>is</span><wbr><span><span>Zero</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2055801410%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="is-zero.html"><span class="token function">isZero</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">margin<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>MathUtils.FLOAT_ROUNDING_ERROR</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns whether the length of this vector is smaller than the given <a href="../-immutable-vector/is-zero.html">margin</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1130248354%2FFunctions%2F-995197688" anchor-label="lerp" id="1130248354%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/lerp.html"><span><span>lerp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1130248354%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/lerp.html"><span class="token function"><strike>lerp</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1408980901%2FFunctions%2F-995197688" anchor-label="limit" id="1408980901%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/limit.html"><span><span>limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1408980901%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/limit.html"><span class="token function"><strike>limit</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1880757733%2FFunctions%2F-995197688" anchor-label="limit2" id="1880757733%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/limit2.html"><span><span>limit2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1880757733%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/limit2.html"><span class="token function"><strike>limit2</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">limit2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="373836219%2FFunctions%2F-995197688" anchor-label="minus" id="373836219%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="minus.html"><span><span>minus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="373836219%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the result of subtracting the <a href="../-immutable-vector/minus.html">other</a> vector from this vector</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">deltaX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">deltaY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the result of subtracting the (<a href="minus.html">deltaX</a>, <a href="minus.html">deltaY</a>) vector from this vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-91739544%2FFunctions%2F-995197688" anchor-label="mul" id="-91739544%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mul.html"><span><span>mul</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-91739544%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mul.html"><span class="token function"><strike>mul</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">matrix<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix3///PointingToDeclaration/">Matrix3</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1299565497%2FFunctions%2F-995197688" anchor-label="mulAdd" id="-1299565497%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/mul-add.html"><span>mul</span><wbr><span><span>Add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1299565497%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/mul-add.html"><span class="token function"><strike>mulAdd</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">v<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">mulVec<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/mul-add.html"><span class="token function"><strike>mulAdd</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">v<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">scalar<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1094524354%2FFunctions%2F-995197688" anchor-label="nor" id="-1094524354%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/nor.html"><span><span>nor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1094524354%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/nor.html"><span class="token function"><strike>nor</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="745256719%2FFunctions%2F-995197688" anchor-label="plus" id="745256719%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plus.html"><span><span>plus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="745256719%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="plus.html"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the result of adding the <a href="../-immutable-vector/plus.html">other</a> vector to this vector</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="plus.html"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">deltaX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">deltaY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the result of adding the given (<a href="plus.html">deltaX</a>, <a href="plus.html">deltaY</a>) vector to this vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="483755385%2FFunctions%2F-995197688" anchor-label="rotate" id="483755385%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rotate.html"><span><span>rotate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="483755385%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="rotate.html"><span class="token function"><strike>rotate</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1448322145%2FFunctions%2F-995197688" anchor-label="scl" id="1448322145%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/scl.html"><span><span>scl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1448322145%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/scl.html"><span class="token function"><strike>scl</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">v<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/scl.html"><span class="token function"><strike>scl</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scalar<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-80193291%2FFunctions%2F-995197688" anchor-label="set" id="-80193291%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/set.html"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-80193291%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/set.html"><span class="token function"><strike>set</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">v<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1306283880%2FFunctions%2F-995197688" anchor-label="setLength" id="-1306283880%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/set-length.html"><span>set</span><wbr><span><span>Length</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1306283880%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/set-length.html"><span class="token function"><strike>setLength</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">len<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-688071854%2FFunctions%2F-995197688" anchor-label="setLength2" id="-688071854%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/set-length2.html"><span>set</span><wbr><span><span>Length2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-688071854%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/set-length2.html"><span class="token function"><strike>setLength2</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">len2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-86433556%2FFunctions%2F-995197688" anchor-label="setToRandomDirection" id="-86433556%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/set-to-random-direction.html"><span>set</span><wbr><span>To</span><wbr><span>Random</span><wbr><span><span>Direction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-86433556%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/set-to-random-direction.html"><span class="token function"><strike>setToRandomDirection</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="45853805%2FFunctions%2F-995197688" anchor-label="setZero" id="45853805%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-zero.html"><span>set</span><wbr><span><span>Zero</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="45853805%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-zero.html"><span class="token function"><strike>setZero</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1552831277%2FFunctions%2F-995197688" anchor-label="sub" id="-1552831277%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/sub.html"><span><span>sub</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552831277%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/sub.html"><span class="token function"><strike>sub</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">v<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="344856706%2FFunctions%2F-995197688" anchor-label="times" id="344856706%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="times.html"><span><span>times</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="344856706%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="times.html"><span class="token function">times</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Affine2///PointingToDeclaration/">Affine2</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Apply the given affine <a href="times.html">transformation</a> and return the resulting vector</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="times.html"><span class="token function">times</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scalar<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a new vector instance scaled by the given <a href="../-immutable-vector/times.html">scalar</a></p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="times.html"><span class="token function">times</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a new vector instance scaled by the given <a href="../-immutable-vector/times.html">vector</a></p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="times.html"><span class="token function">times</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">factorX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">factorY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a new vector instance scaled by the given <a href="times.html">factorX</a> and <a href="times.html">factorY</a> factors</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1139192567%2FFunctions%2F-995197688" anchor-label="toMutable" id="1139192567%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../to-mutable.html"><span>to</span><wbr><span><span>Mutable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1139192567%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../to-mutable.html"><span class="token function">toMutable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Vector2///PointingToDeclaration/">Vector2</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="864764535%2FFunctions%2F-995197688" anchor-label="toString" id="864764535%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="864764535%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-577589118%2FFunctions%2F-995197688" anchor-label="unaryMinus" id="-577589118%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unary-minus.html"><span>unary</span><wbr><span><span>Minus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-577589118%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="unary-minus.html"><span class="token function">unaryMinus</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the opposite vector of same length</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1142732124%2FFunctions%2F-995197688" anchor-label="withAngleDeg" id="-1142732124%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../with-angle-deg.html"><span>with</span><wbr><span>Angle</span><wbr><span><span>Deg</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1142732124%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../with-angle-deg.html"><span class="token function">withAngleDeg</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same length with the given <a href="../with-angle-deg.html">angle</a> in degree</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1041704628%2FFunctions%2F-995197688" anchor-label="withAngleRad" id="-1041704628%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-angle-rad.html"><span>with</span><wbr><span>Angle</span><wbr><span><span>Rad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1041704628%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="with-angle-rad.html"><span class="token function">withAngleRad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same length with the given <a href="with-angle-rad.html">angle</a> in radians</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="354381925%2FFunctions%2F-995197688" anchor-label="withClamp" id="354381925%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/with-clamp.html"><span>with</span><wbr><span><span>Clamp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="354381925%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/with-clamp.html"><span class="token function">withClamp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">min<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">max<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same direction and the length clamped between <a href="../-immutable-vector/with-clamp.html">min</a> and <a href="../-immutable-vector/with-clamp.html">max</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-926802663%2FFunctions%2F-995197688" anchor-label="withClamp2" id="-926802663%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-clamp2.html"><span>with</span><wbr><span><span>Clamp2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-926802663%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="with-clamp2.html"><span class="token function">withClamp2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">min2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">max2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same direction and the squared length clamped between <a href="../-immutable-vector/with-clamp2.html">min2</a> and <a href="../-immutable-vector/with-clamp2.html">max2</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-143097719%2FFunctions%2F-995197688" anchor-label="withInterpolation" id="-143097719%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/with-interpolation.html"><span>with</span><wbr><span><span>Interpolation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-143097719%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/with-interpolation.html"><span class="token function">withInterpolation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">interpolation<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Interpolation///PointingToDeclaration/">Interpolation</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns the result of interpolation between this vector and the given <a href="../-immutable-vector/with-interpolation.html">target</a> vector by <a href="../-immutable-vector/with-interpolation.html">alpha</a> (within range 0,1) using the given <a href="../-immutable-vector/with-interpolation.html">interpolation</a> method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1644096368%2FFunctions%2F-995197688" anchor-label="withLength" id="-1644096368%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/with-length.html"><span>with</span><wbr><span><span>Length</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1644096368%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/with-length.html"><span class="token function">withLength</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">length<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same direction and the given <a href="../-immutable-vector/with-length.html">length</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-662268222%2FFunctions%2F-995197688" anchor-label="withLength2" id="-662268222%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-length2.html"><span>with</span><wbr><span><span>Length2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-662268222%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="with-length2.html"><span class="token function">withLength2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">length2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of the same direction and a squared length of <a href="../-immutable-vector/with-length2.html">length2</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1852608296%2FFunctions%2F-995197688" anchor-label="withLerp" id="1852608296%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-lerp.html"><span>with</span><wbr><span><span>Lerp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1852608296%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="with-lerp.html"><span class="token function">withLerp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Linearly interpolates between this vector and the <a href="../-immutable-vector/with-lerp.html">target</a> vector by <a href="../-immutable-vector/with-lerp.html">alpha</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1791859701%2FFunctions%2F-995197688" anchor-label="withLimit" id="-1791859701%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-immutable-vector/with-limit.html"><span>with</span><wbr><span><span>Limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1791859701%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-immutable-vector/with-limit.html"><span class="token function">withLimit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns this vector if the <a href="../-immutable-vector/len.html">ImmutableVector.len</a> is &lt;= <a href="../-immutable-vector/with-limit.html">limit</a> or a vector with the same direction and length <a href="../-immutable-vector/with-limit.html">limit</a> otherwise</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1686091561%2FFunctions%2F-995197688" anchor-label="withLimit2" id="-1686091561%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-limit2.html"><span>with</span><wbr><span><span>Limit2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1686091561%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="with-limit2.html"><span class="token function">withLimit2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">limit2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns this vector if the <a href="../-immutable-vector/len2.html">ImmutableVector.len2</a> is &lt;= <a href="../-immutable-vector/with-limit2.html">limit2</a> or a vector with the same direction and length <a href="../-immutable-vector/with-limit2.html">limit2</a> otherwise</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="12786398%2FFunctions%2F-995197688" anchor-label="withRandomDirection" id="12786398%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-random-direction.html"><span>with</span><wbr><span>Random</span><wbr><span><span>Direction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="12786398%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="with-random-direction.html"><span class="token function">withRandomDirection</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">rng<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html">Random</a><span class="token operator"> = </span>MathUtils.random</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same length and a random direction.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="698614374%2FFunctions%2F-995197688" anchor-label="withRotation90" id="698614374%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-rotation90.html"><span>with</span><wbr><span><span>Rotation90</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="698614374%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="with-rotation90.html"><span class="token function">withRotation90</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">direction<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same length rotated by 90 degrees in the given <a href="with-rotation90.html">direction</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1759984673%2FFunctions%2F-995197688" anchor-label="withRotationDeg" id="-1759984673%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../with-rotation-deg.html"><span>with</span><wbr><span>Rotation</span><wbr><span><span>Deg</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1759984673%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../with-rotation-deg.html"><span class="token function">withRotationDeg</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same length rotated by the given <a href="../with-rotation-deg.html">angle</a> in degree</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1697996809%2FFunctions%2F-995197688" anchor-label="withRotationRad" id="-1697996809%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-rotation-rad.html"><span>with</span><wbr><span>Rotation</span><wbr><span><span>Rad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1697996809%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="with-rotation-rad.html"><span class="token function">withRotationRad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">angle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ImmutableVector2</a></div><div class="brief "><p class="paragraph">Returns a vector of same length rotated by the given <a href="with-rotation-rad.html">angle</a> in radians</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-484233014%2FFunctions%2F-995197688" anchor-label="x" id="-484233014%2FFunctions%2F-995197688" data-filterable-set=":math/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":math/main" data-filterable-set=":math/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../x.html"><span><span>x</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-484233014%2FFunctions%2F-995197688"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":math/main"><div class="symbol monospace"><span class="token keyword">infix inline </span><span class="token keyword">fun </span><a href="index.html">ImmutableVector2</a><span class="token punctuation">.</span><a href="../x.html"><span class="token function">x</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ImmutableVector2</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Calculates the 2D cross product between this and the <a href="../x.html">other</a> vector</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.async</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":async/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":async/main" data-filter=":async/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="async::ktx.async////PointingToDeclaration//-143170454">
+  <div class="breadcrumbs"><a href="../index.html">async</a><span class="delimiter">/</span><span class="current">ktx.async</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1459968529%2FClasslikes%2F-143170454" anchor-label="AbstractKtxDispatcher" id="-1459968529%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-abstract-ktx-dispatcher/index.html"><span>Abstract</span><wbr><span>Ktx</span><wbr><span><span>Dispatcher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1459968529%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-ktx-dispatcher/index.html">AbstractKtxDispatcher</a> : <span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span>, <a href="-ktx-dispatcher/index.html">KtxDispatcher</a></div><div class="brief "><p class="paragraph">Base extension of <span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span> for dispatchers using the libGDX threading model. Uses libGDX <span data-unresolved-link="com.badlogic.gdx.utils/Timer///PointingToDeclaration/">Timer</span> API to support <a href="-main-dispatcher/index.html#328100086%2FFunctions%2F-143170454">delay</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="455201645%2FClasslikes%2F-143170454" anchor-label="AsyncExecutorDispatcher" id="455201645%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-async-executor-dispatcher/index.html"><span>Async</span><wbr><span>Executor</span><wbr><span><span>Dispatcher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="455201645%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-async-executor-dispatcher/index.html">AsyncExecutorDispatcher</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>executor<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils.async/AsyncExecutor///PointingToDeclaration/">AsyncExecutor</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>threads<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>-1</span></span><span class="token punctuation">)</span> : <a href="-abstract-ktx-dispatcher/index.html">AbstractKtxDispatcher</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Closeable.html">Closeable</a>, <span data-unresolved-link="com.badlogic.gdx.utils/Disposable///PointingToDeclaration/">Disposable</span></div><div class="brief "><p class="paragraph">A <span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span> that wraps around libGDX <span data-unresolved-link="com.badlogic.gdx.utils.async/AsyncExecutor///PointingToDeclaration/">AsyncExecutor</span> instance (available via <a href="../../async/ktx.async/-async-executor-dispatcher/--root--.html">executor</a> property) to execute tasks asynchronously. <a href="../../async/ktx.async/-async-executor-dispatcher/--root--.html">threads</a> property is purely informational and cannot be verified, since <span data-unresolved-link="com.badlogic.gdx.utils.async/AsyncExecutor///PointingToDeclaration/">AsyncExecutor</span> does not expose the amount of threads it uses internally; provide a valid <a href="../../async/ktx.async/-async-executor-dispatcher/--root--.html">threads</a> amount during initiation or use the official factory methods to prevent from mismatches with the actual max threads amount.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1137667449%2FClasslikes%2F-143170454" anchor-label="DisposableTimerTask" id="1137667449%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-disposable-timer-task/index.html"><span>Disposable</span><wbr><span>Timer</span><wbr><span><span>Task</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1137667449%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-disposable-timer-task/index.html">DisposableTimerTask</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Timer.Task///PointingToDeclaration/">Timer.Task</span></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="kotlinx.coroutines/DisposableHandle///PointingToDeclaration/">DisposableHandle</span>, <span data-unresolved-link="com.badlogic.gdx.utils/Disposable///PointingToDeclaration/">Disposable</span></div><div class="brief "><p class="paragraph">Wraps around libGDX <span data-unresolved-link="com.badlogic.gdx.utils/Timer.Task///PointingToDeclaration/">Timer.Task</span> to make it possible to cancel scheduled tasks. Holds a reference to the original scheduled <a href="../../async/ktx.async/-disposable-timer-task/--root--.html">task</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-768917441%2FClasslikes%2F-143170454" anchor-label="HttpRequestResult" id="-768917441%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-http-request-result/index.html"><span>Http</span><wbr><span>Request</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-768917441%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-http-request-result/index.html">HttpRequestResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>method<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>statusCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>content<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>headers<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stores result of a <span data-unresolved-link="com.badlogic.gdx/Net.HttpRequest///PointingToDeclaration/">HttpRequest</span>. A safer alternative to <span data-unresolved-link="com.badlogic.gdx/Net.HttpResponse///PointingToDeclaration/">HttpResponse</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1422555538%2FClasslikes%2F-143170454" anchor-label="KtxAsync" id="1422555538%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ktx-async/index.html"><span>Ktx</span><wbr><span><span>Async</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422555538%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-ktx-async/index.html">KtxAsync</a> : <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div><div class="brief "><p class="paragraph">Main KTX coroutine scope. Executes tasks on the main rendering thread. See <a href="-main-dispatcher/index.html">MainDispatcher</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1949563603%2FClasslikes%2F-143170454" anchor-label="KtxDispatcher" id="-1949563603%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ktx-dispatcher/index.html"><span>Ktx</span><wbr><span><span>Dispatcher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1949563603%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-ktx-dispatcher/index.html">KtxDispatcher</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a>, <span data-unresolved-link="kotlinx.coroutines/Delay///PointingToDeclaration/">Delay</span></div><div class="brief "><p class="paragraph">Base interface of <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a> for dispatchers using the libGDX threading model. Uses libGDX <span data-unresolved-link="com.badlogic.gdx.utils/Timer///PointingToDeclaration/">Timer</span> API to support <a href="-main-dispatcher/index.html#328100086%2FFunctions%2F-143170454">delay</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-131099457%2FClasslikes%2F-143170454" anchor-label="MainDispatcher" id="-131099457%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-main-dispatcher/index.html"><span>Main</span><wbr><span><span>Dispatcher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-131099457%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-main-dispatcher/index.html">MainDispatcher</a> : <a href="-rendering-thread-dispatcher/index.html">RenderingThreadDispatcher</a></div><div class="brief "><p class="paragraph">Executes tasks on the main rendering thread. See <a href="-rendering-thread-dispatcher/index.html">RenderingThreadDispatcher</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-197255866%2FClasslikes%2F-143170454" anchor-label="RenderingThreadDispatcher" id="-197255866%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-rendering-thread-dispatcher/index.html"><span>Rendering</span><wbr><span>Thread</span><wbr><span><span>Dispatcher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-197255866%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-rendering-thread-dispatcher/index.html">RenderingThreadDispatcher</a> : <span data-unresolved-link="kotlinx.coroutines/MainCoroutineDispatcher///PointingToDeclaration/">MainCoroutineDispatcher</span>, <a href="-ktx-dispatcher/index.html">KtxDispatcher</a>, <span data-unresolved-link="kotlinx.coroutines/Delay///PointingToDeclaration/">Delay</span></div><div class="brief "><p class="paragraph">A <span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span> that wraps around libGDX runnable execution API to execute tasks on the main rendering thread. Uses libGDX <span data-unresolved-link="com.badlogic.gdx.utils/Timer///PointingToDeclaration/">Timer</span> API to support <a href="-main-dispatcher/index.html#328100086%2FFunctions%2F-143170454">delay</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1080332242%2FClasslikes%2F-143170454" anchor-label="RenderingThreadDispatcherFactory" id="1080332242%2FClasslikes%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-rendering-thread-dispatcher-factory/index.html"><span>Rendering</span><wbr><span>Thread</span><wbr><span>Dispatcher</span><wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080332242%2FClasslikes%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-rendering-thread-dispatcher-factory/index.html">RenderingThreadDispatcherFactory</a> : <span data-unresolved-link="kotlinx.coroutines.internal/MainDispatcherFactory///PointingToDeclaration/">MainDispatcherFactory</span></div><div class="brief "><p class="paragraph">Implements <span data-unresolved-link="kotlinx.coroutines.internal/MainDispatcherFactory///PointingToDeclaration/">MainDispatcherFactory</span> to provide references to the <a href="-main-dispatcher/index.html">MainDispatcher</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="367400155%2FProperties%2F-143170454" anchor-label="KTX" id="367400155%2FProperties%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-k-t-x.html"><span><span>KTX</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="367400155%2FProperties%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="kotlinx.coroutines/Dispatchers///PointingToDeclaration/">Dispatchers</span><span class="token punctuation">.</span><a href="-k-t-x.html">KTX</a><span class="token operator">: </span><a href="-main-dispatcher/index.html">MainDispatcher</a></div><div class="brief "><p class="paragraph">Main KTX coroutine dispatcher. Executes tasks on the main rendering thread. See <a href="-main-dispatcher/index.html">MainDispatcher</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1228589212%2FFunctions%2F-143170454" anchor-label="httpRequest" id="-1228589212%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="http-request.html"><span>http</span><wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1228589212%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="http-request.html"><span class="token function">httpRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">method<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"GET"</span><span class="token punctuation">, </span></span><span class="parameter ">headers<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()<span class="token punctuation">, </span></span><span class="parameter ">timeout<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">contentStream<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/InputStream.html">InputStream</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">followRedirects<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">includeCredentials<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">onCancel<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx/Net.HttpRequest///PointingToDeclaration/">Net.HttpRequest</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-http-request-result/index.html">HttpRequestResult</a></div><div class="brief "><p class="paragraph">Executes a HTTP request asynchronously.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1264770464%2FFunctions%2F-143170454" anchor-label="interval" id="-1264770464%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="interval.html"><span><span>interval</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1264770464%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="interval.html"><span class="token function">interval</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">intervalSeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">delaySeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter ">repeatCount<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>-2<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>task<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Timer.Task///PointingToDeclaration/">Timer.Task</span></div><div class="brief "><p class="paragraph">Simplifies <span data-unresolved-link="com.badlogic.gdx.utils/Timer///PointingToDeclaration/">Timer</span> API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1444879897%2FFunctions%2F-143170454" anchor-label="isOnRenderingThread" id="-1444879897%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-on-rendering-thread.html"><span>is</span><wbr><span>On</span><wbr><span>Rendering</span><wbr><span><span>Thread</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1444879897%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token punctuation">.</span><a href="is-on-rendering-thread.html"><span class="token function">isOnRenderingThread</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns true if the coroutine was launched from a rendering thread dispatcher.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1374595990%2FFunctions%2F-143170454" anchor-label="newAsyncContext" id="-1374595990%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="new-async-context.html"><span>new</span><wbr><span>Async</span><wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1374595990%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="new-async-context.html"><span class="token function">newAsyncContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">threads<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">threadName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"AsyncExecutor-Thread"</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-async-executor-dispatcher/index.html">AsyncExecutorDispatcher</a></div><div class="brief "><p class="paragraph">Creates a new <a href="-async-executor-dispatcher/index.html">AsyncExecutorDispatcher</a> wrapping around an <span data-unresolved-link="com.badlogic.gdx.utils.async/AsyncExecutor///PointingToDeclaration/">AsyncExecutor</span> with the chosen amount of <a href="new-async-context.html">threads</a> to execute tasks asynchronously outside of the main rendering thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2059189391%2FFunctions%2F-143170454" anchor-label="newSingleThreadAsyncContext" id="2059189391%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="new-single-thread-async-context.html"><span>new</span><wbr><span>Single</span><wbr><span>Thread</span><wbr><span>Async</span><wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2059189391%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="new-single-thread-async-context.html"><span class="token function">newSingleThreadAsyncContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">threadName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"AsyncExecutor-Thread"</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-async-executor-dispatcher/index.html">AsyncExecutorDispatcher</a></div><div class="brief "><p class="paragraph">Creates a new <a href="-async-executor-dispatcher/index.html">AsyncExecutorDispatcher</a> wrapping around an <span data-unresolved-link="com.badlogic.gdx.utils.async/AsyncExecutor///PointingToDeclaration/">AsyncExecutor</span> with a single thread to execute tasks asynchronously outside of the main rendering thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1214156454%2FFunctions%2F-143170454" anchor-label="onRenderingThread" id="-1214156454%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-rendering-thread.html"><span>on</span><wbr><span>Rendering</span><wbr><span><span>Thread</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1214156454%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-rendering-thread.html">T</a><span class="token operator">&gt; </span><a href="on-rendering-thread.html"><span class="token function">onRenderingThread</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token keyword">suspend </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="on-rendering-thread.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="on-rendering-thread.html">T</a></div><div class="brief "><p class="paragraph">Suspends the coroutine to execute the defined <a href="on-rendering-thread.html">block</a> on the main rendering thread and return its result.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-764803016%2FFunctions%2F-143170454" anchor-label="RenderingScope" id="-764803016%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-rendering-scope.html"><span>Rendering</span><wbr><span><span>Scope</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-764803016%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-rendering-scope.html"><span class="token function">RenderingScope</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div><div class="brief "><p class="paragraph">Creates a coroutine scope in the rendering thread with a supervisor job. Allows to manage multiple tasks executed on the main rendering thread within a single scope, providing mass actions such as task cancelling that do not affect other scopes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1318908351%2FFunctions%2F-143170454" anchor-label="schedule" id="-1318908351%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="schedule.html"><span><span>schedule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1318908351%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="schedule.html"><span class="token function">schedule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">delaySeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>task<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Timer.Task///PointingToDeclaration/">Timer.Task</span></div><div class="brief "><p class="paragraph">Simplifies <span data-unresolved-link="com.badlogic.gdx.utils/Timer///PointingToDeclaration/">Timer</span> API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="951847852%2FFunctions%2F-143170454" anchor-label="skipFrame" id="951847852%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="skip-frame.html"><span>skip</span><wbr><span><span>Frame</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="951847852%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="skip-frame.html"><span class="token function">skipFrame</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Attempts to skip the current frame. Resumes the execution using a task scheduled with <span data-unresolved-link="com.badlogic.gdx/Application/postRunnable/#java.lang.Runnable/PointingToDeclaration/">Application.postRunnable</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1440595675%2FFunctions%2F-143170454" anchor-label="toHttpRequestResult" id="-1440595675%2FFunctions%2F-143170454" data-filterable-set=":async/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":async/main" data-filterable-set=":async/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-http-request-result.html"><span>to</span><wbr><span>Http</span><wbr><span>Request</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1440595675%2FFunctions%2F-143170454"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":async/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx/Net.HttpResponse///PointingToDeclaration/">Net.HttpResponse</span><span class="token punctuation">.</span><a href="to-http-request-result.html"><span class="token function">toHttpRequestResult</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">requestData<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx/Net.HttpRequest///PointingToDeclaration/">Net.HttpRequest</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-http-request-result/index.html">HttpRequestResult</a></div><div class="brief "><p class="paragraph">Converts this non thread-safe <span data-unresolved-link="com.badlogic.gdx/Net.HttpResponse///PointingToDeclaration/">HttpResponse</span> to <a href="-http-request-result/index.html">HttpRequestResult</a> that reads and caches the HTTP result content as byte array. Note that this method blocks the current thread until the HTTP result content is read.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

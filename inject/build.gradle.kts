@@ -1,8 +1,0 @@
-plugins {
-  id("ktx.base")
-  id("ktx.publish")
-}
-
-dependencies {
-  api(project(":reflect"))
-}

@@ -1,0 +1,613 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.tiled</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":tiled/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":tiled/main" data-filter=":tiled/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="tiled::ktx.tiled////PointingToDeclaration//19660132">
+  <div class="breadcrumbs"><a href="../index.html">tiled</a><span class="delimiter">/</span><span class="current">ktx.tiled</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="56322533%2FClasslikes%2F19660132" anchor-label="MissingLayerException" id="56322533%2FClasslikes%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-layer-exception/index.html"><span>Missing</span><wbr><span>Layer</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="56322533%2FClasslikes%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-layer-exception/index.html">MissingLayerException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-tiled-exception/index.html">TiledException</a></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.utils/GdxRuntimeException///PointingToDeclaration/">GdxRuntimeException</span> that is thrown when trying to access a non-existing <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span> instance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1332415419%2FClasslikes%2F19660132" anchor-label="MissingPropertyException" id="-1332415419%2FClasslikes%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-property-exception/index.html"><span>Missing</span><wbr><span>Property</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1332415419%2FClasslikes%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-property-exception/index.html">MissingPropertyException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-tiled-exception/index.html">TiledException</a></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.utils/GdxRuntimeException///PointingToDeclaration/">GdxRuntimeException</span> that is thrown when trying to access a non-existing property of a <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> instance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="429805621%2FClasslikes%2F19660132" anchor-label="MissingShapeException" id="429805621%2FClasslikes%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-shape-exception/index.html"><span>Missing</span><wbr><span>Shape</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="429805621%2FClasslikes%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-shape-exception/index.html">MissingShapeException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-tiled-exception/index.html">TiledException</a></div><div class="brief "><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.utils/GdxRuntimeException///PointingToDeclaration/">GdxRuntimeException</span> that is thrown when trying to access a shape of a <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span> that do not have any shape such as the <span data-unresolved-link="com.badlogic.gdx.maps.objects/TextureMapObject///PointingToDeclaration/">TextureMapObject</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="741576096%2FClasslikes%2F19660132" anchor-label="TiledException" id="741576096%2FClasslikes%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tiled-exception/index.html"><span>Tiled</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="741576096%2FClasslikes%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-tiled-exception/index.html">TiledException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="com.badlogic.gdx.utils/GdxRuntimeException///PointingToDeclaration/">GdxRuntimeException</span></div><div class="brief "><p class="paragraph">Common type of exceptions thrown by the Tiled API extensions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1736400665%2FProperties%2F19660132" anchor-label="backgroundColor" id="1736400665%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="background-color.html"><span>background</span><wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1736400665%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="background-color.html">backgroundColor</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension property to retrieve the background color of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. Null if property was not set.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1661661609%2FProperties%2F19660132" anchor-label="height" id="1661661609%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="height.html"><span><span>height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1661661609%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="height.html">height</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the height of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>.</p></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="height.html">height</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the height of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1810971146%2FProperties%2F19660132" anchor-label="hexSideLength" id="-1810971146%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hex-side-length.html"><span>hex</span><wbr><span>Side</span><wbr><span><span>Length</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1810971146%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="hex-side-length.html">hexSideLength</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the hex side length of a hexagonal <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="732743600%2FProperties%2F19660132" anchor-label="id" id="732743600%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="id.html"><span><span>id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="732743600%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the unique ID of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1378650754%2FProperties%2F19660132" anchor-label="orientation" id="-1378650754%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="orientation.html"><span><span>orientation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1378650754%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="orientation.html">orientation</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the orientation of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-960370733%2FProperties%2F19660132" anchor-label="rotation" id="-960370733%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rotation.html"><span><span>rotation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-960370733%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="rotation.html">rotation</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension property to retrieve the rotation of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>. Null if the property is unset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1015965656%2FProperties%2F19660132" anchor-label="shape" id="-1015965656%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="shape.html"><span><span>shape</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1015965656%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="shape.html">shape</a><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Shape2D///PointingToDeclaration/">Shape2D</span></div><div class="brief "><p class="paragraph">Extension method to retrieve the <span data-unresolved-link="com.badlogic.gdx.math/Shape2D///PointingToDeclaration/">Shape2D</span> instance of a <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>. Depending on the type of the object a different shape will be returned:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1725230304%2FProperties%2F19660132" anchor-label="staggerAxis" id="-1725230304%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stagger-axis.html"><span>stagger</span><wbr><span><span>Axis</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1725230304%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="stagger-axis.html">staggerAxis</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the stagger axis of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-925235973%2FProperties%2F19660132" anchor-label="staggerIndex" id="-925235973%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stagger-index.html"><span>stagger</span><wbr><span><span>Index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925235973%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="stagger-index.html">staggerIndex</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the stagger index of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-209462037%2FProperties%2F19660132" anchor-label="tileHeight" id="-209462037%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tile-height.html"><span>tile</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-209462037%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="tile-height.html">tileHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the tile height of each tile of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="132802134%2FProperties%2F19660132" anchor-label="tileWidth" id="132802134%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tile-width.html"><span>tile</span><wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="132802134%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="tile-width.html">tileWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the tile width of each tile of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-105044209%2FProperties%2F19660132" anchor-label="type" id="-105044209%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="type.html"><span><span>type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-105044209%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="type.html">type</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension property to retrieve the type of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>. Null if the property is unset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-739666265%2FProperties%2F19660132" anchor-label="width" id="-739666265%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="width.html"><span><span>width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739666265%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="width.html">width</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the width of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>.</p></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="width.html">width</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the width of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1801348223%2FProperties%2F19660132" anchor-label="x" id="1801348223%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="x.html"><span><span>x</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1801348223%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="x.html">x</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the x-coordinate of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1863160448%2FProperties%2F19660132" anchor-label="y" id="-1863160448%2FProperties%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="y.html"><span><span>y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1863160448%2FProperties%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="y.html">y</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Extension property to retrieve the y-coordinate of the <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="72717139%2FFunctions%2F19660132" anchor-label="contains" id="72717139%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="72717139%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span><span class="token punctuation">.</span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Allows to check if a <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> instance contains a property mapped to <a href="contains.html">key</a> with Kotlin <code class="lang-kotlin">in</code> operator.</p></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">layerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extension operator to check if a certain <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span> is part of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2099789482%2FFunctions%2F19660132" anchor-label="containsProperty" id="-2099789482%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains-property.html"><span>contains</span><wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2099789482%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span><span class="token punctuation">.</span><a href="contains-property.html"><span class="token function">containsProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span> and its <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties/containsKey/#kotlin.String/PointingToDeclaration/">containsKey</span> method.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="contains-property.html"><span class="token function">containsProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span> and its <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties/containsKey/#kotlin.String/PointingToDeclaration/">containsKey</span> method.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="contains-property.html"><span class="token function">containsProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span> and its <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties/containsKey/#kotlin.String/PointingToDeclaration/">containsKey</span> method.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span><span class="token punctuation">.</span><a href="contains-property.html"><span class="token function">containsProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span> and its <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties/containsKey/#kotlin.String/PointingToDeclaration/">containsKey</span> method.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span><span class="token punctuation">.</span><a href="contains-property.html"><span class="token function">containsProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span> and its <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties/containsKey/#kotlin.String/PointingToDeclaration/">containsKey</span> method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2118571285%2FFunctions%2F19660132" anchor-label="forEachLayer" id="2118571285%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="for-each-layer.html"><span>for</span><wbr><span>Each</span><wbr><span><span>Layer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2118571285%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="for-each-layer.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="for-each-layer.html"><span class="token function">forEachLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><a href="for-each-layer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Extension method to run an <a href="for-each-layer.html">action</a> on a specific type of <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">layers</span> of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. The lambda takes the matching <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span> as a parameter.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="867872432%2FFunctions%2F19660132" anchor-label="forEachMapObject" id="867872432%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="for-each-map-object.html"><span>for</span><wbr><span>Each</span><wbr><span>Map</span><wbr><span><span>Object</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="867872432%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="for-each-map-object.html"><span class="token function">forEachMapObject</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">layerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Extension method to easily execute an action per <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span> of a given <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span>. If the layer does not exist then nothing is happening.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-575962844%2FFunctions%2F19660132" anchor-label="isEmpty" id="-575962844%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-empty.html"><span>is</span><wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-575962844%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayers///PointingToDeclaration/">MapLayers</span><span class="token punctuation">.</span><a href="is-empty.html"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns <strong>true</strong> if and only if the <span data-unresolved-link="com.badlogic.gdx.maps/MapLayers///PointingToDeclaration/">MapLayers</span> collection is empty.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObjects///PointingToDeclaration/">MapObjects</span><span class="token punctuation">.</span><a href="is-empty.html"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns <strong>true</strong> if and only if the <span data-unresolved-link="com.badlogic.gdx.maps/MapObjects///PointingToDeclaration/">MapObjects</span> collection is empty.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-645655194%2FFunctions%2F19660132" anchor-label="isNotEmpty" id="-645655194%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-not-empty.html"><span>is</span><wbr><span>Not</span><wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-645655194%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayers///PointingToDeclaration/">MapLayers</span><span class="token punctuation">.</span><a href="is-not-empty.html"><span class="token function">isNotEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns <strong>true</strong> if and only if the <span data-unresolved-link="com.badlogic.gdx.maps/MapLayers///PointingToDeclaration/">MapLayers</span> collection is not empty.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObjects///PointingToDeclaration/">MapObjects</span><span class="token punctuation">.</span><a href="is-not-empty.html"><span class="token function">isNotEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns <strong>true</strong> if and only if the <span data-unresolved-link="com.badlogic.gdx.maps/MapObjects///PointingToDeclaration/">MapObjects</span> collection is not empty.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1894452551%2FFunctions%2F19660132" anchor-label="layer" id="1894452551%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="layer.html"><span><span>layer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1894452551%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="layer.html"><span class="token function">layer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">layerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span></div><div class="brief "><p class="paragraph">Extension method to retrieve a <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. If the layer does not exist then this method is throwing a <a href="-missing-layer-exception/index.html">MissingLayerException</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-939253041%2FFunctions%2F19660132" anchor-label="property" id="-939253041%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="property.html"><span><span>property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-939253041%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span>. If the property is not defined then this method throws a <a href="-missing-property-exception/index.html">MissingPropertyException</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>. If the property is not defined then this method throws a <a href="-missing-property-exception/index.html">MissingPropertyException</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. If the property is not defined then this method throws a <a href="-missing-property-exception/index.html">MissingPropertyException</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span>. If the property is not defined then this method throws a <a href="-missing-property-exception/index.html">MissingPropertyException</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span>. If the property is not defined then this method throws a <a href="-missing-property-exception/index.html">MissingPropertyException</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">defaultValue<span class="token operator">: </span><a href="property.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span>. The type is automatically derived from the type of the given default value. If the property is not defined the <a href="property.html">defaultValue</a> will be returned.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">defaultValue<span class="token operator">: </span><a href="property.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>. The type is automatically derived from the type of the given default value. If the property is not defined the <a href="property.html">defaultValue</a> will be returned.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">defaultValue<span class="token operator">: </span><a href="property.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. The type is automatically derived from the type of the given default value. If the property is not defined the <a href="property.html">defaultValue</a> will be returned.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">defaultValue<span class="token operator">: </span><a href="property.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span>. The type is automatically derived from the type of the given default value. If the property is not defined the <a href="property.html">defaultValue</a> will be returned.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span><span class="token punctuation">.</span><a href="property.html"><span class="token function">property</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">defaultValue<span class="token operator">: </span><a href="property.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property.html">T</a></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span>. The type is automatically derived from the type of the given default value. If the property is not defined the <a href="property.html">defaultValue</a> will be returned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1072187957%2FFunctions%2F19660132" anchor-label="propertyOrNull" id="-1072187957%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="property-or-null.html"><span>property</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1072187957%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property-or-null.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span><span class="token punctuation">.</span><a href="property-or-null.html"><span class="token function">propertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property-or-null.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapLayer///PointingToDeclaration/">MapLayer</span>. If the property is not defined then this method returns null.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property-or-null.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span><span class="token punctuation">.</span><a href="property-or-null.html"><span class="token function">propertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property-or-null.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps/MapObject///PointingToDeclaration/">MapObject</span>. If the property is not defined then this method returns null.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property-or-null.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="property-or-null.html"><span class="token function">propertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property-or-null.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. If the property is not defined then this method returns null.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property-or-null.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span><span class="token punctuation">.</span><a href="property-or-null.html"><span class="token function">propertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property-or-null.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTile///PointingToDeclaration/">TiledMapTile</span>. If the property is not defined then this method returns null.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="property-or-null.html">T</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span><span class="token punctuation">.</span><a href="property-or-null.html"><span class="token function">propertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="property-or-null.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Extension method to directly access the <span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span> of a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span>. If the property is not defined then this method returns null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1166309465%2FFunctions%2F19660132" anchor-label="set" id="1166309465%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set.html"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1166309465%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps/MapProperties///PointingToDeclaration/">MapProperties</span><span class="token punctuation">.</span><a href="set.html"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Allows to add a property mapped to <a href="set.html">key</a> with given <a href="set.html">value</a> using Kotlin square braces assignment operator.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1666351011%2FFunctions%2F19660132" anchor-label="totalHeight" id="1666351011%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-height.html"><span>total</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1666351011%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="total-height.html"><span class="token function">totalHeight</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension method to retrieve the total height of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. It is the result of the height multiplied by the tile height of the map.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1994427550%2FFunctions%2F19660132" anchor-label="totalWidth" id="1994427550%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-width.html"><span>total</span><wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1994427550%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="total-width.html"><span class="token function">totalWidth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Extension method to retrieve the total width of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span>. It is the result of the width multiplied by the tile width of the map.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-849735457%2FFunctions%2F19660132" anchor-label="use" id="-849735457%2FFunctions%2F19660132" data-filterable-set=":tiled/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="use.html"><span><span>use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-849735457%2FFunctions%2F19660132"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled.renderers/BatchTiledMapRenderer///PointingToDeclaration/">BatchTiledMapRenderer</span><span class="token operator">&gt; </span><a href="use.html">T</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled.renderers/BatchTiledMapRenderer///PointingToDeclaration/">BatchTiledMapRenderer</span><span class="token operator">&gt; </span><a href="use.html">T</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">camera<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.graphics/OrthographicCamera///PointingToDeclaration/">OrthographicCamera</span><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled.renderers/BatchTiledMapRenderer///PointingToDeclaration/">BatchTiledMapRenderer</span><span class="token operator">&gt; </span><a href="use.html">T</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">projection<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span><span class="token punctuation">, </span></span><span class="parameter ">mapBoundary<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Rectangle///PointingToDeclaration/">Rectangle</span><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled.renderers/BatchTiledMapRenderer///PointingToDeclaration/">BatchTiledMapRenderer</span><span class="token operator">&gt; </span><a href="use.html">T</a><span class="token punctuation">.</span><a href="use.html"><span class="token function">use</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">projection<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.math/Matrix4///PointingToDeclaration/">Matrix4</span><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="use.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Automatically calls <span data-unresolved-link="com.badlogic.gdx.maps.tiled.renderers/BatchTiledMapRenderer/beginRender/#/PointingToDeclaration/">BatchTiledMapRenderer.beginRender</span> and <span data-unresolved-link="com.badlogic.gdx.maps.tiled.renderers/BatchTiledMapRenderer/endRender/#/PointingToDeclaration/">BatchTiledMapRenderer.endRender</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

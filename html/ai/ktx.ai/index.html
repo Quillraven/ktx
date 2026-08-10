@@ -1,0 +1,489 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ktx.ai</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    ktx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ai/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ai/main" data-filter=":ai/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktx
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ai::ktx.ai////PointingToDeclaration//-945613720">
+  <div class="breadcrumbs"><a href="../index.html">ai</a><span class="delimiter">/</span><span class="current">ktx.ai</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-847819889%2FClasslikes%2F-945613720" anchor-label="GdxAiDsl" id="-847819889%2FClasslikes%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gdx-ai-dsl/index.html"><span>Gdx</span><wbr><span>Ai</span><wbr><span><span>Dsl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-847819889%2FClasslikes%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-dsl-marker/index.html"><span class="token annotation builtin">DslMarker</span></a></div><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-target/index.html"><span class="token annotation builtin">Target</span></a><span class="token punctuation">(</span><span>allowedTargets<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-c-l-a-s-s/index.html">AnnotationTarget.CLASS</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e_-p-a-r-a-m-e-t-e-r/index.html">AnnotationTarget.TYPE_PARAMETER</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-f-u-n-c-t-i-o-n/index.html">AnnotationTarget.FUNCTION</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e/index.html">AnnotationTarget.TYPE</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-t-y-p-e-a-l-i-a-s/index.html">AnnotationTarget.TYPEALIAS</a></span><wbr><span class="token punctuation">]</span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-gdx-ai-dsl/index.html">GdxAiDsl</a></div><div class="brief "><p class="paragraph">Should annotate builder methods of gdxAI.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-353095565%2FClasslikes%2F-945613720" anchor-label="GdxAiRandom" id="-353095565%2FClasslikes%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gdx-ai-random/index.html"><span>Gdx</span><wbr><span>Ai</span><wbr><span><span>Random</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-353095565%2FClasslikes%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-gdx-ai-random/index.html">GdxAiRandom</a><span class="token operator">&lt;</span><a href="-gdx-ai-random/index.html">E</a><span class="token operator">&gt;</span><span class="token operator"> = </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Random///PointingToDeclaration/">Random</span><span class="token operator">&lt;</span><a href="-gdx-ai-random/index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Random///PointingToDeclaration/">com.badlogic.gdx.ai.btree.decorator.Random</span> to avoid name collisions with the standard library.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1740618857%2FClasslikes%2F-945613720" anchor-label="GdxAiSelector" id="-1740618857%2FClasslikes%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gdx-ai-selector/index.html"><span>Gdx</span><wbr><span>Ai</span><wbr><span><span>Selector</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1740618857%2FClasslikes%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-gdx-ai-selector/index.html">GdxAiSelector</a><span class="token operator">&lt;</span><a href="-gdx-ai-selector/index.html">E</a><span class="token operator">&gt;</span><span class="token operator"> = </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Selector///PointingToDeclaration/">Selector</span><span class="token operator">&lt;</span><a href="-gdx-ai-selector/index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Selector///PointingToDeclaration/">com.badlogic.gdx.ai.btree.branch.Selector</span> to avoid name collisions with the standard library.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-243629579%2FClasslikes%2F-945613720" anchor-label="GdxAiSequence" id="-243629579%2FClasslikes%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gdx-ai-sequence/index.html"><span>Gdx</span><wbr><span>Ai</span><wbr><span><span>Sequence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-243629579%2FClasslikes%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-gdx-ai-sequence/index.html">GdxAiSequence</a><span class="token operator">&lt;</span><a href="-gdx-ai-sequence/index.html">E</a><span class="token operator">&gt;</span><span class="token operator"> = </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Sequence///PointingToDeclaration/">Sequence</span><span class="token operator">&lt;</span><a href="-gdx-ai-sequence/index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Alias for <span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Sequence///PointingToDeclaration/">com.badlogic.gdx.ai.btree.branch.Sequence</span> to avoid name collisions with the standard library.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="945484175%2FFunctions%2F-945613720" anchor-label="add" id="945484175%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="945484175%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="add.html">E</a><span class="token punctuation">, </span><a href="add.html">T</a><span class="token operator"> : </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="add.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="add.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="add.html"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">task<span class="token operator">: </span><a href="add.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="add.html">T</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Adds a task to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1214962231%2FFunctions%2F-945613720" anchor-label="alwaysFail" id="1214962231%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="always-fail.html"><span>always</span><wbr><span><span>Fail</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1214962231%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="always-fail.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="always-fail.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="always-fail.html"><span class="token function">alwaysFail</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="always-fail.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/AlwaysFail///PointingToDeclaration/">AlwaysFail</span><span class="token operator">&lt;</span><a href="always-fail.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds an <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/AlwaysFail///PointingToDeclaration/">AlwaysFail</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-932092853%2FFunctions%2F-945613720" anchor-label="alwaysSucceed" id="-932092853%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="always-succeed.html"><span>always</span><wbr><span><span>Succeed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-932092853%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="always-succeed.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="always-succeed.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="always-succeed.html"><span class="token function">alwaysSucceed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="always-succeed.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/AlwaysSucceed///PointingToDeclaration/">AlwaysSucceed</span><span class="token operator">&lt;</span><a href="always-succeed.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds an <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/AlwaysSucceed///PointingToDeclaration/">AlwaysSucceed</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="793760718%2FFunctions%2F-945613720" anchor-label="behaviorTree" id="793760718%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="behavior-tree.html"><span>behavior</span><wbr><span><span>Tree</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="793760718%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="behavior-tree.html">E</a><span class="token operator">&gt; </span><a href="behavior-tree.html"><span class="token function">behaviorTree</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">rootTask<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="behavior-tree.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">blackboard<span class="token operator">: </span><a href="behavior-tree.html">E</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/BehaviorTree///PointingToDeclaration/">BehaviorTree</span><span class="token operator">&lt;</span><a href="behavior-tree.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/BehaviorTree///PointingToDeclaration/">BehaviorTree</span><span class="token operator">&lt;</span><a href="behavior-tree.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a <span data-unresolved-link="com.badlogic.gdx.ai.btree/BehaviorTree///PointingToDeclaration/">BehaviorTree</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1833945294%2FFunctions%2F-945613720" anchor-label="dynamicGuardSelector" id="-1833945294%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dynamic-guard-selector.html"><span>dynamic</span><wbr><span>Guard</span><wbr><span><span>Selector</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1833945294%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="dynamic-guard-selector.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="dynamic-guard-selector.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="dynamic-guard-selector.html"><span class="token function">dynamicGuardSelector</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tasks<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="dynamic-guard-selector.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>Array()<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/DynamicGuardSelector///PointingToDeclaration/">DynamicGuardSelector</span><span class="token operator">&lt;</span><a href="dynamic-guard-selector.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/DynamicGuardSelector///PointingToDeclaration/">DynamicGuardSelector</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-682523770%2FFunctions%2F-945613720" anchor-label="failureLeaf" id="-682523770%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="failure-leaf.html"><span>failure</span><wbr><span><span>Leaf</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-682523770%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="failure-leaf.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="failure-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="failure-leaf.html"><span class="token function">failureLeaf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Failure///PointingToDeclaration/">Failure</span><span class="token operator">&lt;</span><a href="failure-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Failure///PointingToDeclaration/">Failure</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1540714399%2FFunctions%2F-945613720" anchor-label="include" id="1540714399%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="include.html"><span><span>include</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1540714399%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="include.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="include.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="include.html"><span class="token function">include</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">subtree<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">lazy<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Include///PointingToDeclaration/">Include</span><span class="token operator">&lt;</span><a href="include.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds an <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Include///PointingToDeclaration/">Include</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="783708311%2FFunctions%2F-945613720" anchor-label="invert" id="783708311%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="invert.html"><span><span>invert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="783708311%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="invert.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="invert.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="invert.html"><span class="token function">invert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="invert.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Invert///PointingToDeclaration/">Invert</span><span class="token operator">&lt;</span><a href="invert.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds an <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Invert///PointingToDeclaration/">Invert</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="746399594%2FFunctions%2F-945613720" anchor-label="parallel" id="746399594%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="parallel.html"><span><span>parallel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="746399594%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="parallel.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="parallel.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="parallel.html"><span class="token function">parallel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">policy<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Parallel.Policy///PointingToDeclaration/">Parallel.Policy</span><span class="token operator"> = </span>Policy.Sequence<span class="token punctuation">, </span></span><span class="parameter ">orchestrator<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Parallel.Orchestrator///PointingToDeclaration/">Parallel.Orchestrator</span><span class="token operator"> = </span>Orchestrator.Resume<span class="token punctuation">, </span></span><span class="parameter ">tasks<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="parallel.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>Array()<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Parallel///PointingToDeclaration/">Parallel</span><span class="token operator">&lt;</span><a href="parallel.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/Parallel///PointingToDeclaration/">Parallel</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="5452821%2FFunctions%2F-945613720" anchor-label="random" id="5452821%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="random.html"><span><span>random</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="5452821%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="random.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="random.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="random.html"><span class="token function">random</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">success<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.utils.random/FloatDistribution///PointingToDeclaration/">FloatDistribution</span><span class="token operator"> = </span>ConstantFloatDistribution.ZERO_POINT_FIVE<span class="token punctuation">, </span></span><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="random.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-gdx-ai-random/index.html">GdxAiRandom</a><span class="token operator">&lt;</span><a href="random.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <a href="-gdx-ai-random/index.html">GdxAiRandom</a> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1272016786%2FFunctions%2F-945613720" anchor-label="randomSelector" id="1272016786%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="random-selector.html"><span>random</span><wbr><span><span>Selector</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1272016786%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="random-selector.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="random-selector.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="random-selector.html"><span class="token function">randomSelector</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tasks<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="random-selector.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>Array()<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/RandomSelector///PointingToDeclaration/">RandomSelector</span><span class="token operator">&lt;</span><a href="random-selector.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/RandomSelector///PointingToDeclaration/">RandomSelector</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1474008018%2FFunctions%2F-945613720" anchor-label="randomSequence" id="1474008018%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="random-sequence.html"><span>random</span><wbr><span><span>Sequence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1474008018%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="random-sequence.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="random-sequence.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="random-sequence.html"><span class="token function">randomSequence</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tasks<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="random-sequence.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>Array()<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/RandomSequence///PointingToDeclaration/">RandomSequence</span><span class="token operator">&lt;</span><a href="random-sequence.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.branch/RandomSequence///PointingToDeclaration/">RandomSequence</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1888271865%2FFunctions%2F-945613720" anchor-label="repeat" id="-1888271865%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="repeat.html"><span><span>repeat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1888271865%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="repeat.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="repeat.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="repeat.html"><span class="token function">repeat</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">times<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.utils.random/IntegerDistribution///PointingToDeclaration/">IntegerDistribution</span><span class="token operator"> = </span>ConstantIntegerDistribution.NEGATIVE_ONE<span class="token punctuation">, </span></span><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="repeat.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Repeat///PointingToDeclaration/">Repeat</span><span class="token operator">&lt;</span><a href="repeat.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/Repeat///PointingToDeclaration/">Repeat</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1286173838%2FFunctions%2F-945613720" anchor-label="selector" id="-1286173838%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="selector.html"><span><span>selector</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1286173838%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="selector.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="selector.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="selector.html"><span class="token function">selector</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tasks<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="selector.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>Array()<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-gdx-ai-selector/index.html">GdxAiSelector</a><span class="token operator">&lt;</span><a href="selector.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <a href="-gdx-ai-selector/index.html">GdxAiSelector</a> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="88341725%2FFunctions%2F-945613720" anchor-label="semaphoreGuard" id="88341725%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="semaphore-guard.html"><span>semaphore</span><wbr><span><span>Guard</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="88341725%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="semaphore-guard.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="semaphore-guard.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="semaphore-guard.html"><span class="token function">semaphoreGuard</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="semaphore-guard.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/SemaphoreGuard///PointingToDeclaration/">SemaphoreGuard</span><span class="token operator">&lt;</span><a href="semaphore-guard.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/SemaphoreGuard///PointingToDeclaration/">SemaphoreGuard</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2109275854%2FFunctions%2F-945613720" anchor-label="sequence" id="-2109275854%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sequence.html"><span><span>sequence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2109275854%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="sequence.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="sequence.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="sequence.html"><span class="token function">sequence</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tasks<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.utils/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="sequence.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>Array()<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><a href="-gdx-ai-sequence/index.html">GdxAiSequence</a><span class="token operator">&lt;</span><a href="sequence.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <a href="-gdx-ai-sequence/index.html">GdxAiSequence</a> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1902999892%2FFunctions%2F-945613720" anchor-label="successLeaf" id="1902999892%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="success-leaf.html"><span>success</span><wbr><span><span>Leaf</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1902999892%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="success-leaf.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="success-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="success-leaf.html"><span class="token function">successLeaf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Success///PointingToDeclaration/">Success</span><span class="token operator">&lt;</span><a href="success-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Success///PointingToDeclaration/">Success</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1283215687%2FFunctions%2F-945613720" anchor-label="untilFail" id="-1283215687%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="until-fail.html"><span>until</span><wbr><span><span>Fail</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1283215687%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="until-fail.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="until-fail.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="until-fail.html"><span class="token function">untilFail</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="until-fail.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/UntilFail///PointingToDeclaration/">UntilFail</span><span class="token operator">&lt;</span><a href="until-fail.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds an <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/UntilFail///PointingToDeclaration/">UntilFail</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1743611319%2FFunctions%2F-945613720" anchor-label="untilSuccess" id="1743611319%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="until-success.html"><span>until</span><wbr><span><span>Success</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1743611319%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="until-success.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="until-success.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="until-success.html"><span class="token function">untilSuccess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">task<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="until-success.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/UntilSuccess///PointingToDeclaration/">UntilSuccess</span><span class="token operator">&lt;</span><a href="until-success.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds an <span data-unresolved-link="com.badlogic.gdx.ai.btree.decorator/UntilSuccess///PointingToDeclaration/">UntilSuccess</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1076345442%2FFunctions%2F-945613720" anchor-label="waitLeaf" id="-1076345442%2FFunctions%2F-945613720" data-filterable-set=":ai/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ai/main" data-filterable-set=":ai/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="wait-leaf.html"><span>wait</span><wbr><span><span>Leaf</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1076345442%2FFunctions%2F-945613720"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ai/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="wait-leaf.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="wait-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="wait-leaf.html"><span class="token function">waitLeaf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">seconds<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.utils.random/FloatDistribution///PointingToDeclaration/">FloatDistribution</span><span class="token operator"> = </span>ConstantFloatDistribution.ZERO<span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Wait///PointingToDeclaration/">Wait</span><span class="token operator">&lt;</span><a href="wait-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="wait-leaf.html">E</a><span class="token operator">&gt; </span><span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span><span class="token operator">&lt;</span><a href="wait-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="wait-leaf.html"><span class="token function">waitLeaf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">seconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">init<span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Wait///PointingToDeclaration/">Wait</span><span class="token operator">&lt;</span><a href="wait-leaf.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Creates and adds a <span data-unresolved-link="com.badlogic.gdx.ai.btree.leaf/Wait///PointingToDeclaration/">Wait</span> to the receiver <span data-unresolved-link="com.badlogic.gdx.ai.btree/Task///PointingToDeclaration/">Task</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
