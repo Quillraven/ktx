@@ -21,6 +21,13 @@ _**K**o**t**lin extensions for libGD**X**._
 [Kotlin](http://kotlinlang.org/)-friendly as possible without completely rewriting the API. It provides modular
 utilities and extensions for selected parts of libGDX with poor Kotlin support.
 
+> ### Community fork
+>
+> This repository is a **community fork** of the original [LibKTX](https://github.com/libktx/ktx), created and maintained
+> by the LibGDX community because the original author could no longer be reached. The fork exists to keep the project
+> alive: it continues to ship new features, keep dependencies and versions up to date, and maintain compatibility with
+> the latest libGDX and Kotlin releases.
+
 Examples of Kotlin language features used to improve usability, performance, and readability of libGDX include:
 
 - *Operator overloads* for collections and mathematical operations.
