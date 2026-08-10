@@ -2,7 +2,7 @@
 # Build plugins
 kotlin = "2.4.10"
 dokka = "2.2.0"
-nexusPublish = "2.0.0"
+mavenPublish = "0.37.0"
 ktlint = "1.8.0"
 
 # Libraries
@@ -57,8 +57,8 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 free-port-finder = { module = "me.alexpanov:free-port-finder", version.ref = "freePortFinder" }
 
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
+maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "mavenPublish" }
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
-nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexusPublish" }

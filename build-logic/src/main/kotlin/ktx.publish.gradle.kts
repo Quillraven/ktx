@@ -1,19 +1,13 @@
 import org.gradle.api.distribution.DistributionContainer
-import org.gradle.api.publish.PublishingExtension
-import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.tasks.SourceSetContainer
-import org.gradle.plugins.signing.Sign
 
 plugins {
-  `maven-publish`
   signing
+  id("com.vanniktech.maven.publish")
   id("org.jetbrains.dokka")
 }
 
 val projectName = project.property("projectName") as String
 val projectDesc = project.property("projectDesc") as String
-val ossrhUsername = project.property("ossrhUsername") as String
-val ossrhPassword = project.property("ossrhPassword") as String
 
 dokka {
   dokkaPublications.html {
@@ -27,85 +21,37 @@ tasks.register<Zip>("dokkaZip") {
   dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
-val javadocJar = tasks.register<Jar>("javadocJar") {
-  description = "Create a JAR archive of the Dokka-generated Javadoc documentation."
-  archiveClassifier.set("javadoc")
-  from(layout.buildDirectory.dir("dokka/html"))
-  dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
-}
+mavenPublishing {
+  publishToMavenCentral(automaticRelease = true)
 
-val sourcesJar = tasks.register<Jar>("sourcesJar") {
-  description = "Create a JAR archive of the source code."
-  from(project.the<SourceSetContainer>().named("main").get().allSource)
-  archiveClassifier.set("sources")
-}
+  signAllPublications()
 
-configure<PublishingExtension> {
-  repositories {
-    maven {
-      name = "maven"
-      val releasesRepoUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-      val snapshotsRepoUrl = uri("https://oss.sonatype.org/content/repositories/snapshots/")
-      url = if (project.version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+  coordinates(project.property("libGroup") as String, projectName, version.toString())
 
-      credentials {
-        username = ossrhUsername
-        password = ossrhPassword
+  pom {
+    name.set(projectName)
+    description.set(projectDesc)
+    url.set("https://github.com/Quillraven/ktx/")
+
+    licenses {
+      license {
+        name.set("CC0-1.0")
+        url.set("https://creativecommons.org/publicdomain/zero/1.0/")
       }
     }
-  }
 
-  publications {
-    create<MavenPublication>("mavenKtx") {
-      artifactId = projectName
-      from(components["kotlin"])
-      artifact(sourcesJar)
-      artifact(javadocJar)
+    scm {
+      connection.set("scm:git:git@github.com:Quillraven/ktx.git")
+      developerConnection.set("scm:git:git@github.com:Quillraven/ktx.git")
+      url.set("https://github.com/Quillraven/ktx/")
+    }
 
-      pom {
-        name.set(projectName)
-        description.set(projectDesc)
-        url.set("https://libktx.github.io/")
-
-        licenses {
-          license {
-            name.set("CC0-1.0")
-            url.set("https://creativecommons.org/publicdomain/zero/1.0/")
-          }
-        }
-
-        scm {
-          connection.set("scm:git:git@github.com:libktx/ktx.git")
-          developerConnection.set("scm:git:git@github.com:libktx/ktx.git")
-          url.set("https://github.com/libktx/ktx/")
-        }
-
-        developers {
-          developer {
-            id.set("mj")
-            name.set("MJ")
-          }
-        }
+    developers {
+      developer {
+        id.set("Quillraven")
+        name.set("Simon Klausner")
       }
     }
-  }
-}
-
-val isReleaseVersion = !project.version.toString().endsWith("SNAPSHOT")
-
-tasks.withType<Sign> {
-  onlyIf { isReleaseVersion }
-}
-
-signing {
-  setRequired { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-  sign(extensions.getByType(PublishingExtension::class.java).publications["mavenKtx"])
-}
-
-tasks.register("uploadSnapshot") {
-  description = "Upload a SNAPSHOT version of the library to the Maven repository."
-  if (!isReleaseVersion) {
-    finalizedBy(tasks.named("publishAllPublicationsToMavenRepository"))
   }
 }
 
@@ -125,4 +71,3 @@ afterEvaluate {
     }
   }
 }
-

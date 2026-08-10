@@ -25,9 +25,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
     - name: Gradle wrapper validation
       uses: gradle/wrapper-validation-action@v3
-    - name: Build
-      run: ./gradlew assemble install -x dokkaGenerate -x dokkaZip
-    - name: Tests
-      run: ./gradlew check --continue
+    - name: Build and test
+      run: ./gradlew build --continue
       env:
         TEST_PROFILE: ci

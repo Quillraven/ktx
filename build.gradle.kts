@@ -2,7 +2,6 @@ plugins {
   distribution
   alias(libs.plugins.dokka)
   alias(libs.plugins.kotlin) apply false
-  alias(libs.plugins.nexus.publish)
 }
 
 // Aggregates the Dokka documentation of all subprojects into a single multi-module HTML output.
@@ -35,20 +34,7 @@ dependencies {
   dokka(project(":vis-style"))
 }
 
-val libGroup = project.property("libGroup") as String
-val ossrhUsername = project.property("ossrhUsername") as String
-val ossrhPassword = project.property("ossrhPassword") as String
-
-nexusPublishing {
-  repositories {
-    sonatype {
-      username.set(ossrhUsername)
-      password.set(ossrhPassword)
-    }
-  }
-}
-
-val linter = configurations.create("linter") {
+val linter: Configuration = configurations.create("linter") {
   isCanBeConsumed = false
   isCanBeResolved = true
 }
