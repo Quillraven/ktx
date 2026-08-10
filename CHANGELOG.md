@@ -1,5 +1,15 @@
 _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob/master/CHANGES)._
 
+#### 1.14.2-rc1
+
+- **[UPDATE]** Updated to libGDX 1.14.2.
+- **[UPDATE]** Updated to Kotlin 2.4.10.
+- **[UPDATE]** Updated to Kotlin Coroutines 1.11.0.
+- **[UPDATE]** Updated to VisUI 1.5.9.
+- **[UPDATE]** Updated to Dokka 2.2.0.
+- **[UPDATE]** Updated to Gradle 9.7.0.
+- **[MISC]** The project is now maintained as a [community fork](https://github.com/libktx/ktx) of the original LibKTX repository.
+
 #### 1.13.1-rc1
 
 - **[UPDATE]** Updated to libGDX 1.13.1.
