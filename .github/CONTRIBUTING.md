@@ -48,7 +48,7 @@ in `README.md` files to make it easier to try them out.
 ## Working from sources
 
 ```bash
-git clone https://github.com/libktx/ktx.git
+git clone https://github.com/Quillraven/ktx.git
 cd ktx
 git checkout develop
 ```
@@ -67,11 +67,11 @@ Some useful Gradle tasks include:
 - `check` - runs all tests in all projects.
 - `clean` - removes the `build` directories, which forces rebuilds of the modules.
 - `distZip` - prepares a zip archive with all jars in `build/distributions` folder. Useful for releases.
-- `publish` - pushes the archives to _Maven Central_ or the snapshot repository, depending on the
-[version](../version.txt). Requires complete `gradle.properties` with archive signing and _Sonatype_ logging data.
-- `closeAndReleaseRepository` - closes and releases the Nexus repository. Should be run after `publish` in case of
-a non-snapshot upload to _Maven Central_. Might fail at times on the release task; running `releaseRepository`
-separately should fix the issue.
+- `publishToMavenCentral` - pushes the archives to _Maven Central_ or the snapshot repository, depending on the
+[version](../version.txt). Configured by the [vanniktech Maven Publish plugin](https://github.com/vanniktech/gradle-maven-publish-plugin)
+with automatic release enabled. Requires the `OSSRH_USERNAME`, `OSSRH_TOKEN`, `SIGNING_KEY_ID`, `SIGNING_PASSWORD`
+and `SIGNING_KEY` project properties for _Sonatype_ authentication and in-memory archive signing. When running through
+the [publish](workflows/publish.yml) workflow these are supplied as GitHub Actions secrets.
 
 ### Adding a new KTX module
 
@@ -104,7 +104,7 @@ can consist of the following sections:
 - Add _Maven Central_ badge to the top of the `README.md` to ease inclusion of the library:
 
 ```markdown
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-your-module.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-your-module)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-your-module.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-your-module)
 ```
 
 - Your final module structure should roughly match this schema:
@@ -135,7 +135,7 @@ Major dependencies include:
 
 - **libGDX**: update the `gdx` version in the version catalog and libGDX version in the tag on the top of the 
 [README.md](../README.md) file. Note that updating libGDX also affects the **KTX** version and milestones, so make sure
-to update the [version.txt](../version.txt) and [milestones](https://github.com/libktx/ktx/milestones) as well. After
+to update the [version.txt](../version.txt) and [milestones](https://github.com/Quillraven/ktx/milestones) as well. After
 the release, update GitHub project's `Custom properties`.
 - **Kotlin**: update the `kotlin` version in the version catalog and the Kotlin tag in the [README.md](../README.md).
 After the release, update GitHub project's `Custom properties`.
@@ -163,17 +163,17 @@ All the major dependencies updates should be added to the [changelog](../CHANGEL
 
 - Create a new issue on GitHub. Include the number of the issue in commit messages of all commits related to the release.
 Apply `dev` label and milestone corresponding to the libGDX version. An example can be found
-[here](https://github.com/libktx/ktx/issues/191).
+[here](https://github.com/Quillraven/ktx/issues).
 - Change `libVersion` setting in the [`version.txt`](../version.txt). **KTX** uses the same versioning schema as libGDX
 (mimicking the libGDX version that it was compiled against) with a suffix depending on the version status.
 - Create a pull request from the `develop` branch to the `master` branch. Review and merge the changes to the `master`
 branch.
 - Checkout the `master` branch. Fetch the latest changes.
-- Run `gradle build publish closeAndReleaseRepository` to push artifacts to _Maven Central_. Note that the Maven plugin
-has its issues and might fail with an error, but usually the release will be successful. You can check if the staging
-repository was properly close, promoted and released at [Nexus Repository Manager](https://oss.sonatype.org/).
-- Run `gradle distZip` to prepare an archive with **KTX** sources, compiled binary and documentation.
-- Upload the archive to [releases](https://github.com/libktx/ktx/releases) section. The tag should be made from the
+- Run `./gradlew publishToMavenCentral` to push artifacts to _Maven Central_. The deployment is automatically released
+thanks to the `automaticRelease` setting of the vanniktech Maven Publish plugin. You can track the deployment status at
+[central.sonatype.com](https://central.sonatype.com/) under _Publishing_.
+- Run `./gradlew distZip` to prepare an archive with **KTX** sources, compiled binary and documentation.
+- Upload the archive to [releases](https://github.com/Quillraven/ktx/releases) section. The tag should be made from the
 `master` branch and its name should match the released version. Name of the release should match `KTX $libVersion`.
 Add a short release summary and copy the latest [changelog](../CHANGELOG.md) entries to the release description.
 - If there are any known issues with the previous or current versions, please attach additional _Known issues:_ section
@@ -190,26 +190,26 @@ match the used libGDX version followed by the `-SNAPSHOT` suffix.
 
 - Make sure the [`version.txt`](../version.txt) ends with the `-SNAPSHOT` suffix and matches the libGDX version
 that the library was compiled against.
-- Run `gradle build uploadSnapshot` to push artifacts to _Sonatype_ snapshots repository. This task will do nothing
-if the current [version](../version.txt) is not a snapshot to avoid accidentally pushing a stable release.
+- Trigger the [publish](workflows/publish.yml) workflow manually or push to the `master` branch to run it
+automatically after a successful `build` run. It runs `./gradlew publishToMavenCentral`, and the vanniktech Maven
+Publish plugin automatically targets the snapshot repository for `-SNAPSHOT` versions, so no additional task or
+repository configuration is required.
 
-Note that snapshots are automatically uploaded to Maven Central (OSS Sonatype)
-[snapshots repository](https://oss.sonatype.org/content/repositories/snapshots/io/github/libktx/) after pushing
-to the `develop` branch.
+Note that snapshots are published to the Maven Central snapshots repository under the `io.github.quillraven.libktx`
+group.
 
 #### Automated tasks
 
-Tasks automated with [GitHub actions](https://github.com/libktx/ktx/actions):
+Tasks automated with [GitHub actions](https://github.com/Quillraven/ktx/actions):
 
 * [build](workflows/build.yml) - compiles and tests all **KTX** modules. Triggered by pushing and setting up pull requests
 to `master` and `develop` branches.
-* [upload-snapshot](workflows/upload-snapshot.yml) - compiles all **KTX** modules and uploads a new snapshot release.
-Triggered by pushing to the `develop` branch.
+* [publish](workflows/publish.yml) - publishes all **KTX** modules to Maven Central (or the snapshot repository for
+`-SNAPSHOT` versions) with the [vanniktech Maven Publish plugin](https://github.com/vanniktech/gradle-maven-publish-plugin).
+Triggered automatically after a successful `build` run on the `master` branch, or manually via `workflow_dispatch`.
+Requires the `OSSRH_USERNAME`, `OSSRH_TOKEN`, `SIGNING_KEY_ID`, `SIGNING_PASSWORD` and `SIGNING_KEY` repository
+secrets for authentication and in-memory archive signing.
 * [publish-documentation](workflows/publish-documentation.yml) - builds and replaces the Dokka documentation published
-to [the official website](https://libktx.github.io/ktx/). Triggered by pushing to the `master` branch, which is
+to the [GitHub pages](https://quillraven.github.io/ktx/). Triggered by pushing to the `master` branch, which is
 generally only done before stable releases.
-- [publish-project-samples](workflows/publish-project-samples.yml) - generates sample projects with
-[gdx-liftoff](https://github.com/tommyettinger/gdx-liftoff) based on the latest **KTX** version from the `master`
-branch, and pushes them to the [ktx-sample-project](https://github.com/libktx/ktx-sample-project) and
-[ktx-sample-web-project](https://github.com/libktx/ktx-sample-web-project) repositories. Triggered by creating new
-release tags.
+
