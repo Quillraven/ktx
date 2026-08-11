@@ -1,9 +1,9 @@
-[![GitHub Build](https://github.com/libktx/ktx/workflows/build/badge.svg)](https://github.com/libktx/ktx/actions?query=workflow%3Abuild)
+[![GitHub Build](https://github.com/Quillraven/ktx/workflows/build/badge.svg)](https://github.com/Quillraven/ktx/actions?query=workflow%3Abuild)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.4.10-orange.svg)](http://kotlinlang.org/)
 [![libGDX](https://img.shields.io/badge/libgdx-1.14.2-red.svg)](https://libgdx.com/)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-async.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.libktx%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-async.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.quillraven.libktx%22)
 
-[![KTX](.github/ktx-logo.png "KTX")](http://libktx.github.io)
+[![KTX](.github/ktx-logo.png "KTX")](https://quillraven.github.io/ktx/)
 
 _**K**o**t**lin extensions for libGD**X**._
 
@@ -218,7 +218,7 @@ support to a libGDX application.
 All **KTX** modules are uploaded to _Maven Central_ and are fully compatible with the Gradle build tool, which is used
 in libGDX projects by default.
 
-The libraries are published under the `io.github.libktx` group and are named with the `ktx-` prefix. You can find
+The libraries are published under the `io.github.quillraven.libktx` group and are named with the `ktx-` prefix. You can find
 a complete list of KTX modules in the [previous section](#modules). As an example, including the [app](app) module
 with the `ktx-app` identifier would require the following changes in your `build.gradle` or `build.gradle.kts` file:
 
@@ -228,11 +228,11 @@ with the `ktx-app` identifier would require the following changes in your `build
 // Groovy DSL:
 ext {
   // Update this version to match the latest KTX release:
-  ktxVersion = '1.13.1-rc1'
+  ktxVersion = '1.14.2-rc1'
 }
 
 dependencies {
-  api group: 'io.github.libktx', name: 'ktx-app', version: ktxVersion
+  api group: 'io.github.quillraven.libktx', name: 'ktx-app', version: ktxVersion
 }
 ```
 
@@ -242,10 +242,10 @@ dependencies {
 
 ```kotlin
 // Update this version to match the latest KTX release:
-val ktxVersion = "1.13.1-rc1"
+val ktxVersion = "1.14.2-rc1"
 
 dependencies {
-  api(group = "io.github.libktx", name = "ktx-app", version = ktxVersion)
+  api(group = "io.github.quillraven.libktx", name = "ktx-app", version = ktxVersion)
 }
 ```
 
@@ -255,7 +255,7 @@ dependencies {
 
 You can find the latest **KTX** version on Maven Central:
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-app.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.libktx%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-app.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.quillraven.libktx%22)
 
 #### Platforms
 
@@ -284,35 +284,32 @@ versions can introduce breaking changes. Please read the [libGDX](https://github
 and [**KTX** change logs](CHANGELOG.md) before updating. When choosing the appropriate **KTX** version, always pick
 the latest release matching your current libGDX version.
 
-You can browse through our official releases [on Maven](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.libktx%22)
-and [on GitHub](https://github.com/libktx/ktx/releases).
+You can browse through our official releases [on Maven](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.quillraven.libktx%22)
+and [on GitHub](https://github.com/Quillraven/ktx/releases).
 
 Although **KTX** technically uses beta release tags, the official releases are considered suitable for production use.
 All modules are thoroughly tested with comprehensive test suites.
 
 #### Latest changes
 
-The [`master`](https://github.com/libktx/ktx/tree/master/) branch is the default branch of the repository. It represents
-the latest stable release of **KTX**. It ensures that the documentation in the repository is in sync with the latest
-released version.
+The [`master`](https://github.com/Quillraven/ktx/tree/master/) branch is the default branch of the repository. It represents
+the latest stable release of **KTX**.
 
-The newest changes can be found on the [`develop`](https://github.com/libktx/ktx/tree/develop/) branch instead.
-
-The preview snapshot releases with the latest changes are uploaded automatically to the
-`https://oss.sonatype.org/content/repositories/snapshots/` repository. To use them in your application, add
-the following Maven repository, and change the suffix of the **KTX** version to `-SNAPSHOT`:
+The preview snapshot releases with the latest changes are published to the Maven Central snapshots repository. To use
+them in your application, add the following Maven repository, and change the suffix of the **KTX** version to
+`-SNAPSHOT`:
 
 <details><summary><code>build.gradle</code> <sub><b>Gradle Groovy DSL</b></sub></summary>
   
 ```groovy
 repositories {
   // Include your other repositories here.
-  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
 }
 
 ext {
   // Update this version to match the latest libGDX release:
-  ktxVersion = '1.13.1-SNAPSHOT'
+  ktxVersion = '1.14.2-SNAPSHOT'
 }
 ```
 
@@ -323,20 +320,20 @@ ext {
 ```kotlin
 repositories {
   // Include your other repositories here.
-  maven("https://oss.sonatype.org/content/repositories/snapshots/")
+  maven("https://central.sonatype.com/repository/maven-snapshots/")
 }
 
 // Update this version to match the latest libGDX release:
-val ktxVersion = "1.13.1-SNAPSHOT"
+val ktxVersion = "1.14.2-SNAPSHOT"
 ```
 
 </details>
 
 The full version of the latest snapshot release can be found on the
-[`develop`](https://github.com/libktx/ktx/blob/develop/version.txt) branch, and usually matches the latest
+[`develop`](https://github.com/Quillraven/ktx/blob/develop/version.txt) branch, and usually matches the latest
 stable libGDX release. Snapshot releases for the nightly libGDX builds are not available.
 
-Note that even the snapshots are rather stable, as the libraries are not pushed to _Maven Central_ unless they pass
+Note that even the snapshots are rather stable, as the libraries are only published after passing
 their extensive test suites. However, the public APIs in snapshot libraries might be changed prior to a stable release.
 
 ## Documentation
@@ -350,13 +347,13 @@ Browse through the directories in the root folder to find out more about each li
 
 All functionalities are documented with Kotlin _KDocs_. You can access the source documentation by:
 
-- Viewing the generated Dokka files hosted on the [project website](https://libktx.github.io/docs/).
-- Extracting the `doc` folders with Dokka files from the [release archives](https://github.com/libktx/ktx/releases).
+- Viewing the generated Dokka files hosted on the [project website](https://quillraven.github.io/ktx/).
+- Extracting the `doc` folders with Dokka files from the [release archives](https://github.com/Quillraven/ktx/releases).
 - Reading the sources directly.
 
 ### Links
 
-[**KTX** wiki](https://github.com/libktx/ktx/wiki) lists some useful resources that can help you get started.
+[**KTX** wiki](https://github.com/Quillraven/ktx/wiki) lists some useful resources that can help you get started.
 
 Most official guides and code examples in this repository assume that the reader is at least a bit familiar with
 the libGDX API. If you are just getting to know the framework, it might be helpful to go through
@@ -366,14 +363,14 @@ the libGDX API. If you are just getting to know the framework, it might be helpf
 
 Suggestions, questions, typo fixes, documentation improvements and code contributions are always welcome.
 
-Do not hesitate to [start a discussion](https://github.com/libktx/ktx/discussions) with questions about the framework.
+Do not hesitate to [start a discussion](https://github.com/Quillraven/ktx/discussions) with questions about the framework.
 Feel free to advertise your **KTX** project, propose new features, discuss game jams, or even create a personal devlog.
 
 If you would like to contribute, please read [the contribution guideline](.github/CONTRIBUTING.md), and browse through
-[the active issues](https://github.com/libktx/ktx/issues). The [`develop`](https://github.com/libktx/ktx/tree/develop/)
+[the active issues](https://github.com/Quillraven/ktx/issues). The [`develop`](https://github.com/Quillraven/ktx/tree/develop/)
 is the active development branch. When creating pull requests, make sure to choose `develop` as the target branch.
 
-You can check the list of the contributors via [GitHub insights](https://github.com/libktx/ktx/graphs/contributors)
+You can check the list of the contributors via [GitHub insights](https://github.com/Quillraven/ktx/graphs/contributors)
 or [the contributors list](.github/CONTRIBUTORS.md).
 
 ### Licensing
