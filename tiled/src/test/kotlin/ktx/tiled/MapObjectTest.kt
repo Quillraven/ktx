@@ -2,19 +2,11 @@ package ktx.tiled
 
 import com.badlogic.gdx.maps.MapObject
 import com.badlogic.gdx.maps.MapObjects
-import com.badlogic.gdx.maps.objects.CircleMapObject
-import com.badlogic.gdx.maps.objects.EllipseMapObject
-import com.badlogic.gdx.maps.objects.PolygonMapObject
-import com.badlogic.gdx.maps.objects.PolylineMapObject
-import com.badlogic.gdx.maps.objects.RectangleMapObject
-import com.badlogic.gdx.maps.objects.TextureMapObject
+import com.badlogic.gdx.maps.objects.*
 import com.badlogic.gdx.math.Circle
 import com.badlogic.gdx.math.Ellipse
 import com.badlogic.gdx.math.Rectangle
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Test
 
 class MapObjectTest {
@@ -113,6 +105,20 @@ class MapObjectTest {
     val rectObject = RectangleMapObject()
 
     assertEquals(Rectangle(0f, 0f, 1f, 1f), rectObject.shape)
+  }
+
+  @Test
+  fun `should retrieve shape from MapObject with Point type`() {
+    val pointObject = PointMapObject()
+
+    assertEquals(Rectangle(0f, 0f, 0f, 0f), pointObject.shape)
+  }
+
+  @Test
+  fun `should retrieve shape from MapObject with Text type`() {
+    val textObject = TextMapObject()
+
+    assertEquals(Rectangle(0f, 0f, 1f, 1f), textObject.shape)
   }
 
   @Test(expected = MissingShapeException::class)
