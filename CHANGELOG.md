@@ -9,6 +9,8 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
 - **[UPDATE]** Updated to Dokka 2.2.0.
 - **[UPDATE]** Updated to Gradle 9.7.0.
 - **[MISC]** The project is now maintained as a [community fork](https://github.com/libktx/ktx) of the original LibKTX repository.
+- **[FEATURE]** (`ktx-tiled`) `MapObject.shape` now also supports `PointMapObject` and `TextMapObject`. Point objects
+  are returned as a `Rectangle` with zero width and height, text objects as their `Rectangle`.
 
 #### 1.13.1-rc1
 
