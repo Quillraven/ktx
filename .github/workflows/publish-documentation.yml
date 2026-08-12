@@ -3,6 +3,9 @@ name: publish-documentation
 on:
   push:
     branches: [ master ]
+    paths:
+      - '**.kt'
+      - '**.kts'
   workflow_dispatch:
 
 jobs:
