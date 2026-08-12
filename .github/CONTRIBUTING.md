@@ -8,9 +8,9 @@ Issues and discussions are among the fastest way to contact the developers.
 
 ## Pull requests
 
-- The latest changes are always in the `develop` branch. `master` branch always matches the latest stable release. Make
-sure to checkout `develop` branch before starting your work and set `develop` as the target branch before creating
-a pull request.
+- The latest changes are always in the `master` branch, which is automatically published as a snapshot release after
+each successful build. Make sure to check out the `master` branch before starting your work and set `master` as the
+target branch before creating a pull request.
 - Include issue or pull request IDs in related commit messages. This makes it easier to locate more information about
 the changes. For example:
 
@@ -50,7 +50,6 @@ in `README.md` files to make it easier to try them out.
 ```bash
 git clone https://github.com/Quillraven/ktx.git
 cd ktx
-git checkout develop
 ```
 
 ### Gradle
@@ -165,12 +164,13 @@ All the major dependencies updates should be added to the [changelog](../CHANGEL
 Apply `dev` label and milestone corresponding to the libGDX version. An example can be found
 [here](https://github.com/Quillraven/ktx/issues).
 - Change `libVersion` setting in the [`version.txt`](../version.txt). **KTX** uses the same versioning schema as libGDX
-(mimicking the libGDX version that it was compiled against) with a suffix depending on the version status.
-- Create a pull request from the `develop` branch to the `master` branch. Review and merge the changes to the `master`
+(mimicking the libGDX version that it was compiled against) with a suffix depending on the version status. Stable
+releases are marked with an `-rc` suffix, for example `1.14.2-rc1` or `1.14.2-rc2`, and are tagged on the `master`
 branch.
-- Checkout the `master` branch. Fetch the latest changes.
-- Run `./gradlew publishToMavenCentral` to push artifacts to _Maven Central_. The deployment is automatically released
-thanks to the `automaticRelease` setting of the vanniktech Maven Publish plugin. You can track the deployment status at
+- Push the changes to the `master` branch. The [publish](workflows/publish.yml) workflow runs automatically after a
+successful [build](workflows/build.yml) run and executes `./gradlew publishToMavenCentral`. As the version no longer
+ends with the `-SNAPSHOT` suffix, the artifacts are released to _Maven Central_ thanks to the `automaticRelease`
+setting of the vanniktech Maven Publish plugin. You can track the deployment status at
 [central.sonatype.com](https://central.sonatype.com/) under _Publishing_.
 - Run `./gradlew distZip` to prepare an archive with **KTX** sources, compiled binary and documentation.
 - Upload the archive to [releases](https://github.com/Quillraven/ktx/releases) section. The tag should be made from the
@@ -182,9 +182,9 @@ with the following labels:
   - **[INCOMPATIBILITY]** - incompatibility with one of the previously supported or currently released versions of one
   of the major dependencies.
   - **[REMOVAL]** - temporary or permanent removal of a major feature (e.g. disabling a module for a single release).
-- Checkout the `develop` branch.
-- Change `libVersion` setting in the [`version.txt`](../version.txt) to the next snapshot release. The name should
-match the used libGDX version followed by the `-SNAPSHOT` suffix.
+- Change `libVersion` setting in the [`version.txt`](../version.txt) back to the next snapshot release. The name should
+match the used libGDX version followed by the `-SNAPSHOT` suffix, and push the changes to the `master` branch. The
+changes on `master` will again be published as snapshot releases until the next stable release is tagged.
 
 #### Snapshot release
 
@@ -203,13 +203,12 @@ group.
 Tasks automated with [GitHub actions](https://github.com/Quillraven/ktx/actions):
 
 * [build](workflows/build.yml) - compiles and tests all **KTX** modules. Triggered by pushing and setting up pull requests
-to `master` and `develop` branches.
+to the `master` branch.
 * [publish](workflows/publish.yml) - publishes all **KTX** modules to Maven Central (or the snapshot repository for
 `-SNAPSHOT` versions) with the [vanniktech Maven Publish plugin](https://github.com/vanniktech/gradle-maven-publish-plugin).
 Triggered automatically after a successful `build` run on the `master` branch, or manually via `workflow_dispatch`.
 Requires the `OSSRH_USERNAME`, `OSSRH_TOKEN`, `SIGNING_KEY_ID`, `SIGNING_PASSWORD` and `SIGNING_KEY` repository
 secrets for authentication and in-memory archive signing.
 * [publish-documentation](workflows/publish-documentation.yml) - builds and replaces the Dokka documentation published
-to the [GitHub pages](https://quillraven.github.io/ktx/). Triggered by pushing to the `master` branch, which is
-generally only done before stable releases.
+to the [GitHub pages](https://quillraven.github.io/ktx/). Triggered by pushing to the `master` branch.
 

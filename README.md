@@ -292,8 +292,9 @@ All modules are thoroughly tested with comprehensive test suites.
 
 #### Latest changes
 
-The [`master`](https://github.com/Quillraven/ktx/tree/master/) branch is the default branch of the repository. It represents
-the latest stable release of **KTX**.
+The [`master`](https://github.com/Quillraven/ktx/tree/master/) branch is the default branch of the repository and holds
+the latest changes. After each successful build on `master`, the changes are automatically published as snapshot
+releases. From time to time, `master` is tagged to mark an official release, for example `1.14.2-rc1`.
 
 The preview snapshot releases with the latest changes are published to the Maven Central snapshots repository. To use
 them in your application, add the following Maven repository, and change the suffix of the **KTX** version to
@@ -329,9 +330,9 @@ val ktxVersion = "1.14.2-SNAPSHOT"
 
 </details>
 
-The full version of the latest snapshot release can be found on the
-[`develop`](https://github.com/Quillraven/ktx/blob/develop/version.txt) branch, and usually matches the latest
-stable libGDX release. Snapshot releases for the nightly libGDX builds are not available.
+The full version of the latest snapshot release can be found in the
+[`version.txt`](https://github.com/Quillraven/ktx/blob/master/version.txt) file on the `master` branch, and usually
+matches the latest stable libGDX release. Snapshot releases for the nightly libGDX builds are not available.
 
 Note that even the snapshots are rather stable, as the libraries are only published after passing
 their extensive test suites. However, the public APIs in snapshot libraries might be changed prior to a stable release.
@@ -367,8 +368,8 @@ Do not hesitate to [start a discussion](https://github.com/Quillraven/ktx/discus
 Feel free to advertise your **KTX** project, propose new features, discuss game jams, or even create a personal devlog.
 
 If you would like to contribute, please read [the contribution guideline](.github/CONTRIBUTING.md), and browse through
-[the active issues](https://github.com/Quillraven/ktx/issues). The [`develop`](https://github.com/Quillraven/ktx/tree/develop/)
-is the active development branch. When creating pull requests, make sure to choose `develop` as the target branch.
+[the active issues](https://github.com/Quillraven/ktx/issues). The [`master`](https://github.com/Quillraven/ktx/tree/master/)
+is the active development branch. When creating pull requests, make sure to choose `master` as the target branch.
 
 You can check the list of the contributors via [GitHub insights](https://github.com/Quillraven/ktx/graphs/contributors)
 or [the contributors list](.github/CONTRIBUTORS.md).
