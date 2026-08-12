@@ -8,9 +8,14 @@ on:
       - '**.kts'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     permissions:
       contents: write
@@ -30,7 +35,7 @@ jobs:
       - name: Gradle setup
         uses: gradle/actions/setup-gradle@v4
       - name: Dokka
-        run: ./gradlew :dokkaGenerate
+        run: ./gradlew :dokkaGenerate --no-configuration-cache
       - name: Publish GitHub pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
