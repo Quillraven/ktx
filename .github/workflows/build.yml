@@ -5,10 +5,13 @@ on:
     branches: [ master ]
     paths-ignore:
       - '**.md'
+      - version.txt
   pull_request:
     branches: [ master ]
     paths-ignore:
       - '**.md'
+      - version.txt
+  workflow_dispatch:
 
 concurrency:
   group: build-${{ github.ref }}
