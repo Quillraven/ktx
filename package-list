@@ -48,6 +48,8 @@ module:script
 ktx.script
 module:style
 ktx.style
+module:textratypist
+ktx.textratypist
 module:tiled
 ktx.tiled
 module:vis
