@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-math.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-math)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-math.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-math)
 
 # KTX: Math utilities
 

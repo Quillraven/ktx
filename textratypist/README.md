@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-textratypist.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-textratypist)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-textratypist.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-textratypist)
 
 # KTX: `TextraTypist` type-safe builders
 

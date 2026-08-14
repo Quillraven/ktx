@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-inject.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-inject)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-inject.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-inject)
 
 # KTX: Dependency injection
 

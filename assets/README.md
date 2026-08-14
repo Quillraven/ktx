@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-assets.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-assets)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-assets.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-assets)
 
 # KTX: Assets management
 

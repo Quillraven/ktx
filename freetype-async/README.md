@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-freetype-async.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-freetype-async)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-freetype-async.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-freetype-async)
 
 # KTX: FreeType font asynchronous loading utilities
 

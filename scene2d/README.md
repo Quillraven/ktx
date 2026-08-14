@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-scene2d.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-scene2d)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-scene2d.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-scene2d)
 
 # KTX: `Scene2D` type-safe builders
 

@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-graphics.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-graphics)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-graphics.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-graphics)
 
 # KTX: Graphics utilities
 

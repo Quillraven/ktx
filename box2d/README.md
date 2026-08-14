@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-box2d.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-box2d)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-box2d.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-box2d)
 
 # KTX: `Box2D` physics engine utilities
 

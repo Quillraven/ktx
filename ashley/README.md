@@ -1,5 +1,5 @@
 [![Ashley](https://img.shields.io/badge/ashley-1.7.4-red.svg)](https://github.com/libgdx/ashley)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-ashley.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-ashley)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-ashley.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-ashley)
 
 # KTX: `Ashley` ECS utilities
 

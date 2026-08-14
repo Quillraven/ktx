@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-style.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-style)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-style.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-style)
 
 # KTX: Style builders
 

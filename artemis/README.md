@@ -1,5 +1,5 @@
 [![Artemis-odb](https://img.shields.io/badge/artemis--odb-2.3.0-red.svg)](https://github.com/junkdog/artemis-odb)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-artemis.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-artemis)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-artemis.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-artemis)
 
 # KTX: `Artemis-odb` ECS utilities
 

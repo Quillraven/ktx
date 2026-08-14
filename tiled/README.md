@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-tiled.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-tiled)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-tiled.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-tiled)
 
 # KTX: Tiled map editor utilities
 

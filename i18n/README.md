@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-i18n.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-i18n)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-i18n.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-i18n)
 
 # KTX: Internationalization and localization utilities
 

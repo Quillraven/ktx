@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.libktx/ktx-actors.svg)](https://search.maven.org/artifact/io.github.libktx/ktx-actors)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-actors.svg)](https://search.maven.org/artifact/io.github.quillraven.libktx/ktx-actors)
 
 # KTX: General `Scene2D` utilities
 
