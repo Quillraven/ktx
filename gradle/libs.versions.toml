@@ -21,6 +21,7 @@ spek = "1.1.5"
 kotlintest = "2.0.7"
 junitPlatformLauncher = "1.14.4"
 freePortFinder = "1.0"
+textraTypist = "2.4.2"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -43,6 +44,7 @@ gdx-backend-lwjgl3 = { module = "com.badlogicgames.gdx:gdx-backend-lwjgl3", vers
 ashley = { module = "com.badlogicgames.ashley:ashley", version.ref = "ashley" }
 artemis-odb = { module = "net.onedaybeard.artemis:artemis-odb", version.ref = "artemisOdb" }
 vis-ui = { module = "com.kotcrab.vis:vis-ui", version.ref = "visUi" }
+textra-typist = { module = "com.github.tommyettinger:textratypist", version.ref = "textraTypist" }
 
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }

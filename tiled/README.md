@@ -7,24 +7,25 @@
 ### Why?
 
 LibGDX brings its own set of Tiled map utilities, including loading and handling of maps exported from the editor.
-However, the API contains many wrapped non-standard collections, which makes accessing the loaded maps cumbersome.
-With Kotlin's reified types and extension methods, the Tiled API can be significantly improved.
+However, the API contains many wrapped non-standard collections, which makes accessing the loaded maps cumbersome. With
+Kotlin's reified types and extension methods, the Tiled API can be significantly improved.
 
 ### Guide
 
 #### `MapProperties`
 
-In many maps that you create with Tiled you will need to access the properties defined in the editor.
-They are either defined on map, layer, object, tileset or tile level. The original libGDX `MapProperties`
-class returns untyped `Object` (or Kotlin's `Any!`) whenever retrieving a property and is therefore not ideal
-and unsafe.
+In many maps that you create with Tiled you will need to access the properties defined in the editor. They are either
+defined on map, layer, object, tileset or tile level. The original libGDX `MapProperties`
+class returns untyped `Object` (or Kotlin's `Any!`) whenever retrieving a property and is therefore not ideal and
+unsafe.
 
 To improve this, multiple extension methods were added to `TiledMap`, `MapLayer`, `MapObject`, `TiledMapTileSet`
-and `TiledMapTile`. Also, a new `MissingPropertyException` to handle missing properties with an explicit exception.
-The new additions include:
+and `TiledMapTile`. Also, a new `MissingPropertyException` to handle missing properties with an explicit exception. The
+new additions include:
+
 - `property(key: String): T`: returns an existing property or throws a `MissingPropertyException`
-- `property(key: String, defaultValue: T): T`: returns the value of a property or the default value
-if the property is missing.
+- `property(key: String, defaultValue: T): T`: returns the value of a property or the default value if the property is
+  missing.
 - `propertyOrNull(key: String): T?`: same as `property(key)`, but returns `null` instead of throwing an exception.
 - `containsProperty(key: String): Boolean`: returns `true` if and only if the property exists.
 
@@ -33,9 +34,9 @@ Unfortunately, since the original class already defines `get` method, type-safe 
 
 #### `MapObject`
 
-In addition to the property extensions, `MapObject` automatically comes with a set of standard properties.
-They allow to retrieve the properties automatically set and initialized by the `TmxMapLoader`.
-New extension fields include:
+In addition to the property extensions, `MapObject` automatically comes with a set of standard properties. They allow to
+retrieve the properties automatically set and initialized by the `TmxMapLoader`. New extension fields include:
+
 - `id`
 - `x`
 - `y`
@@ -44,16 +45,17 @@ New extension fields include:
 - `rotation`: this property is only available if you rotate your object in Tiled.
 - `type`: this property is only available if you enter a text for the `Type` property in Tiled.
 
-Almost all objects are related to a shape except for  `TextureMapObject`. Sometimes you need
-access to these shapes like e.g. when creating [Box2D](../box2d) bodies out of those objects. For that reason
-a new extension field was added:
+Almost all objects are related to a shape except for  `TextureMapObject`. Sometimes you need access to these shapes like
+e.g. when creating [Box2D](../box2d) bodies out of those objects. For that reason a new extension field was added:
+
 - `shape`: returns the `Shape2D` of a map object. This can either be a `Rectangle`, `Circle`,
-`Ellipse`, `Polyline` or `Polygon`. If there is an object that is not linked to a shape then a
-`MissingShapeException` is thrown.
+  `Ellipse`, `Polyline` or `Polygon`. If there is an object that is not linked to a shape then a
+  `MissingShapeException` is thrown.
 
 #### `TiledMap`
 
 Similar to `MapObject`, there were several standard properties added to `TiledMap` as well:
+
 - `width`
 - `height`
 - `tileWidth`
@@ -65,19 +67,20 @@ Similar to `MapObject`, there were several standard properties added to `TiledMa
 - `staggerIndex`
 
 Two new extension methods will provide you with the total width and height of your map in pixels:
+
 - `totalWidth()`
 - `totalHeight()`
 
-The problems that we face with properties are also relevant in case of map layers. To improve layer handling API
-the following extensions were added:
+The problems that we face with properties are also relevant in case of map layers. To improve layer handling API the
+following extensions were added:
+
 - `contains(layerName: String)`: works as the `in` operator.
 - `layer(layerName: String)`: returns the layer or throws a `MissingLayerException` in case the layer does not exist.
 
-Inlined `forEachMapObject` extension method iterates over all `MapObject` instances present on the chosen
-map layer.
+Inlined `forEachMapObject` extension method iterates over all `MapObject` instances present on the chosen map layer.
 
-Inlined `forEachLayer` extension method iterates over all `MapLayer` instances of a specific type to execute
-a certain function on them.
+Inlined `forEachLayer` extension method iterates over all `MapLayer` instances of a specific type to execute a certain
+function on them.
 
 ### `MapLayers` and `MapObjects`
 
@@ -85,8 +88,7 @@ a certain function on them.
 
 ### `BatchTiledMapRenderer`
 
-`use` extension method to call `beginRender()` and `endRender()` automatically before
-your render logic.
+`use` extension method to call `beginRender()` and `endRender()` automatically before your render logic.
 
 ### Usage examples
 

@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     mavenLocal()
     mavenCentral()
     maven("https://central.sonatype.com/repository/maven-snapshots/")
+    maven("https://jitpack.io/")
   }
 }
 
@@ -39,6 +40,7 @@ include(
   "scene2d",
   "script",
   "style",
+  "textratypist",
   "tiled",
   "vis",
   "vis-style"

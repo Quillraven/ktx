@@ -104,6 +104,8 @@ Project contributors listed chronologically.
   * Reported a typo in the documentation.
 * [@deviodesign](https://github.com/deviodesign)
   * Created modules with DSLs for the [Artemis-odb](../artemis) and [gdxAI](../ai) libraries.
+* [@michaeloa](https://github.com/michaeloa)
+  * Author of the [textratypist](../textratypist) module. 
 
 ### Metrics
 

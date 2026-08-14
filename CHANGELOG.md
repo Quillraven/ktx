@@ -1,5 +1,11 @@
 _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob/master/CHANGES)._
 
+#### 1.14.2-rc2
+
+- **[FEATURE]** (`ktx-textratypist`) new **KTX** module with utilities and type-safe builders for TextraTypist animated text widgets.
+  - `textraLabel` factory method for creating plain `TextraLabel` instances.
+  - `typingLabel` factory method for creating animated `TypingLabel` instances.
+
 #### 1.14.2-rc1
 
 - **[UPDATE]** Updated to libGDX 1.14.2.

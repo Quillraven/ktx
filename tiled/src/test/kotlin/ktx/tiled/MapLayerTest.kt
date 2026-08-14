@@ -2,10 +2,7 @@ package ktx.tiled
 
 import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.maps.MapLayers
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Test
 
 class MapLayerTest {
