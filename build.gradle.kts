@@ -29,6 +29,7 @@ dependencies {
   dokka(project(":scene2d"))
   dokka(project(":script"))
   dokka(project(":style"))
+  dokka(project(":textratypist"))
   dokka(project(":tiled"))
   dokka(project(":vis"))
   dokka(project(":vis-style"))
