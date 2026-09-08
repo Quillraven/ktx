@@ -4,7 +4,9 @@ import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.maps.MapObject
 import com.badlogic.gdx.maps.MapProperties
 import com.badlogic.gdx.maps.tiled.TiledMap
+import com.badlogic.gdx.maps.tiled.TiledMapTile
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet
 
 /**
  * Extension method to directly access the [MapProperties] of a [TiledMap]. If the property
@@ -42,7 +44,7 @@ inline fun <reified T> TiledMap.propertyOrNull(key: String): T? = properties[key
  * Extension method to directly access the [MapProperties] of a [TiledMap] and its
  * [containsKey][MapProperties.containsKey] method.
  * @param key property name.
- * @return true if the property exists. Otherwise false.
+ * @return true if the property exists. Otherwise, false.
  */
 fun TiledMap.containsProperty(key: String) = properties.containsKey(key)
 
@@ -145,7 +147,7 @@ operator fun TiledMap.contains(layerName: String) = layers[layerName] != null
  */
 fun TiledMap.layer(layerName: String) =
   layers[layerName]
-    ?: throw MissingLayerException("Layer $layerName does not exist for map")
+    ?: throw MissingLayerException("Layer $layerName does not exist for map.")
 
 /**
  * Extension method to easily execute an action per [MapObject] of a given [MapLayer].
@@ -176,4 +178,25 @@ inline fun <reified T : MapLayer> TiledMap.forEachLayer(action: (T) -> Unit) {
       action(it as T)
     }
   }
+}
+
+/**
+ * Extension method to retrieve a [TiledMapTile] from the [TiledMap] by the tileset name and the
+ * local tile ID within that tileset. The [id] is the local tile ID as defined in the Tiled editor,
+ * and is automatically converted to the global tile ID using the tileset's `firstgid` property.
+ *
+ * @param tilesetName name of the [TiledMapTileSet].
+ * @param id local tile ID within the tileset.
+ * @return [TiledMapTile] matching the given tileset and local tile ID.
+ * @throws MissingTileSetException if the tileset with the given [tilesetName] does not exist.
+ * @throws MissingTileException if the tile with the computed global ID does not exist in the tileset.
+ */
+fun TiledMap.tileById(tilesetName: String, id: Int): TiledMapTile {
+  val tileSet = this.tileSets.getTileSet(tilesetName)
+    ?: throw MissingTileSetException("TileSet $tilesetName does not exist for map.")
+  val firstGid = tileSet.property<Int>("firstgid")
+  val tiledId = firstGid + id
+
+  return tileSet.getTile(tiledId)
+    ?: throw MissingTileException("Tile of id $tiledId does not exist for TileSet $tilesetName. Firstgid=$firstGid.")
 }

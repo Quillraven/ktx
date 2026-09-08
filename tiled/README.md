@@ -82,6 +82,10 @@ Inlined `forEachMapObject` extension method iterates over all `MapObject` instan
 Inlined `forEachLayer` extension method iterates over all `MapLayer` instances of a specific type to execute a certain
 function on them.
 
+The `tileById(tilesetName, id)` extension method retrieves a `TiledMapTile` from a given tileset by its local tile ID
+(as defined in the Tiled editor). It throws a `MissingTileSetException` if the tileset does not exist and a
+`MissingTileException` if the tile is not found.
+
 ### `MapLayers` and `MapObjects`
 
 `isEmpty` and `isNotEmpty` extension method to check if the specific collection is empty or not.
@@ -244,6 +248,21 @@ val map: TiledMap = getTiledMap()
 map.forEachLayer<MapLayer> { layer ->
   println(layer)
 }
+```
+
+Retrieving a tile of a tileset by its local tile ID:
+
+```kotlin
+import com.badlogic.gdx.maps.tiled.TiledMap
+import com.badlogic.gdx.maps.tiled.TiledMapTile
+import ktx.tiled.*
+
+val map: TiledMap = getAllTiles()
+val tilesetName = "terrain"
+
+// Retrieves the tile with local ID 2 from the "terrain" tileset.
+// The local ID is automatically converted to a global ID using the tileset's firstgid property.
+val tile: TiledMapTile = map.tileById(tilesetName, 2)
 ```
 
 Checking if `MapLayers` and `MapObjects` collections are empty:

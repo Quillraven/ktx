@@ -5,6 +5,8 @@ import com.badlogic.gdx.maps.MapObject
 import com.badlogic.gdx.maps.MapProperties
 import com.badlogic.gdx.maps.objects.TextureMapObject
 import com.badlogic.gdx.maps.tiled.TiledMap
+import com.badlogic.gdx.maps.tiled.TiledMapTile
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet
 import com.badlogic.gdx.utils.GdxRuntimeException
 
 /**
@@ -34,10 +36,28 @@ class MissingLayerException(
 ) : TiledException(message, cause)
 
 /**
+ * [GdxRuntimeException] that is thrown when trying to access a non-existing [TiledMapTileSet]
+ * of a [TiledMap] instance.
+ */
+class MissingTileSetException(
+  message: String,
+  cause: Throwable? = null,
+) : TiledException(message, cause)
+
+/**
  * [GdxRuntimeException] that is thrown when trying to access a shape of a [MapObject]
  * that do not have any shape such as the [TextureMapObject].
  */
 class MissingShapeException(
+  message: String,
+  cause: Throwable? = null,
+) : TiledException(message, cause)
+
+/**
+ * [GdxRuntimeException] that is thrown when trying to access a non-existing [TiledMapTile]
+ * of a [TiledMap] instance.
+ */
+class MissingTileException(
   message: String,
   cause: Throwable? = null,
 ) : TiledException(message, cause)

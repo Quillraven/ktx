@@ -1,11 +1,15 @@
 package ktx.tiled
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.maps.MapObject
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
@@ -38,6 +42,14 @@ class TiledMapTest {
       layers.add(
         MapLayer().apply {
           name = "layer-2"
+        },
+      )
+      tileSets.addTileSet(
+        TiledMapTileSet().apply {
+          name = "tileset-1"
+          properties.put("firstgid", 1)
+          putTile(1, StaticTiledMapTile(TextureRegion()))
+          putTile(2, StaticTiledMapTile(TextureRegion()))
         },
       )
     }
@@ -149,5 +161,21 @@ class TiledMapTest {
 
     assertEquals(2, counter)
     assertTrue(tiledMap.layers.all { !it.isVisible })
+  }
+
+  @Test
+  fun `should retrieve tile by local id from TiledMap`() {
+    assertNotNull(tiledMap.tileById("tileset-1", 0))
+    assertNotNull(tiledMap.tileById("tileset-1", 1))
+  }
+
+  @Test(expected = MissingTileSetException::class)
+  fun `should not retrieve tile from non-existing tileset of TiledMap`() {
+    tiledMap.tileById("non-existing", 0)
+  }
+
+  @Test(expected = MissingTileException::class)
+  fun `should not retrieve tile with non-existing local id from TiledMap`() {
+    tiledMap.tileById("tileset-1", 2)
   }
 }
