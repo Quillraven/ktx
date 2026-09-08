@@ -2,8 +2,8 @@
 <html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>setPackage</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <title>tileSet</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
     <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
       if (storage == null) {
@@ -18,22 +18,22 @@
         }
       }
     </script>
-<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
-<link href="../../../styles/style.css" rel="Stylesheet">
-<link href="../../../styles/main.css" rel="Stylesheet">
-<link href="../../../styles/prism.css" rel="Stylesheet">
-<link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
-<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
-<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
-<script type="text/javascript" src="../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
 <div class="root">
     <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
-<a class="library-name--link" href="../../../index.html" tabindex="1">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     ktx
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
@@ -42,7 +42,7 @@
         </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
-                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":script/main">jvm</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":tiled/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
                 <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
@@ -53,7 +53,7 @@
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":script/main" data-filter=":script/main">
+                                <input type="checkbox" class="checkbox--input" id=":tiled/main" data-filter=":tiled/main">
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
@@ -89,12 +89,12 @@
         </nav>
         <div id="resizer" class="resizer" data-item-type="BAR"></div>
         <div id="main" data-item-type="SECTION" role="main">
-<div class="main-content" data-page-type="member" id="content" pageids="script::ktx.script/KotlinScriptEngine/setPackage/#kotlin.String/PointingToDeclaration//1334376587">
-  <div class="breadcrumbs"><a href="../../index.html">script</a><span class="delimiter">/</span><a href="../index.html">ktx.script</a><span class="delimiter">/</span><a href="index.html">KotlinScriptEngine</a><span class="delimiter">/</span><span class="current">setPackage</span></div>
+<div class="main-content" data-page-type="member" id="content" pageids="tiled::ktx.tiled//tileSet/com.badlogic.gdx.maps.tiled.TiledMap#kotlin.String/PointingToDeclaration//19660132">
+  <div class="breadcrumbs"><a href="../index.html">tiled</a><span class="delimiter">/</span><a href="index.html">ktx.tiled</a><span class="delimiter">/</span><span class="current">tileSet</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>set</span><wbr><span><span>Package</span></span></h1>
+    <h1 class="cover"><span>tile</span><wbr><span><span>Set</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":script/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-package.html"><span class="token function">setPackage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Sets the package of the future scripts to <a href="set-package.html">name</a>.</p><p class="paragraph">Note that the package can be changed at any time; the package of future scripts will be updated accordingly. To execute scripts from within multiple packages at once, create multiple script engines.</p></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tiled/main"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span><span class="token punctuation">.</span><a href="tile-set.html"><span class="token function">tileSet</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tilesetName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span></div><p class="paragraph">Extension method to retrieve a <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span> of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMap///PointingToDeclaration/">TiledMap</span> by name. If the tileset does not exist then this method throws a <a href="-missing-tile-set-exception/index.html">MissingTileSetException</a>.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph"><span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span> matching the given name.</p></span><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>tileset</span><wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">name of the <span data-unresolved-link="com.badlogic.gdx.maps.tiled/TiledMapTileSet///PointingToDeclaration/">TiledMapTileSet</span>.</p></div></div></div></div></div><h4 class="tableheader">Throws</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":tiled/main" data-filterable-set=":tiled/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-missing-tile-set-exception/index.html"><span>Missing</span><wbr><span>Tile</span><wbr><span>Set</span><wbr><span><span>Exception</span></span></a></div></span></div><div><div class="title"><p class="paragraph">if the tileset with the given <a href="tile-set.html">tilesetName</a> does not exist.</p></div></div></div></div></div></div></div>
 </div>
     <div class="footer">
         <div class="footer--container">
