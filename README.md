@@ -1,5 +1,5 @@
 [![GitHub Build](https://github.com/Quillraven/ktx/workflows/build/badge.svg)](https://github.com/Quillraven/ktx/actions?query=workflow%3Abuild)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.4.10-orange.svg)](http://kotlinlang.org/)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.4.20-orange.svg)](http://kotlinlang.org/)
 [![libGDX](https://img.shields.io/badge/libgdx-1.14.2-red.svg)](https://libgdx.com/)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.quillraven.libktx/ktx-async.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.quillraven.libktx%22)
 
