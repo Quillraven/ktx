@@ -8,6 +8,8 @@ charset = utf-8
 [*.{kt,kts}]
 indent_style = space
 indent_size = 2
+ktlint_standard_blank-line-between-when-conditions = disabled
 ktlint_standard_filename = disabled
 ktlint_standard_property-naming = disabled
+ktlint_standard_when-entry-bracing = disabled
 ktlint_code_style = ktlint_official
