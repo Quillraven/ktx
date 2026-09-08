@@ -165,7 +165,7 @@ Apply `dev` label and milestone corresponding to the libGDX version. An example 
 [here](https://github.com/Quillraven/ktx/issues).
 - Change `libVersion` setting in the [`version.txt`](../version.txt). **KTX** uses the same versioning schema as libGDX
 (mimicking the libGDX version that it was compiled against) with a suffix depending on the version status. Stable
-releases are marked with an `-rc` suffix, for example `1.14.2-rc1` or `1.14.2-rc2`, and are tagged on the `master`
+releases are marked with an `-rc` suffix, for example `1.14.2-rc2` or `1.14.2-rc2`, and are tagged on the `master`
 branch.
 - Push the changes to the `master` branch. The [publish](workflows/publish.yml) workflow runs automatically after a
 successful [build](workflows/build.yml) run and executes `./gradlew publishToMavenCentral`. As the version no longer

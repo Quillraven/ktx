@@ -229,7 +229,7 @@ with the `ktx-app` identifier would require the following changes in your `build
 // Groovy DSL:
 ext {
   // Update this version to match the latest KTX release:
-  ktxVersion = '1.14.2-rc1'
+  ktxVersion = '1.14.2-rc2'
 }
 
 dependencies {
@@ -243,7 +243,7 @@ dependencies {
 
 ```kotlin
 // Update this version to match the latest KTX release:
-val ktxVersion = "1.14.2-rc1"
+val ktxVersion = "1.14.2-rc2"
 
 dependencies {
   api(group = "io.github.quillraven.libktx", name = "ktx-app", version = ktxVersion)
@@ -295,7 +295,7 @@ All modules are thoroughly tested with comprehensive test suites.
 
 The [`master`](https://github.com/Quillraven/ktx/tree/master/) branch is the default branch of the repository and holds
 the latest changes. After each successful build on `master`, the changes are automatically published as snapshot
-releases. From time to time, `master` is tagged to mark an official release, for example `1.14.2-rc1`.
+releases. From time to time, `master` is tagged to mark an official release, for example `1.14.2-rc2`.
 
 The preview snapshot releases with the latest changes are published to the Maven Central snapshots repository. To use
 them in your application, add the following Maven repository, and change the suffix of the **KTX** version to
