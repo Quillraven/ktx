@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.maps.MapObject
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile
 import org.junit.Assert.assertEquals
@@ -50,6 +51,23 @@ class TiledMapTest {
           properties.put("firstgid", 1)
           putTile(1, StaticTiledMapTile(TextureRegion()))
           putTile(2, StaticTiledMapTile(TextureRegion()))
+        },
+      )
+    }
+
+  private val tiledMapWithTileLayers =
+    TiledMap().apply {
+      layers.add(
+        TiledMapTileLayer(2, 2, 32, 32).apply {
+          name = "tile-layer-1"
+          setCell(0, 0, Cell().setTile(StaticTiledMapTile(TextureRegion())))
+          setCell(1, 1, Cell().setTile(StaticTiledMapTile(TextureRegion())))
+        },
+      )
+      layers.add(
+        TiledMapTileLayer(2, 2, 32, 32).apply {
+          name = "tile-layer-2"
+          setCell(0, 1, Cell().setTile(StaticTiledMapTile(TextureRegion())))
         },
       )
     }
@@ -177,5 +195,36 @@ class TiledMapTest {
   @Test(expected = MissingTileException::class)
   fun `should not retrieve tile with non-existing local id from TiledMap`() {
     tiledMap.tileById("tileset-1", 2)
+  }
+
+  @Test
+  fun `should retrieve existing tileset from TiledMap`() {
+    assertEquals("tileset-1", tiledMap.tileSet("tileset-1").name)
+  }
+
+  @Test(expected = MissingTileSetException::class)
+  fun `should not retrieve non-existing tileset from TiledMap`() {
+    tiledMap.tileSet("non-existing")
+  }
+
+  @Test
+  fun `should execute action per cell of every tile layer of TiledMap`() {
+    val visitedCells = mutableMapOf<Pair<Int, Int>, String>()
+
+    tiledMapWithTileLayers.forEachCell { layer, _, cellX, cellY ->
+      visitedCells[cellX to cellY] = layer.name
+    }
+
+    assertEquals(3, visitedCells.size)
+    assertEquals("tile-layer-1", visitedCells[0 to 0])
+    assertEquals("tile-layer-1", visitedCells[1 to 1])
+    assertEquals("tile-layer-2", visitedCells[0 to 1])
+  }
+
+  @Test
+  fun `should not execute any action for TiledMap without tile layers`() {
+    tiledMap.forEachCell { _, _, _, _ ->
+      fail()
+    }
   }
 }

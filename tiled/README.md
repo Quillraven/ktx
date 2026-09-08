@@ -82,9 +82,15 @@ Inlined `forEachMapObject` extension method iterates over all `MapObject` instan
 Inlined `forEachLayer` extension method iterates over all `MapLayer` instances of a specific type to execute a certain
 function on them.
 
+The `tileSet(tilesetName)` extension method retrieves a `TiledMapTileSet` by name or throws a
+`MissingTileSetException` if the tileset does not exist.
+
 The `tileById(tilesetName, id)` extension method retrieves a `TiledMapTile` from a given tileset by its local tile ID
 (as defined in the Tiled editor). It throws a `MissingTileSetException` if the tileset does not exist and a
 `MissingTileException` if the tile is not found.
+
+Inlined `forEachCell` extension methods iterate over all non-empty cells of the `TiledMapTileLayer` instances of a map
+(or a single `TiledMapTileLayer`). The action receives the layer, the cell and its coordinates. Empty cells are skipped.
 
 ### `MapLayers` and `MapObjects`
 
@@ -250,19 +256,46 @@ map.forEachLayer<MapLayer> { layer ->
 }
 ```
 
-Retrieving a tile of a tileset by its local tile ID:
+Retrieving a tileset or a tile of a tileset:
 
 ```kotlin
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTile
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet
 import ktx.tiled.*
 
-val map: TiledMap = getAllTiles()
+val map: TiledMap = getTiledMap()
 val tilesetName = "terrain"
+
+// Retrieves the "terrain" tileset or throws a MissingTileSetException:
+val tileset: TiledMapTileSet = map.tileSet(tilesetName)
 
 // Retrieves the tile with local ID 2 from the "terrain" tileset.
 // The local ID is automatically converted to a global ID using the tileset's firstgid property.
 val tile: TiledMapTile = map.tileById(tilesetName, 2)
+```
+
+Iterating over non-empty cells of the tile layers of a map:
+
+```kotlin
+import com.badlogic.gdx.maps.tiled.TiledMap
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
+import ktx.tiled.*
+
+val map: TiledMap = getTiledMap()
+val tileLayer: TiledMapTileLayer = getTileLayer()
+
+// Iterates over every non-empty cell of every tile layer of the map.
+// The layer, the cell and its coordinates (cellX, cellY) are passed to the action:
+map.forEachCell { layer, cell, cellX, cellY ->
+  val tile = cell.tile
+  println("Tile at $cellX, $cellY on layer ${layer.name}: $tile")
+}
+
+// The same iteration over a single tile layer:
+tileLayer.forEachCell { _, cellX, cellY ->
+  println("Cell at $cellX, $cellY")
+}
 ```
 
 Checking if `MapLayers` and `MapObjects` collections are empty:

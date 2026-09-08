@@ -3,6 +3,8 @@ package ktx.tiled
 import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.maps.MapLayers
 import com.badlogic.gdx.maps.MapProperties
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell
 
 /**
  * Extension method to directly access the [MapProperties] of a [MapLayer]. If the property
@@ -40,7 +42,7 @@ inline fun <reified T> MapLayer.propertyOrNull(key: String): T? = properties[key
  * Extension method to directly access the [MapProperties] of a [MapLayer] and its
  * [containsKey][MapProperties.containsKey] method.
  * @param key property name.
- * @return true if the property exists. Otherwise false.
+ * @return true if the property exists. Otherwise, false.
  */
 fun MapLayer.containsProperty(key: String) = properties.containsKey(key)
 
@@ -53,3 +55,16 @@ fun MapLayers.isEmpty() = this.count <= 0
  * Returns **true** if and only if the [MapLayers] collection is not empty.
  */
 fun MapLayers.isNotEmpty() = this.count > 0
+
+/**
+ * Extension method to easily execute an action per [Cell] of a [TiledMapTileLayer].
+ * The action takes the [Cell] as well as its cell coordinates as parameters. Cells without a tile
+ * (i.e. `null` cells) are skipped.
+ */
+inline fun TiledMapTileLayer.forEachCell(action: (cell: Cell, cellX: Int, cellY: Int) -> Unit) {
+  for (x in 0 until this.width) {
+    for (y in 0 until this.height) {
+      this.getCell(x, y)?.let { action(it, x, y) }
+    }
+  }
+}

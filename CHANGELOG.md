@@ -16,6 +16,10 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
   - Scripts are compiled and evaluated separately. Top-level classes, functions, and variables declared in a script
     are no longer available in future script evaluations.
   - `setPackage` can be called multiple times; the package of the future scripts is updated accordingly.
+- **[FEATURE]** (`ktx-tiled`) Added `tileSet` extension method to `TiledMap` that returns a `TiledMapTileSet`
+  by name or throws a `MissingTileSetException` if the tileset does not exist.
+- **[FEATURE]** (`ktx-tiled`) Added `forEachCell` extension methods to `TiledMap` and `TiledMapTileLayer` that
+  execute an action for each non-empty `Cell` of the tile layer(s), passing the cell and its coordinates.
 - **[FEATURE]** (`ktx-tiled`) Added `tileById` extension method to `TiledMap` that returns a `TiledMapTile`
   from a tileset by its name and local tile ID. It throws a `MissingTileSetException` if the tileset does not
   exist and a `MissingTileException` if the computed global tile ID does not match a tile in the tileset.
