@@ -236,8 +236,11 @@ class KotlinScriptEngine {
     variables: Map<String, Any?>,
   ): ScriptCompilationConfiguration =
     ScriptCompilationConfiguration {
-      providedProperties(*variables.mapNotNull { (name, value) -> value?.let { name to it.javaClass.kotlin } }
-        .toTypedArray())
+      providedProperties(
+        *variables
+          .mapNotNull { (name, value) -> value?.let { name to it.javaClass.kotlin } }
+          .toTypedArray(),
+      )
       if (receiverType != null) implicitReceivers(receiverType)
       jvm {
         updateClasspath(currentClasspath())
