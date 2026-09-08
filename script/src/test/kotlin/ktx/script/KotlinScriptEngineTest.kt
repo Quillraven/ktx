@@ -9,7 +9,6 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertSame
 import org.junit.BeforeClass
 import org.junit.Test
-import java.lang.ClassCastException
 import kotlin.reflect.KClass
 import com.badlogic.gdx.utils.Array as GdxArray
 
@@ -38,12 +37,12 @@ class KotlinScriptEngineTest {
   }
 
   @Test
-  fun `should create Kotlin scripting engine`() {
+  fun `should evaluate Kotlin scripts`() {
     // When:
-    val scriptEngine = engine.engine
+    val result = engine.evaluateAs<String>("\"42\"")
 
     // Then:
-    assertEquals("kotlin", scriptEngine.factory.languageName)
+    assertEquals("42", result)
   }
 
   @Test
@@ -231,21 +230,22 @@ class KotlinScriptEngineTest {
   }
 
   @Test
-  fun `should fail to execute script with a receiver if it contains an import`() {
+  fun `should execute script with a receiver and an import`() {
     // Given:
     val receiver = Data(text = "")
 
-    // Expect:
-    shouldThrow<ScriptEngineException> {
-      engine.evaluateOn(
-        receiver,
-        """
-        import com.badlogic.gdx.Gdx
+    // When:
+    engine.evaluateOn(
+      receiver,
+      """
+      import com.badlogic.gdx.Gdx
 
-        text = "test"
-        """.trimIndent(),
-      )
-    }
+      text = "test"
+      """.trimIndent(),
+    )
+
+    // Then:
+    assertEquals("test", receiver.text)
   }
 
   @Test

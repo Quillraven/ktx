@@ -36,8 +36,9 @@ Takes an optional alias.
 - `setPackage(String)`: sets the package for the scripts. The scripts will have access to any classes and functions
 within the selected package without the need for explicit imports.
 
-This module depends on the `org.jetbrains.kotlin:kotlin-scripting-jsr223` package. To change the version of the
-scripting engine, override this dependency in your Gradle or Maven setup.
+This module depends on the `kotlin-scripting-common`, `kotlin-scripting-jvm`, `kotlin-scripting-jvm-host`, and
+`kotlin-scripting-compiler-embeddable` packages. To change the version of the scripting engine, override the Kotlin
+version in your Gradle or Maven setup.
 
 #### Known issues
 
@@ -45,22 +46,20 @@ scripting engine, override this dependency in your Gradle or Maven setup.
 * **Slow startup time.** Evaluating initial scripts might take several seconds.
 Performance improves with subsequent script evaluations, but it is still not on par with
 precompiled Kotlin.
-* **Script package can only be chosen once.** As of Kotlin 1.5.31, if multiple scripts define `package`,
-or if the package was already set with `KotlinScriptEngine.setPackage`, it cannot be overridden. Once the package
-is set, all scripts will be executed from the same package, even if they attempt to override it.
+* **Scripts are compiled and evaluated separately.** Declarations do not persist between script evaluations.
+Top-level classes, functions, and variables declared in one script are not available in future scripts.
+Use `KotlinScriptEngine.set` to pass values to scripts, and retrieve them as the script results.
 * **Lambdas cannot be set as script variables directly.**
 Instead, define lambdas or functions in the global scope and import them, or pass objects with lambda variables.
 * **Lambdas cannot be returned by the scripts directly.** Pass objects instead.
 Note that returned objects can have lambda variables.
-* **Defined variables stay in the script scope.** While you can declare a top-level `val` or `var` that will be
-available for all future scripts, their values cannot be retrieved with `KotlinScriptEngine.get`. Instead, they
-have to be returned as script results, or otherwise passed outside the script context.
+* **Invalid imports or packages are reported on the next script evaluation.**
+`import` and `importAll` update the script context without evaluating anything,
+so errors caused by malformed imports or packages surface when the next script is executed.
 * **IDE support for scripts might not be complete.** If you specify variables, imports, or package using
 the engine instance, IDE might not be able to pick them up without additional setup.
 * **Scripts might be unable to infer the generic types.** Avoid passing generic objects as variables to the scripts.
 * **Targets Java 8.** Using newer language features might result in exceptions.
-* **Scripts with receivers cannot contain any import statements.** This only affects the `KotlinScriptEngine.evaluateOn`
-methods.
 
 #### Advantages over using `ScriptEngine` directly
 
@@ -68,8 +67,8 @@ methods.
 * `FileHandle` support.
 * Import and package setters.
 
-Note that this module uses JSR-223 `ScriptEngine` internally. For more customization options,
-use the experimental scripting engine from the `org.jetbrains.kotlin:kotlin-scripting-jvm-host` package.
+Note that this module uses the experimental `BasicJvmScriptingHost` from the
+`org.jetbrains.kotlin:kotlin-scripting-jvm-host` package internally.
 
 ### Usage examples
 
@@ -206,7 +205,11 @@ fun executeScript(engine: KotlinScriptEngine) {
       text = "Hello from script!"
       println(this.text)
 
-      // Note that scripts with a receiver cannot have any imports.
+      // Scripts with a receiver can contain import statements:
+      import com.badlogic.gdx.math.Vector2
+
+      val vector = Vector2()
+      println(vector)
     """
   )
   // Property modified in the script will persist

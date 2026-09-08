@@ -7,6 +7,15 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
   - `typingLabel` factory method for creating animated `TypingLabel` instances.
 - **[UPDATE]** Updated to Kotlin 2.4.20.
 - **[UPDATE]** Updated to Gradle 9.7.1.
+- **[CHANGE]** (`ktx-script`) `KotlinScriptEngine` no longer wraps the deprecated JSR-223 `ScriptEngine` and now uses
+  the native Kotlin scripting host from the `kotlin-scripting-jvm-host` package:
+  - The public `engine` property exposing the JSR-223 `ScriptEngine` was removed.
+  - Scripts executed with `evaluateOn` can now contain `import` statements.
+  - `import`, `importAll`, and `setPackage` no longer evaluate scripts; invalid imports or packages are reported
+    with a `ScriptEngineException` on the next script evaluation.
+  - Scripts are compiled and evaluated separately. Top-level classes, functions, and variables declared in a script
+    are no longer available in future script evaluations.
+  - `setPackage` can be called multiple times; the package of the future scripts is updated accordingly.
 
 #### 1.14.2-rc1
 
