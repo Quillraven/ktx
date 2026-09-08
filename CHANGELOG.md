@@ -5,6 +5,8 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
 - **[FEATURE]** (`ktx-textratypist`) new **KTX** module with utilities and type-safe builders for TextraTypist animated text widgets.
   - `textraLabel` factory method for creating plain `TextraLabel` instances.
   - `typingLabel` factory method for creating animated `TypingLabel` instances.
+- **[UPDATE]** Updated to Kotlin 2.4.20.
+- **[UPDATE]** Updated to Gradle 9.7.1.
 
 #### 1.14.2-rc1
 
