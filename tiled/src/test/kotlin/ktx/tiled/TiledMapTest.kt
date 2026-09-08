@@ -126,6 +126,16 @@ class TiledMapTest {
   }
 
   @Test
+  fun `should retrieve existing layer in TiledMap as nullable`() {
+    assertEquals("layer-1", tiledMap.layerOrNull("layer-1")?.name)
+  }
+
+  @Test
+  fun `should retrieve non-existing layer in TiledMap as null`() {
+    assertNull(tiledMap.layerOrNull("non-existing"))
+  }
+
+  @Test
   fun `should check if layer exists in TiledMap`() {
     assertTrue(tiledMap.contains("layer-1"))
     assertFalse(tiledMap.contains("non-existing"))

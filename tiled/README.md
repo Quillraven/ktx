@@ -76,6 +76,7 @@ following extensions were added:
 
 - `contains(layerName: String)`: works as the `in` operator.
 - `layer(layerName: String)`: returns the layer or throws a `MissingLayerException` in case the layer does not exist.
+- `layerOrNull(layerName: String)`: returns the layer or `null` in case the layer does not exist.
 
 Inlined `forEachMapObject` extension method iterates over all `MapObject` instances present on the chosen map layer.
 

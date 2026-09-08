@@ -146,9 +146,17 @@ operator fun TiledMap.contains(layerName: String) = layers[layerName] != null
  * @param layerName name of [MapLayer]
  * @throws MissingLayerException If the layer does not exist
  */
-fun TiledMap.layer(layerName: String) =
+fun TiledMap.layer(layerName: String): MapLayer =
   layers[layerName]
     ?: throw MissingLayerException("Layer $layerName does not exist for map.")
+
+/**
+ * Extension method to retrieve a [MapLayer] of a [TiledMap]. If the layer does
+ * not exist then this method returns null.
+ *
+ * @param layerName name of [MapLayer]
+ */
+fun TiledMap.layerOrNull(layerName: String): MapLayer? = layers.get(layerName)
 
 /**
  * Extension method to easily execute an action per [MapObject] of a given [MapLayer].

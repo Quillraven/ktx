@@ -23,6 +23,8 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
 - **[FEATURE]** (`ktx-tiled`) Added `tileById` extension method to `TiledMap` that returns a `TiledMapTile`
   from a tileset by its name and local tile ID. It throws a `MissingTileSetException` if the tileset does not
   exist and a `MissingTileException` if the computed global tile ID does not match a tile in the tileset.
+- **[FEATURE]** (`ktx-tiled`) Added `layerOrNull` extension method to `TiledMap` that returns a `MapLayer`
+  by name or `null` if the layer does not exist.
 
 #### 1.14.2-rc1
 
