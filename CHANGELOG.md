@@ -1,5 +1,10 @@
 _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob/master/CHANGES)._
 
+#### 1.14.2-rc3
+- **[UPDATE]** Updated to Gradle 9.8.1.
+- **[UPDATE]** Updated to Kotlin 2.4.21.
+- **[UPDATE]** Updated to TextraTypist 2.5.0.
+
 #### 1.14.2-rc2
 
 - **[FEATURE]** (`ktx-textratypist`) new **KTX** module with utilities and type-safe builders for TextraTypist animated text widgets.
