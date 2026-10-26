@@ -519,4 +519,76 @@ class MapsTest : FunSpec({
     actual.shouldBeNull()
     map[42] shouldBe null
   }
+
+  test("should getOrElse in GdxMap without storing the default") {
+    val map = gdxMapOf("a" to 1)
+    var calls = 0
+
+    map.getOrElse("a") {
+      calls++
+      5
+    } shouldBe 1
+    map.getOrElse("b") {
+      calls++
+      5
+    } shouldBe 5
+
+    calls shouldBe 1
+    ("b" in map) shouldBe false
+    gdxMapOf<String, Int>().getOrElse("a") { 7 } shouldBe 7
+  }
+
+  test("should getOrElse in GdxMap return stored null") {
+    val map = GdxMap<String, String?>()
+    map["a"] = null
+
+    map.getOrElse("a") { "default" } shouldBe null
+  }
+
+  test("should getOrElse in IntMap without storing the default") {
+    val map = IntMap<String>()
+    map[1] = "a"
+
+    map.getOrElse(1) { "x" } shouldBe "a"
+    map.getOrElse(2) { "x" } shouldBe "x"
+    (2 in map) shouldBe false
+    IntMap<String>().getOrElse(1) { "x" } shouldBe "x"
+  }
+
+  test("should use LongMap operators") {
+    val map = LongMap<String>()
+
+    (1L in map) shouldBe false
+    map[1L] = "a"
+
+    (1L in map) shouldBe true
+    map[1L] shouldBe "a"
+  }
+
+  test("should getOrPut in LongMap") {
+    val map = LongMap<String>()
+    var calls = 0
+
+    map.getOrPut(1L) {
+      calls++
+      "a"
+    } shouldBe "a"
+    map.getOrPut(1L) {
+      calls++
+      "b"
+    } shouldBe "a"
+
+    calls shouldBe 1
+    map[1L] shouldBe "a"
+  }
+
+  test("should getOrElse in LongMap without storing the default") {
+    val map = LongMap<String>()
+    map[1L] = "a"
+
+    map.getOrElse(1L) { "x" } shouldBe "a"
+    map.getOrElse(2L) { "x" } shouldBe "x"
+    (2L in map) shouldBe false
+    LongMap<String>().getOrElse(1L) { "x" } shouldBe "x"
+  }
 })

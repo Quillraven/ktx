@@ -217,6 +217,15 @@ inline fun <Type> GdxSet<Type>.iterate(action: (Type, MutableIterator<Type>) -> 
 }
 
 /**
+ * Invokes [action] for each value of the [IntSet]. Uses the set's reusable iterator: it does not allocate, but - like
+ * any other [IntSet] iteration - it cannot be nested with another iteration over the same set.
+ */
+inline fun IntSet.forEach(action: (Int) -> Unit) {
+  val iterator = iterator()
+  while (iterator.hasNext) action(iterator.next())
+}
+
+/**
  * Returns a [GdxSet] containing the results of applying the given [transform] function
  * to each entry in the original [GdxSet].
  */

@@ -307,6 +307,22 @@ operator fun <Value> IntMap<Value>.set(
 ): Value? = this.put(key, value)
 
 /**
+ * @param key a value might be assigned to this key and stored in the map.
+ * @return true if a value is associated with passed key. False otherwise.
+ */
+operator fun LongMap<*>.contains(key: Long): Boolean = this.containsKey(key)
+
+/**
+ * @param key the passed value will be linked with this key.
+ * @param value will be stored in the map, accessible by the passed key.
+ * @return old value associated with the key or null if none.
+ */
+operator fun <Value> LongMap<Value>.set(
+  key: Long,
+  value: Value,
+): Value? = this.put(key, value)
+
+/**
  * @param key the passed value will be linked with this key.
  * @param value will be stored in the map, accessible by the passed key.
  * @return index of the key and value in the underlying arrays.
@@ -505,4 +521,61 @@ inline fun <Value> IntMap<Value>.getOrPut(
   }
 
   return value
+}
+
+/**
+ * Returns the value for the given [key]. If the [key] is not found in the map, returns the result of the
+ * [defaultValue] function without storing it in the map. Unlike [GdxMap.get] with a default value,
+ * [defaultValue] is only invoked when necessary.
+ *
+ * Throws an [IllegalArgumentException][java.lang.IllegalArgumentException] when key is null.
+ */
+inline fun <Key, Value> GdxMap<Key, Value>.getOrElse(
+  key: Key,
+  defaultValue: () -> Value,
+): Value {
+  val value = this[key]
+  return if (value == null && key !in this) defaultValue() else value
+}
+
+/**
+ * Returns the value for the given [key]. If the [key] is not found in the map, returns the result of the
+ * [defaultValue] function without storing it in the map.
+ */
+inline fun <Value> IntMap<Value>.getOrElse(
+  key: Int,
+  defaultValue: () -> Value,
+): Value {
+  val value = this[key]
+  return if (value == null && key !in this) defaultValue() else value
+}
+
+/**
+ * Returns the value for the given [key]. If the [key] is not found in the map,
+ * calls the [defaultValue] function, puts its result into the map under the given [key] and returns it.
+ */
+inline fun <Value> LongMap<Value>.getOrPut(
+  key: Long,
+  defaultValue: () -> Value,
+): Value {
+  var value = this[key]
+
+  if (value == null && key !in this) {
+    value = defaultValue()
+    this[key] = value
+  }
+
+  return value
+}
+
+/**
+ * Returns the value for the given [key]. If the [key] is not found in the map, returns the result of the
+ * [defaultValue] function without storing it in the map.
+ */
+inline fun <Value> LongMap<Value>.getOrElse(
+  key: Long,
+  defaultValue: () -> Value,
+): Value {
+  val value = this[key]
+  return if (value == null && key !in this) defaultValue() else value
 }

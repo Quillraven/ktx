@@ -1,5 +1,6 @@
 package ktx.collections
 
+import com.badlogic.gdx.utils.IntSet
 import com.badlogic.gdx.utils.ObjectSet
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.nulls.shouldNotBeNull
@@ -317,5 +318,25 @@ class SetsTest : FunSpec({
 
   test("should provide alias for compatibility with other libGDX collections") {
     (GdxSet<Any>() is ObjectSet<Any>) shouldBe true
+  }
+
+  test("should forEach over IntSet") {
+    val set = IntSet()
+    set.add(1)
+    set.add(2)
+    set.add(3)
+    var sum = 0
+
+    set.forEach { sum += it }
+
+    sum shouldBe 6
+  }
+
+  test("should not forEach over empty IntSet") {
+    var calls = 0
+
+    IntSet().forEach { calls++ }
+
+    calls shouldBe 0
   }
 })

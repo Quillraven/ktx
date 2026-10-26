@@ -608,4 +608,199 @@ class ArraysTest : FunSpec({
     gdxLongArrayOf(0L, 1L) shouldBe GdxLongArray.with(0L, 1L)
     gdxFloatArrayOf(0.1F, 0.2F) shouldBe GdxFloatArray.with(0.1F, 0.2F)
   }
+
+  test("should iterate with forEachItem in order") {
+    val array = gdxArrayOf("a", "b", "c")
+    val result = StringBuilder()
+
+    array.forEachItem { result.append(it) }
+
+    result.toString() shouldBe "abc"
+  }
+
+  test("should not fail on nested forEachItem") {
+    val array = gdxArrayOf(1, 2, 3)
+    var sum = 0
+
+    array.forEachItem { a -> array.forEachItem { b -> sum += a * b } }
+
+    sum shouldBe 36
+  }
+
+  test("should not fail on nested forEachItem inside Kotlin iteration") {
+    val array = gdxArrayOf(1, 2)
+    var count = 0
+
+    array.forEachItem {
+      array.forEachIndexed { _, _ ->
+        array.any { it > 5 }
+        count++
+      }
+    }
+
+    count shouldBe 4
+  }
+
+  test("should forEachItem and forEachIndexed do nothing on empty array") {
+    val array = gdxArrayOf<String>()
+    var calls = 0
+
+    array.forEachItem { calls++ }
+    array.forEachIndexed { _, _ -> calls++ }
+
+    calls shouldBe 0
+  }
+
+  test("should pass indices to forEachIndexed") {
+    val array = gdxArrayOf("a", "b")
+    val result = mutableListOf<Pair<Int, String>>()
+
+    array.forEachIndexed { index, value -> result += index to value }
+
+    result shouldBe listOf(0 to "a", 1 to "b")
+  }
+
+  test("should check any, all, none and count") {
+    val array = gdxArrayOf(1, 2, 3, 4)
+
+    array.any { it > 3 } shouldBe true
+    array.any { it > 4 } shouldBe false
+    array.all { it > 0 } shouldBe true
+    array.all { it > 1 } shouldBe false
+    array.none { it > 4 } shouldBe true
+    array.none { it > 3 } shouldBe false
+    array.count { it % 2 == 0 } shouldBe 2
+  }
+
+  test("should support nested any, all, none and count") {
+    val array = gdxArrayOf(1, 2, 3)
+
+    array.all { a -> array.any { b -> a == b } } shouldBe true
+    array.none { a -> array.count { b -> a == b } != 1 } shouldBe true
+  }
+
+  test("should return neutral values for any, all, none and count on empty array") {
+    val array = gdxArrayOf<Int>()
+
+    array.any { true } shouldBe false
+    array.all { false } shouldBe true
+    array.none { true } shouldBe true
+    array.count { true } shouldBe 0
+  }
+
+  test("should removeAt index") {
+    val array = gdxArrayOf("a", "b", "c")
+
+    array.removeAt(1) shouldBe "b"
+
+    array.size shouldBe 2
+    array[1] shouldBe "c"
+  }
+
+  test("should check identity containment") {
+    val first = String(charArrayOf('a'))
+    val equalCopy = String(charArrayOf('a'))
+    val array = gdxArrayOf(first)
+
+    array.containsIdentity(first) shouldBe true
+    array.containsIdentity(equalCopy) shouldBe false
+    (equalCopy in array) shouldBe true
+    gdxArrayOf<String>().containsIdentity(first) shouldBe false
+  }
+
+  test("should find first element or null") {
+    val array = gdxArrayOf(1, 2, 3)
+
+    array.firstOrNull() shouldBe 1
+    array.firstOrNull { it > 1 } shouldBe 2
+    array.firstOrNull { it > 3 } shouldBe null
+    array.find { it == 3 } shouldBe 3
+    gdxArrayOf<Int>().firstOrNull() shouldBe null
+    gdxArrayOf<Int>().firstOrNull { true } shouldBe null
+    gdxArrayOf<Int>().find { true } shouldBe null
+  }
+
+  test("should sum values with sumOf") {
+    val array = gdxArrayOf(1, 2, 3)
+
+    array.sumOf { it } shouldBe 6
+    array.sumOf { it.toLong() } shouldBe 6L
+    array.sumOf { it * 0.5f } shouldBe (3f plusOrMinus 0.0001f)
+    array.sumOf { it * 0.5 } shouldBe (3.0 plusOrMinus 0.0001)
+  }
+
+  test("should sum to zero on empty array") {
+    val array = gdxArrayOf<Int>()
+
+    array.sumOf { it } shouldBe 0
+    array.sumOf { it.toLong() } shouldBe 0L
+    array.sumOf { it.toFloat() } shouldBe 0f
+    array.sumOf { it.toDouble() } shouldBe 0.0
+  }
+
+  test("should forEach over GdxIntArray") {
+    val array = gdxIntArrayOf(1, 2, 3)
+    var sum = 0
+    var nested = 0
+
+    array.forEach { sum += it }
+    array.forEach { a -> array.forEach { b -> nested += a * b } }
+
+    sum shouldBe 6
+    nested shouldBe 36
+  }
+
+  test("should not forEach over empty GdxIntArray") {
+    var calls = 0
+
+    gdxIntArrayOf().forEach { calls++ }
+
+    calls shouldBe 0
+  }
+
+  test("should mapTo destination array") {
+    val array = gdxArrayOf(1, 2, 3)
+    val destination = gdxArrayOf("x")
+
+    val result = array.mapTo(destination) { it.toString() }
+
+    (result === destination) shouldBe true
+    destination.toList() shouldBe listOf("x", "1", "2", "3")
+  }
+
+  test("should mapTo nested") {
+    val array = gdxArrayOf(1, 2)
+    val destination = gdxArrayOf<Int>()
+
+    array.mapTo(destination) { a -> array.mapTo(gdxArrayOf<Int>()) { b -> a * b }.size }
+
+    destination.toList() shouldBe listOf(2, 2)
+  }
+
+  test("should mapTo do nothing on empty array") {
+    val destination = gdxArrayOf<String>()
+
+    gdxArrayOf<Int>().mapTo(destination) { it.toString() }
+
+    destination.size shouldBe 0
+  }
+
+  test("should mapToGdxArray from iterable") {
+    val list = listOf(1, 2, 3)
+
+    val result = list.mapToGdxArray { it.toString() }
+
+    result.toList() shouldBe listOf("1", "2", "3")
+    result.items.javaClass.componentType shouldBe String::class.java
+  }
+
+  test("should mapToGdxArray from sequence-like iterable without known size") {
+    val iterable = Iterable { listOf(1, 2).iterator() }
+
+    iterable.mapToGdxArray { it * 2 }.toList() shouldBe listOf(2, 4)
+  }
+
+  test("should mapToGdxArray from empty iterable") {
+    emptyList<Int>().mapToGdxArray { it.toString() }.size shouldBe 0
+  }
 })

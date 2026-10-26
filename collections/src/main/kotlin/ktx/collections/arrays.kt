@@ -1,10 +1,12 @@
 @file:Suppress("NOTHING_TO_INLINE", "LoopToCallChain")
+@file:OptIn(ExperimentalTypeInference::class)
 
 package ktx.collections
 
 import com.badlogic.gdx.utils.Pool
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
+import kotlin.experimental.ExperimentalTypeInference
 
 /** Alias for [com.badlogic.gdx.utils.Array] avoiding name collision with the standard library. */
 typealias GdxArray<Element> = com.badlogic.gdx.utils.Array<Element>
@@ -288,11 +290,26 @@ operator fun <Type> GdxArray<Type>.minusAssign(elements: Array<out Type>) {
 }
 
 /**
+ * Removes the element at the given [index], like [GdxArray.removeIndex].
+ * @param index index of the element to remove.
+ * @return the removed element.
+ */
+inline fun <Type> GdxArray<Type>.removeAt(index: Int): Type = removeIndex(index)
+
+/**
  * Allows to check if an array contains an element using the "in" operator.
  * @param element might be in the array.
  * @return true if the element is equal to any value stored in the array.
  */
 operator fun <Type> GdxArray<Type>.contains(element: Type): Boolean = this.contains(element, false)
+
+/**
+ * Checks if the array contains the [element] using reference comparison (`===`). Use the `in` operator to compare
+ * elements with `equals` instead.
+ * @param element might be in the array.
+ * @return true if the exact same instance is stored in the array.
+ */
+inline fun <Type> GdxArray<Type>.containsIdentity(element: Type): Boolean = this.contains(element, true)
 
 /**
  * Allows to iterate over the array with access to [MutableIterator], which allows to remove elements from the collection
@@ -415,6 +432,168 @@ inline fun <Type, R> GdxArray<Type>.map(transform: (Type) -> R): GdxArray<R> {
   for (item in this) {
     destination.add(transform(item))
   }
+  return destination
+}
+
+/**
+ * Invokes [action] for each element of the array in order. Unlike [Iterable.forEach] and [iterate], this does not
+ * use [GdxArray.iterator], which means it does not allocate and can be safely nested - even with other iterations
+ * over the same array. The array must not be structurally modified by [action].
+ *
+ * Named `forEachItem` because an extension called `forEach` would be shadowed by the member
+ * `java.lang.Iterable.forEach` inherited by [GdxArray], which does use the shared iterator.
+ */
+inline fun <Type> GdxArray<Type>.forEachItem(action: (Type) -> Unit) {
+  for (i in 0 until size) action(items[i])
+}
+
+/**
+ * Invokes [action] for each element of the array in order, passing its index. Does not use [GdxArray.iterator], so it
+ * does not allocate and can be safely nested. The array must not be structurally modified by [action].
+ */
+inline fun <Type> GdxArray<Type>.forEachIndexed(action: (Int, Type) -> Unit) {
+  for (i in 0 until size) action(i, items[i])
+}
+
+/**
+ * @return true if at least one element matches the [predicate]. False for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+inline fun <Type> GdxArray<Type>.any(predicate: (Type) -> Boolean): Boolean {
+  for (i in 0 until size) if (predicate(items[i])) return true
+  return false
+}
+
+/**
+ * @return true if all elements match the [predicate]. True for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+inline fun <Type> GdxArray<Type>.all(predicate: (Type) -> Boolean): Boolean {
+  for (i in 0 until size) if (!predicate(items[i])) return false
+  return true
+}
+
+/**
+ * @return true if no elements match the [predicate]. True for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+inline fun <Type> GdxArray<Type>.none(predicate: (Type) -> Boolean): Boolean = !any(predicate)
+
+/**
+ * @return the number of elements matching the [predicate]. Zero for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+inline fun <Type> GdxArray<Type>.count(predicate: (Type) -> Boolean): Int {
+  var result = 0
+  for (i in 0 until size) if (predicate(items[i])) result++
+  return result
+}
+
+/**
+ * @return the first element or null if the array is empty.
+ */
+inline fun <Type> GdxArray<Type>.firstOrNull(): Type? = if (size == 0) null else items[0]
+
+/**
+ * @return the first element matching the [predicate] or null if there is none.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+inline fun <Type> GdxArray<Type>.firstOrNull(predicate: (Type) -> Boolean): Type? {
+  for (i in 0 until size) {
+    val value = items[i]
+    if (predicate(value)) return value
+  }
+  return null
+}
+
+/**
+ * @return the first element matching the [predicate] or null if there is none. Alias for [firstOrNull].
+ */
+inline fun <Type> GdxArray<Type>.find(predicate: (Type) -> Boolean): Type? = firstOrNull(predicate)
+
+/**
+ * @return the sum of values returned by [selector] for each element. Zero for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+@OverloadResolutionByLambdaReturnType
+@kotlin.jvm.JvmName("sumOfInt")
+inline fun <Type> GdxArray<Type>.sumOf(selector: (Type) -> Int): Int {
+  var sum = 0
+  for (i in 0 until size) sum += selector(items[i])
+  return sum
+}
+
+/**
+ * @return the sum of values returned by [selector] for each element. Zero for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+@OverloadResolutionByLambdaReturnType
+@kotlin.jvm.JvmName("sumOfLong")
+inline fun <Type> GdxArray<Type>.sumOf(selector: (Type) -> Long): Long {
+  var sum = 0L
+  for (i in 0 until size) sum += selector(items[i])
+  return sum
+}
+
+/**
+ * @return the sum of values returned by [selector] for each element. Zero for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+@OverloadResolutionByLambdaReturnType
+@kotlin.jvm.JvmName("sumOfFloat")
+inline fun <Type> GdxArray<Type>.sumOf(selector: (Type) -> Float): Float {
+  var sum = 0f
+  for (i in 0 until size) sum += selector(items[i])
+  return sum
+}
+
+/**
+ * @return the sum of values returned by [selector] for each element. Zero for an empty array.
+ * Does not use [GdxArray.iterator], so it does not allocate and can be safely nested.
+ */
+@OverloadResolutionByLambdaReturnType
+@kotlin.jvm.JvmName("sumOfDouble")
+inline fun <Type> GdxArray<Type>.sumOf(selector: (Type) -> Double): Double {
+  var sum = 0.0
+  for (i in 0 until size) sum += selector(items[i])
+  return sum
+}
+
+/**
+ * Invokes [action] for each element of the array in order. Does not allocate and cannot cause nested iterator errors.
+ * The array must not be structurally modified by [action].
+ */
+inline fun GdxIntArray.forEach(action: (Int) -> Unit) {
+  for (i in 0 until size) action(items[i])
+}
+
+/**
+ * Appends the results of applying [transform] to each element of this array to the [destination] array.
+ * Does not use [GdxArray.iterator], so it can be safely nested.
+ * @return the [destination] array.
+ */
+inline fun <Type, R, C : GdxArray<in R>> GdxArray<Type>.mapTo(
+  destination: C,
+  transform: (Type) -> R,
+): C {
+  for (i in 0 until size) destination.add(transform(items[i]))
+  return destination
+}
+
+/**
+ * Returns a [GdxArray] containing the results of applying [transform] to each element of this iterable.
+ * Avoids the intermediate list created by `map { }.toGdxArray()`.
+ * @param ordered if false, methods that remove elements may change the order of other elements in the array,
+ *      which avoids a memory copy.
+ * @param initialCapacity initial size of the backing array. Defaults to the collection size if known.
+ */
+inline fun <Type, reified R : Any> Iterable<Type>.mapToGdxArray(
+  ordered: Boolean = true,
+  initialCapacity: Int = if (this is Collection<*>) this.size else defaultArraySize,
+  transform: (Type) -> R,
+): GdxArray<R> {
+  val destination = GdxArray<R>(ordered, initialCapacity, R::class.java)
+  for (item in this) destination.add(transform(item))
   return destination
 }
 

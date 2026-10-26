@@ -1,6 +1,14 @@
 _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob/master/CHANGES)._
 
 #### 1.14.2-rc3
+- **[FEATURE]** (`ktx-collections`) Added allocation-free, index-based `GdxArray` extensions that can be safely nested:
+  `forEachItem`, `forEachIndexed`, `any`, `all`, `none`, `count`, `firstOrNull`, `find` and `sumOf` (`Int`, `Long`,
+  `Float`, `Double`). Also added `GdxIntArray.forEach`.
+- **[FEATURE]** (`ktx-collections`) Added `GdxArray.removeAt`, `GdxArray.containsIdentity`, `GdxArray.mapTo` and
+  `Iterable.mapToGdxArray`.
+- **[FEATURE]** (`ktx-collections`) Added `IntSet.forEach`.
+- **[FEATURE]** (`ktx-collections`) Added `getOrElse` for `GdxMap`, `IntMap` and `LongMap`, and `contains`, `set` and
+  `getOrPut` for `LongMap`.
 - **[UPDATE]** Updated to Gradle 9.8.1.
 - **[UPDATE]** Updated to Kotlin 2.4.21.
 - **[UPDATE]** Updated to TextraTypist 2.5.0.

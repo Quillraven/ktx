@@ -40,6 +40,15 @@ used to easily remove collection elements during iteration.
 optionally be passed to automatically free the removed items.
 - `transfer` extension method can be used to move elements from one array to another using a lambda predicate.
 - `map`, `filter`, `flatten` and `flatMap` methods that work like methods in Kotlin stdlib but return `GdxArray`.
+- `mapTo` appends mapped elements to an existing `GdxArray`. `mapToGdxArray` maps any `Iterable` directly into a
+`GdxArray`, without the intermediate list created by `map { }.toGdxArray()`.
+- `forEachItem`, `forEachIndexed`, `any`, `all`, `none`, `count`, `firstOrNull`, `find` and `sumOf` (`Int`, `Long`,
+`Float` and `Double`) are inlined, index-based and do not use the `Array` iterator, so they do not allocate and can be
+nested safely - unlike `Iterable.any`, `for` loops or `iterate`, which throw "#iterator() cannot be used nested".
+`forEachItem` is not called `forEach`, because `java.lang.Iterable.forEach` is a member of `Array` and would always win
+over an extension. `GdxIntArray.forEach` is also available.
+- `removeAt` is an alias for `removeIndex`. `containsIdentity` checks for an element with reference equality, while
+the `in` operator uses `equals`.
 - Every iterable and array can be converted to `Array` using `toGdxArray` method.
 - `IntArray`, `BooleanArray` and `FloatArray` can be converted to corresponding libGDX primitive collections using
 `toGdxArray` method.
@@ -77,6 +86,8 @@ its content.
 - `iterate` method allows iterating over collection's elements, while providing reference to `MutableIterator`. Can be
 used to easily remove collection elements during iteration.
 - `map`, `filter`, `flatten` and `flatMap` methods that work like methods in Kotlin stdlib but return `GdxSet`.
+- `IntSet.forEach` iterates over the set values with its reusable iterator. Like any `IntSet` iteration, it cannot be
+nested with another iteration over the same set.
 - Every iterable and array can be converted to `ObjectSet` using `toGdxSet` method.
 - `IntArray` can be converted to `IntSet` using `toGdxSet` method.
 - Type alias added for consistency with other collections: `GdxSet` - `com.badlogic.gdx.utils.ObjectSet`.
@@ -106,7 +117,10 @@ keys has to be provided - since the method is inlined, no new lambda object will
 - All libGDX map entries now feature `component1()` and `component2()` operator extension methods, so they can be
 destructed into a key and a value.
 - `getOrPut` for `ObjectMap`, `IdentityMap`, `ArrayMap` and `IntMap` method to get an existing value to a given key
-or if it does not exist, create a default value, add it to the map and return it.
+or if it does not exist, create a default value, add it to the map and return it. Also available for `LongMap`.
+- `getOrElse` for `ObjectMap`, `IntMap` and `LongMap` returns the value of a given key or the lazily created default
+value, without adding it to the map.
+- `LongMap` supports the `in` operator and square bracket syntax for adding elements.
 
 #### Note
 
