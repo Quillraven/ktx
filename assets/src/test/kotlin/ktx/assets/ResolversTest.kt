@@ -9,117 +9,109 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
 import com.badlogic.gdx.assets.loaders.resolvers.LocalFileHandleResolver
 import com.badlogic.gdx.assets.loaders.resolvers.ResolutionFileResolver
 import com.badlogic.gdx.assets.loaders.resolvers.ResolutionFileResolver.Resolution
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 
 /**
  * Tests [FileHandleResolver] utilities.
  */
-class ResolversTest {
-  @Test
-  fun `should convert Classpath file type to ClasspathFileHandleResolver`() {
+class ResolversTest : FunSpec({
+  test("should convert Classpath file type to ClasspathFileHandleResolver") {
     val resolver: FileHandleResolver = FileType.Classpath.getResolver()
 
-    assertTrue(resolver is ClasspathFileHandleResolver)
+    (resolver is ClasspathFileHandleResolver) shouldBe true
   }
 
-  @Test
-  fun `should convert Internal file type to InternalFileHandleResolver`() {
+  test("should convert Internal file type to InternalFileHandleResolver") {
     val resolver: FileHandleResolver = FileType.Internal.getResolver()
 
-    assertTrue(resolver is InternalFileHandleResolver)
+    (resolver is InternalFileHandleResolver) shouldBe true
   }
 
-  @Test
-  fun `should convert Local file type to LocalFileHandleResolver`() {
+  test("should convert Local file type to LocalFileHandleResolver") {
     val resolver: FileHandleResolver = FileType.Local.getResolver()
 
-    assertTrue(resolver is LocalFileHandleResolver)
+    (resolver is LocalFileHandleResolver) shouldBe true
   }
 
-  @Test
-  fun `should convert External file type to ExternalFileHandleResolver`() {
+  test("should convert External file type to ExternalFileHandleResolver") {
     val resolver: FileHandleResolver = FileType.External.getResolver()
 
-    assertTrue(resolver is ExternalFileHandleResolver)
+    (resolver is ExternalFileHandleResolver) shouldBe true
   }
 
-  @Test
-  fun `should convert Absolute file type to AbsoluteFileHandleResolver`() {
+  test("should convert Absolute file type to AbsoluteFileHandleResolver") {
     val resolver: FileHandleResolver = FileType.Absolute.getResolver()
 
-    assertTrue(resolver is AbsoluteFileHandleResolver)
+    (resolver is AbsoluteFileHandleResolver) shouldBe true
   }
 
-  @Test
-  fun `should decorate FileHandleResolver with PrefixFileHandleResolver`() {
+  test("should decorate FileHandleResolver with PrefixFileHandleResolver") {
     val resolver = InternalFileHandleResolver()
 
     val decorated = resolver.withPrefix("test")
 
-    assertSame(resolver, decorated.baseResolver)
-    assertEquals("test", decorated.prefix)
+    decorated.baseResolver shouldBeSameInstanceAs resolver
+    decorated.prefix shouldBe "test"
   }
 
-  @Test
-  fun `should decorate FileHandleResolver with ResolutionFileResolver`() {
+  test("should decorate FileHandleResolver with ResolutionFileResolver") {
     val resolver = InternalFileHandleResolver()
 
     val decorated = resolver.forResolutions(Resolution(600, 400, "mock"))
 
-    assertSame(resolver, decorated.baseResolver)
-    assertEquals(1, decorated.resolutions.size)
+    decorated.baseResolver shouldBeSameInstanceAs resolver
+    decorated.resolutions.size shouldBe 1
     val resolution = decorated.resolutions[0]
-    assertEquals(600, resolution.portraitWidth)
-    assertEquals(400, resolution.portraitHeight)
-    assertEquals("mock", resolution.folder)
+    resolution.portraitWidth shouldBe 600
+    resolution.portraitHeight shouldBe 400
+    resolution.folder shouldBe "mock"
   }
 
-  @Test(expected = IllegalArgumentException::class)
-  fun `should not decorate FileHandleResolver with ResolutionFileResolver given no resolutions`() {
-    val resolver = InternalFileHandleResolver()
+  test("should not decorate FileHandleResolver with ResolutionFileResolver given no resolutions") {
+    shouldThrow<IllegalArgumentException> {
+      val resolver = InternalFileHandleResolver()
 
-    resolver.forResolutions()
+      resolver.forResolutions()
+    }
   }
 
-  @Test
-  fun `should construct Resolution`() {
+  test("should construct Resolution") {
     val resolution = resolution(width = 800, height = 600, folder = "test")
 
-    assertEquals(800, resolution.portraitWidth)
-    assertEquals(600, resolution.portraitHeight)
-    assertEquals("test", resolution.folder)
+    resolution.portraitWidth shouldBe 800
+    resolution.portraitHeight shouldBe 600
+    resolution.folder shouldBe "test"
   }
 
-  @Test
-  fun `should construct Resolution with default folder name`() {
+  test("should construct Resolution with default folder name") {
     val resolution = resolution(width = 1024, height = 768)
 
-    assertEquals(1024, resolution.portraitWidth)
-    assertEquals(768, resolution.portraitHeight)
-    assertEquals("1024x768", resolution.folder)
+    resolution.portraitWidth shouldBe 1024
+    resolution.portraitHeight shouldBe 768
+    resolution.folder shouldBe "1024x768"
   }
+})
 
-  /**
-   * Extracts protected [FileHandleResolver] field.
-   */
-  val ResolutionFileResolver.baseResolver: FileHandleResolver
-    get() =
-      ResolutionFileResolver::class.java
-        .getDeclaredField("baseResolver")
-        .apply { isAccessible = true }
-        .get(this) as FileHandleResolver
+/**
+ * Extracts protected [FileHandleResolver] field.
+ */
+val ResolutionFileResolver.baseResolver: FileHandleResolver
+  get() =
+    ResolutionFileResolver::class.java
+      .getDeclaredField("baseResolver")
+      .apply { isAccessible = true }
+      .get(this) as FileHandleResolver
 
-  /**
-   * Extracts protected [Resolution] array field.
-   */
-  @Suppress("UNCHECKED_CAST")
-  val ResolutionFileResolver.resolutions: Array<Resolution>
-    get() =
-      ResolutionFileResolver::class.java
-        .getDeclaredField("descriptors")
-        .apply { isAccessible = true }
-        .get(this) as Array<Resolution>
-}
+/**
+ * Extracts protected [Resolution] array field.
+ */
+@Suppress("UNCHECKED_CAST")
+val ResolutionFileResolver.resolutions: Array<Resolution>
+  get() =
+    ResolutionFileResolver::class.java
+      .getDeclaredField("descriptors")
+      .apply { isAccessible = true }
+      .get(this) as Array<Resolution>

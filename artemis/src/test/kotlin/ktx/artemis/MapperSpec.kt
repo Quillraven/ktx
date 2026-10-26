@@ -2,44 +2,42 @@ package ktx.artemis
 
 import com.artemis.ComponentMapper
 import com.artemis.World
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-object MapperSpec : Spek({
-  describe("utilities for mappers") {
-    val world by memoized { World() }
-    val transform by memoized { Transform() }
-    val entity by memoized {
+class MapperSpec : FunSpec({
+  context("utilities for mappers") {
+    val world by lazy { World() }
+    val transform by lazy { Transform() }
+    val entity by lazy {
       world.entity {
         add(transform)
       }
     }
-    val transformMapper by memoized { world.getMapper(Transform::class.java) }
-    val textureMapper by memoized { world.getMapper(Texture::class.java) }
+    val transformMapper by lazy { world.getMapper(Transform::class.java) }
+    val textureMapper by lazy { world.getMapper(Texture::class.java) }
 
-    describe("contains component function") {
-      it("should return true if component exists") {
-        assertThat(transformMapper.contains(entity)).isTrue()
+    context("contains component function") {
+      test("should return true if component exists") {
+        transformMapper.contains(entity) shouldBe true
       }
-      it("should return false if component does not exists") {
-        assertThat(textureMapper.contains(entity)).isFalse()
+      test("should return false if component does not exists") {
+        textureMapper.contains(entity) shouldBe false
       }
-      it("should return true with operator if component exists") {
-        assertThat(entity in transformMapper).isTrue()
+      test("should return true with operator if component exists") {
+        (entity in transformMapper) shouldBe true
       }
-      it("should return false with operator if component does not exists") {
-        assertThat(entity !in textureMapper).isTrue()
+      test("should return false with operator if component does not exists") {
+        (entity !in textureMapper) shouldBe true
       }
     }
-    describe("getMapper function") {
-      it("should return a mapper") {
+    context("getMapper function") {
+      test("should return a mapper") {
         val positionMapper = world.mapperFor<Position>()
         positionMapper.create(entity)
 
-        assertThat(positionMapper.javaClass == ComponentMapper::class.java).isTrue()
-        assertThat(positionMapper.has(entity)).isTrue()
+        (positionMapper.javaClass == ComponentMapper::class.java) shouldBe true
+        positionMapper.has(entity) shouldBe true
       }
     }
   }

@@ -1,16 +1,13 @@
 package ktx.reflect
 
 import com.badlogic.gdx.utils.reflect.ReflectionException
-import io.kotlintest.matchers.shouldThrow
-import org.junit.Assert.assertArrayEquals
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNotSame
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 
 interface Super
 
@@ -37,54 +34,48 @@ class Container(
 enum class Enum { RED, BLUE }
 
 @OptIn(Reflection::class)
-class ReflectTest {
-  @Test
-  fun `should wrap selected class`() {
+class ReflectTest : FunSpec({
+  test("should wrap selected class") {
     // When:
     val reflectedClass = reflect<Tested>()
 
     // Then:
-    assertSame(Tested::class.java, reflectedClass.javaClass)
+    reflectedClass.javaClass shouldBeSameInstanceAs Tested::class.java
   }
 
-  @Test
-  fun `should wrap selected Kotlin class`() {
+  test("should wrap selected Kotlin class") {
     // When:
     val reflectedClass = reflect(Tested::class)
 
     // Then:
-    assertSame(Tested::class.java, reflectedClass.javaClass)
+    reflectedClass.javaClass shouldBeSameInstanceAs Tested::class.java
   }
 
-  @Test
-  fun `should wrap selected Java class`() {
+  test("should wrap selected Java class") {
     // When:
     val reflectedClass = reflect(Tested::class.java)
 
     // Then:
-    assertSame(Tested::class.java, reflectedClass.javaClass)
+    reflectedClass.javaClass shouldBeSameInstanceAs Tested::class.java
   }
 
-  @Test
-  fun `should wrap selected class by name`() {
+  test("should wrap selected class by name") {
     // When:
     val reflectedClass = reflect("ktx.reflect.Tested")
 
     // Then:
-    assertSame(Tested::class.java, reflectedClass.javaClass)
+    reflectedClass.javaClass shouldBeSameInstanceAs Tested::class.java
   }
 
-  @Test
-  fun `should wrap selected Kotlin class via constructor`() {
+  test("should wrap selected Kotlin class via constructor") {
     // When:
     val reflectedClass = ReflectedClass(Tested::class)
 
     // Then:
-    assertSame(Tested::class.java, reflectedClass.javaClass)
+    reflectedClass.javaClass shouldBeSameInstanceAs Tested::class.java
   }
 
-  @Test
-  fun `should return simple name`() {
+  test("should return simple name") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -92,11 +83,10 @@ class ReflectTest {
     val name = reflectedClass.simpleName
 
     // Then:
-    assertEquals("Tested", name)
+    name shouldBe "Tested"
   }
 
-  @Test
-  fun `should test if an object is an instance of a class`() {
+  test("should test if an object is an instance of a class") {
     // Given:
     val reflectedClass = reflect<Tested>()
     val instance = Tested()
@@ -105,11 +95,10 @@ class ReflectTest {
     val isInstance = reflectedClass.isInstance(instance)
 
     // Then:
-    assertTrue(isInstance)
+    isInstance shouldBe true
   }
 
-  @Test
-  fun `should test if an object is not an instance of a class`() {
+  test("should test if an object is not an instance of a class") {
     // Given:
     val reflectedClass = reflect<Tested>()
     val instance = "Tested"
@@ -118,11 +107,10 @@ class ReflectTest {
     val isInstance = reflectedClass.isInstance(instance)
 
     // Then:
-    assertFalse(isInstance)
+    isInstance shouldBe false
   }
 
-  @Test
-  fun `should test if null is an instance of a class`() {
+  test("should test if null is an instance of a class") {
     // Given:
     val reflectedClass = reflect<Tested>()
     val instance = null
@@ -131,11 +119,10 @@ class ReflectTest {
     val isInstance = reflectedClass.isInstance(instance)
 
     // Then:
-    assertFalse(isInstance)
+    isInstance shouldBe false
   }
 
-  @Test
-  fun `should test if is assignable from the same class`() {
+  test("should test if is assignable from the same class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -143,11 +130,10 @@ class ReflectTest {
     val isAssignable = reflectedClass.isAssignableFrom<Tested>()
 
     // Then:
-    assertTrue(isAssignable)
+    isAssignable shouldBe true
   }
 
-  @Test
-  fun `should test if is assignable from a class extension`() {
+  test("should test if is assignable from a class extension") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -155,11 +141,10 @@ class ReflectTest {
     val isAssignable = reflectedClass.isAssignableFrom<Extension>()
 
     // Then:
-    assertTrue(isAssignable)
+    isAssignable shouldBe true
   }
 
-  @Test
-  fun `should test if is assignable from a different class`() {
+  test("should test if is assignable from a different class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -167,11 +152,10 @@ class ReflectTest {
     val isAssignable = reflectedClass.isAssignableFrom<String>()
 
     // Then:
-    assertFalse(isAssignable)
+    isAssignable shouldBe false
   }
 
-  @Test
-  fun `should check if is a member class`() {
+  test("should check if is a member class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -179,11 +163,10 @@ class ReflectTest {
     val isMemberClass = reflectedClass.isMemberClass
 
     // Then:
-    assertFalse(isMemberClass)
+    isMemberClass shouldBe false
   }
 
-  @Test
-  fun `should check if is a static class`() {
+  test("should check if is a static class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -191,11 +174,10 @@ class ReflectTest {
     val isStatic = reflectedClass.isStatic
 
     // Then:
-    assertFalse(isStatic)
+    isStatic shouldBe false
   }
 
-  @Test
-  fun `should check if is an array class`() {
+  test("should check if is an array class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -203,11 +185,10 @@ class ReflectTest {
     val isArray = reflectedClass.isArray
 
     // Then:
-    assertFalse(isArray)
+    isArray shouldBe false
   }
 
-  @Test
-  fun `should check if is an array class given an array`() {
+  test("should check if is an array class given an array") {
     // Given:
     val reflectedClass = reflect<Array<Tested>>()
 
@@ -215,11 +196,10 @@ class ReflectTest {
     val isArray = reflectedClass.isArray
 
     // Then:
-    assertTrue(isArray)
+    isArray shouldBe true
   }
 
-  @Test
-  fun `should check if is a primitive class`() {
+  test("should check if is a primitive class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -227,11 +207,10 @@ class ReflectTest {
     val isPrimitive = reflectedClass.isPrimitive
 
     // Then:
-    assertFalse(isPrimitive)
+    isPrimitive shouldBe false
   }
 
-  @Test
-  fun `should check if is an enum`() {
+  test("should check if is an enum") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -239,11 +218,10 @@ class ReflectTest {
     val isEnum = reflectedClass.isEnum
 
     // Then:
-    assertFalse(isEnum)
+    isEnum shouldBe false
   }
 
-  @Test
-  fun `should check if is an enum given an enum`() {
+  test("should check if is an enum given an enum") {
     // Given:
     val reflectedClass = reflect<Enum>()
 
@@ -251,11 +229,10 @@ class ReflectTest {
     val isEnum = reflectedClass.isEnum
 
     // Then:
-    assertTrue(isEnum)
+    isEnum shouldBe true
   }
 
-  @Test
-  fun `should check if is an annotation`() {
+  test("should check if is an annotation") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -263,11 +240,10 @@ class ReflectTest {
     val isAnnotation = reflectedClass.isAnnotation
 
     // Then:
-    assertFalse(isAnnotation)
+    isAnnotation shouldBe false
   }
 
-  @Test
-  fun `should check if is an annotation class given an annotation`() {
+  test("should check if is an annotation class given an annotation") {
     // Given:
     val reflectedClass = reflect<Override>()
 
@@ -275,11 +251,10 @@ class ReflectTest {
     val isAnnotation = reflectedClass.isAnnotation
 
     // Then:
-    assertTrue(isAnnotation)
+    isAnnotation shouldBe true
   }
 
-  @Test
-  fun `should check if is an interface`() {
+  test("should check if is an interface") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -287,11 +262,10 @@ class ReflectTest {
     val isInterface = reflectedClass.isInterface
 
     // Then:
-    assertFalse(isInterface)
+    isInterface shouldBe false
   }
 
-  @Test
-  fun `should check if is an interface class given an interface`() {
+  test("should check if is an interface class given an interface") {
     // Given:
     val reflectedClass = reflect<Super>()
 
@@ -299,11 +273,10 @@ class ReflectTest {
     val isInterface = reflectedClass.isInterface
 
     // Then:
-    assertTrue(isInterface)
+    isInterface shouldBe true
   }
 
-  @Test
-  fun `should check if is an abstract class`() {
+  test("should check if is an abstract class") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -311,11 +284,10 @@ class ReflectTest {
     val isAbstract = reflectedClass.isAbstract
 
     // Then:
-    assertFalse(isAbstract)
+    isAbstract shouldBe false
   }
 
-  @Test
-  fun `should check if is an abstract class given an interface`() {
+  test("should check if is an abstract class given an interface") {
     // Given:
     val reflectedClass = reflect<Super>()
 
@@ -323,11 +295,10 @@ class ReflectTest {
     val isAbstract = reflectedClass.isAbstract
 
     // Then:
-    assertTrue(isAbstract)
+    isAbstract shouldBe true
   }
 
-  @Test
-  fun `should return no component type if the class is not an array`() {
+  test("should return no component type if the class is not an array") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -335,11 +306,10 @@ class ReflectTest {
     val componentType = reflectedClass.componentType
 
     // Then:
-    assertNull(componentType)
+    componentType.shouldBeNull()
   }
 
-  @Test
-  fun `should return no type if the class is an array`() {
+  test("should return no type if the class is an array") {
     // Given:
     val reflectedClass = reflect<Array<Tested>>()
 
@@ -347,11 +317,10 @@ class ReflectTest {
     val componentType = reflectedClass.componentType
 
     // Then:
-    assertSame(Tested::class.java, componentType)
+    componentType shouldBeSameInstanceAs Tested::class.java
   }
 
-  @Test
-  fun `should find constructors`() {
+  test("should find constructors") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -359,12 +328,11 @@ class ReflectTest {
     val constructors = reflectedClass.constructors
 
     // Then:
-    assertEquals(1, constructors.size)
-    assertEquals(0, constructors.first().parameterTypes.size)
+    constructors.size shouldBe 1
+    constructors.first().parameterTypes.size shouldBe 0
   }
 
-  @Test
-  fun `should find the only constructor`() {
+  test("should find the only constructor") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -372,12 +340,11 @@ class ReflectTest {
     val constructor = reflectedClass.constructor
 
     // Then:
-    assertEquals(0, constructor.parameterTypes.size)
-    assertTrue(constructor.newInstance() is Tested)
+    constructor.parameterTypes.size shouldBe 0
+    (constructor.newInstance() is Tested) shouldBe true
   }
 
-  @Test
-  fun `should fail to find a single constructor if a class has multiple constructors`() {
+  test("should fail to find a single constructor if a class has multiple constructors") {
     // Given:
     val reflectedClass = reflect<String>()
 
@@ -387,8 +354,7 @@ class ReflectTest {
     }
   }
 
-  @Test
-  fun `should find methods`() {
+  test("should find methods") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -396,11 +362,10 @@ class ReflectTest {
     val methods = reflectedClass.methods
 
     // Then:
-    assertEquals(Extension::class.java.methods.size, methods.size)
+    methods.size shouldBe Extension::class.java.methods.size
   }
 
-  @Test
-  fun `should find declared methods`() {
+  test("should find declared methods") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -408,11 +373,10 @@ class ReflectTest {
     val methods = reflectedClass.declaredMethods
 
     // Then:
-    assertEquals(Extension::class.java.declaredMethods.size, methods.size)
+    methods.size shouldBe Extension::class.java.declaredMethods.size
   }
 
-  @Test
-  fun `should find fields`() {
+  test("should find fields") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -421,12 +385,11 @@ class ReflectTest {
 
     // Then: should not find private backing fields:
     val fieldNames = fields.map { it.name }.toSet()
-    assertFalse("a" in fieldNames)
-    assertFalse("b" in fieldNames)
+    ("a" in fieldNames) shouldBe false
+    ("b" in fieldNames) shouldBe false
   }
 
-  @Test
-  fun `should find declared fields`() {
+  test("should find declared fields") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -435,12 +398,11 @@ class ReflectTest {
 
     // Then: should return custom fields plus internal field.
     val fieldNames = fields.map { it.name }.toSet()
-    assertTrue("a" in fieldNames)
-    assertTrue("b" in fieldNames)
+    ("a" in fieldNames) shouldBe true
+    ("b" in fieldNames) shouldBe true
   }
 
-  @Test
-  fun `should find annotations`() {
+  test("should find annotations") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -448,11 +410,10 @@ class ReflectTest {
     val annotations = reflectedClass.annotations.map { it.annotationType }.toSet()
 
     // Then:
-    assertEquals(setOf(Annotation::class.java, Metadata::class.java), annotations)
+    annotations shouldBe setOf(Annotation::class.java, Metadata::class.java)
   }
 
-  @Test
-  fun `should find declared annotations`() {
+  test("should find declared annotations") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -460,11 +421,10 @@ class ReflectTest {
     val annotations = reflectedClass.declaredAnnotations.map { it.annotationType }.toSet()
 
     // Then:
-    assertEquals(setOf(Annotation::class.java, Metadata::class.java), annotations)
+    annotations shouldBe setOf(Annotation::class.java, Metadata::class.java)
   }
 
-  @Test
-  fun `should find interfaces`() {
+  test("should find interfaces") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -472,11 +432,10 @@ class ReflectTest {
     val interfaces = reflectedClass.interfaces
 
     // Then:
-    assertArrayEquals(arrayOf(Super::class.java), interfaces)
+    interfaces shouldBe arrayOf(Super::class.java)
   }
 
-  @Test
-  fun `should find enum constants`() {
+  test("should find enum constants") {
     // Given:
     val reflectedClass = reflect<Enum>()
 
@@ -484,11 +443,10 @@ class ReflectTest {
     val constants = reflectedClass.enumConstants
 
     // Then:
-    assertArrayEquals(arrayOf(Enum.RED, Enum.BLUE), constants)
+    constants shouldBe arrayOf(Enum.RED, Enum.BLUE)
   }
 
-  @Test
-  fun `should not find enum constants if the class is not an enum`() {
+  test("should not find enum constants if the class is not an enum") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -496,11 +454,10 @@ class ReflectTest {
     val constants = reflectedClass.enumConstants
 
     // Then:
-    assertNull(constants)
+    constants.shouldBeNull()
   }
 
-  @Test
-  fun `should create a new instance`() {
+  test("should create a new instance") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -508,12 +465,11 @@ class ReflectTest {
     val instance = reflectedClass.newInstance()
 
     // Then:
-    assertNotNull(instance)
-    assertNotSame(instance, reflectedClass.newInstance())
+    instance.shouldNotBeNull()
+    reflectedClass.newInstance() shouldNotBeSameInstanceAs instance
   }
 
-  @Test
-  fun `should create an array instance`() {
+  test("should create an array instance") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -521,11 +477,10 @@ class ReflectTest {
     val array = reflectedClass.newArrayInstance(3)
 
     // Then:
-    assertArrayEquals(arrayOfNulls(3), array)
+    array shouldBe arrayOfNulls<Tested>(3)
   }
 
-  @Test
-  fun `should create an array instance with 0 elements`() {
+  test("should create an array instance with 0 elements") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -533,11 +488,10 @@ class ReflectTest {
     val array = reflectedClass.newArrayInstance(0)
 
     // Then:
-    assertArrayEquals(arrayOfNulls(0), array)
+    array shouldBe arrayOfNulls<Tested>(0)
   }
 
-  @Test
-  fun `should not create an array instance with negative size `() {
+  test("should not create an array instance with negative size ") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -547,8 +501,7 @@ class ReflectTest {
     }
   }
 
-  @Test
-  fun `should fail to create a new instance if a class does not have a public no-arg constructor`() {
+  test("should fail to create a new instance if a class does not have a public no-arg constructor") {
     // Given:
     val reflectedClass = reflect<Int>()
 
@@ -558,8 +511,7 @@ class ReflectTest {
     }
   }
 
-  @Test
-  fun `should find constructor given parameter types`() {
+  test("should find constructor given parameter types") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -567,12 +519,11 @@ class ReflectTest {
     val constructor = reflectedClass.getConstructor(String::class, String::class)
 
     // Then:
-    assertArrayEquals(arrayOf(String::class.java, String::class.java), constructor.parameterTypes)
-    assertEquals(Extension("a", "b"), constructor.newInstance("a", "b"))
+    constructor.parameterTypes shouldBe arrayOf(String::class.java, String::class.java)
+    constructor.newInstance("a", "b") shouldBe Extension("a", "b")
   }
 
-  @Test
-  fun `should find declared constructor given parameter types`() {
+  test("should find declared constructor given parameter types") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -580,12 +531,11 @@ class ReflectTest {
     val constructor = reflectedClass.getDeclaredConstructor(String::class, String::class)
 
     // Then:
-    assertArrayEquals(arrayOf(String::class.java, String::class.java), constructor.parameterTypes)
-    assertEquals(Extension("a", "b"), constructor.newInstance("a", "b"))
+    constructor.parameterTypes shouldBe arrayOf(String::class.java, String::class.java)
+    constructor.newInstance("a", "b") shouldBe Extension("a", "b")
   }
 
-  @Test
-  fun `should find a method given name and parameter types`() {
+  test("should find a method given name and parameter types") {
     // Given:
     val reflectedClass = reflect<Extension>()
     val instance = Extension("a", "b")
@@ -594,13 +544,12 @@ class ReflectTest {
     val method = reflectedClass.getMethod("test", String::class)
 
     // Then:
-    assertEquals("test", method.name)
-    assertArrayEquals(arrayOf(String::class.java), method.parameterTypes)
-    assertEquals("abc", method.invoke(instance, "c"))
+    method.name shouldBe "test"
+    method.parameterTypes shouldBe arrayOf(String::class.java)
+    method.invoke(instance, "c") shouldBe "abc"
   }
 
-  @Test
-  fun `should find a declared method given name and parameter types`() {
+  test("should find a declared method given name and parameter types") {
     // Given:
     val reflectedClass = reflect<Extension>()
     val instance = Extension("a", "b")
@@ -609,13 +558,12 @@ class ReflectTest {
     val method = reflectedClass.getDeclaredMethod("test", String::class)
 
     // Then:
-    assertEquals("test", method.name)
-    assertArrayEquals(arrayOf(String::class.java), method.parameterTypes)
-    assertEquals("abc", method.invoke(instance, "c"))
+    method.name shouldBe "test"
+    method.parameterTypes shouldBe arrayOf(String::class.java)
+    method.invoke(instance, "c") shouldBe "abc"
   }
 
-  @Test
-  fun `should find a field by name`() {
+  test("should find a field by name") {
     // Given:
     val reflectedClass = reflect<Container>()
     val instance = Container("test")
@@ -624,13 +572,12 @@ class ReflectTest {
     val field = reflectedClass.getField("field")
 
     // Then:
-    assertEquals("field", field.name)
-    assertSame(String::class.java, field.type)
-    assertEquals("test", field.get(instance))
+    field.name shouldBe "field"
+    field.type shouldBeSameInstanceAs String::class.java
+    field.get(instance) shouldBe "test"
   }
 
-  @Test
-  fun `should find a declared field by name`() {
+  test("should find a declared field by name") {
     // Given:
     val reflectedClass = reflect<Container>()
     val instance = Container("test")
@@ -639,13 +586,12 @@ class ReflectTest {
     val field = reflectedClass.getDeclaredField("field")
 
     // Then:
-    assertEquals("field", field.name)
-    assertSame(String::class.java, field.type)
-    assertEquals("test", field.get(instance))
+    field.name shouldBe "field"
+    field.type shouldBeSameInstanceAs String::class.java
+    field.get(instance) shouldBe "test"
   }
 
-  @Test
-  fun `should check if annotation is present`() {
+  test("should check if annotation is present") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -653,11 +599,10 @@ class ReflectTest {
     val isPresent = reflectedClass.isAnnotationPresent<Annotation>()
 
     // Then:
-    assertTrue(isPresent)
+    isPresent shouldBe true
   }
 
-  @Test
-  fun `should check if annotation is not present`() {
+  test("should check if annotation is not present") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -665,11 +610,10 @@ class ReflectTest {
     val isPresent = reflectedClass.isAnnotationPresent<Annotation>()
 
     // Then:
-    assertFalse(isPresent)
+    isPresent shouldBe false
   }
 
-  @Test
-  fun `should find an annotation by type`() {
+  test("should find an annotation by type") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -677,12 +621,11 @@ class ReflectTest {
     val annotation = reflectedClass.getAnnotation<Annotation>()
 
     // Then:
-    assertNotNull(annotation)
-    assertEquals("Test", annotation?.get<Annotation>()?.value)
+    annotation.shouldNotBeNull()
+    annotation?.get<Annotation>()?.value shouldBe "Test"
   }
 
-  @Test
-  fun `should not find an annotation by type`() {
+  test("should not find an annotation by type") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -690,11 +633,10 @@ class ReflectTest {
     val annotation = reflectedClass.getAnnotation<Annotation>()
 
     // Then:
-    assertNull(annotation)
+    annotation.shouldBeNull()
   }
 
-  @Test
-  fun `should find a declared annotation by type`() {
+  test("should find a declared annotation by type") {
     // Given:
     val reflectedClass = reflect<Extension>()
 
@@ -702,12 +644,11 @@ class ReflectTest {
     val annotation = reflectedClass.getDeclaredAnnotation<Annotation>()
 
     // Then:
-    assertNotNull(annotation)
-    assertEquals("Test", annotation?.get<Annotation>()?.value)
+    annotation.shouldNotBeNull()
+    annotation?.get<Annotation>()?.value shouldBe "Test"
   }
 
-  @Test
-  fun `should not find a declared annotation by type`() {
+  test("should not find a declared annotation by type") {
     // Given:
     val reflectedClass = reflect<Tested>()
 
@@ -715,6 +656,6 @@ class ReflectTest {
     val annotation = reflectedClass.getDeclaredAnnotation<Annotation>()
 
     // Then:
-    assertNull(annotation)
+    annotation.shouldBeNull()
   }
-}
+})

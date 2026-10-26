@@ -5,19 +5,20 @@ import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Matrix3
 import com.badlogic.gdx.math.Vector2
-import io.kotlintest.forAtLeastOne
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotEquals
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.assertions.withClue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.inspectors.forAtLeastOne
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import java.util.HashSet
 import java.util.Random
 import kotlin.math.sqrt
 
-class ImmutableVector2Test {
+class ImmutableVector2Test : FunSpec({
   /** List of vector to use in tests */
-  private val vectors =
+  val vectors =
     sequenceOf(
       // vector zero
       ImmutableVector2.ZERO,
@@ -38,9 +39,8 @@ class ImmutableVector2Test {
     )
 
   /** List scalar values to use in tests */
-  private val scalars = sequenceOf(0f, Float.MIN_VALUE, 0.42f, 1f, 42f)
-
-  private val interpolations =
+  val scalars = sequenceOf(0f, Float.MIN_VALUE, 0.42f, 1f, 42f)
+  val interpolations =
     sequenceOf(
       Interpolation.bounce,
       Interpolation.bounceIn,
@@ -55,499 +55,448 @@ class ImmutableVector2Test {
       Interpolation.smooth2,
     )
 
-  @Test
-  fun `equals should return true for equivalent vectors`() {
-    assertEquals(ImmutableVector2.X, ImmutableVector2.X)
-    assertEquals(ImmutableVector2.Y, ImmutableVector2.Y)
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO)
-    assertEquals(ImmutableVector2(-3f, 42f), ImmutableVector2(-3f, 42f))
+  test("equals should return true for equivalent vectors") {
+    ImmutableVector2.X shouldBe ImmutableVector2.X
+    ImmutableVector2.Y shouldBe ImmutableVector2.Y
+    ImmutableVector2.ZERO shouldBe ImmutableVector2.ZERO
+    ImmutableVector2(-3f, 42f) shouldBe ImmutableVector2(-3f, 42f)
 
     vectors.forEach {
-      assertEquals(it, it)
+      it shouldBe it
     }
   }
 
-  @Test
-  fun `hashCode should return same hashCode for equivalent vectors`() {
-    assertEquals(ImmutableVector2.X.hashCode(), ImmutableVector2.X.hashCode())
-    assertEquals(ImmutableVector2.Y.hashCode(), ImmutableVector2.Y.hashCode())
-    assertEquals(ImmutableVector2.ZERO.hashCode(), ImmutableVector2.ZERO.hashCode())
-    assertEquals(ImmutableVector2(-3f, 42f).hashCode(), ImmutableVector2(-3f, 42f).hashCode())
+  test("hashCode should return same hashCode for equivalent vectors") {
+    ImmutableVector2.X.hashCode() shouldBe ImmutableVector2.X.hashCode()
+    ImmutableVector2.Y.hashCode() shouldBe ImmutableVector2.Y.hashCode()
+    ImmutableVector2.ZERO.hashCode() shouldBe ImmutableVector2.ZERO.hashCode()
+    ImmutableVector2(-3f, 42f).hashCode() shouldBe ImmutableVector2(-3f, 42f).hashCode()
 
     vectors.forEach {
-      assertEquals(it.hashCode(), it.hashCode())
+      it.hashCode() shouldBe it.hashCode()
     }
   }
 
-  @Test
-  fun `equals should return false for different vectors`() {
-    assertNotEquals(ImmutableVector2.X, ImmutableVector2.Y)
-    assertNotEquals(ImmutableVector2.Y, ImmutableVector2.X)
-    assertNotEquals(ImmutableVector2.ZERO, ImmutableVector2.X)
-    assertNotEquals(ImmutableVector2.ZERO, ImmutableVector2.Y)
-    assertNotEquals(ImmutableVector2(42f, -3f), ImmutableVector2(-3f, 42f))
+  test("equals should return false for different vectors") {
+    ImmutableVector2.Y shouldNotBe ImmutableVector2.X
+    ImmutableVector2.X shouldNotBe ImmutableVector2.Y
+    ImmutableVector2.X shouldNotBe ImmutableVector2.ZERO
+    ImmutableVector2.Y shouldNotBe ImmutableVector2.ZERO
+    ImmutableVector2(-3f, 42f) shouldNotBe ImmutableVector2(42f, -3f)
 
     vectors.forEach { v1 ->
       vectors.filterNot { v1 === it }.forEach { v2 ->
-        assertNotEquals(v1, v2)
+        v2 shouldNotBe v1
       }
     }
   }
 
-  @Test
-  fun `equals should be commutative`() {
+  test("equals should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1 == v2, v2 == v1)
+        (v2 == v1) shouldBe (v1 == v2)
       }
     }
   }
 
-  @Test
-  fun `toMutable should return the equivalent Vector2`() {
+  test("toMutable should return the equivalent Vector2") {
     vectors.forEach {
       val vector2 = it.toMutable()
-      assertEquals(it.x, vector2.x)
-      assertEquals(it.y, vector2.y)
-      assertEquals(Vector2(it.x, it.y), vector2)
+      vector2.x shouldBe it.x
+      vector2.y shouldBe it.y
+      vector2 shouldBe Vector2(it.x, it.y)
     }
   }
 
-  @Test
-  fun `toImmutable should return an equivalent of the Vector2`() {
+  test("toImmutable should return an equivalent of the Vector2") {
     vectors.forEach {
       val vector2 = Vector2(it.x, it.y).toImmutable()
-      assertEquals(it.x, vector2.x)
-      assertEquals(it.y, vector2.y)
-      assertEquals(it, vector2)
+      vector2.x shouldBe it.x
+      vector2.y shouldBe it.y
+      vector2 shouldBe it
     }
   }
 
-  @Test
-  fun `fromString should parse result toString`() {
+  test("fromString should parse result toString") {
     vectors.forEach {
-      assertEquals(it, ImmutableVector2.fromString(it.toString()))
-      assertEquals(it, ImmutableVector2.fromString(it.toMutable().toString()))
+      ImmutableVector2.fromString(it.toString()) shouldBe it
+      ImmutableVector2.fromString(it.toMutable().toString()) shouldBe it
     }
   }
 
-  @Test
-  fun `len should return same value as Vector2`() {
+  test("len should return same value as Vector2") {
     vectors.forEach {
-      assertEquals(it.toMutable().len(), it.len)
+      it.len shouldBe it.toMutable().len()
     }
   }
 
-  @Test
-  fun `len should return length`() {
-    assertEquals(1.0f, ImmutableVector2.X.len)
-    assertEquals(1.0f, ImmutableVector2.Y.len)
-    assertEquals(0.0f, ImmutableVector2.ZERO.len)
-    assertEquals(5.0f, ImmutableVector2(-3.0f, 4.0f).len)
+  test("len should return length") {
+    ImmutableVector2.X.len shouldBe 1.0f
+    ImmutableVector2.Y.len shouldBe 1.0f
+    ImmutableVector2.ZERO.len shouldBe 0.0f
+    ImmutableVector2(-3.0f, 4.0f).len shouldBe 5.0f
   }
 
-  @Test
-  fun `len2 should return same value as Vector2`() {
+  test("len2 should return same value as Vector2") {
     vectors.forEach {
-      assertEquals(it.toMutable().len2(), it.len2)
+      it.len2 shouldBe it.toMutable().len2()
     }
   }
 
-  @Test
-  fun `len2 should return squared length`() {
-    assertEquals(1.0f, ImmutableVector2.X.len2)
-    assertEquals(1.0f, ImmutableVector2.Y.len2)
-    assertEquals(0.0f, ImmutableVector2.ZERO.len2)
-    assertEquals(25.0f, ImmutableVector2(-3.0f, 4.0f).len2)
+  test("len2 should return squared length") {
+    ImmutableVector2.X.len2 shouldBe 1.0f
+    ImmutableVector2.Y.len2 shouldBe 1.0f
+    ImmutableVector2.ZERO.len2 shouldBe 0.0f
+    ImmutableVector2(-3.0f, 4.0f).len2 shouldBe 25.0f
   }
 
-  @Test
-  fun `isZero should returns same result than Vector2`() {
+  test("isZero should returns same result than Vector2") {
     vectors.forEach { vector ->
-      assertEquals(vector.toMutable().isZero, vector.isZero())
+      vector.isZero() shouldBe vector.toMutable().isZero
       scalars.filter { it > 0f }.forEach { margin ->
-        assertEquals(vector.toMutable().isZero(margin), vector.isZero(margin))
+        vector.isZero(margin) shouldBe vector.toMutable().isZero(margin)
       }
     }
   }
 
-  @Test
-  fun `isZero should return true for vector zero`() {
-    assertTrue(ImmutableVector2.ZERO.isZero())
+  test("isZero should return true for vector zero") {
+    ImmutableVector2.ZERO.isZero() shouldBe true
   }
 
-  @Test
-  fun `isZero should return false for non-zero vectors`() {
-    assertFalse(ImmutableVector2.X.isZero())
-    assertFalse((-ImmutableVector2.X).isZero())
-    assertFalse(ImmutableVector2.Y.isZero())
-    assertFalse((-ImmutableVector2.Y).isZero())
-    assertFalse(ImmutableVector2(3f, 4f).isZero())
+  test("isZero should return false for non-zero vectors") {
+    ImmutableVector2.X.isZero() shouldBe false
+    (-ImmutableVector2.X).isZero() shouldBe false
+    ImmutableVector2.Y.isZero() shouldBe false
+    (-ImmutableVector2.Y).isZero() shouldBe false
+    ImmutableVector2(3f, 4f).isZero() shouldBe false
   }
 
-  @Test
-  fun `isUnit with margin should return same value as Vector2`() {
+  test("isUnit with margin should return same value as Vector2") {
     vectors.forEach { vector ->
-      assertEquals(vector.toMutable().isUnit, vector.isUnit())
+      vector.isUnit() shouldBe vector.toMutable().isUnit
       scalars.filter { it > 0f }.forEach { margin ->
-        assertEquals("$vector, $margin", vector.toMutable().isUnit(margin), vector.isUnit(margin))
+        withClue("$vector, $margin") { vector.isUnit(margin) shouldBe vector.toMutable().isUnit(margin) }
       }
     }
   }
 
-  @Test
-  fun `isUnit should return true for axis`() {
-    assertTrue(ImmutableVector2.X.isUnit())
-    assertTrue((-ImmutableVector2.X).isUnit())
-    assertTrue(ImmutableVector2.Y.isUnit())
-    assertTrue((-ImmutableVector2.Y).isUnit())
+  test("isUnit should return true for axis") {
+    ImmutableVector2.X.isUnit() shouldBe true
+    (-ImmutableVector2.X).isUnit() shouldBe true
+    ImmutableVector2.Y.isUnit() shouldBe true
+    (-ImmutableVector2.Y).isUnit() shouldBe true
   }
 
-  @Test
-  fun `isUnit should return false for non-unit vectors`() {
-    assertFalse(ImmutableVector2.ZERO.isUnit())
-    assertFalse(ImmutableVector2(-3.0f, 4.0f).isUnit())
-    assertFalse(ImmutableVector2(0.5f, 0.5f).isUnit())
+  test("isUnit should return false for non-unit vectors") {
+    ImmutableVector2.ZERO.isUnit() shouldBe false
+    ImmutableVector2(-3.0f, 4.0f).isUnit() shouldBe false
+    ImmutableVector2(0.5f, 0.5f).isUnit() shouldBe false
   }
 
-  @Test
-  fun `nor should return same value as Vector2`() {
+  test("nor should return same value as Vector2") {
     vectors.forEach {
-      assertEquals(it.toMutable().nor().toImmutable(), it.nor)
+      it.nor shouldBe it.toMutable().nor().toImmutable()
     }
   }
 
-  @Test
-  fun `nor should return normalized vectors`() {
-    assertEquals(ImmutableVector2.X, ImmutableVector2(0.4f, 0f).nor)
-    assertEquals(ImmutableVector2.X, ImmutableVector2(3f, 0f).nor)
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.nor)
-    assertEquals(ImmutableVector2(3f / 5f, -4f / 5f), ImmutableVector2(3f, -4f).nor)
+  test("nor should return normalized vectors") {
+    ImmutableVector2(0.4f, 0f).nor shouldBe ImmutableVector2.X
+    ImmutableVector2(3f, 0f).nor shouldBe ImmutableVector2.X
+    ImmutableVector2.ZERO.nor shouldBe ImmutableVector2.ZERO
+    ImmutableVector2(3f, -4f).nor shouldBe ImmutableVector2(3f / 5f, -4f / 5f)
   }
 
-  @Test
-  fun `nor should return unit vectors`() {
+  test("nor should return unit vectors") {
     vectors.forEach {
-      assertTrue(it.isZero() || it.nor.isUnit())
+      (it.isZero() || it.nor.isUnit()) shouldBe true
     }
   }
 
-  @Test
-  fun `unaryMinus should return same value as Vector2 scaled by -1`() {
+  test("unaryMinus should return same value as Vector2 scaled by -1") {
     vectors.forEach {
-      assertEquals(it.toMutable().scl(-1f).toImmutable(), -it)
+      -it shouldBe it.toMutable().scl(-1f).toImmutable()
     }
   }
 
-  @Test
-  fun `minus should return same value as Vector2`() {
+  test("minus should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().minus(v2.toMutable()).toImmutable(), v1 - v2)
+        (v1 - v2) shouldBe v1.toMutable().minus(v2.toMutable()).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `minus should return difference between the two vectors`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.X - ImmutableVector2.X)
-    assertEquals(ImmutableVector2(-2f, -0f), -ImmutableVector2.X - ImmutableVector2.X)
-    assertEquals(ImmutableVector2(-1f, 1f), ImmutableVector2.Y - ImmutableVector2.X)
-    assertEquals(ImmutableVector2(1f, -1f), ImmutableVector2(3f, 4f) - ImmutableVector2(2f, 5f))
+  test("minus should return difference between the two vectors") {
+    (ImmutableVector2.X - ImmutableVector2.X) shouldBe ImmutableVector2.ZERO
+    (-ImmutableVector2.X - ImmutableVector2.X) shouldBe ImmutableVector2(-2f, -0f)
+    (ImmutableVector2.Y - ImmutableVector2.X) shouldBe ImmutableVector2(-1f, 1f)
+    (ImmutableVector2(3f, 4f) - ImmutableVector2(2f, 5f)) shouldBe ImmutableVector2(1f, -1f)
   }
 
-  @Test
-  fun `plus should return same value as Vector2`() {
+  test("plus should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().plus(v2.toMutable()).toImmutable(), v1 + v2)
+        (v1 + v2) shouldBe v1.toMutable().plus(v2.toMutable()).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `plus should return sum of the two vectors`() {
-    assertEquals(ImmutableVector2(2f, 0f), ImmutableVector2.X + ImmutableVector2.X)
-    assertEquals(ImmutableVector2(2f, 0f), ImmutableVector2.X.plus(1f, 0f))
+  test("plus should return sum of the two vectors") {
+    (ImmutableVector2.X + ImmutableVector2.X) shouldBe ImmutableVector2(2f, 0f)
+    ImmutableVector2.X.plus(1f, 0f) shouldBe ImmutableVector2(2f, 0f)
 
-    assertEquals(ImmutableVector2.ZERO, (-ImmutableVector2.X) + ImmutableVector2.X)
-    assertEquals(ImmutableVector2.ZERO, (-ImmutableVector2.X).plus(1f, 0f))
+    ((-ImmutableVector2.X) + ImmutableVector2.X) shouldBe ImmutableVector2.ZERO
+    (-ImmutableVector2.X).plus(1f, 0f) shouldBe ImmutableVector2.ZERO
 
-    assertEquals(ImmutableVector2(1f, 1f), ImmutableVector2.Y + ImmutableVector2.X)
-    assertEquals(ImmutableVector2(1f, 1f), ImmutableVector2.Y.plus(1f, 0f))
+    (ImmutableVector2.Y + ImmutableVector2.X) shouldBe ImmutableVector2(1f, 1f)
+    ImmutableVector2.Y.plus(1f, 0f) shouldBe ImmutableVector2(1f, 1f)
 
-    assertEquals(ImmutableVector2(5f, 9f), ImmutableVector2(3f, 4f) + ImmutableVector2(2f, 5f))
-    assertEquals(ImmutableVector2(5f, 9f), ImmutableVector2(3f, 4f).plus(2f, 5f))
+    (ImmutableVector2(3f, 4f) + ImmutableVector2(2f, 5f)) shouldBe ImmutableVector2(5f, 9f)
+    ImmutableVector2(3f, 4f).plus(2f, 5f) shouldBe ImmutableVector2(5f, 9f)
   }
 
-  @Test
-  fun `plus should be commutative`() {
+  test("plus should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1 + v2, v2 + v1)
+        (v2 + v1) shouldBe (v1 + v2)
       }
     }
   }
 
-  @Test
-  fun `times should return same value as Vector2 scale`() {
+  test("times should return same value as Vector2 scale") {
     scalars.forEach { factor ->
       vectors.forEach { vector ->
-        assertEquals(vector.toMutable().scl(factor).toImmutable(), vector * factor)
+        (vector * factor) shouldBe vector.toMutable().scl(factor).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `times should return scaled vector`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO * 42f)
-    assertEquals(ImmutableVector2(0f, 2f), ImmutableVector2.Y * 2f)
-    assertEquals(ImmutableVector2(15f, -6f), ImmutableVector2(5f, -2f) * 3f)
-    assertEquals(ImmutableVector2(2.5f, -1f), ImmutableVector2(5f, -2f) * 0.5f)
+  test("times should return scaled vector") {
+    (ImmutableVector2.ZERO * 42f) shouldBe ImmutableVector2.ZERO
+    (ImmutableVector2.Y * 2f) shouldBe ImmutableVector2(0f, 2f)
+    (ImmutableVector2(5f, -2f) * 3f) shouldBe ImmutableVector2(15f, -6f)
+    (ImmutableVector2(5f, -2f) * 0.5f) shouldBe ImmutableVector2(2.5f, -1f)
   }
 
-  @Test
-  fun `times should return same value as scl does for Vector2`() {
+  test("times should return same value as scl does for Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().scl(v2.toMutable()).toImmutable(), v1 * v2)
-        assertEquals(v1.toMutable().scl(v2.x, v2.y).toImmutable(), v1.times(v2.x, v2.y))
+        (v1 * v2) shouldBe v1.toMutable().scl(v2.toMutable()).toImmutable()
+        v1.times(v2.x, v2.y) shouldBe v1.toMutable().scl(v2.x, v2.y).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `times should return scaled vector on both axis`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.X * ImmutableVector2.ZERO)
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.X.times(0f, 0f))
+  test("times should return scaled vector on both axis") {
+    (ImmutableVector2.X * ImmutableVector2.ZERO) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2.X.times(0f, 0f) shouldBe ImmutableVector2.ZERO
 
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.X * ImmutableVector2.Y)
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.X.times(0f, 1f))
+    (ImmutableVector2.X * ImmutableVector2.Y) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2.X.times(0f, 1f) shouldBe ImmutableVector2.ZERO
 
-    assertEquals(ImmutableVector2(4f, -15f), ImmutableVector2(-2f, 3f) * ImmutableVector2(-2f, -5f))
-    assertEquals(ImmutableVector2(4f, -15f), ImmutableVector2(-2f, 3f).times(-2f, -5f))
+    (ImmutableVector2(-2f, 3f) * ImmutableVector2(-2f, -5f)) shouldBe ImmutableVector2(4f, -15f)
+    ImmutableVector2(-2f, 3f).times(-2f, -5f) shouldBe ImmutableVector2(4f, -15f)
 
-    assertEquals(ImmutableVector2(4f, 15f), ImmutableVector2(2f, 3f) * ImmutableVector2(2f, 5f))
-    assertEquals(ImmutableVector2(4f, 15f), ImmutableVector2(2f, 3f).times(2f, 5f))
+    (ImmutableVector2(2f, 3f) * ImmutableVector2(2f, 5f)) shouldBe ImmutableVector2(4f, 15f)
+    ImmutableVector2(2f, 3f).times(2f, 5f) shouldBe ImmutableVector2(4f, 15f)
   }
 
-  @Test
-  fun `dot should return same value as Vector2`() {
+  test("dot should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().dot(v2.toMutable()), v1 dot v2)
-        assertEquals(v1.toMutable().dot(v2.x, v2.y), v1.dot(v2.x, v2.y))
+        (v1 dot v2) shouldBe v1.toMutable().dot(v2.toMutable())
+        v1.dot(v2.x, v2.y) shouldBe v1.toMutable().dot(v2.x, v2.y)
       }
     }
   }
 
-  @Test
-  fun `dot should return dot product`() {
-    assertEquals(1f, ImmutableVector2.X dot ImmutableVector2.X)
-    assertEquals(1f, ImmutableVector2.X.dot(1f, 0f))
+  test("dot should return dot product") {
+    (ImmutableVector2.X dot ImmutableVector2.X) shouldBe 1f
+    ImmutableVector2.X.dot(1f, 0f) shouldBe 1f
 
-    assertEquals(1f, ImmutableVector2.Y dot ImmutableVector2(0f, 1f))
-    assertEquals(1f, ImmutableVector2.Y.dot(0f, 1f))
+    (ImmutableVector2.Y dot ImmutableVector2(0f, 1f)) shouldBe 1f
+    ImmutableVector2.Y.dot(0f, 1f) shouldBe 1f
 
-    assertEquals(0f, ImmutableVector2.X dot ImmutableVector2(0f, 1f))
-    assertEquals(0f, ImmutableVector2.X.dot(0f, 1f))
+    (ImmutableVector2.X dot ImmutableVector2(0f, 1f)) shouldBe 0f
+    ImmutableVector2.X.dot(0f, 1f) shouldBe 0f
 
-    assertEquals(0f, ImmutableVector2.X dot ImmutableVector2(0f, 0f))
-    assertEquals(0f, ImmutableVector2.X.dot(0f, 0f))
+    (ImmutableVector2.X dot ImmutableVector2(0f, 0f)) shouldBe 0f
+    ImmutableVector2.X.dot(0f, 0f) shouldBe 0f
 
-    assertEquals(2f, ImmutableVector2(1f, 1f) dot ImmutableVector2(1f, 1f))
-    assertEquals(2f, ImmutableVector2(1f, 1f).dot(1f, 1f))
+    (ImmutableVector2(1f, 1f) dot ImmutableVector2(1f, 1f)) shouldBe 2f
+    ImmutableVector2(1f, 1f).dot(1f, 1f) shouldBe 2f
 
-    assertEquals(7f, ImmutableVector2(-2f, 3f) dot ImmutableVector2(4f, 5f))
-    assertEquals(7f, ImmutableVector2(-2f, 3f).dot(4f, 5f))
+    (ImmutableVector2(-2f, 3f) dot ImmutableVector2(4f, 5f)) shouldBe 7f
+    ImmutableVector2(-2f, 3f).dot(4f, 5f) shouldBe 7f
   }
 
-  @Test
-  fun `dot should be commutative`() {
+  test("dot should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1 dot v2, v2 dot v1)
+        (v2 dot v1) shouldBe (v1 dot v2)
       }
     }
   }
 
-  @Test
-  fun `dst2 should return same value as Vector2`() {
+  test("dst2 should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().dst2(v2.toMutable()), v1.dst2(v2))
-        assertEquals(v1.toMutable().dst2(v2.x, v2.y), v1.dst2(v2.x, v2.y))
+        v1.dst2(v2) shouldBe v1.toMutable().dst2(v2.toMutable())
+        v1.dst2(v2.x, v2.y) shouldBe v1.toMutable().dst2(v2.x, v2.y)
       }
     }
   }
 
-  @Test
-  fun `dst2 should return squared distance`() {
-    assertEquals(1f, ImmutableVector2.ZERO dst2 ImmutableVector2.X)
-    assertEquals(1f, ImmutableVector2.ZERO.dst2(1f, 0f))
+  test("dst2 should return squared distance") {
+    (ImmutableVector2.ZERO dst2 ImmutableVector2.X) shouldBe 1f
+    ImmutableVector2.ZERO.dst2(1f, 0f) shouldBe 1f
 
-    assertEquals(2f, ImmutableVector2.X dst2 ImmutableVector2.Y)
-    assertEquals(2f, ImmutableVector2.X.dst2(0f, 1f))
+    (ImmutableVector2.X dst2 ImmutableVector2.Y) shouldBe 2f
+    ImmutableVector2.X.dst2(0f, 1f) shouldBe 2f
 
-    assertEquals(25f, ImmutableVector2.ZERO dst2 ImmutableVector2(3f, 4f))
-    assertEquals(25f, ImmutableVector2.ZERO.dst2(3f, 4f))
+    (ImmutableVector2.ZERO dst2 ImmutableVector2(3f, 4f)) shouldBe 25f
+    ImmutableVector2.ZERO.dst2(3f, 4f) shouldBe 25f
 
-    assertEquals(50f, ImmutableVector2(2f, -3f) dst2 ImmutableVector2(3f, 4f))
-    assertEquals(50f, ImmutableVector2(2f, -3f).dst2(3f, 4f))
+    (ImmutableVector2(2f, -3f) dst2 ImmutableVector2(3f, 4f)) shouldBe 50f
+    ImmutableVector2(2f, -3f).dst2(3f, 4f) shouldBe 50f
   }
 
-  @Test
-  fun `dst2 should be commutative`() {
+  test("dst2 should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1 dst2 v2, v2 dst2 v1)
+        (v2 dst2 v1) shouldBe (v1 dst2 v2)
       }
     }
   }
 
-  @Test
-  fun `dst should return same value as Vector2`() {
+  test("dst should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().dst(v2.toMutable()), v1.dst(v2))
-        assertEquals(v1.toMutable().dst(v2.x, v2.y), v1.dst(v2.x, v2.y))
+        v1.dst(v2) shouldBe v1.toMutable().dst(v2.toMutable())
+        v1.dst(v2.x, v2.y) shouldBe v1.toMutable().dst(v2.x, v2.y)
       }
     }
   }
 
-  @Test
-  fun `dst should return squared distance`() {
-    assertEquals(1f, ImmutableVector2.ZERO dst ImmutableVector2.X)
-    assertEquals(1f, ImmutableVector2.ZERO.dst(1f, 0f))
+  test("dst should return squared distance") {
+    (ImmutableVector2.ZERO dst ImmutableVector2.X) shouldBe 1f
+    ImmutableVector2.ZERO.dst(1f, 0f) shouldBe 1f
 
-    assertEquals(sqrt(2f), ImmutableVector2.X dst ImmutableVector2.Y)
-    assertEquals(sqrt(2f), ImmutableVector2.X.dst(0f, 1f))
+    (ImmutableVector2.X dst ImmutableVector2.Y) shouldBe sqrt(2f)
+    ImmutableVector2.X.dst(0f, 1f) shouldBe sqrt(2f)
 
-    assertEquals(5f, ImmutableVector2.ZERO dst ImmutableVector2(3f, 4f))
-    assertEquals(5f, ImmutableVector2.ZERO.dst(3f, 4f))
+    (ImmutableVector2.ZERO dst ImmutableVector2(3f, 4f)) shouldBe 5f
+    ImmutableVector2.ZERO.dst(3f, 4f) shouldBe 5f
 
-    assertEquals(sqrt(50f), ImmutableVector2(2f, -3f) dst ImmutableVector2(3f, 4f))
-    assertEquals(sqrt(50f), ImmutableVector2(2f, -3f).dst(3f, 4f))
+    (ImmutableVector2(2f, -3f) dst ImmutableVector2(3f, 4f)) shouldBe sqrt(50f)
+    ImmutableVector2(2f, -3f).dst(3f, 4f) shouldBe sqrt(50f)
   }
 
-  @Test
-  fun `dst should be commutative`() {
+  test("dst should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1 dst v2, v2 dst v1)
+        (v2 dst v1) shouldBe (v1 dst v2)
       }
     }
   }
 
-  @Test
-  fun `withLimit should return same value as Vector2`() {
+  test("withLimit should return same value as Vector2") {
     scalars.forEach { l ->
       vectors.forEach { v ->
-        assertEquals(v.toMutable().limit(l).toImmutable(), v.withLimit(l))
+        v.withLimit(l) shouldBe v.toMutable().limit(l).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withLimit should return a vector within the limit`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.withLimit(42f))
-    assertEquals(ImmutableVector2.X, ImmutableVector2(42f, 0f).withLimit(1f))
-    assertEquals(ImmutableVector2(0.5f, 0f), ImmutableVector2(0.5f, 0f).withLimit(1f))
-    assertEquals(ImmutableVector2(3f, -4f), ImmutableVector2(6f, -8f).withLimit(5f))
-    assertEquals(ImmutableVector2(2f, -3f), ImmutableVector2(2f, -3f).withLimit(5f))
+  test("withLimit should return a vector within the limit") {
+    ImmutableVector2.ZERO.withLimit(42f) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2(42f, 0f).withLimit(1f) shouldBe ImmutableVector2.X
+    ImmutableVector2(0.5f, 0f).withLimit(1f) shouldBe ImmutableVector2(0.5f, 0f)
+    ImmutableVector2(6f, -8f).withLimit(5f) shouldBe ImmutableVector2(3f, -4f)
+    ImmutableVector2(2f, -3f).withLimit(5f) shouldBe ImmutableVector2(2f, -3f)
   }
 
-  @Test
-  fun `withLimit2 should return same value as Vector2`() {
+  test("withLimit2 should return same value as Vector2") {
     scalars.forEach { l ->
       vectors.forEach { v ->
-        assertEquals(v.toMutable().limit2(l).toImmutable(), v.withLimit2(l))
+        v.withLimit2(l) shouldBe v.toMutable().limit2(l).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withLimit2 should return a vector within the limit`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.withLimit2(42f))
-    assertEquals(ImmutableVector2.X, ImmutableVector2(42f, 0f).withLimit2(1f))
-    assertEquals(ImmutableVector2(0.5f, 0f), ImmutableVector2(0.5f, 0f).withLimit2(1f))
-    assertEquals(ImmutableVector2(3f, -4f), ImmutableVector2(6f, -8f).withLimit2(25f))
-    assertEquals(ImmutableVector2(2f, -3f), ImmutableVector2(2f, -3f).withLimit2(25f))
+  test("withLimit2 should return a vector within the limit") {
+    ImmutableVector2.ZERO.withLimit2(42f) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2(42f, 0f).withLimit2(1f) shouldBe ImmutableVector2.X
+    ImmutableVector2(0.5f, 0f).withLimit2(1f) shouldBe ImmutableVector2(0.5f, 0f)
+    ImmutableVector2(6f, -8f).withLimit2(25f) shouldBe ImmutableVector2(3f, -4f)
+    ImmutableVector2(2f, -3f).withLimit2(25f) shouldBe ImmutableVector2(2f, -3f)
   }
 
-  @Test
-  fun `withLength should return same value as Vector2`() {
+  test("withLength should return same value as Vector2") {
     scalars.forEach { l ->
       vectors.forEach { v ->
-        assertEquals(v.toMutable().setLength(l).toImmutable(), v.withLength(l))
+        v.withLength(l) shouldBe v.toMutable().setLength(l).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withLength should return a vector of given length`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.withLength(5f))
-    assertEquals(ImmutableVector2(3f, 0f), ImmutableVector2.X.withLength(3f))
-    assertEquals(ImmutableVector2(0f, 0.5f), ImmutableVector2.Y.withLength(0.5f))
-    assertEquals(ImmutableVector2(6f, -8f), ImmutableVector2(3f, -4f).withLength(10f))
-    assertEquals(ImmutableVector2(-1.5f, 2f), ImmutableVector2(-3f, 4f).withLength(2.5f))
+  test("withLength should return a vector of given length") {
+    ImmutableVector2.ZERO.withLength(5f) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2.X.withLength(3f) shouldBe ImmutableVector2(3f, 0f)
+    ImmutableVector2.Y.withLength(0.5f) shouldBe ImmutableVector2(0f, 0.5f)
+    ImmutableVector2(3f, -4f).withLength(10f) shouldBe ImmutableVector2(6f, -8f)
+    ImmutableVector2(-3f, 4f).withLength(2.5f) shouldBe ImmutableVector2(-1.5f, 2f)
   }
 
-  @Test
-  fun `withLength2 should return same value as Vector2`() {
+  test("withLength2 should return same value as Vector2") {
     scalars.forEach { l ->
       vectors.forEach { v ->
-        assertEquals(v.toMutable().setLength2(l).toImmutable(), v.withLength2(l))
+        v.withLength2(l) shouldBe v.toMutable().setLength2(l).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withLength2 should return a vector of given squared length`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.withLength2(25f))
-    assertEquals(ImmutableVector2(3f, 0f), ImmutableVector2.X.withLength2(9f))
-    assertEquals(ImmutableVector2(0f, 0.5f), ImmutableVector2.Y.withLength2(0.25f))
-    assertEquals(ImmutableVector2(6f, -8f), ImmutableVector2(3f, -4f).withLength2(100f))
-    assertEquals(ImmutableVector2(-1.5f, 2f), ImmutableVector2(-3f, 4f).withLength2(6.25f))
+  test("withLength2 should return a vector of given squared length") {
+    ImmutableVector2.ZERO.withLength2(25f) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2.X.withLength2(9f) shouldBe ImmutableVector2(3f, 0f)
+    ImmutableVector2.Y.withLength2(0.25f) shouldBe ImmutableVector2(0f, 0.5f)
+    ImmutableVector2(3f, -4f).withLength2(100f) shouldBe ImmutableVector2(6f, -8f)
+    ImmutableVector2(-3f, 4f).withLength2(6.25f) shouldBe ImmutableVector2(-1.5f, 2f)
   }
 
-  @Test
-  fun `withClamp should return same value as Vector2`() {
+  test("withClamp should return same value as Vector2") {
     scalars.forEach { min ->
       scalars.filter { it >= min }.forEach { max ->
         vectors.forEach { v ->
-          assertEquals(v.toMutable().clamp(min, max).toImmutable(), v.withClamp(min, max))
+          v.withClamp(min, max) shouldBe v.toMutable().clamp(min, max).toImmutable()
         }
       }
     }
   }
 
-  @Test
-  fun `withClamp should return a vector of length between min and max`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.withClamp(1f, 2f))
-    assertEquals(ImmutableVector2(2f, 0f), ImmutableVector2.X.withClamp(2f, 3f))
-    assertEquals(ImmutableVector2(0.8f, 0f), ImmutableVector2.X.withClamp(0.5f, 0.8f))
-    assertEquals(ImmutableVector2.X, ImmutableVector2.X.withClamp(0.5f, 2f))
+  test("withClamp should return a vector of length between min and max") {
+    ImmutableVector2.ZERO.withClamp(1f, 2f) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2.X.withClamp(2f, 3f) shouldBe ImmutableVector2(2f, 0f)
+    ImmutableVector2.X.withClamp(0.5f, 0.8f) shouldBe ImmutableVector2(0.8f, 0f)
+    ImmutableVector2.X.withClamp(0.5f, 2f) shouldBe ImmutableVector2.X
 
-    assertEquals(ImmutableVector2(3f, -4f), ImmutableVector2(3f, -4f).withClamp(4f, 6f))
-    assertEquals(ImmutableVector2(1.5f, -2f), ImmutableVector2(3f, -4f).withClamp(1f, 2.5f))
-    assertEquals(ImmutableVector2(6f, -8f), ImmutableVector2(3f, -4f).withClamp(10f, 12f))
+    ImmutableVector2(3f, -4f).withClamp(4f, 6f) shouldBe ImmutableVector2(3f, -4f)
+    ImmutableVector2(3f, -4f).withClamp(1f, 2.5f) shouldBe ImmutableVector2(1.5f, -2f)
+    ImmutableVector2(3f, -4f).withClamp(10f, 12f) shouldBe ImmutableVector2(6f, -8f)
   }
 
-  @Test
-  fun `withClamp2 should return a vector of length between min2 and max2`() {
-    assertEquals(ImmutableVector2.ZERO, ImmutableVector2.ZERO.withClamp2(1f, 4f))
-    assertEquals(ImmutableVector2(2f, 0f), ImmutableVector2.X.withClamp2(4f, 9f))
-    assertEquals(ImmutableVector2(0.8f, 0f), ImmutableVector2.X.withClamp2(0.5f, 0.64f))
-    assertEquals(ImmutableVector2.X, ImmutableVector2.X.withClamp2(0.5f, 2f))
+  test("withClamp2 should return a vector of length between min2 and max2") {
+    ImmutableVector2.ZERO.withClamp2(1f, 4f) shouldBe ImmutableVector2.ZERO
+    ImmutableVector2.X.withClamp2(4f, 9f) shouldBe ImmutableVector2(2f, 0f)
+    ImmutableVector2.X.withClamp2(0.5f, 0.64f) shouldBe ImmutableVector2(0.8f, 0f)
+    ImmutableVector2.X.withClamp2(0.5f, 2f) shouldBe ImmutableVector2.X
 
-    assertEquals(ImmutableVector2(3f, -4f), ImmutableVector2(3f, -4f).withClamp2(16f, 36f))
-    assertEquals(ImmutableVector2(1.5f, -2f), ImmutableVector2(3f, -4f).withClamp2(1f, 6.25f))
-    assertEquals(ImmutableVector2(6f, -8f), ImmutableVector2(3f, -4f).withClamp2(100f, 110f))
+    ImmutableVector2(3f, -4f).withClamp2(16f, 36f) shouldBe ImmutableVector2(3f, -4f)
+    ImmutableVector2(3f, -4f).withClamp2(1f, 6.25f) shouldBe ImmutableVector2(1.5f, -2f)
+    ImmutableVector2(3f, -4f).withClamp2(100f, 110f) shouldBe ImmutableVector2(6f, -8f)
   }
 
-  @Test
-  fun `times should return same value as Vector2 mul`() {
+  test("times should return same value as Vector2 mul") {
     val transformations =
       listOf(
         Affine2(),
@@ -561,13 +510,12 @@ class ImmutableVector2Test {
     transformations.forEach { transformation ->
       vectors.forEach { vector ->
         val matrix = Matrix3().set(transformation)
-        assertEquals(vector.toMutable().mul(matrix).toImmutable(), vector * transformation)
+        (vector * transformation) shouldBe vector.toMutable().mul(matrix).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `applying affine transformation should be equivalent of doing the operations`() {
+  test("applying affine transformation should be equivalent of doing the operations") {
     val vector = ImmutableVector2(3f, 4f)
 
     val transformation =
@@ -577,443 +525,431 @@ class ImmutableVector2Test {
         preScale(0.5f, 2f) // (-3.5f, 2f)
       }
 
-    assertTrue(ImmutableVector2(-3.5f, 2f).epsilonEquals(vector * transformation, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(
+    ImmutableVector2(-3.5f, 2f).epsilonEquals(vector * transformation, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    (
       vector
         .plus(-2f, 3f)
         .withRotationDeg(90f)
         .times(0.5f, 2f)
-        .epsilonEquals(vector * transformation, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+        .epsilonEquals(vector * transformation, MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
   }
 
-  @Test
-  fun `crs should return same value as Vector2`() {
+  test("crs should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().crs(v2.toMutable()), v1 x v2)
-        assertEquals(v1.toMutable().crs(v2.toMutable()), v1.crs(v2))
-        assertEquals(v1.toMutable().crs(v2.x, v2.y), v1.crs(v2.x, v2.y))
+        (v1 x v2) shouldBe v1.toMutable().crs(v2.toMutable())
+        v1.crs(v2) shouldBe v1.toMutable().crs(v2.toMutable())
+        v1.crs(v2.x, v2.y) shouldBe v1.toMutable().crs(v2.x, v2.y)
       }
     }
   }
 
-  @Test
-  fun `crs should return cross product`() {
-    assertEquals(-2f, ImmutableVector2(2f, 3f) x ImmutableVector2(4f, 5f))
-    assertEquals(2f, ImmutableVector2(4f, 5f) x ImmutableVector2(2f, 3f))
-    assertEquals(0f, ImmutableVector2(2f, 3f) x ImmutableVector2.ZERO)
-    assertEquals(0f, ImmutableVector2.ZERO x ImmutableVector2(4f, 5f))
+  test("crs should return cross product") {
+    (ImmutableVector2(2f, 3f) x ImmutableVector2(4f, 5f)) shouldBe -2f
+    (ImmutableVector2(4f, 5f) x ImmutableVector2(2f, 3f)) shouldBe 2f
+    (ImmutableVector2(2f, 3f) x ImmutableVector2.ZERO) shouldBe 0f
+    (ImmutableVector2.ZERO x ImmutableVector2(4f, 5f)) shouldBe 0f
   }
 
-  @Test
-  fun `zero vector should have undefined direction`() {
-    assertEquals(Float.NaN, ImmutableVector2.ZERO.angleDeg())
-    assertEquals(Float.NaN, ImmutableVector2.ZERO.angleRad())
+  test("zero vector should have undefined direction") {
+    ImmutableVector2.ZERO.angleDeg().isNaN() shouldBe true
+    ImmutableVector2.ZERO.angleRad().isNaN() shouldBe true
   }
 
-  @Test
-  fun `angleDeg should return correct angles between axes`() {
-    assertEquals(90f, (ImmutableVector2.Y).angleDeg(ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(90f, (-ImmutableVector2.X).angleDeg(ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(90f, (-ImmutableVector2.Y).angleDeg(-ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(90f, (ImmutableVector2.X).angleDeg(-ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+  test("angleDeg should return correct angles between axes") {
+    (ImmutableVector2.Y).angleDeg(ImmutableVector2.X) shouldBe
+      (90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (-ImmutableVector2.X).angleDeg(ImmutableVector2.Y) shouldBe
+      (90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (-ImmutableVector2.Y).angleDeg(-ImmutableVector2.X) shouldBe
+      (90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (ImmutableVector2.X).angleDeg(-ImmutableVector2.Y) shouldBe
+      (90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
 
-    assertEquals(-90f, (ImmutableVector2.Y).angleDeg(-ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(-90f, (-ImmutableVector2.X).angleDeg(-ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(-90f, (-ImmutableVector2.Y).angleDeg(ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(-90f, (ImmutableVector2.X).angleDeg(ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (ImmutableVector2.Y).angleDeg(-ImmutableVector2.X) shouldBe
+      (-90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (-ImmutableVector2.X).angleDeg(-ImmutableVector2.Y) shouldBe
+      (-90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (-ImmutableVector2.Y).angleDeg(ImmutableVector2.X) shouldBe
+      (-90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (ImmutableVector2.X).angleDeg(ImmutableVector2.Y) shouldBe
+      (-90f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
 
-    assertEquals(180f, (ImmutableVector2.X).angleDeg(-ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(180f, (ImmutableVector2.Y).angleDeg(-ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (ImmutableVector2.X).angleDeg(-ImmutableVector2.X) shouldBe
+      (180f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    (ImmutableVector2.Y).angleDeg(-ImmutableVector2.Y) shouldBe
+      (180f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
   }
 
-  @Test
-  fun `angleDeg should return expected angles`() {
-    assertEquals(45f, ImmutableVector2(1f, 1f).angleDeg(ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(45f, ImmutableVector2.Y.angleDeg(ImmutableVector2(1f, 1f)), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
-    assertEquals(-45f, ImmutableVector2.X.angleDeg(ImmutableVector2(1f, 1f)), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+  test("angleDeg should return expected angles") {
+    ImmutableVector2(1f, 1f).angleDeg(ImmutableVector2.X) shouldBe
+      (45f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    ImmutableVector2.Y.angleDeg(ImmutableVector2(1f, 1f)) shouldBe
+      (45f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+    ImmutableVector2.X.angleDeg(ImmutableVector2(1f, 1f)) shouldBe
+      (-45f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
   }
 
-  @Test
-  fun `angleDeg should return value between -180 and 180`() {
+  test("angleDeg should return value between -180 and 180") {
     vectors.filterNot { it.isZero(0f) }.forEach { v1 ->
-      assertTrue(v1.angleDeg() in (-180f)..(180f))
+      (v1.angleDeg() in (-180f)..(180f)) shouldBe true
       vectors.filterNot { it.isZero(0f) }.forEach { v2 ->
-        assertTrue(v1.angleDeg(v2) in (-180f)..(180f))
+        (v1.angleDeg(v2) in (-180f)..(180f)) shouldBe true
       }
     }
   }
 
-  @Test
-  fun `angleDeg should return angle of applied rotation`() {
+  test("angleDeg should return angle of applied rotation") {
     vectors.filter { it.len2.isFinite() && it.len2 > 0.5 }.forEach { initialVector ->
 
       // rotate from positive x-axis to positive y-axis (typically counter-clockwise)
       var deltaAngle = 60f
       var previousVector = initialVector
       var currentVector = previousVector.withRotationDeg(deltaAngle)
-      assertEquals(deltaAngle, currentVector.angleDeg(previousVector), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+      currentVector.angleDeg(previousVector) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
 
       repeat(4) {
         previousVector = currentVector
         currentVector = previousVector.withRotationDeg(deltaAngle)
-        assertEquals(deltaAngle, currentVector.angleDeg(previousVector), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+        currentVector.angleDeg(previousVector) shouldBe
+          (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
       }
 
       // rotate from positive x-axis to negative y-axis (typically clockwise)
       deltaAngle = -60f
       previousVector = initialVector
       currentVector = previousVector.withRotationDeg(deltaAngle)
-      assertEquals(deltaAngle, currentVector.angleDeg(previousVector), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+      currentVector.angleDeg(previousVector) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
 
       repeat(4) {
         previousVector = currentVector
         currentVector = previousVector.withRotationDeg(deltaAngle)
-        assertEquals(deltaAngle, currentVector.angleDeg(previousVector), MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
+        currentVector.angleDeg(previousVector) shouldBe
+          (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR * MathUtils.radiansToDegrees)
       }
     }
   }
 
-  @Test
-  fun `angleRad to x-axis should return same value as Vector2`() {
+  test("angleRad to x-axis should return same value as Vector2") {
     // libGDX returns an arbitrary (incorrect) angle when using zero vector. (vector zero's angle is undefined)
     vectors.filterNot { it.isZero(0f) }.forEach { v1 ->
-      assertEquals("$v1", v1.toMutable().angleRad(), v1.angleRad())
+      withClue("$v1") { v1.angleRad() shouldBe v1.toMutable().angleRad() }
     }
   }
 
-  @Test
-  fun `angleRad should return correct angles between axises`() {
-    assertEquals(MathUtils.PI / 2f, (ImmutableVector2.Y).angleRad(ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(MathUtils.PI / 2f, (-ImmutableVector2.X).angleRad(ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(MathUtils.PI / 2f, (-ImmutableVector2.Y).angleRad(-ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(MathUtils.PI / 2f, (ImmutableVector2.X).angleRad(-ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR)
+  test("angleRad should return correct angles between axises") {
+    (ImmutableVector2.Y).angleRad(ImmutableVector2.X) shouldBe ((MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (-ImmutableVector2.X).angleRad(ImmutableVector2.Y) shouldBe ((MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (-ImmutableVector2.Y).angleRad(-ImmutableVector2.X) shouldBe ((MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (ImmutableVector2.X).angleRad(-ImmutableVector2.Y) shouldBe ((MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
 
-    assertEquals(-MathUtils.PI / 2f, (ImmutableVector2.Y).angleRad(-ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(-MathUtils.PI / 2f, (-ImmutableVector2.X).angleRad(-ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(-MathUtils.PI / 2f, (-ImmutableVector2.Y).angleRad(ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(-MathUtils.PI / 2f, (ImmutableVector2.X).angleRad(ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR)
+    (ImmutableVector2.Y).angleRad(-ImmutableVector2.X) shouldBe ((-MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (-ImmutableVector2.X).angleRad(-ImmutableVector2.Y) shouldBe ((-MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (-ImmutableVector2.Y).angleRad(ImmutableVector2.X) shouldBe ((-MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (ImmutableVector2.X).angleRad(ImmutableVector2.Y) shouldBe ((-MathUtils.PI / 2f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
 
-    assertEquals(MathUtils.PI, (ImmutableVector2.X).angleRad(-ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(MathUtils.PI, (ImmutableVector2.Y).angleRad(-ImmutableVector2.Y), MathUtils.FLOAT_ROUNDING_ERROR)
+    (ImmutableVector2.X).angleRad(-ImmutableVector2.X) shouldBe (MathUtils.PI plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    (ImmutableVector2.Y).angleRad(-ImmutableVector2.Y) shouldBe (MathUtils.PI plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
   }
 
-  @Test
-  fun `angleRad should return expected angles`() {
-    assertEquals(MathUtils.PI / 4f, ImmutableVector2(1f, 1f).angleRad(ImmutableVector2.X), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(MathUtils.PI / 4f, ImmutableVector2.Y.angleRad(ImmutableVector2(1f, 1f)), MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(-MathUtils.PI / 4f, ImmutableVector2.X.angleRad(ImmutableVector2(1f, 1f)), MathUtils.FLOAT_ROUNDING_ERROR)
+  test("angleRad should return expected angles") {
+    ImmutableVector2(1f, 1f).angleRad(ImmutableVector2.X) shouldBe ((MathUtils.PI / 4f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    ImmutableVector2.Y.angleRad(ImmutableVector2(1f, 1f)) shouldBe ((MathUtils.PI / 4f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    ImmutableVector2.X.angleRad(ImmutableVector2(1f, 1f)) shouldBe ((-MathUtils.PI / 4f) plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
   }
 
-  @Test
-  fun `angleRad should returns value between -PI and PI`() {
+  test("angleRad should returns value between -PI and PI") {
     vectors.filterNot { it.isZero(0f) }.forEach { v1 ->
       vectors.filterNot { it.isZero(0f) }.forEach { v2 ->
-        assertTrue(v1.angleRad(v2) in (-MathUtils.PI)..(MathUtils.PI))
+        (v1.angleRad(v2) in (-MathUtils.PI)..(MathUtils.PI)) shouldBe true
       }
     }
   }
 
-  @Test
-  fun `angleRad should return angle of applied rotation`() {
+  test("angleRad should return angle of applied rotation") {
     vectors.filter { it.len2.isFinite() && it.len2 > 0.5 }.forEach { initialVector ->
 
       // rotate from positive x-axis to positive y-axis (typically counter-clockwise)
       var deltaAngle = MathUtils.PI / 3
       var previousVector = initialVector
       var currentVector = previousVector.withRotationRad(deltaAngle)
-      assertEquals(deltaAngle, currentVector.angleRad(previousVector), MathUtils.FLOAT_ROUNDING_ERROR)
-      assertEquals(deltaAngle, currentVector.angleRad(previousVector.x, previousVector.y), MathUtils.FLOAT_ROUNDING_ERROR)
+      currentVector.angleRad(previousVector) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+      currentVector.angleRad(previousVector.x, previousVector.y) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
 
       repeat(4) {
         previousVector = currentVector
         currentVector = previousVector.withRotationRad(deltaAngle)
-        assertEquals(deltaAngle, currentVector.angleRad(previousVector), MathUtils.FLOAT_ROUNDING_ERROR)
-        assertEquals(deltaAngle, currentVector.angleRad(previousVector.x, previousVector.y), MathUtils.FLOAT_ROUNDING_ERROR)
+        currentVector.angleRad(previousVector) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+        currentVector.angleRad(previousVector.x, previousVector.y) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
       }
 
       // rotate from positive x-axis to negative y-axis (typically clockwise)
       deltaAngle = -MathUtils.PI / 3
       previousVector = initialVector
       currentVector = previousVector.withRotationRad(deltaAngle)
-      assertEquals(deltaAngle, currentVector.angleRad(previousVector), MathUtils.FLOAT_ROUNDING_ERROR)
-      assertEquals(deltaAngle, currentVector.angleRad(previousVector.x, previousVector.y), MathUtils.FLOAT_ROUNDING_ERROR)
+      currentVector.angleRad(previousVector) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+      currentVector.angleRad(previousVector.x, previousVector.y) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
 
       repeat(4) {
         previousVector = currentVector
         currentVector = previousVector.withRotationRad(deltaAngle)
-        assertEquals(deltaAngle, currentVector.angleRad(previousVector), MathUtils.FLOAT_ROUNDING_ERROR)
-        assertEquals(deltaAngle, currentVector.angleRad(previousVector.x, previousVector.y), MathUtils.FLOAT_ROUNDING_ERROR)
+        currentVector.angleRad(previousVector) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+        currentVector.angleRad(previousVector.x, previousVector.y) shouldBe (deltaAngle plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
       }
     }
   }
 
-  @Test
-  fun `angleRad with x axis should return same value as Vector2`() {
+  test("angleRad with x axis should return same value as Vector2") {
     // libGDX returns an arbitrary (incorrect) angle when using zero vector. (vector zero's angle is undefined)
     vectors.filterNot { it.isZero(0f) }.forEach {
-      assertEquals(it.toMutable().angleRad(), it.angleRad())
+      it.angleRad() shouldBe it.toMutable().angleRad()
     }
   }
 
-  @Test
-  fun `withAngle should return same value as Vector2`() {
+  test("withAngle should return same value as Vector2") {
     scalars.forEach { angle ->
       vectors.forEach { vector ->
-        assertEquals(vector.toMutable().setAngleDeg(angle).toImmutable(), vector.withAngleDeg(angle))
+        vector.withAngleDeg(angle) shouldBe vector.toMutable().setAngleDeg(angle).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withAngleDeg should return rotated vector`() {
-    assertTrue(
+  test("withAngleDeg should return rotated vector") {
+    (
       ImmutableVector2(0.6f, 0.8f)
         .withAngleDeg(90f)
-        .epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
+        .epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
+    (
       ImmutableVector2(0.6f, 0.8f)
         .withAngleDeg(-90f)
-        .epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
+        .epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
+    (
       ImmutableVector2(
         0.6f,
         0.8f,
       ).withAngleDeg(45f)
-        .epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
+        .epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
+    (
       ImmutableVector2(
         0.6f,
         0.8f,
       ).withAngleDeg(-45f)
-        .epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+        .epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
   }
 
-  @Test
-  fun `withAngleRad should return same value as Vector2`() {
+  test("withAngleRad should return same value as Vector2") {
     scalars.forEach { angle ->
       vectors.forEach { vector ->
-        assertEquals(vector.toMutable().setAngleRad(angle).toImmutable(), vector.withAngleRad(angle))
+        vector.withAngleRad(angle) shouldBe vector.toMutable().setAngleRad(angle).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withAngleRad should return rotated vector`() {
-    assertTrue(ImmutableVector2(0.6f, 0.8f).withAngleDeg(90f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(ImmutableVector2(0.6f, 0.8f).withAngleDeg(-90f).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(
-      ImmutableVector2(
-        0.6f,
-        0.8f,
-      ).withAngleDeg(45f).epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
-      ImmutableVector2(
-        0.6f,
-        0.8f,
-      ).withAngleDeg(-45f).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+  test("withAngleRad should return rotated vector") {
+    ImmutableVector2(0.6f, 0.8f).withAngleDeg(90f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2(0.6f, 0.8f).withAngleDeg(-90f).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2(
+      0.6f,
+      0.8f,
+    ).withAngleDeg(45f).epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2(
+      0.6f,
+      0.8f,
+    ).withAngleDeg(-45f).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
   }
 
-  @Test
-  fun `withRotationDeg should return same value as Vector2`() {
+  test("withRotationDeg should return same value as Vector2") {
     scalars.forEach { angle ->
       vectors.forEach { vector ->
-        assertEquals(vector.toMutable().rotateDeg(angle).toImmutable(), vector.withRotationDeg(angle))
+        vector.withRotationDeg(angle) shouldBe vector.toMutable().rotateDeg(angle).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withRotationDeg should return rotated vector`() {
-    assertTrue(ImmutableVector2.X.withRotationDeg(90f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(ImmutableVector2.X.withRotationDeg(-90f).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
+  test("withRotationDeg should return rotated vector") {
+    ImmutableVector2.X.withRotationDeg(90f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2.X.withRotationDeg(-90f).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
 
-    assertTrue(
-      ImmutableVector2.X.withRotationDeg(45f).epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
-      ImmutableVector2.X.withRotationDeg(-45f).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+    ImmutableVector2.X
+      .withRotationDeg(
+        45f,
+      ).epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
+    ImmutableVector2.X
+      .withRotationDeg(
+        -45f,
+      ).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
 
-    assertTrue(
-      ImmutableVector2(sqrt(0.5f), sqrt(0.5f)).withRotationDeg(45f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
-      ImmutableVector2(sqrt(0.5f), sqrt(0.5f)).withRotationDeg(-45f).epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+    ImmutableVector2(
+      sqrt(0.5f),
+      sqrt(0.5f),
+    ).withRotationDeg(45f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
+    ImmutableVector2(
+      sqrt(0.5f),
+      sqrt(0.5f),
+    ).withRotationDeg(-45f).epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
   }
 
-  @Test
-  fun `withRotationRad should return same value as Vector2`() {
+  test("withRotationRad should return same value as Vector2") {
     scalars.forEach { angle ->
       vectors.forEach { vector ->
-        assertEquals(vector.toMutable().rotateRad(angle).toImmutable(), vector.withRotationRad(angle))
+        vector.withRotationRad(angle) shouldBe vector.toMutable().rotateRad(angle).toImmutable()
       }
     }
   }
 
-  @Test
-  fun `withRotationRad should return rotated vector`() {
-    assertTrue(ImmutableVector2.X.withRotationRad(MathUtils.PI / 2f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(ImmutableVector2.X.withRotationRad(-MathUtils.PI / 2f).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
+  test("withRotationRad should return rotated vector") {
+    ImmutableVector2.X.withRotationRad(MathUtils.PI / 2f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2.X.withRotationRad(-MathUtils.PI / 2f).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
 
-    assertTrue(
+    (
       ImmutableVector2.X
         .withRotationRad(
           MathUtils.PI / 4f,
-        ).epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
+        ).epsilonEquals(ImmutableVector2(sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
+    (
       ImmutableVector2.X
         .withRotationRad(
           -MathUtils.PI / 4f,
-        ).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+        ).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR)
+    ) shouldBe true
 
-    assertTrue(
-      ImmutableVector2(
-        sqrt(0.5f),
-        sqrt(0.5f),
-      ).withRotationRad(MathUtils.PI / 4f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
-      ImmutableVector2(
-        sqrt(0.5f),
-        sqrt(0.5f),
-      ).withRotationRad(-MathUtils.PI / 4f).epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+    ImmutableVector2(
+      sqrt(0.5f),
+      sqrt(0.5f),
+    ).withRotationRad(MathUtils.PI / 4f).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2(
+      sqrt(0.5f),
+      sqrt(0.5f),
+    ).withRotationRad(-MathUtils.PI / 4f).epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
   }
 
-  @Test
-  fun `withRotation90 should return same value as Vector2`() {
+  test("withRotation90 should return same value as Vector2") {
     vectors.forEach { vector ->
-      assertEquals(vector.toMutable().rotate90(-1).toImmutable(), vector.withRotation90(-1))
-      assertEquals(vector.toMutable().rotate90(1).toImmutable(), vector.withRotation90(1))
+      vector.withRotation90(-1) shouldBe vector.toMutable().rotate90(-1).toImmutable()
+      vector.withRotation90(1) shouldBe vector.toMutable().rotate90(1).toImmutable()
     }
   }
 
-  @Test
-  fun `withRotation90 should return rotated vector`() {
-    assertTrue(ImmutableVector2.X.withRotation90(1).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(ImmutableVector2.X.withRotation90(-1).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
+  test("withRotation90 should return rotated vector") {
+    ImmutableVector2.X.withRotation90(1).epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2.X.withRotation90(-1).epsilonEquals(-ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
 
-    assertTrue(ImmutableVector2.Y.withRotation90(1).epsilonEquals(-ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(ImmutableVector2.Y.withRotation90(-1).epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR))
+    ImmutableVector2.Y.withRotation90(1).epsilonEquals(-ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2.Y.withRotation90(-1).epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
 
-    assertTrue(
-      ImmutableVector2(
-        sqrt(0.5f),
-        sqrt(0.5f),
-      ).withRotation90(1).epsilonEquals(ImmutableVector2(-sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
-      ImmutableVector2(
-        sqrt(0.5f),
-        sqrt(0.5f),
-      ).withRotation90(-1).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+    ImmutableVector2(
+      sqrt(0.5f),
+      sqrt(0.5f),
+    ).withRotation90(1).epsilonEquals(ImmutableVector2(-sqrt(0.5f), sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+    ImmutableVector2(
+      sqrt(0.5f),
+      sqrt(0.5f),
+    ).withRotation90(-1).epsilonEquals(ImmutableVector2(sqrt(0.5f), -sqrt(0.5f)), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
   }
 
-  @Test
-  fun `withLerp should return same value as Vector2`() {
+  test("withLerp should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
         scalars.forEach { ratio ->
-          assertEquals(v1.toMutable().lerp(v2.toMutable(), ratio).toImmutable(), v1.withLerp(v2, ratio))
+          v1.withLerp(v2, ratio) shouldBe v1.toMutable().lerp(v2.toMutable(), ratio).toImmutable()
         }
       }
     }
   }
 
-  @Test
-  fun `withLerp should return interpolated vector`() {
-    assertTrue(
-      ImmutableVector2.X.withLerp(ImmutableVector2.Y, 0.5f).epsilonEquals(ImmutableVector2(0.5f, 0.5f), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
-    assertTrue(
-      ImmutableVector2.X.withLerp(ImmutableVector2.Y, 0.3f).epsilonEquals(ImmutableVector2(0.7f, 0.3f), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+  test("withLerp should return interpolated vector") {
+    ImmutableVector2.X
+      .withLerp(
+        ImmutableVector2.Y,
+        0.5f,
+      ).epsilonEquals(ImmutableVector2(0.5f, 0.5f), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
+    ImmutableVector2.X
+      .withLerp(
+        ImmutableVector2.Y,
+        0.3f,
+      ).epsilonEquals(ImmutableVector2(0.7f, 0.3f), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
 
-    assertTrue(ImmutableVector2.X.withLerp(-ImmutableVector2.X, 0.5f).epsilonEquals(ImmutableVector2.ZERO, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertTrue(
-      ImmutableVector2.X.withLerp(-ImmutableVector2.X, 0.3f).epsilonEquals(ImmutableVector2(0.4f, 0f), MathUtils.FLOAT_ROUNDING_ERROR),
-    )
+    ImmutableVector2.X.withLerp(-ImmutableVector2.X, 0.5f).epsilonEquals(ImmutableVector2.ZERO, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
+    ImmutableVector2.X
+      .withLerp(
+        -ImmutableVector2.X,
+        0.3f,
+      ).epsilonEquals(ImmutableVector2(0.4f, 0f), MathUtils.FLOAT_ROUNDING_ERROR) shouldBe
+      true
   }
 
-  @Test
-  fun `withLerp with a factor of 0 should return the origin vector`() {
+  test("withLerp with a factor of 0 should return the origin vector") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertTrue(v1.withLerp(v2, 0f).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR))
+        v1.withLerp(v2, 0f).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
       }
     }
   }
 
-  @Test
-  fun `withLerp with a factor of 1 should return the target vector`() {
+  test("withLerp with a factor of 1 should return the target vector") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertTrue(v1.withLerp(v2, 1f).epsilonEquals(v2, MathUtils.FLOAT_ROUNDING_ERROR))
+        v1.withLerp(v2, 1f).epsilonEquals(v2, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
       }
     }
   }
 
-  @Test
-  fun `withInterpolation should return same value as Vector2`() {
+  test("withInterpolation should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
         scalars.forEach { alpha ->
           interpolations.forEach { interpolation ->
-            assertEquals(
-              v1.toMutable().interpolate(v2.toMutable(), alpha, interpolation).toImmutable(),
-              v1.withInterpolation(v2, alpha, interpolation),
-            )
+            v1.withInterpolation(v2, alpha, interpolation) shouldBe
+              v1.toMutable().interpolate(v2.toMutable(), alpha, interpolation).toImmutable()
           }
         }
       }
     }
   }
 
-  @Test
-  fun `withInterpolation with a factor of 0 should return the origin vector`() {
+  test("withInterpolation with a factor of 0 should return the origin vector") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
         interpolations.forEach { interpolation ->
-          assertTrue(v1.withInterpolation(v2, 0f, interpolation).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR))
+          v1.withInterpolation(v2, 0f, interpolation).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
         }
       }
     }
   }
 
-  @Test
-  fun `withInterpolation with a factor of 1 should return the target vector`() {
+  test("withInterpolation with a factor of 1 should return the target vector") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
         interpolations.forEach { interpolation ->
-          assertTrue(v1.withInterpolation(v2, 1f, interpolation).epsilonEquals(v2, MathUtils.FLOAT_ROUNDING_ERROR))
+          v1.withInterpolation(v2, 1f, interpolation).epsilonEquals(v2, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
         }
       }
     }
   }
 
-  @Test
-  fun `withRandomDirection should return a vector of same length`() {
+  test("withRandomDirection should return a vector of same length") {
     val rng = Random(42)
 
     vectors.forEach { vector ->
-      assertEquals(vector.withRandomDirection(rng).len, vector.len, MathUtils.FLOAT_ROUNDING_ERROR)
+      vector.len shouldBe (vector.withRandomDirection(rng).len plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
     }
   }
 
-  @Test
-  fun `withRandomDirection should return a variety of random vectors`() {
+  test("withRandomDirection should return a variety of random vectors") {
     val rng = Random(42)
 
     val vectors = HashSet<ImmutableVector2>()
@@ -1021,491 +957,437 @@ class ImmutableVector2Test {
       vectors += ImmutableVector2.X.withRandomDirection(rng)
     }
 
-    assertTrue(vectors.size > 900)
-    forAtLeastOne(vectors) { it.x > 0 && it.y > 0 }
-    forAtLeastOne(vectors) { it.x > 0 && it.y < 0 }
-    forAtLeastOne(vectors) { it.x < 0 && it.y > 0 }
-    forAtLeastOne(vectors) { it.x < 0 && it.y < 0 }
+    (vectors.size > 900) shouldBe true
+    vectors.forAtLeastOne { it.x > 0 && it.y > 0 }
+    vectors.forAtLeastOne { it.x > 0 && it.y < 0 }
+    vectors.forAtLeastOne { it.x < 0 && it.y > 0 }
+    vectors.forAtLeastOne { it.x < 0 && it.y < 0 }
   }
 
-  @Test
-  fun `epsilonEquals should return same than Vector2`() {
+  test("epsilonEquals should return same than Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
         scalars.forEach { e ->
-          assertEquals(v1.toMutable().epsilonEquals(v2.toMutable(), e), v1.epsilonEquals(v2, e))
-          assertEquals(v1.toMutable().epsilonEquals(v2.x, v2.y, e), v1.epsilonEquals(v2.x, v2.y, e))
+          v1.epsilonEquals(v2, e) shouldBe v1.toMutable().epsilonEquals(v2.toMutable(), e)
+          v1.epsilonEquals(v2.x, v2.y, e) shouldBe v1.toMutable().epsilonEquals(v2.x, v2.y, e)
         }
       }
     }
   }
 
-  @Test
-  fun `epsilonEquals should return true for equals vectors`() {
+  test("epsilonEquals should return true for equals vectors") {
     vectors.forEach { v ->
-      assertTrue(v.epsilonEquals(v, 0f))
+      v.epsilonEquals(v, 0f) shouldBe true
     }
   }
 
-  @Test
-  fun `epsilonEquals should consider epsilon argument`() {
+  test("epsilonEquals should consider epsilon argument") {
     vectors.forEach { v1 ->
-      assertTrue(v1.copy(x = v1.x + Float.MIN_VALUE, y = v1.y + Float.MIN_VALUE).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR))
-      assertTrue(v1.copy(x = v1.x - Float.MIN_VALUE, y = v1.y - Float.MIN_VALUE).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR))
+      v1.copy(x = v1.x + Float.MIN_VALUE, y = v1.y + Float.MIN_VALUE).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
+      v1.copy(x = v1.x - Float.MIN_VALUE, y = v1.y - Float.MIN_VALUE).epsilonEquals(v1, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe true
 
       vectors.forEach { v2 ->
-        assertTrue(v1.epsilonEquals(v2, 10f))
+        v1.epsilonEquals(v2, 10f) shouldBe true
       }
     }
 
-    assertTrue(ImmutableVector2.X.epsilonEquals(ImmutableVector2.Y, 1f))
+    ImmutableVector2.X.epsilonEquals(ImmutableVector2.Y, 1f) shouldBe true
   }
 
-  @Test
-  fun `epsilonEquals should return false for different vectors`() {
-    assertFalse(ImmutableVector2.ZERO.epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertFalse(ImmutableVector2.ZERO.epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertFalse(ImmutableVector2.X.epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR))
-    assertFalse(ImmutableVector2.X.epsilonEquals(ImmutableVector2.Y, 0.8f))
-    assertFalse(ImmutableVector2(2f, 3f).epsilonEquals(ImmutableVector2(2.1f, 3f), 0.09f))
+  test("epsilonEquals should return false for different vectors") {
+    ImmutableVector2.ZERO.epsilonEquals(ImmutableVector2.X, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe false
+    ImmutableVector2.ZERO.epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe false
+    ImmutableVector2.X.epsilonEquals(ImmutableVector2.Y, MathUtils.FLOAT_ROUNDING_ERROR) shouldBe false
+    ImmutableVector2.X.epsilonEquals(ImmutableVector2.Y, 0.8f) shouldBe false
+    ImmutableVector2(2f, 3f).epsilonEquals(ImmutableVector2(2.1f, 3f), 0.09f) shouldBe false
   }
 
-  @Test
-  fun `epsilonEquals should be commutative`() {
+  test("epsilonEquals should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
         scalars.forEach { s ->
-          assertEquals(v1.epsilonEquals(v2, s), v2.epsilonEquals(v1, s))
+          v2.epsilonEquals(v1, s) shouldBe v1.epsilonEquals(v2, s)
         }
       }
     }
   }
 
-  @Test
-  fun `isOnLine should return same than Vector2`() {
+  test("isOnLine should return same than Vector2") {
     // libGDX returns false (incorrect) when compared with vector zero.
     vectors.filterNot { it.isZero(0f) }.forEach { v1 ->
       vectors.filterNot { it.isZero(0f) }.forEach { v2 ->
-        assertEquals(v1.toMutable().isOnLine(v2.toMutable()), v1.isOnLine(v2))
+        v1.isOnLine(v2) shouldBe v1.toMutable().isOnLine(v2.toMutable())
         scalars.forEach { e ->
-          assertEquals(v1.toMutable().isOnLine(v2.toMutable(), e), v1.isOnLine(v2, e))
+          v1.isOnLine(v2, e) shouldBe v1.toMutable().isOnLine(v2.toMutable(), e)
         }
       }
     }
   }
 
-  @Test
-  fun `isOnLine should return false when compared with vector zero`() {
+  test("isOnLine should return false when compared with vector zero") {
     vectors.forEach { v ->
-      assertFalse(v.isOnLine(ImmutableVector2.ZERO))
-      assertFalse(ImmutableVector2.ZERO.isOnLine(v))
+      v.isOnLine(ImmutableVector2.ZERO) shouldBe false
+      ImmutableVector2.ZERO.isOnLine(v) shouldBe false
     }
   }
 
-  @Test
-  fun `isOnLine should return true for same non-zero vector`() {
+  test("isOnLine should return true for same non-zero vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertTrue(v.isOnLine(v))
+      v.isOnLine(v) shouldBe true
     }
   }
 
-  @Test
-  fun `isOnLine should return true for opposite vector`() {
+  test("isOnLine should return true for opposite vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertTrue(v.isOnLine(-v))
-      assertTrue(v.isOnLine(v * -2f))
-      assertTrue(v.isOnLine(v * -0.5f))
+      v.isOnLine(-v) shouldBe true
+      v.isOnLine(v * -2f) shouldBe true
+      v.isOnLine(v * -0.5f) shouldBe true
     }
   }
 
-  @Test
-  fun `isOnLine should return false for on-line vector which are not on line`() {
-    assertFalse(ImmutableVector2.X.isOnLine(ImmutableVector2.Y))
-    assertFalse(ImmutableVector2.Y.isOnLine(ImmutableVector2.X))
-    assertFalse(ImmutableVector2(2f, 3f).isOnLine(ImmutableVector2(3f, 2f)))
+  test("isOnLine should return false for on-line vector which are not on line") {
+    ImmutableVector2.X.isOnLine(ImmutableVector2.Y) shouldBe false
+    ImmutableVector2.Y.isOnLine(ImmutableVector2.X) shouldBe false
+    ImmutableVector2(2f, 3f).isOnLine(ImmutableVector2(3f, 2f)) shouldBe false
   }
 
-  @Test
-  fun `isOnline should be commutative`() {
+  test("isOnline should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.isOnLine(v2), v2.isOnLine(v1))
+        v2.isOnLine(v1) shouldBe v1.isOnLine(v2)
       }
     }
   }
 
-  @Test
-  fun `isCollinear should return same value as Vector2`() {
+  test("isCollinear should return same value as Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().isCollinear(v2.toMutable()), v1.isCollinear(v2))
+        v1.isCollinear(v2) shouldBe v1.toMutable().isCollinear(v2.toMutable())
         scalars.forEach { e ->
-          assertEquals(v1.toMutable().isCollinear(v2.toMutable(), e), v1.isCollinear(v2, e))
+          v1.isCollinear(v2, e) shouldBe v1.toMutable().isCollinear(v2.toMutable(), e)
         }
       }
     }
   }
 
-  @Test
-  fun `isCollinear should return false when compared with vector zero`() {
+  test("isCollinear should return false when compared with vector zero") {
     vectors.forEach { v ->
-      assertFalse(v.isCollinear(ImmutableVector2.ZERO))
-      assertFalse(ImmutableVector2.ZERO.isCollinear(v))
+      v.isCollinear(ImmutableVector2.ZERO) shouldBe false
+      ImmutableVector2.ZERO.isCollinear(v) shouldBe false
     }
   }
 
-  @Test
-  fun `isCollinear should return true for same vector`() {
+  test("isCollinear should return true for same vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertTrue(v.isCollinear(v))
+      v.isCollinear(v) shouldBe true
     }
   }
 
-  @Test
-  fun `isCollinear should return true for same scaled vector`() {
+  test("isCollinear should return true for same scaled vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertTrue(v.isCollinear(v * 2f))
-      assertTrue(v.isCollinear(v * 0.5f))
+      v.isCollinear(v * 2f) shouldBe true
+      v.isCollinear(v * 0.5f) shouldBe true
     }
   }
 
-  @Test
-  fun `isCollinear should return false for opposite vector`() {
+  test("isCollinear should return false for opposite vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertFalse(v.isCollinear(-v))
-      assertFalse(v.isCollinear(v * -2f))
-      assertFalse(v.isCollinear(v * -0.5f))
+      v.isCollinear(-v) shouldBe false
+      v.isCollinear(v * -2f) shouldBe false
+      v.isCollinear(v * -0.5f) shouldBe false
     }
   }
 
-  @Test
-  fun `isCollinear should return false for non collinear vectors`() {
-    assertFalse(ImmutableVector2.X.isCollinear(-ImmutableVector2.X))
-    assertFalse(ImmutableVector2.X.isCollinear(ImmutableVector2.Y))
-    assertFalse(ImmutableVector2(2f, 3f).isCollinear(ImmutableVector2(3f, 2f)))
-    assertFalse(ImmutableVector2(2f, 3f).isCollinear(ImmutableVector2(-2f, -3f)))
+  test("isCollinear should return false for non collinear vectors") {
+    ImmutableVector2.X.isCollinear(-ImmutableVector2.X) shouldBe false
+    ImmutableVector2.X.isCollinear(ImmutableVector2.Y) shouldBe false
+    ImmutableVector2(2f, 3f).isCollinear(ImmutableVector2(3f, 2f)) shouldBe false
+    ImmutableVector2(2f, 3f).isCollinear(ImmutableVector2(-2f, -3f)) shouldBe false
   }
 
-  @Test
-  fun `isCollinear should be commutative`() {
+  test("isCollinear should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.isCollinear(v2), v2.isCollinear(v1))
+        v2.isCollinear(v1) shouldBe v1.isCollinear(v2)
       }
     }
   }
 
-  @Test
-  fun `isCollinearOpposite should return same than Vector2`() {
+  test("isCollinearOpposite should return same than Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().isCollinearOpposite(v2.toMutable()), v1.isCollinearOpposite(v2))
+        v1.isCollinearOpposite(v2) shouldBe v1.toMutable().isCollinearOpposite(v2.toMutable())
         scalars.forEach { e ->
-          assertEquals(v1.toMutable().isCollinearOpposite(v2.toMutable(), e), v1.isCollinearOpposite(v2, e))
+          v1.isCollinearOpposite(v2, e) shouldBe v1.toMutable().isCollinearOpposite(v2.toMutable(), e)
         }
       }
     }
   }
 
-  @Test
-  fun `isCollinearOpposite should return false when compared with vector zero`() {
+  test("isCollinearOpposite should return false when compared with vector zero") {
     vectors.forEach { v ->
-      assertFalse(v.isCollinearOpposite(ImmutableVector2.ZERO))
-      assertFalse(ImmutableVector2.ZERO.isCollinearOpposite(v))
+      v.isCollinearOpposite(ImmutableVector2.ZERO) shouldBe false
+      ImmutableVector2.ZERO.isCollinearOpposite(v) shouldBe false
     }
   }
 
-  @Test
-  fun `isCollinearOpposite should return false for same vector`() {
+  test("isCollinearOpposite should return false for same vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertFalse(v.isCollinearOpposite(v))
+      v.isCollinearOpposite(v) shouldBe false
     }
   }
 
-  @Test
-  fun `isCollinearOpposite should return false for same scaled vector`() {
+  test("isCollinearOpposite should return false for same scaled vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertFalse(v.isCollinearOpposite(v * 2f))
-      assertFalse(v.isCollinearOpposite(v * 0.5f))
+      v.isCollinearOpposite(v * 2f) shouldBe false
+      v.isCollinearOpposite(v * 0.5f) shouldBe false
     }
   }
 
-  @Test
-  fun `isCollinearOpposite should return true for opposite vector`() {
+  test("isCollinearOpposite should return true for opposite vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertTrue(v.isCollinearOpposite(-v))
-      assertTrue(v.isCollinearOpposite(v * -2f))
-      assertTrue(v.isCollinearOpposite(v * -0.5f))
+      v.isCollinearOpposite(-v) shouldBe true
+      v.isCollinearOpposite(v * -2f) shouldBe true
+      v.isCollinearOpposite(v * -0.5f) shouldBe true
     }
   }
 
-  @Test
-  fun `isCollinearOpposite should return false for non collinear vectors`() {
-    assertFalse(ImmutableVector2.X.isCollinearOpposite(ImmutableVector2.Y))
-    assertFalse(ImmutableVector2(2f, 3f).isCollinearOpposite(ImmutableVector2(3f, 2f)))
-    assertFalse(ImmutableVector2(2f, 3f).isCollinearOpposite(ImmutableVector2(-3f, -3f)))
+  test("isCollinearOpposite should return false for non collinear vectors") {
+    ImmutableVector2.X.isCollinearOpposite(ImmutableVector2.Y) shouldBe false
+    ImmutableVector2(2f, 3f).isCollinearOpposite(ImmutableVector2(3f, 2f)) shouldBe false
+    ImmutableVector2(2f, 3f).isCollinearOpposite(ImmutableVector2(-3f, -3f)) shouldBe false
   }
 
-  @Test
-  fun `isCollinearOpposite should be commutative`() {
+  test("isCollinearOpposite should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.isCollinearOpposite(v2), v2.isCollinearOpposite(v1))
+        v2.isCollinearOpposite(v1) shouldBe v1.isCollinearOpposite(v2)
       }
     }
   }
 
-  @Test
-  fun `isPerpendicular should return same than Vector2`() {
+  test("isPerpendicular should return same than Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().isPerpendicular(v2.toMutable()), v1.isPerpendicular(v2))
+        v1.isPerpendicular(v2) shouldBe v1.toMutable().isPerpendicular(v2.toMutable())
         scalars.forEach { e ->
-          assertEquals(v1.toMutable().isPerpendicular(v2.toMutable(), e), v1.isPerpendicular(v2, e))
+          v1.isPerpendicular(v2, e) shouldBe v1.toMutable().isPerpendicular(v2.toMutable(), e)
         }
       }
     }
   }
 
-  @Test
-  fun `isPerpendicular should return false for same vector`() {
+  test("isPerpendicular should return false for same vector") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertFalse(v.isPerpendicular(v))
+      v.isPerpendicular(v) shouldBe false
     }
   }
 
-  @Test
-  fun `isPerpendicular should return false for opposite vector`() {
+  test("isPerpendicular should return false for opposite vector") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertFalse(v.isPerpendicular(-v))
-      assertFalse(v.isPerpendicular(v * -2f))
+      v.isPerpendicular(-v) shouldBe false
+      v.isPerpendicular(v * -2f) shouldBe false
     }
   }
 
-  @Test
-  fun `isPerpendicular should return true for axises`() {
-    assertTrue(ImmutableVector2.X.isPerpendicular(ImmutableVector2.Y))
-    assertTrue(ImmutableVector2.X.isPerpendicular(-ImmutableVector2.Y))
-    assertTrue(ImmutableVector2.Y.isPerpendicular(ImmutableVector2.X))
-    assertTrue(ImmutableVector2.Y.isPerpendicular(-ImmutableVector2.X))
+  test("isPerpendicular should return true for axises") {
+    ImmutableVector2.X.isPerpendicular(ImmutableVector2.Y) shouldBe true
+    ImmutableVector2.X.isPerpendicular(-ImmutableVector2.Y) shouldBe true
+    ImmutableVector2.Y.isPerpendicular(ImmutableVector2.X) shouldBe true
+    ImmutableVector2.Y.isPerpendicular(-ImmutableVector2.X) shouldBe true
   }
 
-  @Test
-  fun `isPerpendicular should return true for result of 90 degrees rotation`() {
+  test("isPerpendicular should return true for result of 90 degrees rotation") {
     vectors.filterNot { it.isZero(0f) }.forEach { vector ->
-      assertTrue(vector.isPerpendicular(vector.withRotation90(1)))
-      assertTrue(vector.isPerpendicular(vector.withRotation90(-1)))
+      vector.isPerpendicular(vector.withRotation90(1)) shouldBe true
+      vector.isPerpendicular(vector.withRotation90(-1)) shouldBe true
     }
   }
 
-  @Test
-  fun `isPerpendicular should return false for non-perpendicular vectors`() {
-    assertFalse(ImmutableVector2.X.isPerpendicular(ImmutableVector2(1f, 2f)))
-    assertFalse(ImmutableVector2.Y.isPerpendicular(ImmutableVector2(-3f, 2f)))
+  test("isPerpendicular should return false for non-perpendicular vectors") {
+    ImmutableVector2.X.isPerpendicular(ImmutableVector2(1f, 2f)) shouldBe false
+    ImmutableVector2.Y.isPerpendicular(ImmutableVector2(-3f, 2f)) shouldBe false
   }
 
-  @Test
-  fun `isPerpendicular should be commutative`() {
+  test("isPerpendicular should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.isPerpendicular(v2), v2.isPerpendicular(v1))
+        v2.isPerpendicular(v1) shouldBe v1.isPerpendicular(v2)
       }
     }
   }
 
-  @Test
-  fun `hasSameDirection should return same than Vector2`() {
+  test("hasSameDirection should return same than Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().hasSameDirection(v2.toMutable()), v1.hasSameDirection(v2))
+        v1.hasSameDirection(v2) shouldBe v1.toMutable().hasSameDirection(v2.toMutable())
       }
     }
   }
 
-  @Test
-  fun `hasSameDirection should return false when compared with zero`() {
+  test("hasSameDirection should return false when compared with zero") {
     vectors.forEach { v ->
-      assertFalse(v.hasSameDirection(ImmutableVector2.ZERO))
-      assertFalse(ImmutableVector2.ZERO.hasSameDirection(v))
+      v.hasSameDirection(ImmutableVector2.ZERO) shouldBe false
+      ImmutableVector2.ZERO.hasSameDirection(v) shouldBe false
     }
   }
 
-  @Test
-  fun `hasSameDirection should return true for same vector`() {
+  test("hasSameDirection should return true for same vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertTrue(v.hasSameDirection(v))
+      v.hasSameDirection(v) shouldBe true
     }
   }
 
-  @Test
-  fun `hasSameDirection should return true for same scaled vector`() {
+  test("hasSameDirection should return true for same scaled vector") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertTrue(v.hasSameDirection(v * 2f))
-      assertTrue(v.hasSameDirection(v * 0.5f))
+      v.hasSameDirection(v * 2f) shouldBe true
+      v.hasSameDirection(v * 0.5f) shouldBe true
     }
   }
 
-  @Test
-  fun `hasSameDirection should return true for same vector rotated by less than 90 degrees`() {
+  test("hasSameDirection should return true for same vector rotated by less than 90 degrees") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertTrue(v.hasSameDirection(v.withRotationDeg(80f)))
-      assertTrue(v.hasSameDirection(v.withRotationDeg(-80f)))
+      v.hasSameDirection(v.withRotationDeg(80f)) shouldBe true
+      v.hasSameDirection(v.withRotationDeg(-80f)) shouldBe true
     }
   }
 
-  @Test
-  fun `hasSameDirection should return false for opposite vector`() {
+  test("hasSameDirection should return false for opposite vector") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertFalse(v.hasSameDirection(-v))
-      assertFalse(v.hasSameDirection(v * -2f))
-      assertFalse(v.hasSameDirection(v * -0.5f))
+      v.hasSameDirection(-v) shouldBe false
+      v.hasSameDirection(v * -2f) shouldBe false
+      v.hasSameDirection(v * -0.5f) shouldBe false
     }
   }
 
-  @Test
-  fun `hasSameDirection should return false for same vector rotated by more than 90 degrees`() {
+  test("hasSameDirection should return false for same vector rotated by more than 90 degrees") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertFalse(v.hasSameDirection(v.withRotationDeg(100f)))
-      assertFalse(v.hasSameDirection(v.withRotationDeg(-100f)))
+      v.hasSameDirection(v.withRotationDeg(100f)) shouldBe false
+      v.hasSameDirection(v.withRotationDeg(-100f)) shouldBe false
     }
   }
 
-  @Test
-  fun `hasSameDirection should be commutative`() {
+  test("hasSameDirection should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.hasSameDirection(v2), v2.hasSameDirection(v1))
+        v2.hasSameDirection(v1) shouldBe v1.hasSameDirection(v2)
       }
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should return same than Vector2`() {
+  test("hasOppositeDirection should return same than Vector2") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.toMutable().hasOppositeDirection(v2.toMutable()), v1.hasOppositeDirection(v2))
+        v1.hasOppositeDirection(v2) shouldBe v1.toMutable().hasOppositeDirection(v2.toMutable())
       }
     }
   }
 
-  @Test
-  fun `hasOppositeSameDirection should return false when compared with zero`() {
+  test("hasOppositeSameDirection should return false when compared with zero") {
     vectors.forEach { v ->
-      assertFalse(v.hasOppositeDirection(ImmutableVector2.ZERO))
-      assertFalse(ImmutableVector2.ZERO.hasOppositeDirection(v))
+      v.hasOppositeDirection(ImmutableVector2.ZERO) shouldBe false
+      ImmutableVector2.ZERO.hasOppositeDirection(v) shouldBe false
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should return false for same vector`() {
+  test("hasOppositeDirection should return false for same vector") {
     vectors.filterNot { it.isZero() }.forEach { v ->
-      assertFalse(v.hasOppositeDirection(v))
+      v.hasOppositeDirection(v) shouldBe false
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should return false for same scaled vector`() {
+  test("hasOppositeDirection should return false for same scaled vector") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertFalse(v.hasOppositeDirection(v * 2f))
-      assertFalse(v.hasOppositeDirection(v * 0.5f))
+      v.hasOppositeDirection(v * 2f) shouldBe false
+      v.hasOppositeDirection(v * 0.5f) shouldBe false
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should return false for same vector rotated by less than 90 degrees`() {
+  test("hasOppositeDirection should return false for same vector rotated by less than 90 degrees") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertFalse(v.hasOppositeDirection(v.withRotationDeg(80f)))
-      assertFalse(v.hasOppositeDirection(v.withRotationDeg(-80f)))
+      v.hasOppositeDirection(v.withRotationDeg(80f)) shouldBe false
+      v.hasOppositeDirection(v.withRotationDeg(-80f)) shouldBe false
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should return true for opposite vector`() {
+  test("hasOppositeDirection should return true for opposite vector") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertTrue(v.hasOppositeDirection(-v))
-      assertTrue(v.hasOppositeDirection(v * -2f))
-      assertTrue(v.hasOppositeDirection(v * -0.5f))
+      v.hasOppositeDirection(-v) shouldBe true
+      v.hasOppositeDirection(v * -2f) shouldBe true
+      v.hasOppositeDirection(v * -0.5f) shouldBe true
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should return true for same vector rotated by more than 90 degrees`() {
+  test("hasOppositeDirection should return true for same vector rotated by more than 90 degrees") {
     vectors.filterNot { it.isZero(0f) }.forEach { v ->
-      assertTrue(v.hasOppositeDirection(v.withRotationDeg(100f)))
-      assertTrue(v.hasOppositeDirection(v.withRotationDeg(-100f)))
+      v.hasOppositeDirection(v.withRotationDeg(100f)) shouldBe true
+      v.hasOppositeDirection(v.withRotationDeg(-100f)) shouldBe true
     }
   }
 
-  @Test
-  fun `hasOppositeDirection should be commutative`() {
+  test("hasOppositeDirection should be commutative") {
     vectors.forEach { v1 ->
       vectors.forEach { v2 ->
-        assertEquals(v1.hasOppositeDirection(v2), v2.hasOppositeDirection(v1))
+        v2.hasOppositeDirection(v1) shouldBe v1.hasOppositeDirection(v2)
       }
     }
   }
 
-  @Test
-  fun `copy should return vector with same properties`() {
+  test("copy should return vector with same properties") {
     vectors.forEach { vector ->
-      assertEquals(vector.x, vector.copy(y = 42f).x)
-      assertEquals(42f, vector.copy(y = 42f).y)
-      assertEquals(42f, vector.copy(x = 42f).x)
-      assertEquals(vector.y, vector.copy(x = 42f).y)
-      assertEquals(ImmutableVector2(1f, 2f), vector.copy(x = 1f, y = 2f))
+      vector.copy(y = 42f).x shouldBe vector.x
+      vector.copy(y = 42f).y shouldBe 42f
+      vector.copy(x = 42f).x shouldBe 42f
+      vector.copy(x = 42f).y shouldBe vector.y
+      vector.copy(x = 1f, y = 2f) shouldBe ImmutableVector2(1f, 2f)
     }
   }
 
-  @Test
-  fun `should destruct vector into two floats`() {
+  test("should destruct vector into two floats") {
     vectors.forEach { vector ->
       val (x, y) = vector
 
-      assertEquals(vector.x, x)
-      assertEquals(vector.y, y)
+      x shouldBe vector.x
+      y shouldBe vector.y
     }
   }
 
-  @Test
-  fun `should compare vectors by length`() {
+  test("should compare vectors by length") {
     var previousLength = -1f
     var previousLength2 = -1f
 
     vectors.toList().shuffled().sorted().forEach { vector ->
-      assertTrue(vector.len >= previousLength)
-      assertTrue(vector.len2 >= previousLength2)
+      (vector.len >= previousLength) shouldBe true
+      (vector.len2 >= previousLength2) shouldBe true
       previousLength = vector.len
       previousLength2 = vector.len2
     }
   }
 
-  @Test
-  fun `should increment vector values with ++ operator`() {
+  test("should increment vector values with ++ operator") {
     var vector = ImmutableVector2(10f, 10f)
 
     vector++
 
-    assertEquals(11f, vector.x, MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(11f, vector.y, MathUtils.FLOAT_ROUNDING_ERROR)
+    vector.x shouldBe (11f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    vector.y shouldBe (11f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
   }
 
-  @Test
-  fun `should decrement vector values with -- operator`() {
+  test("should decrement vector values with -- operator") {
     var vector = ImmutableVector2(10f, 10f)
 
     vector--
 
-    assertEquals(9f, vector.x, MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(9f, vector.y, MathUtils.FLOAT_ROUNDING_ERROR)
+    vector.x shouldBe (9f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    vector.y shouldBe (9f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
   }
 
-  @Test
-  fun `should divide vectors by float scalars with div operator`() {
+  test("should divide vectors by float scalars with div operator") {
     val vector = ImmutableVector2(10f, 10f)
 
     val result = vector / 2.5f
 
-    assertEquals(4f, result.x, MathUtils.FLOAT_ROUNDING_ERROR)
-    assertEquals(4f, result.y, MathUtils.FLOAT_ROUNDING_ERROR)
+    result.x shouldBe (4f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
+    result.y shouldBe (4f plusOrMinus MathUtils.FLOAT_ROUNDING_ERROR)
   }
-}
+})

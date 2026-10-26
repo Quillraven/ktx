@@ -4,16 +4,15 @@ import com.badlogic.gdx.backends.lwjgl.LwjglFiles
 import com.badlogic.gdx.utils.Json
 import com.badlogic.gdx.utils.JsonReader
 import com.badlogic.gdx.utils.JsonValue
-import io.kotlintest.matchers.shouldEqual
-import org.junit.Assert.assertNotSame
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 
 /**
  * Tests [Json] extensions.
  */
-class JsonTest {
-  @Test
-  fun `should read simple object from string`() {
+class JsonTest : FunSpec({
+  test("should read simple object from string") {
     // Given:
     val json = Json()
 
@@ -28,7 +27,7 @@ class JsonTest {
       )
 
     // Then:
-    simple shouldEqual
+    simple shouldBe
       Simple(
         int = 10,
         bool = true,
@@ -36,8 +35,7 @@ class JsonTest {
       )
   }
 
-  @Test
-  fun `should read complex object from string`() {
+  test("should read complex object from string") {
     // Given:
     val json = Json()
 
@@ -56,7 +54,7 @@ class JsonTest {
       )
 
     // Then:
-    complex shouldEqual
+    complex shouldBe
       Complex(
         bool = true,
         simple =
@@ -69,8 +67,7 @@ class JsonTest {
       )
   }
 
-  @Test
-  fun `should read object from file`() {
+  test("should read object from file") {
     // Given:
     val json = Json()
     val fileHandle = LwjglFiles().classpath("ktx/json/file.json")
@@ -79,7 +76,7 @@ class JsonTest {
     val simple = json.fromJson<Simple>(fileHandle)
 
     // Then:
-    simple shouldEqual
+    simple shouldBe
       Simple(
         int = 10,
         bool = true,
@@ -87,8 +84,7 @@ class JsonTest {
       )
   }
 
-  @Test
-  fun `should set tags`() {
+  test("should set tags") {
     // Given:
     val json = Json()
 
@@ -96,11 +92,10 @@ class JsonTest {
     json.addClassTag<Simple>("simple")
 
     // Then:
-    json.getTag<Simple>() shouldEqual "simple"
+    json.getTag<Simple>() shouldBe "simple"
   }
 
-  @Test
-  fun `should return null tag if unset`() {
+  test("should return null tag if unset") {
     // Given:
     val json = Json()
 
@@ -108,11 +103,10 @@ class JsonTest {
     val tag = json.getTag<Simple>()
 
     // Then:
-    tag shouldEqual null
+    tag shouldBe null
   }
 
-  @Test
-  fun `should recreate object with equal properties`() {
+  test("should recreate object with equal properties") {
     // Given:
     val json = Json()
     val serialized =
@@ -126,13 +120,12 @@ class JsonTest {
     val deserialized = json.fromJson<Custom>(json.toJson(serialized))
 
     // Then:
-    serialized shouldEqual deserialized
-    assertNotSame(serialized, deserialized)
-    assertNotSame(serialized.simple, deserialized.simple)
+    serialized shouldBe deserialized
+    deserialized shouldNotBeSameInstanceAs serialized
+    deserialized.simple shouldNotBeSameInstanceAs serialized.simple
   }
 
-  @Test
-  fun `should read and write with custom serializer`() {
+  test("should read and write with custom serializer") {
     // Given:
     val json = Json()
     val simple = Simple(int = 12, str = "b")
@@ -165,18 +158,17 @@ class JsonTest {
     )
 
     // Then:
-    json.toJson(simple) shouldEqual "{integer:12,string:b}"
-    json.fromJson<Simple>("""{"integer":31,"string":"c"}""") shouldEqual Simple(int = 31, str = "c")
+    json.toJson(simple) shouldBe "{integer:12,string:b}"
+    json.fromJson<Simple>("""{"integer":31,"string":"c"}""") shouldBe Simple(int = 31, str = "c")
   }
 
-  @Test
-  fun `should read non-object values`() {
+  test("should read non-object values") {
     // Given:
     val json = Json()
 
     // Expect:
-    json.readValue<String>(JsonReader().parse("str")) shouldEqual "str"
-    json.readArrayValue<ArrayList<Int>, Int>(JsonReader().parse("[1,2,3,4,5,6]")) shouldEqual
+    json.readValue<String>(JsonReader().parse("str")) shouldBe "str"
+    json.readArrayValue<ArrayList<Int>, Int>(JsonReader().parse("[1,2,3,4,5,6]")) shouldBe
       arrayListOf(
         1,
         2,
@@ -187,8 +179,7 @@ class JsonTest {
       )
   }
 
-  @Test
-  fun `should set element type of nested collection`() {
+  test("should set element type of nested collection") {
     // Given:
     val json = Json()
     json.setElementType<ListContainer, Simple>("list")
@@ -210,7 +201,7 @@ class JsonTest {
       )
 
     // Then:
-    container shouldEqual
+    container shouldBe
       ListContainer(
         listOf(
           Simple(bool = true, int = 42),
@@ -218,53 +209,53 @@ class JsonTest {
         ),
       )
   }
+})
 
-  /**
-   * Serializable class included for tests.
-   */
-  private data class Simple(
-    var int: Int = 0,
-    var bool: Boolean = false,
-    var str: String = "",
-  )
+/**
+ * Serializable class included for tests.
+ */
+private data class Simple(
+  var int: Int = 0,
+  var bool: Boolean = false,
+  var str: String = "",
+)
 
-  /**
-   * Serializable class included for tests.
-   */
-  private data class Complex(
-    var bool: Boolean = false,
-    var simple: Simple = Simple(),
-    var list: List<Int> = emptyList(),
-  )
+/**
+ * Serializable class included for tests.
+ */
+private data class Complex(
+  var bool: Boolean = false,
+  var simple: Simple = Simple(),
+  var list: List<Int> = emptyList(),
+)
 
-  /**
-   * Serializable class with a list of [Simple] objects.
-   */
-  private data class ListContainer(
-    var list: List<Simple> = emptyList(),
-  )
+/**
+ * Serializable class with a list of [Simple] objects.
+ */
+private data class ListContainer(
+  var list: List<Simple> = emptyList(),
+)
 
-  /**
-   * Class included for tests of custom serialization.
-   */
-  private data class Custom(
-    var float: Float = 0f,
-    var simple: Simple = Simple(),
-    var list: List<Simple> = emptyList(),
-  ) : Json.Serializable {
-    override fun read(
-      json: Json,
-      jsonData: JsonValue,
-    ) {
-      float = json.readValue(jsonData, "float")
-      simple = json.readValue(jsonData, "simple")
-      list = json.readArrayValue(jsonData, "list")
-    }
+/**
+ * Class included for tests of custom serialization.
+ */
+private data class Custom(
+  var float: Float = 0f,
+  var simple: Simple = Simple(),
+  var list: List<Simple> = emptyList(),
+) : Json.Serializable {
+  override fun read(
+    json: Json,
+    jsonData: JsonValue,
+  ) {
+    float = json.readValue(jsonData, "float")
+    simple = json.readValue(jsonData, "simple")
+    list = json.readArrayValue(jsonData, "list")
+  }
 
-    override fun write(json: Json) {
-      json.writeValue("float", float)
-      json.writeValue("simple", simple)
-      json.writeValue("list", list)
-    }
+  override fun write(json: Json) {
+    json.writeValue("float", float)
+    json.writeValue("simple", simple)
+    json.writeValue("list", list)
   }
 }

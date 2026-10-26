@@ -12,13 +12,10 @@ ashley = "1.7.4"
 artemisOdb = "2.3.0"
 visUi = "1.5.9"
 kotlinxCoroutines = "1.11.0"
-assertj = "3.27.7"
 mockitoKotlin = "6.3.0"
 wireMock = "2.27.2"
 slf4j = "2.0.18"
-junit = "4.13.2"
-spek = "1.1.5"
-kotlintest = "2.0.7"
+kotest = "6.2.6"
 junitPlatformLauncher = "1.14.4"
 freePortFinder = "1.0"
 textraTypist = "2.5.0"
@@ -49,15 +46,12 @@ artemis-odb = { module = "net.onedaybeard.artemis:artemis-odb", version.ref = "a
 vis-ui = { module = "com.kotcrab.vis:vis-ui", version.ref = "visUi" }
 textra-typist = { module = "com.github.tommyettinger:textratypist", version.ref = "textraTypist" }
 
-assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 wiremock = { module = "com.github.tomakehurst:wiremock", version.ref = "wireMock" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
 
-junit = { module = "junit:junit", version.ref = "junit" }
-kotlintest = { module = "io.kotlintest:kotlintest", version.ref = "kotlintest" }
-spek-api = { module = "org.jetbrains.spek:spek-api", version.ref = "spek" }
-spek-junit-platform-engine = { module = "org.jetbrains.spek:spek-junit-platform-engine", version.ref = "spek" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junitPlatformLauncher" }
 free-port-finder = { module = "me.alexpanov:free-port-finder", version.ref = "freePortFinder" }
 

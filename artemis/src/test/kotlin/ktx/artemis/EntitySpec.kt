@@ -2,31 +2,29 @@ package ktx.artemis
 
 import com.artemis.ArchetypeBuilder
 import com.artemis.World
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-object EntitySpec : Spek({
-  describe("utilities for entities") {
-    val transform by memoized { Transform() }
-    val world by memoized { World() }
-    val entity by memoized {
+class EntitySpec : FunSpec({
+  context("utilities for entities") {
+    val transform by lazy { Transform() }
+    val world by lazy { World() }
+    val entity by lazy {
       world.entity {
         add(transform)
       }
     }
-    val entityEdit by memoized { world.edit(entity) }
-    val transformMapper by memoized { world.getMapper(Transform::class.java) }
-    val textureMapper by memoized { world.getMapper(Texture::class.java) }
-    val archetype by memoized {
+    val entityEdit by lazy { world.edit(entity) }
+    val transformMapper by lazy { world.getMapper(Transform::class.java) }
+    val textureMapper by lazy { world.getMapper(Texture::class.java) }
+    val archetype by lazy {
       ArchetypeBuilder()
         .add(Transform::class.java)
         .build(world)
     }
 
-    describe("create entity function") {
-      it("should add an entity to the World") {
+    context("create entity function") {
+      test("should add an entity to the World") {
         val entityId =
           world.entity {
             with<Transform> {
@@ -34,26 +32,26 @@ object EntitySpec : Spek({
             }
           }
 
-        assertThat(transformMapper.get(entityId).x == 2f).isTrue()
+        (transformMapper.get(entityId).x == 2f) shouldBe true
       }
-      it("should add an entity with an archetype to the world") {
+      test("should add an entity with an archetype to the world") {
         val entityId = world.entity(archetype)
 
-        assertThat(transformMapper.get(entityId).x == 0f).isTrue()
+        (transformMapper.get(entityId).x == 0f) shouldBe true
       }
     }
 
-    describe("edit entity function") {
-      it("should add a component to an entity") {
+    context("edit entity function") {
+      test("should add a component to an entity") {
         textureMapper.remove(entity)
 
         world.edit(entity) {
           with<Texture>()
         }
 
-        assertThat(textureMapper.has(entity)).isTrue()
+        textureMapper.has(entity) shouldBe true
       }
-      it("should replace a component of an entity") {
+      test("should replace a component of an entity") {
         world.entity()
 
         world.edit(entity) {
@@ -62,49 +60,49 @@ object EntitySpec : Spek({
           }
         }
 
-        assertThat(transformMapper.has(entity)).isTrue()
-        assertThat(transformMapper.get(entity).x).isEqualTo(2f)
+        transformMapper.has(entity) shouldBe true
+        transformMapper.get(entity).x shouldBe 2f
       }
-      it("should configure component exactly once") {
+      test("should configure component exactly once") {
         val variable: Int
         entityEdit.with<Transform> {
           variable = 42
         }
-        assertThat(variable).isEqualTo(42)
+        variable shouldBe 42
       }
     }
 
-    describe("plus assignment operator") {
-      it("should add a component to an entity") {
+    context("plus assignment operator") {
+      test("should add a component to an entity") {
         val entityId = entityEdit.entityId
         transformMapper.remove(entityId)
 
         entityEdit += Transform(1f, 0f)
 
-        assertThat(transformMapper.has(entityId)).isTrue()
-        assertThat(transformMapper.get(entityId).x).isEqualTo(1f)
+        transformMapper.has(entityId) shouldBe true
+        transformMapper.get(entityId).x shouldBe 1f
       }
 
-      it("should replace a component of an entity") {
+      test("should replace a component of an entity") {
         val entityId = entityEdit.entityId
 
         transformMapper.remove(entityId)
 
         entityEdit += Transform(1f, 0f)
 
-        assertThat(transformMapper.has(entityId)).isTrue()
-        assertThat(transformMapper.get(entityId).x).isEqualTo(1f)
+        transformMapper.has(entityId) shouldBe true
+        transformMapper.get(entityId).x shouldBe 1f
       }
     }
 
-    describe("remove component function") {
-      it("should remove component") {
-        assertThat(transformMapper.has(entity)).isTrue()
+    context("remove component function") {
+      test("should remove component") {
+        transformMapper.has(entity) shouldBe true
 
         world.edit(entity) {
           remove<Transform>()
         }
-        assertThat(!transformMapper.has(entity)).isTrue()
+        !transformMapper.has(entity) shouldBe true
       }
     }
   }

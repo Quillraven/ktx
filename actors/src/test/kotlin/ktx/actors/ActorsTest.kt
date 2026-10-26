@@ -3,229 +3,211 @@ package ktx.actors
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Group
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 
 /**
  * Tests general [Actor] utilities.
  */
-class ActorsTest {
-  private val floatTolerance = 0.00001f
+class ActorsTest : FunSpec({
+  val floatTolerance = 0.00001f
 
-  @Test
-  fun `should report if actor on stage is shown`() {
+  test("should report if actor on stage is shown") {
     val stage = getMockStage()
     val actor = Actor()
 
     stage.addActor(actor)
 
-    assertNotNull(actor.stage)
-    assertTrue(actor.isShown())
+    actor.stage.shouldNotBeNull()
+    actor.isShown() shouldBe true
   }
 
-  @Test
-  fun `should report if actor without stage is shown`() {
+  test("should report if actor without stage is shown") {
     val actor = Actor()
 
-    assertFalse(actor.isShown())
+    actor.isShown() shouldBe false
   }
 
-  @Test
-  fun `should report if null actor is shown`() {
+  test("should report if null actor is shown") {
     val actor: Actor? = null
 
-    assertFalse(actor.isShown())
+    actor.isShown() shouldBe false
   }
 
-  @Test
-  fun `should set position with ints`() {
+  test("should set position with ints") {
     val actor = Actor()
 
     actor.setPosition(10, 20)
 
-    assertEquals(10f, actor.x, floatTolerance)
-    assertEquals(20f, actor.y, floatTolerance)
+    actor.x shouldBe (10f plusOrMinus floatTolerance)
+    actor.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should center actor with normalization`() {
+  test("should center actor with normalization") {
     val actor = Actor()
     actor.setSize(100f, 100f)
     val newSize = 201f
 
     actor.centerPosition(width = newSize, height = newSize, normalize = true)
 
-    assertEquals(50f, actor.x, floatTolerance)
-    assertEquals(50f, actor.y, floatTolerance)
+    actor.x shouldBe (50f plusOrMinus floatTolerance)
+    actor.y shouldBe (50f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should center actor without normalization`() {
+  test("should center actor without normalization") {
     val actor = Actor()
     actor.setSize(100f, 100f)
     val newSize = 201f
 
     actor.centerPosition(width = newSize, height = newSize, normalize = false)
 
-    assertEquals(50.5f, actor.x, floatTolerance)
-    assertEquals(50.5f, actor.y, floatTolerance)
+    actor.x shouldBe (50.5f plusOrMinus floatTolerance)
+    actor.y shouldBe (50.5f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should check if actor is in group with in operator`() {
+  test("should check if actor is in group with in operator") {
     val actor = Actor()
     val group = Group()
 
-    assertFalse(actor in group)
+    (actor in group) shouldBe false
     group.addActor(actor)
-    assertTrue(actor in group)
+    (actor in group) shouldBe true
     group.removeActor(actor)
-    assertFalse(actor in group)
+    (actor in group) shouldBe false
   }
 
-  @Test
-  fun `should add actors to group with +=`() {
+  test("should add actors to group with +=") {
     val actor = Actor()
     val group = Group()
 
     group += actor
 
-    assertNotNull(actor.parent)
-    assertTrue(actor in group)
-    assertTrue(actor in group.children)
+    actor.parent.shouldNotBeNull()
+    (actor in group) shouldBe true
+    (actor in group.children) shouldBe true
   }
 
-  @Test
-  fun `should remove actors from group with -=`() {
+  test("should remove actors from group with -=") {
     val actor = Actor()
     val group = Group()
     group.addActor(actor)
 
     group -= actor
 
-    assertNull(actor.parent)
-    assertFalse(actor in group)
-    assertFalse(actor in group.children)
+    actor.parent.shouldBeNull()
+    (actor in group) shouldBe false
+    (actor in group.children) shouldBe false
   }
 
-  @Test
-  fun `should check if actor is on stage with in operator`() {
+  test("should check if actor is on stage with in operator") {
     val actor = Actor()
     val stage = getMockStage()
 
-    assertFalse(actor in stage)
+    (actor in stage) shouldBe false
     stage.addActor(actor)
-    assertTrue(actor in stage)
+    (actor in stage) shouldBe true
     actor.remove()
-    assertFalse(actor in stage)
+    (actor in stage) shouldBe false
   }
 
-  @Test
-  fun `should add actors to stage with +=`() {
+  test("should add actors to stage with +=") {
     val actor = Actor()
     val stage = getMockStage()
 
     stage += actor
 
-    assertNotNull(actor.parent)
-    assertTrue(actor in stage)
-    assertTrue(actor in stage.root)
-    assertTrue(stage.root.hasChildren())
-    assertSame(stage.root, actor.parent)
+    actor.parent.shouldNotBeNull()
+    (actor in stage) shouldBe true
+    (actor in stage.root) shouldBe true
+    stage.root.hasChildren() shouldBe true
+    actor.parent shouldBeSameInstanceAs stage.root
   }
 
-  @Test
-  fun `should remove actors from stage with -=`() {
+  test("should remove actors from stage with -=") {
     val actor = Actor()
     val stage = getMockStage()
     stage.addActor(actor)
 
     stage -= actor
 
-    assertNull(actor.parent)
-    assertFalse(actor in stage)
-    assertFalse(actor in stage.root)
-    assertFalse(stage.root.hasChildren())
+    actor.parent.shouldBeNull()
+    (actor in stage) shouldBe false
+    (actor in stage.root) shouldBe false
+    stage.root.hasChildren() shouldBe false
   }
 
-  @Test
-  fun `should modify actor's color alpha value`() {
+  test("should modify actor's color alpha value") {
     val actor = Actor()
     actor.color = Color(1f, 1f, 1f, 1f)
     val color = actor.color
 
     actor.alpha = 0.5f
 
-    assertEquals(0.5f, color.a, floatTolerance)
-    assertEquals(0.5f, actor.alpha, floatTolerance)
+    color.a shouldBe (0.5f plusOrMinus floatTolerance)
+    actor.alpha shouldBe (0.5f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should modify stage root actor's color alpha value`() {
+  test("should modify stage root actor's color alpha value") {
     val stage = getMockStage()
     stage.root.color = Color(1f, 1f, 1f, 1f)
     val color = stage.root.color
 
     stage.alpha = 0.5f
 
-    assertEquals(0.5f, color.a, floatTolerance)
-    assertEquals(0.5f, stage.alpha, floatTolerance)
+    color.a shouldBe (0.5f plusOrMinus floatTolerance)
+    stage.alpha shouldBe (0.5f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should report valid alpha constants`() {
-    assertEquals(0f, MIN_ALPHA)
-    assertEquals(1f, MAX_ALPHA)
+  test("should report valid alpha constants") {
+    MIN_ALPHA shouldBe 0f
+    MAX_ALPHA shouldBe 1f
   }
 
-  @Test
-  fun `should change keyboard focus`() {
+  test("should change keyboard focus") {
     val stage = getMockStage()
     val actor = Actor()
     stage.addActor(actor)
 
     actor.setKeyboardFocus()
-    assertSame(stage.keyboardFocus, actor)
+    actor shouldBeSameInstanceAs stage.keyboardFocus
 
     actor.setKeyboardFocus(false)
-    assertNotEquals(stage.keyboardFocus, actor)
-    assertNull(stage.keyboardFocus)
+    actor shouldNotBe stage.keyboardFocus
+    stage.keyboardFocus.shouldBeNull()
 
     val newFocus = Actor()
     stage.keyboardFocus = newFocus
     actor.setKeyboardFocus(false) // Should not clear or change stage's focused actor if not currently focused.
-    assertNotNull(stage.keyboardFocus)
-    assertSame(newFocus, stage.keyboardFocus)
+    stage.keyboardFocus.shouldNotBeNull()
+    stage.keyboardFocus shouldBeSameInstanceAs newFocus
   }
 
-  @Test
-  fun `should change scroll focus`() {
+  test("should change scroll focus") {
     val stage = getMockStage()
     val actor = Actor()
     stage.addActor(actor)
 
     actor.setScrollFocus()
-    assertEquals(stage.scrollFocus, actor)
+    actor shouldBe stage.scrollFocus
 
     actor.setScrollFocus(false)
-    assertNotEquals(stage.scrollFocus, actor)
-    assertNull(stage.scrollFocus)
+    actor shouldNotBe stage.scrollFocus
+    stage.scrollFocus.shouldBeNull()
 
     val newFocus = Actor()
     stage.scrollFocus = newFocus
     actor.setScrollFocus(false) // Should not clear or change stage's focused actor if not currently focused.
-    assertNotNull(stage.scrollFocus)
-    assertEquals(newFocus, stage.scrollFocus)
+    stage.scrollFocus.shouldNotBeNull()
+    stage.scrollFocus shouldBe newFocus
   }
 
-  @Test
-  fun `should keep actor within parent's bounds`() {
+  test("should keep actor within parent's bounds") {
     val parent = Group()
     val actor = Actor()
     actor.setSize(100f, 100f)
@@ -233,53 +215,52 @@ class ActorsTest {
     parent.setSize(800f, 600f)
 
     parent.addActor(actor)
-    assertTrue(actor.x + actor.width > parent.width)
-    assertTrue(actor.y + actor.height > parent.height)
+    (actor.x + actor.width > parent.width) shouldBe true
+    (actor.y + actor.height > parent.height) shouldBe true
 
     actor.keepWithinParent()
-    assertFalse(actor.x + actor.width > parent.width)
-    assertFalse(actor.y + actor.height > parent.height)
-    assertFalse(actor.x < 0f)
-    assertFalse(actor.y < 0f)
-    assertEquals(parent.width, actor.x + actor.width, floatTolerance)
-    assertEquals(parent.height, actor.y + actor.height, floatTolerance)
+    (actor.x + actor.width > parent.width) shouldBe false
+    (actor.y + actor.height > parent.height) shouldBe false
+    (actor.x < 0f) shouldBe false
+    (actor.y < 0f) shouldBe false
+    (actor.x + actor.width) shouldBe (parent.width plusOrMinus floatTolerance)
+    (actor.y + actor.height) shouldBe (parent.height plusOrMinus floatTolerance)
 
     actor.setPosition(-4000f, -4000f)
     actor.keepWithinParent()
-    assertFalse(actor.x + actor.width > parent.width)
-    assertFalse(actor.y + actor.height > parent.height)
-    assertFalse(actor.x < 0f)
-    assertFalse(actor.y < 0f)
-    assertEquals(0f, actor.x, floatTolerance)
-    assertEquals(0f, actor.y, floatTolerance)
+    (actor.x + actor.width > parent.width) shouldBe false
+    (actor.y + actor.height > parent.height) shouldBe false
+    (actor.x < 0f) shouldBe false
+    (actor.y < 0f) shouldBe false
+    actor.x shouldBe (0f plusOrMinus floatTolerance)
+    actor.y shouldBe (0f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should keep actor within stage bounds`() {
+  test("should keep actor within stage bounds") {
     val stage = getMockStage()
     val actor = Actor()
     actor.setSize(100f, 100f)
     actor.setPosition(4000f, 4000f)
 
     stage.addActor(actor)
-    assertTrue(actor.x + actor.width > stage.width)
-    assertTrue(actor.y + actor.height > stage.height)
+    (actor.x + actor.width > stage.width) shouldBe true
+    (actor.y + actor.height > stage.height) shouldBe true
 
     actor.keepWithinParent()
-    assertFalse(actor.x + actor.width > stage.width)
-    assertFalse(actor.y + actor.height > stage.height)
-    assertFalse(actor.x < 0f)
-    assertFalse(actor.y < 0f)
-    assertEquals(stage.width, actor.x + actor.width, floatTolerance)
-    assertEquals(stage.height, actor.y + actor.height, floatTolerance)
+    (actor.x + actor.width > stage.width) shouldBe false
+    (actor.y + actor.height > stage.height) shouldBe false
+    (actor.x < 0f) shouldBe false
+    (actor.y < 0f) shouldBe false
+    (actor.x + actor.width) shouldBe (stage.width plusOrMinus floatTolerance)
+    (actor.y + actor.height) shouldBe (stage.height plusOrMinus floatTolerance)
 
     actor.setPosition(-4000f, -4000f)
     actor.keepWithinParent()
-    assertFalse(actor.x + actor.width > stage.width)
-    assertFalse(actor.y + actor.height > stage.height)
-    assertFalse(actor.x < 0f)
-    assertFalse(actor.y < 0f)
-    assertEquals(0f, actor.x, floatTolerance)
-    assertEquals(0f, actor.y, floatTolerance)
+    (actor.x + actor.width > stage.width) shouldBe false
+    (actor.y + actor.height > stage.height) shouldBe false
+    (actor.x < 0f) shouldBe false
+    (actor.y < 0f) shouldBe false
+    actor.x shouldBe (0f plusOrMinus floatTolerance)
+    actor.y shouldBe (0f plusOrMinus floatTolerance)
   }
-}
+})

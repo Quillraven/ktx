@@ -2,10 +2,12 @@ package ktx.ashley
 
 import com.badlogic.ashley.core.Component
 import com.badlogic.ashley.core.Entity
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 
 class ComponentWithString(
   var string: String = "",
@@ -18,8 +20,8 @@ class ComponentWithInt(
 var Entity.mandatoryComponent by propertyFor<ComponentWithString>()
 var Entity.optionalComponent by optionalPropertyFor<ComponentWithInt>()
 
-object ComponentPropertiesSpec : Spek({
-  describe("utilities for component properties") {
+class ComponentPropertiesSpec : FunSpec({
+  context("utilities for component properties") {
     val mandatory = ComponentWithString()
     val optional = ComponentWithInt()
     val entity =
@@ -27,36 +29,36 @@ object ComponentPropertiesSpec : Spek({
         add(mandatory)
         add(optional)
       }
-    it("should return a mandatory component value via property") {
-      assertThat(entity.mandatoryComponent).isNotNull()
+    test("should return a mandatory component value via property") {
+      entity.mandatoryComponent.shouldNotBeNull()
     }
-    it("should return an optional component value via property") {
-      assertThat(entity.optionalComponent).isNotNull()
+    test("should return an optional component value via property") {
+      entity.optionalComponent.shouldNotBeNull()
     }
-    it("should modify mandatory component variables via property") {
+    test("should modify mandatory component variables via property") {
       entity.mandatoryComponent.string = "test"
-      assertThat(mandatory.string).isEqualTo("test")
+      mandatory.string shouldBe "test"
     }
-    it("should modify optional component variables via property") {
+    test("should modify optional component variables via property") {
       entity.optionalComponent?.integer = 42
-      assertThat(optional.integer).isEqualTo(42)
+      optional.integer shouldBe 42
     }
-    it("should replace mandatory component instance via property") {
+    test("should replace mandatory component instance via property") {
       entity.mandatoryComponent = ComponentWithString("new")
-      assertThat(entity.mandatoryComponent.string).isEqualTo("new")
-      assertThat(mandatory.string).isNotEqualTo(entity.mandatoryComponent.string)
-      assertThat(entity.getComponent(ComponentWithString::class.java)).isNotSameAs(mandatory)
+      entity.mandatoryComponent.string shouldBe "new"
+      mandatory.string shouldNotBe entity.mandatoryComponent.string
+      entity.getComponent(ComponentWithString::class.java) shouldNotBeSameInstanceAs mandatory
     }
-    it("should replace optional component instance via property") {
+    test("should replace optional component instance via property") {
       entity.optionalComponent = ComponentWithInt(11)
-      assertThat(entity.optionalComponent?.integer).isEqualTo(11)
-      assertThat(optional.integer).isNotEqualTo(entity.optionalComponent!!.integer)
-      assertThat(entity.getComponent(ComponentWithInt::class.java)).isNotSameAs(optional)
+      entity.optionalComponent?.integer shouldBe 11
+      optional.integer shouldNotBe entity.optionalComponent!!.integer
+      entity.getComponent(ComponentWithInt::class.java) shouldNotBeSameInstanceAs optional
     }
-    it("should remove optional component via property") {
+    test("should remove optional component via property") {
       entity.optionalComponent = null
-      assertThat(entity.optionalComponent).isNull()
-      assertThat(entity.getComponent(ComponentWithInt::class.java)).isNull()
+      entity.optionalComponent.shouldBeNull()
+      entity.getComponent(ComponentWithInt::class.java).shouldBeNull()
     }
   }
 })

@@ -1,18 +1,17 @@
 package ktx.math
 
 import com.badlogic.gdx.math.Circle
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class CircleTest {
-  @Test
-  fun `should destructure Circle`() {
+class CircleTest : FunSpec({
+  test("should destructure Circle") {
     val circle = Circle(1f, 2f, 3f)
 
     val (x, y, radius) = circle
 
-    assertEquals(1f, x)
-    assertEquals(2f, y)
-    assertEquals(3f, radius)
+    x shouldBe 1f
+    y shouldBe 2f
+    radius shouldBe 3f
   }
-}
+})

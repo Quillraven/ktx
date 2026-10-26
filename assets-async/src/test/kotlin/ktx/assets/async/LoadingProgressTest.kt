@@ -1,18 +1,15 @@
 package ktx.assets.async
 
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
 
-class LoadingProgressTest {
-  @Test
-  fun `should increase count of scheduled assets`() {
+class LoadingProgressTest : FunSpec({
+  test("should increase count of scheduled assets") {
     // Given:
     val progress = LoadingProgress()
 
@@ -20,13 +17,12 @@ class LoadingProgressTest {
     progress.registerScheduledAsset()
 
     // Then:
-    assertEquals(1, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 1
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should increase count of loaded assets`() {
+  test("should increase count of loaded assets") {
     // Given:
     val progress = LoadingProgress()
     progress.registerScheduledAsset()
@@ -35,13 +31,12 @@ class LoadingProgressTest {
     progress.registerLoadedAsset()
 
     // Then:
-    assertEquals(1, progress.total)
-    assertEquals(1, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 1
+    progress.loaded shouldBe 1
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should increase count of added assets`() {
+  test("should increase count of added assets") {
     // Given:
     val progress = LoadingProgress()
 
@@ -49,13 +44,12 @@ class LoadingProgressTest {
     progress.registerAddedAsset()
 
     // Then:
-    assertEquals(1, progress.total)
-    assertEquals(1, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 1
+    progress.loaded shouldBe 1
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should increase count of failed assets`() {
+  test("should increase count of failed assets") {
     // Given:
     val progress = LoadingProgress()
     progress.registerScheduledAsset()
@@ -64,13 +58,12 @@ class LoadingProgressTest {
     progress.registerFailedAsset()
 
     // Then:
-    assertEquals(1, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(1, progress.failed)
+    progress.total shouldBe 1
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 1
   }
 
-  @Test
-  fun `should decrease count of scheduled assets`() {
+  test("should decrease count of scheduled assets") {
     // Given:
     val progress = LoadingProgress()
     progress.registerScheduledAsset()
@@ -79,13 +72,12 @@ class LoadingProgressTest {
     progress.removeScheduledAsset()
 
     // Then:
-    assertEquals(0, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 0
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should decrease count of loaded assets`() {
+  test("should decrease count of loaded assets") {
     // Given:
     val progress = LoadingProgress()
     progress.registerScheduledAsset()
@@ -95,13 +87,12 @@ class LoadingProgressTest {
     progress.removeLoadedAsset()
 
     // Then:
-    assertEquals(0, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 0
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should decrease count of added assets`() {
+  test("should decrease count of added assets") {
     // Given:
     val progress = LoadingProgress()
     progress.registerAddedAsset()
@@ -110,13 +101,12 @@ class LoadingProgressTest {
     progress.removeLoadedAsset()
 
     // Then:
-    assertEquals(0, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 0
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should decrease count of failed assets`() {
+  test("should decrease count of failed assets") {
     // Given:
     val progress = LoadingProgress()
     progress.registerScheduledAsset()
@@ -126,61 +116,59 @@ class LoadingProgressTest {
     progress.removeFailedAsset()
 
     // Then:
-    assertEquals(0, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(0, progress.failed)
+    progress.total shouldBe 0
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 0
   }
 
-  @Test
-  fun `should report progress`() {
+  test("should report progress") {
     // Given:
     val progress = LoadingProgress()
 
     // When:
     repeat(5) { progress.registerScheduledAsset() }
     // Then:
-    assertEquals(0f, progress.percent)
-    assertFalse(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.percent shouldBe 0f
+    progress.isFinished shouldBe false
+    progress.isFailed shouldBe false
 
     // When:
     progress.registerLoadedAsset()
     // Then:
-    assertEquals(0.2f, progress.percent)
-    assertFalse(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.percent shouldBe 0.2f
+    progress.isFinished shouldBe false
+    progress.isFailed shouldBe false
 
     // When:
     progress.registerLoadedAsset()
     // Then:
-    assertEquals(0.4f, progress.percent)
-    assertFalse(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.percent shouldBe 0.4f
+    progress.isFinished shouldBe false
+    progress.isFailed shouldBe false
 
     // When:
     progress.registerLoadedAsset()
     // Then:
-    assertEquals(0.6f, progress.percent)
-    assertFalse(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.percent shouldBe 0.6f
+    progress.isFinished shouldBe false
+    progress.isFailed shouldBe false
 
     // When:
     progress.registerLoadedAsset()
     // Then:
-    assertEquals(0.8f, progress.percent)
-    assertFalse(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.percent shouldBe 0.8f
+    progress.isFinished shouldBe false
+    progress.isFailed shouldBe false
 
     // When:
     progress.registerLoadedAsset()
     // Then:
-    assertEquals(1f, progress.percent)
-    assertTrue(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.percent shouldBe 1f
+    progress.isFinished shouldBe true
+    progress.isFailed shouldBe false
   }
 
-  @Test
-  fun `should report progress within 0, 1 range even when out of sync`() {
+  test("should report progress within 0, 1 range even when out of sync") {
     // Given:
     val progress = LoadingProgress()
 
@@ -190,11 +178,10 @@ class LoadingProgressTest {
     progress.registerLoadedAsset()
 
     // Then:
-    assertEquals(1f, progress.percent)
+    progress.percent shouldBe 1f
   }
 
-  @Test
-  fun `should not include failed assets in progress`() {
+  test("should not include failed assets in progress") {
     // Given:
     val progress = LoadingProgress()
     repeat(4) { progress.registerScheduledAsset() }
@@ -204,13 +191,12 @@ class LoadingProgressTest {
     progress.registerFailedAsset()
 
     // Then:
-    assertEquals(0.75f, progress.percent)
-    assertTrue(progress.isFailed)
-    assertTrue(progress.isFinished)
+    progress.percent shouldBe 0.75f
+    progress.isFailed shouldBe true
+    progress.isFinished shouldBe true
   }
 
-  @Test
-  fun `should reset the progress`() {
+  test("should reset the progress") {
     // Given:
     val progress = LoadingProgress()
     repeat(100) { progress.registerScheduledAsset() }
@@ -222,16 +208,14 @@ class LoadingProgressTest {
     progress.reset()
 
     // Then:
-    assertEquals(0, progress.total)
-    assertEquals(0, progress.loaded)
-    assertEquals(0, progress.failed)
-    assertFalse(progress.isFinished)
-    assertFalse(progress.isFailed)
+    progress.total shouldBe 0
+    progress.loaded shouldBe 0
+    progress.failed shouldBe 0
+    progress.isFinished shouldBe false
+    progress.isFailed shouldBe false
   }
 
-  @Test
-  @OptIn(DelicateCoroutinesApi::class)
-  fun `should handle concurrent updates`() {
+  test("should handle concurrent updates") {
     // Given:
     val progress = LoadingProgress()
 
@@ -250,14 +234,12 @@ class LoadingProgressTest {
 
     // Then:
     runBlocking { jobs.joinAll() }
-    assertEquals(500, progress.total)
-    assertEquals(500, progress.loaded)
-    assertEquals(250, progress.failed)
+    progress.total shouldBe 500
+    progress.loaded shouldBe 500
+    progress.failed shouldBe 250
   }
 
-  @Test
-  @OptIn(DelicateCoroutinesApi::class)
-  fun `should handle concurrent registration and removal`() {
+  test("should handle concurrent registration and removal") {
     // Given:
     val progress = LoadingProgress()
 
@@ -282,8 +264,8 @@ class LoadingProgressTest {
 
     // Then:
     runBlocking { jobs.joinAll() }
-    assertEquals((900 - 600), progress.total)
-    assertEquals((500 - 200), progress.loaded)
-    assertEquals((250 - 200), progress.failed)
+    progress.total shouldBe (900 - 600)
+    progress.loaded shouldBe (500 - 200)
+    progress.failed shouldBe (250 - 200)
   }
-}
+})

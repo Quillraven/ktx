@@ -14,144 +14,136 @@ import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisWindow
 import com.kotcrab.vis.ui.widget.spinner.IntSpinnerModel
 import com.kotcrab.vis.ui.widget.toast.ToastTable
+import io.kotest.assertions.withClue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import ktx.scene2d.ApplicationTest
 import ktx.scene2d.KWidget
 import ktx.scene2d.TOLERANCE
 import ktx.scene2d.actors
 import ktx.scene2d.scene2d
 import ktx.scene2d.table
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Ignore
-import org.junit.Test
 import org.mockito.kotlin.mock
 import com.badlogic.gdx.utils.Array as GdxArray
 
 class TopLevelActorFactoriesTest : ApplicationTest() {
-  @Test
-  fun `should create VisWindow`() {
-    val window = scene2d.visWindow(title = "test")
+  init {
+    test("should create VisWindow") {
+      val window = scene2d.visWindow(title = "test")
 
-    assertNotNull(window)
-    assertEquals("test", window.titleLabel.text.toString())
-  }
-
-  @Test
-  fun `should create VisWindow with init block`() {
-    val window =
-      scene2d.visWindow(title = "test") {
-        height = 100f
-      }
-
-    assertNotNull(window)
-    assertEquals("test", window.titleLabel.text.toString())
-    assertEquals(100f, window.height, TOLERANCE)
-  }
-
-  @Test
-  fun `should create VisWindow with nested children`() {
-    lateinit var label: VisLabel
-
-    val window =
-      scene2d.visWindow(title = "test") {
-        label = visLabel("Test")
-      }
-
-    assertTrue(label in window.children)
-  }
-
-  @Test
-  fun `should create VisDialog`() {
-    val dialog = scene2d.visDialog(title = "test")
-
-    assertNotNull(dialog)
-    assertEquals("test", dialog.titleLabel.text.toString())
-  }
-
-  @Test
-  fun `should create VisDialog with init block`() {
-    val dialog =
-      scene2d.visDialog(title = "test") {
-        height = 100f
-      }
-
-    assertNotNull(dialog)
-    assertEquals("test", dialog.titleLabel.text.toString())
-    assertEquals(100f, dialog.height, TOLERANCE)
-  }
-
-  @Test
-  fun `should create VisDialog with nested children`() {
-    lateinit var label: VisLabel
-
-    val dialog =
-      scene2d.visDialog(title = "test") {
-        label = visLabel("Test")
-      }
-
-    assertTrue(label in dialog.children)
-  }
-
-  @Test
-  fun `should create ToastTable`() {
-    val table = scene2d.toastTable()
-
-    assertNotNull(table)
-    assertSame(VisUI.getSkin(), table.skin)
-  }
-
-  @Test
-  fun `should create ToastTable with init block`() {
-    val table =
-      scene2d.toastTable {
-        height = 100f
-      }
-
-    assertNotNull(table)
-    assertEquals(100f, table.height, TOLERANCE)
-  }
-
-  @Test
-  fun `should create ToastTable with nested children`() {
-    lateinit var label: VisLabel
-
-    val table =
-      scene2d.toastTable {
-        label = visLabel("Test")
-      }
-
-    assertTrue(label in table.children)
-  }
-
-  @Test
-  fun `should add top-level actors to Stage`() {
-    val stage = Stage(mock(), mock())
-    lateinit var window: VisWindow
-    lateinit var dialog: VisDialog
-    lateinit var table: ToastTable
-    lateinit var label: VisLabel
-
-    stage.actors {
-      window = visWindow("Test")
-      dialog = visDialog("Test")
-      table =
-        toastTable {
-          label = visLabel("Test")
-        }
+      window.shouldNotBeNull()
+      window.titleLabel.text.toString() shouldBe "test"
     }
 
-    assertTrue(window in stage.actors)
-    assertTrue(window in stage.root.children)
-    assertTrue(dialog in stage.actors)
-    assertTrue(dialog in stage.root.children)
-    assertTrue(table in stage.actors)
-    assertTrue(table in stage.root.children)
-    assertFalse(label in stage.actors)
-    assertFalse(label in stage.root.children)
-    assertTrue(label in table.children)
+    test("should create VisWindow with init block") {
+      val window =
+        scene2d.visWindow(title = "test") {
+          height = 100f
+        }
+
+      window.shouldNotBeNull()
+      window.titleLabel.text.toString() shouldBe "test"
+      window.height shouldBe (100f plusOrMinus TOLERANCE)
+    }
+
+    test("should create VisWindow with nested children") {
+      lateinit var label: VisLabel
+
+      val window =
+        scene2d.visWindow(title = "test") {
+          label = visLabel("Test")
+        }
+
+      (label in window.children) shouldBe true
+    }
+
+    test("should create VisDialog") {
+      val dialog = scene2d.visDialog(title = "test")
+
+      dialog.shouldNotBeNull()
+      dialog.titleLabel.text.toString() shouldBe "test"
+    }
+
+    test("should create VisDialog with init block") {
+      val dialog =
+        scene2d.visDialog(title = "test") {
+          height = 100f
+        }
+
+      dialog.shouldNotBeNull()
+      dialog.titleLabel.text.toString() shouldBe "test"
+      dialog.height shouldBe (100f plusOrMinus TOLERANCE)
+    }
+
+    test("should create VisDialog with nested children") {
+      lateinit var label: VisLabel
+
+      val dialog =
+        scene2d.visDialog(title = "test") {
+          label = visLabel("Test")
+        }
+
+      (label in dialog.children) shouldBe true
+    }
+
+    test("should create ToastTable") {
+      val table = scene2d.toastTable()
+
+      table.shouldNotBeNull()
+      table.skin shouldBeSameInstanceAs VisUI.getSkin()
+    }
+
+    test("should create ToastTable with init block") {
+      val table =
+        scene2d.toastTable {
+          height = 100f
+        }
+
+      table.shouldNotBeNull()
+      table.height shouldBe (100f plusOrMinus TOLERANCE)
+    }
+
+    test("should create ToastTable with nested children") {
+      lateinit var label: VisLabel
+
+      val table =
+        scene2d.toastTable {
+          label = visLabel("Test")
+        }
+
+      (label in table.children) shouldBe true
+    }
+
+    test("should add top-level actors to Stage") {
+      val stage = Stage(mock(), mock())
+      lateinit var window: VisWindow
+      lateinit var dialog: VisDialog
+      lateinit var table: ToastTable
+      lateinit var label: VisLabel
+
+      stage.actors {
+        window = visWindow("Test")
+        dialog = visDialog("Test")
+        table =
+          toastTable {
+            label = visLabel("Test")
+          }
+      }
+
+      (window in stage.actors) shouldBe true
+      (window in stage.root.children) shouldBe true
+      (dialog in stage.actors) shouldBe true
+      (dialog in stage.root.children) shouldBe true
+      (table in stage.actors) shouldBe true
+      (table in stage.root.children) shouldBe true
+      (label in stage.actors) shouldBe false
+      (label in stage.root.children) shouldBe false
+      (label in table.children) shouldBe true
+    }
   }
 }
 
@@ -159,7 +151,7 @@ class TopLevelActorFactoriesTest : ApplicationTest() {
  * Tests factory methods without init blocks.
  */
 class NoInitBlockActorFactoriesTest : ApplicationTest() {
-  private fun <T : Actor> test(
+  private fun <T : Actor> checkWidget(
     validate: (T) -> Unit = {},
     widget: KWidget<*>.() -> T?,
   ) {
@@ -170,319 +162,352 @@ class NoInitBlockActorFactoriesTest : ApplicationTest() {
     val child = parent.widget()
 
     // Ensuring the child is not null and owned by the parent:
-    assertNotNull(child)
-    assertTrue(child in parent.children)
+    child.shouldNotBeNull()
+    (child in parent.children) shouldBe true
     validate(child!!) // Additional validation specific to widget.
   }
 
-  @Test
-  fun `should create VisLabel`() =
-    test(
-      widget = { visLabel("Test.") },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
+  init {
+    test("should create VisLabel") {
 
-  @Test
-  fun `should create LinkLabel`() =
-    test(
-      widget = { linkLabel("Text.", "URL") },
-      validate = {
-        assertEquals("Text.", it.text.toString())
-        assertEquals("URL", it.url)
-      },
-    )
+      checkWidget(
+        widget = { visLabel("Test.") },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisImage with drawable`() =
-    test(
-      widget = { visImage(VisUI.getSkin().getDrawable("button")) },
-      validate = {
-        assertSame(VisUI.getSkin().getDrawable("button"), it.drawable)
-      },
-    )
+    test("should create LinkLabel") {
 
-  @Test
-  fun `should create VisImage with drawable name`() =
-    test(
-      widget = { visImage("button") },
-      validate = {
-        assertSame(VisUI.getSkin().getDrawable("button"), it.drawable)
-      },
-    )
+      checkWidget(
+        widget = { linkLabel("Text.", "URL") },
+        validate = {
+          it.text.toString() shouldBe "Text."
+          it.url shouldBe "URL"
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisImage with nine patch`() = test { visImage(VisUI.getSkin().getPatch("button")) }
+    test("should create VisImage with drawable") {
 
-  @Test
-  fun `should create VisImage with texture`() = test { visImage(VisUI.getSkin().getRegion("button").texture) }
+      checkWidget(
+        widget = { visImage(VisUI.getSkin().getDrawable("button")) },
+        validate = {
+          it.drawable shouldBeSameInstanceAs VisUI.getSkin().getDrawable("button")
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisImage with texture region`() = test { visImage(VisUI.getSkin().getRegion("button")) }
+    test("should create VisImage with drawable name") {
 
-  @Test
-  fun `should create VisList`() = test { visListOf<String>() }
+      checkWidget(
+        widget = { visImage("button") },
+        validate = {
+          it.drawable shouldBeSameInstanceAs VisUI.getSkin().getDrawable("button")
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisList with items`() =
-    test(
-      widget = { visListOf(GdxArray.with("one", "two", "three")) },
-      validate = {
-        assertEquals(GdxArray.with("one", "two", "three"), it.items)
-      },
-    )
+    test("should create VisImage with nine patch") {
+      checkWidget { visImage(VisUI.getSkin().getPatch("button")) }
+    }
 
-  @Test
-  fun `should create VisProgressBar`() =
-    test(
-      widget = { visProgressBar(min = 1f, max = 2f, step = 0.5f) },
-      validate = {
-        assertEquals(1f, it.minValue, TOLERANCE)
-        assertEquals(2f, it.maxValue, TOLERANCE)
-        assertEquals(0.5f, it.stepSize, TOLERANCE)
-      },
-    )
+    test("should create VisImage with texture") {
+      checkWidget { visImage(VisUI.getSkin().getRegion("button").texture) }
+    }
 
-  @Test
-  fun `should create VisSelectBox`() = test { visSelectBoxOf<String>() }
+    test("should create VisImage with texture region") {
+      checkWidget { visImage(VisUI.getSkin().getRegion("button")) }
+    }
 
-  @Test
-  fun `should create VisSelectBox with items`() =
-    test(
-      widget = { visSelectBoxOf(GdxArray.with("one", "two", "three")) },
-      validate = {
-        assertEquals(GdxArray.with("one", "two", "three"), it.items)
-      },
-    )
+    test("should create VisList") {
+      checkWidget { visListOf<String>() }
+    }
 
-  @Test
-  fun `should create VisSlider`() =
-    test(
-      widget = { visSlider(min = 1f, max = 2f, step = 0.5f) },
-      validate = {
-        assertEquals(1f, it.minValue, TOLERANCE)
-        assertEquals(2f, it.maxValue, TOLERANCE)
-        assertEquals(0.5f, it.stepSize, TOLERANCE)
-      },
-    )
+    test("should create VisList with items") {
 
-  @Test
-  fun `should create VisTextArea`() =
-    test(
-      widget = { visTextArea("Test.") },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
+      checkWidget(
+        widget = { visListOf(GdxArray.with("one", "two", "three")) },
+        validate = {
+          it.items shouldBe GdxArray.with("one", "two", "three")
+        },
+      )
+    }
 
-  @Test
-  fun `should create HighlightTextArea`() =
-    test(
-      widget = { highlightTextArea("Test.") },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
+    test("should create VisProgressBar") {
 
-  @Test
-  fun `should create ScrollableTextArea`() =
-    test(
-      widget = { scrollableTextArea("Test.") },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
+      checkWidget(
+        widget = { visProgressBar(min = 1f, max = 2f, step = 0.5f) },
+        validate = {
+          it.minValue shouldBe (1f plusOrMinus TOLERANCE)
+          it.maxValue shouldBe (2f plusOrMinus TOLERANCE)
+          it.stepSize shouldBe (0.5f plusOrMinus TOLERANCE)
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisTextField`() =
-    test(
-      widget = { visTextField("Test.") },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
+    test("should create VisSelectBox") {
+      checkWidget { visSelectBoxOf<String>() }
+    }
 
-  @Test
-  fun `should create ValidatableTextField`() =
-    test(
-      widget = { visValidatableTextField("Test.") },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
+    test("should create VisSelectBox with items") {
 
-  @Test
-  fun `should create BusyBar`() = test { busyBar() }
+      checkWidget(
+        widget = { visSelectBoxOf(GdxArray.with("one", "two", "three")) },
+        validate = {
+          it.items shouldBe GdxArray.with("one", "two", "three")
+        },
+      )
+    }
 
-  @Test
-  fun `should create Separator`() = test { separator() }
+    test("should create VisSlider") {
 
-  @Test
-  fun `should create VisTextButton`() =
-    test(
-      widget = { visTextButton("Test.") },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
+      checkWidget(
+        widget = { visSlider(min = 1f, max = 2f, step = 0.5f) },
+        validate = {
+          it.minValue shouldBe (1f plusOrMinus TOLERANCE)
+          it.maxValue shouldBe (2f plusOrMinus TOLERANCE)
+          it.stepSize shouldBe (0.5f plusOrMinus TOLERANCE)
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisImageButton`() = test { visImageButton() }
+    test("should create VisTextArea") {
 
-  @Test
-  fun `should create VisImageTextButton`() =
-    test(
-      widget = { visImageTextButton("Test.") },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
+      checkWidget(
+        widget = { visTextArea("Test.") },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisCheckBox`() =
-    test(
-      widget = { visCheckBox("Test.") },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
+    test("should create HighlightTextArea") {
 
-  @Test
-  fun `should create VisRadioButton`() =
-    test(
-      widget = { visRadioButton("Test.") },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
+      checkWidget(
+        widget = { highlightTextArea("Test.") },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisTree`() = test { visTree() }
+    test("should create ScrollableTextArea") {
 
-  @Test
-  @Ignore("Unable to compile shader in test environment.")
-  fun `should create BasicColorPicker`() = test { basicColorPicker() }
+      checkWidget(
+        widget = { scrollableTextArea("Test.") },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  @Ignore("Unable to compile shader in test environment.")
-  fun `should create ExtendedColorPicker`() = test { extendedColorPicker() }
+    test("should create VisTextField") {
 
-  @Test
-  fun `should create Spinner`() =
-    test(
-      widget = { spinner("Name", IntSpinnerModel(0, 0, 10)) },
-      validate = {
-        assertEquals("Name", (it.children[0] as Label).text.toString())
-      },
-    )
+      checkWidget(
+        widget = { visTextField("Test.") },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create VisTable`() = test { visTable() }
+    test("should create ValidatableTextField") {
 
-  @Test
-  @Suppress("DEPRECATION")
-  fun `should create HorizontalFlowGroup`() =
-    test(
-      widget = { horizontalFlowGroup(spacing = 10f) },
-      validate = {
-        assertEquals(10f, it.spacing, TOLERANCE)
-      },
-    )
+      checkWidget(
+        widget = { visValidatableTextField("Test.") },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  @Suppress("DEPRECATION")
-  fun `should create VerticalFlowGroup`() =
-    test(
-      widget = { verticalFlowGroup(spacing = 10f) },
-      validate = {
-        assertEquals(10f, it.spacing, TOLERANCE)
-      },
-    )
+    test("should create BusyBar") {
+      checkWidget { busyBar() }
+    }
 
-  @Test
-  fun `should create FlowGroup`() =
-    test(
-      widget = { flowGroup(vertical = true, spacing = 10f) },
-      validate = {
-        assertTrue(it.isVertical)
-        assertEquals(10f, it.spacing, TOLERANCE)
-      },
-    )
+    test("should create Separator") {
+      checkWidget { separator() }
+    }
 
-  @Test
-  fun `should create GridGroup`() =
-    test(
-      widget = { gridGroup(itemSize = 100f, spacing = 10f) },
-      validate = {
-        assertEquals(10f, it.spacing, TOLERANCE)
-        assertEquals(100f, it.itemWidth, TOLERANCE)
-        assertEquals(100f, it.itemHeight, TOLERANCE)
-      },
-    )
+    test("should create VisTextButton") {
 
-  @Test
-  fun `should create FloatingGroup`() = test { floatingGroup() }
+      checkWidget(
+        widget = { visTextButton("Test.") },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create DragPane`() = test { dragPane() }
+    test("should create VisImageButton") {
+      checkWidget { visImageButton() }
+    }
 
-  @Test
-  fun `should create VisScrollPane`() = test { visScrollPane() }
+    test("should create VisImageTextButton") {
 
-  @Test
-  fun `should create VisSplitPane`() = test { visSplitPane() }
+      checkWidget(
+        widget = { visImageTextButton("Test.") },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create MultiSplitPane`() = test { multiSplitPane() }
+    test("should create VisCheckBox") {
 
-  @Test
-  fun `should create CollapsibleWidget`() = test { collapsible() }
+      checkWidget(
+        widget = { visCheckBox("Test.") },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
 
-  @Test
-  fun `should create HorizontalCollapsibleWidget`() = test { horizontalCollapsible() }
+    test("should create VisRadioButton") {
 
-  @Test
-  fun `should create ButtonBar`() {
-    val parent = scene2d.visTable()
+      checkWidget(
+        widget = { visRadioButton("Test.") },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
 
-    val buttonBar = parent.buttonBar()
+    test("should create VisTree") {
+      checkWidget { visTree() }
+    }
 
-    assertNotNull(buttonBar)
-    assertEquals(1, parent.children.size)
-    assertTrue(parent.children[0] is Table)
-  }
+    // Unable to compile shader in test environment.
+    test("should create BasicColorPicker").config(enabled = false) { checkWidget { basicColorPicker() } }
 
-  @Test
-  fun `should create ButtonBar with order`() {
-    val parent = scene2d.visTable()
+    // Unable to compile shader in test environment.
+    test("should create ExtendedColorPicker").config(enabled = false) { checkWidget { extendedColorPicker() } }
 
-    val buttonBar = parent.buttonBar(ButtonBar.LINUX_ORDER)
+    test("should create Spinner") {
 
-    assertNotNull(buttonBar)
-    assertEquals(1, parent.children.size)
-    assertTrue(parent.children[0] is Table)
-  }
+      checkWidget(
+        widget = { spinner("Name", IntSpinnerModel(0, 0, 10)) },
+        validate = {
+          (it.children[0] as Label).text.toString() shouldBe "Name"
+        },
+      )
+    }
 
-  @Test
-  fun `should create ListView`() {
-    val parent = scene2d.visTable()
+    test("should create VisTable") {
+      checkWidget { visTable() }
+    }
 
-    val listView = parent.listView(SimpleListAdapter(GdxArray.with("1", "2")))
+    test("should create HorizontalFlowGroup") {
 
-    assertNotNull(listView)
-    assertEquals(listOf("1", "2"), listView.adapter.iterable().toList())
-    assertTrue(listView.mainTable in parent.children)
-  }
+      checkWidget(
+        widget = { horizontalFlowGroup(spacing = 10f) },
+        validate = {
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+        },
+      )
+    }
 
-  @Test
-  fun `should create TabbedPane`() {
-    val parent = scene2d.visTable()
+    test("should create VerticalFlowGroup") {
 
-    val pane = parent.tabbedPane()
+      checkWidget(
+        widget = { verticalFlowGroup(spacing = 10f) },
+        validate = {
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+        },
+      )
+    }
 
-    assertNotNull(pane)
-    assertTrue(pane.table in parent.children)
+    test("should create FlowGroup") {
+
+      checkWidget(
+        widget = { flowGroup(vertical = true, spacing = 10f) },
+        validate = {
+          it.isVertical shouldBe true
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create GridGroup") {
+
+      checkWidget(
+        widget = { gridGroup(itemSize = 100f, spacing = 10f) },
+        validate = {
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+          it.itemWidth shouldBe (100f plusOrMinus TOLERANCE)
+          it.itemHeight shouldBe (100f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create FloatingGroup") {
+      checkWidget { floatingGroup() }
+    }
+
+    test("should create DragPane") {
+      checkWidget { dragPane() }
+    }
+
+    test("should create VisScrollPane") {
+      checkWidget { visScrollPane() }
+    }
+
+    test("should create VisSplitPane") {
+      checkWidget { visSplitPane() }
+    }
+
+    test("should create MultiSplitPane") {
+      checkWidget { multiSplitPane() }
+    }
+
+    test("should create CollapsibleWidget") {
+      checkWidget { collapsible() }
+    }
+
+    test("should create HorizontalCollapsibleWidget") {
+      checkWidget { horizontalCollapsible() }
+    }
+
+    test("should create ButtonBar") {
+      val parent = scene2d.visTable()
+
+      val buttonBar = parent.buttonBar()
+
+      buttonBar.shouldNotBeNull()
+      parent.children.size shouldBe 1
+      (parent.children[0] is Table) shouldBe true
+    }
+
+    test("should create ButtonBar with order") {
+      val parent = scene2d.visTable()
+
+      val buttonBar = parent.buttonBar(ButtonBar.LINUX_ORDER)
+
+      buttonBar.shouldNotBeNull()
+      parent.children.size shouldBe 1
+      (parent.children[0] is Table) shouldBe true
+    }
+
+    test("should create ListView") {
+      val parent = scene2d.visTable()
+
+      val listView = parent.listView(SimpleListAdapter(GdxArray.with("1", "2")))
+
+      listView.shouldNotBeNull()
+      listView.adapter.iterable().toList() shouldBe listOf("1", "2")
+      (listView.mainTable in parent.children) shouldBe true
+    }
+
+    test("should create TabbedPane") {
+      val parent = scene2d.visTable()
+
+      val pane = parent.tabbedPane()
+
+      pane.shouldNotBeNull()
+      (pane.table in parent.children) shouldBe true
+    }
   }
 }
 
@@ -490,7 +515,7 @@ class NoInitBlockActorFactoriesTest : ApplicationTest() {
  * Tests inlined factory methods with init blocks.
  */
 class InlinedInitBlockActorFactoriesTest : ApplicationTest() {
-  private fun <T : Actor> test(
+  private fun <T : Actor> checkWidget(
     validate: (T) -> Unit = {},
     widget: KWidget<Cell<*>>.() -> T?,
   ) {
@@ -501,362 +526,392 @@ class InlinedInitBlockActorFactoriesTest : ApplicationTest() {
     val child = parent.widget()
 
     // Ensuring the child is not null and owned by the parent:
-    assertNotNull(child)
-    assertTrue(child in parent.children)
-    assertEquals(
-      "For the purpose of this test, the actor must include 'color = Color.BLUE' in its init block.",
-      Color.BLUE,
-      child!!.color,
-    )
+    child.shouldNotBeNull()
+    (child in parent.children) shouldBe true
+    withClue("For the purpose of this test, the actor must include 'color = Color.BLUE' in its init block.") {
+      child!!.color shouldBe
+        Color.BLUE
+    }
     validate(child) // Performing widget-specific validation.
   }
 
-  @Test
-  fun `should create VisLabel`() =
-    test(
-      widget = { visLabel("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
+  init {
+    test("should create VisLabel") {
 
-  @Test
-  fun `should create LinkLabel`() =
-    test(
-      widget = { linkLabel("Text.", "URL") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Text.", it.text.toString())
-        assertEquals("URL", it.url)
-      },
-    )
-
-  @Test
-  fun `should create VisImage with drawable`() =
-    test(
-      widget = { visImage(VisUI.getSkin().getDrawable("button")) { color = Color.BLUE } },
-      validate = {
-        assertSame(VisUI.getSkin().getDrawable("button"), it.drawable)
-      },
-    )
-
-  @Test
-  fun `should create VisImage with drawable name`() =
-    test(
-      widget = { visImage("button") { color = Color.BLUE } },
-      validate = {
-        assertSame(VisUI.getSkin().getDrawable("button"), it.drawable)
-      },
-    )
-
-  @Test
-  fun `should create VisImage with nine patch`() =
-    test {
-      visImage(VisUI.getSkin().getPatch("button")) { color = Color.BLUE }
+      checkWidget(
+        widget = { visLabel("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
     }
 
-  @Test
-  fun `should create VisImage with texture`() =
-    test {
-      visImage(VisUI.getSkin().getRegion("button").texture) { color = Color.BLUE }
+    test("should create LinkLabel") {
+
+      checkWidget(
+        widget = { linkLabel("Text.", "URL") { color = Color.BLUE } },
+        validate = {
+          it.text.toString() shouldBe "Text."
+          it.url shouldBe "URL"
+        },
+      )
     }
 
-  @Test
-  fun `should create VisImage with texture region`() =
-    test {
-      visImage(VisUI.getSkin().getRegion("button")) { color = Color.BLUE }
+    test("should create VisImage with drawable") {
+
+      checkWidget(
+        widget = { visImage(VisUI.getSkin().getDrawable("button")) { color = Color.BLUE } },
+        validate = {
+          it.drawable shouldBeSameInstanceAs VisUI.getSkin().getDrawable("button")
+        },
+      )
     }
 
-  @Test
-  fun `should create VisList`() =
-    test(
-      widget = {
-        visList<String> {
-          color = Color.BLUE
-          // Adding list items:
-          -"one"
-          -"two"
-          -"three"
+    test("should create VisImage with drawable name") {
+
+      checkWidget(
+        widget = { visImage("button") { color = Color.BLUE } },
+        validate = {
+          it.drawable shouldBeSameInstanceAs VisUI.getSkin().getDrawable("button")
+        },
+      )
+    }
+
+    test("should create VisImage with nine patch") {
+
+      checkWidget {
+        visImage(VisUI.getSkin().getPatch("button")) { color = Color.BLUE }
+      }
+    }
+
+    test("should create VisImage with texture") {
+
+      checkWidget {
+        visImage(VisUI.getSkin().getRegion("button").texture) { color = Color.BLUE }
+      }
+    }
+
+    test("should create VisImage with texture region") {
+
+      checkWidget {
+        visImage(VisUI.getSkin().getRegion("button")) { color = Color.BLUE }
+      }
+    }
+
+    test("should create VisList") {
+
+      checkWidget(
+        widget = {
+          visList<String> {
+            color = Color.BLUE
+            // Adding list items:
+            -"one"
+            -"two"
+            -"three"
+          }
+        },
+        validate = {
+          it.items shouldBe GdxArray.with("one", "two", "three")
+        },
+      )
+    }
+
+    test("should create VisProgressBar") {
+
+      checkWidget(
+        widget = { visProgressBar(min = 1f, max = 2f, step = 0.5f) { color = Color.BLUE } },
+        validate = {
+          it.minValue shouldBe (1f plusOrMinus TOLERANCE)
+          it.maxValue shouldBe (2f plusOrMinus TOLERANCE)
+          it.stepSize shouldBe (0.5f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create VisSelectBox") {
+
+      checkWidget(
+        widget = {
+          visSelectBox<String> {
+            color = Color.BLUE
+            // Adding select box items:
+            -"one"
+            -"two"
+            -"three"
+          }
+        },
+        validate = {
+          it.items shouldBe GdxArray.with("one", "two", "three")
+        },
+      )
+    }
+
+    test("should create VisSlider") {
+
+      checkWidget(
+        widget = { visSlider(min = 1f, max = 2f, step = 0.5f) { color = Color.BLUE } },
+        validate = {
+          it.minValue shouldBe (1f plusOrMinus TOLERANCE)
+          it.maxValue shouldBe (2f plusOrMinus TOLERANCE)
+          it.stepSize shouldBe (0.5f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create VisTextArea") {
+
+      checkWidget(
+        widget = { visTextArea("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create HighlightTextArea") {
+
+      checkWidget(
+        widget = { highlightTextArea("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create ScrollableTextArea") {
+
+      checkWidget(
+        widget = { scrollableTextArea("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create VisTextField") {
+
+      checkWidget(
+        widget = { visTextField("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create ValidatableTextField") {
+
+      checkWidget(
+        widget = { visValidatableTextField("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create BusyBar") {
+      checkWidget { busyBar { color = Color.BLUE } }
+    }
+
+    test("should create Separator") {
+      checkWidget { separator { color = Color.BLUE } }
+    }
+
+    test("should create VisTextButton") {
+
+      checkWidget(
+        widget = { visTextButton("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create VisImageButton") {
+      checkWidget { visImageButton { color = Color.BLUE } }
+    }
+
+    test("should create VisImageTextButton") {
+
+      checkWidget(
+        widget = { visImageTextButton("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create VisCheckBox") {
+
+      checkWidget(
+        widget = { visCheckBox("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create VisRadioButton") {
+
+      checkWidget(
+        widget = { visRadioButton("Test.") { color = Color.BLUE } },
+        validate = {
+          it.text.toString() shouldBe "Test."
+        },
+      )
+    }
+
+    test("should create VisTree") {
+      checkWidget { visTree { color = Color.BLUE } }
+    }
+
+    // Unable to compile shader in test environment.
+    test("should create BasicColorPicker").config(enabled = false) { checkWidget { basicColorPicker { color = Color.BLUE } } }
+
+    // Unable to compile shader in test environment.
+    test("should create ExtendedColorPicker").config(enabled = false) { checkWidget { extendedColorPicker { color = Color.BLUE } } }
+
+    test("should create Spinner") {
+
+      checkWidget(
+        widget = {
+          spinner("Name", IntSpinnerModel(0, 0, 10)) {
+            color = Color.BLUE
+          }
+        },
+        validate = {
+          (it.children[0] as Label).text.toString() shouldBe "Name"
+        },
+      )
+    }
+
+    test("should create VisTable") {
+      checkWidget { visTable { color = Color.BLUE } }
+    }
+
+    test("should create HorizontalFlowGroup") {
+
+      checkWidget(
+        widget = { horizontalFlowGroup(spacing = 10f) { color = Color.BLUE } },
+        validate = {
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create VerticalFlowGroup") {
+
+      checkWidget(
+        widget = { verticalFlowGroup(spacing = 10f) { color = Color.BLUE } },
+        validate = {
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create FlowGroup") {
+
+      checkWidget(
+        widget = { flowGroup(vertical = false, spacing = 10f) { color = Color.BLUE } },
+        validate = {
+          it.isVertical shouldBe false
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create GridGroup") {
+
+      checkWidget(
+        widget = { gridGroup(itemSize = 100f, spacing = 10f) { color = Color.BLUE } },
+        validate = {
+          it.spacing shouldBe (10f plusOrMinus TOLERANCE)
+          it.itemWidth shouldBe (100f plusOrMinus TOLERANCE)
+          it.itemHeight shouldBe (100f plusOrMinus TOLERANCE)
+        },
+      )
+    }
+
+    test("should create FloatingGroup") {
+      checkWidget { floatingGroup { color = Color.BLUE } }
+    }
+
+    test("should create DragPane") {
+      checkWidget { dragPane { color = Color.BLUE } }
+    }
+
+    test("should create VisScrollPane") {
+      checkWidget { visScrollPane { color = Color.BLUE } }
+    }
+
+    test("should create VisSplitPane") {
+      checkWidget { visSplitPane { color = Color.BLUE } }
+    }
+
+    test("should create MultiSplitPane") {
+      checkWidget { multiSplitPane { color = Color.BLUE } }
+    }
+
+    test("should create CollapsibleWidget") {
+      checkWidget { collapsible { color = Color.BLUE } }
+    }
+
+    test("should create HorizontalCollapsibleWidget") {
+      checkWidget { horizontalCollapsible { color = Color.BLUE } }
+    }
+
+    test("should create ButtonBar") {
+      val parent = scene2d.visTable()
+
+      val buttonBar =
+        parent.buttonBar {
+          isIgnoreSpacing = true
         }
-      },
-      validate = {
-        assertEquals(GdxArray.with("one", "two", "three"), it.items)
-      },
-    )
 
-  @Test
-  fun `should create VisProgressBar`() =
-    test(
-      widget = { visProgressBar(min = 1f, max = 2f, step = 0.5f) { color = Color.BLUE } },
-      validate = {
-        assertEquals(1f, it.minValue, TOLERANCE)
-        assertEquals(2f, it.maxValue, TOLERANCE)
-        assertEquals(0.5f, it.stepSize, TOLERANCE)
-      },
-    )
+      buttonBar.shouldNotBeNull()
+      buttonBar.isIgnoreSpacing shouldBe true
+      parent.children.size shouldBe 1
+      (parent.children[0] is Table) shouldBe true
+    }
 
-  @Test
-  fun `should create VisSelectBox`() =
-    test(
-      widget = {
-        visSelectBox<String> {
-          color = Color.BLUE
-          // Adding select box items:
-          -"one"
-          -"two"
-          -"three"
+    test("should create ButtonBar with order") {
+      val parent = scene2d.visTable()
+
+      val buttonBar =
+        parent.buttonBar(ButtonBar.LINUX_ORDER) {
+          isIgnoreSpacing = true
         }
-      },
-      validate = {
-        assertEquals(GdxArray.with("one", "two", "three"), it.items)
-      },
-    )
 
-  @Test
-  fun `should create VisSlider`() =
-    test(
-      widget = { visSlider(min = 1f, max = 2f, step = 0.5f) { color = Color.BLUE } },
-      validate = {
-        assertEquals(1f, it.minValue, TOLERANCE)
-        assertEquals(2f, it.maxValue, TOLERANCE)
-        assertEquals(0.5f, it.stepSize, TOLERANCE)
-      },
-    )
+      buttonBar.shouldNotBeNull()
+      buttonBar.isIgnoreSpacing shouldBe true
+      parent.children.size shouldBe 1
+      (parent.children[0] is Table) shouldBe true
+    }
 
-  @Test
-  fun `should create VisTextArea`() =
-    test(
-      widget = { visTextArea("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
+    test("should create ListView") {
+      val parent = scene2d.visTable()
 
-  @Test
-  fun `should create HighlightTextArea`() =
-    test(
-      widget = { highlightTextArea("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
-
-  @Test
-  fun `should create ScrollableTextArea`() =
-    test(
-      widget = { scrollableTextArea("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
-
-  @Test
-  fun `should create VisTextField`() =
-    test(
-      widget = { visTextField("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
-
-  @Test
-  fun `should create ValidatableTextField`() =
-    test(
-      widget = { visValidatableTextField("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text)
-      },
-    )
-
-  @Test
-  fun `should create BusyBar`() = test { busyBar { color = Color.BLUE } }
-
-  @Test
-  fun `should create Separator`() = test { separator { color = Color.BLUE } }
-
-  @Test
-  fun `should create VisTextButton`() =
-    test(
-      widget = { visTextButton("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
-
-  @Test
-  fun `should create VisImageButton`() = test { visImageButton { color = Color.BLUE } }
-
-  @Test
-  fun `should create VisImageTextButton`() =
-    test(
-      widget = { visImageTextButton("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
-
-  @Test
-  fun `should create VisCheckBox`() =
-    test(
-      widget = { visCheckBox("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
-
-  @Test
-  fun `should create VisRadioButton`() =
-    test(
-      widget = { visRadioButton("Test.") { color = Color.BLUE } },
-      validate = {
-        assertEquals("Test.", it.text.toString())
-      },
-    )
-
-  @Test
-  fun `should create VisTree`() = test { visTree { color = Color.BLUE } }
-
-  @Test
-  @Ignore("Unable to compile shader in test environment.")
-  fun `should create BasicColorPicker`() = test { basicColorPicker { color = Color.BLUE } }
-
-  @Test
-  @Ignore("Unable to compile shader in test environment.")
-  fun `should create ExtendedColorPicker`() = test { extendedColorPicker { color = Color.BLUE } }
-
-  @Test
-  fun `should create Spinner`() =
-    test(
-      widget = {
-        spinner("Name", IntSpinnerModel(0, 0, 10)) {
-          color = Color.BLUE
+      val listView =
+        parent.listView(SimpleListAdapter(GdxArray.with("1", "2"))) {
+          mainTable.color = Color.BLUE
         }
-      },
-      validate = {
-        assertEquals("Name", (it.children[0] as Label).text.toString())
-      },
-    )
 
-  @Test
-  fun `should create VisTable`() = test { visTable { color = Color.BLUE } }
+      listView.shouldNotBeNull()
+      Color.BLUE shouldBe listView.mainTable.color
+      listView.adapter.iterable().toList() shouldBe listOf("1", "2")
+      (listView.mainTable in parent.children) shouldBe true
+    }
 
-  @Test
-  @Suppress("DEPRECATION")
-  fun `should create HorizontalFlowGroup`() =
-    test(
-      widget = { horizontalFlowGroup(spacing = 10f) { color = Color.BLUE } },
-      validate = {
-        assertEquals(10f, it.spacing, TOLERANCE)
-      },
-    )
+    test("should create TabbedPane") {
+      val parent = scene2d.visTable()
 
-  @Test
-  @Suppress("DEPRECATION")
-  fun `should create VerticalFlowGroup`() =
-    test(
-      widget = { verticalFlowGroup(spacing = 10f) { color = Color.BLUE } },
-      validate = {
-        assertEquals(10f, it.spacing, TOLERANCE)
-      },
-    )
+      val pane =
+        parent.tabbedPane {
+          table.color = Color.BLUE
+        }
 
-  @Test
-  fun `should create FlowGroup`() =
-    test(
-      widget = { flowGroup(vertical = false, spacing = 10f) { color = Color.BLUE } },
-      validate = {
-        assertFalse(it.isVertical)
-        assertEquals(10f, it.spacing, TOLERANCE)
-      },
-    )
-
-  @Test
-  fun `should create GridGroup`() =
-    test(
-      widget = { gridGroup(itemSize = 100f, spacing = 10f) { color = Color.BLUE } },
-      validate = {
-        assertEquals(10f, it.spacing, TOLERANCE)
-        assertEquals(100f, it.itemWidth, TOLERANCE)
-        assertEquals(100f, it.itemHeight, TOLERANCE)
-      },
-    )
-
-  @Test
-  fun `should create FloatingGroup`() = test { floatingGroup { color = Color.BLUE } }
-
-  @Test
-  fun `should create DragPane`() = test { dragPane { color = Color.BLUE } }
-
-  @Test
-  fun `should create VisScrollPane`() = test { visScrollPane { color = Color.BLUE } }
-
-  @Test
-  fun `should create VisSplitPane`() = test { visSplitPane { color = Color.BLUE } }
-
-  @Test
-  fun `should create MultiSplitPane`() = test { multiSplitPane { color = Color.BLUE } }
-
-  @Test
-  fun `should create CollapsibleWidget`() = test { collapsible { color = Color.BLUE } }
-
-  @Test
-  fun `should create HorizontalCollapsibleWidget`() = test { horizontalCollapsible { color = Color.BLUE } }
-
-  @Test
-  fun `should create ButtonBar`() {
-    val parent = scene2d.visTable()
-
-    val buttonBar =
-      parent.buttonBar {
-        isIgnoreSpacing = true
-      }
-
-    assertNotNull(buttonBar)
-    assertTrue(buttonBar.isIgnoreSpacing)
-    assertEquals(1, parent.children.size)
-    assertTrue(parent.children[0] is Table)
-  }
-
-  @Test
-  fun `should create ButtonBar with order`() {
-    val parent = scene2d.visTable()
-
-    val buttonBar =
-      parent.buttonBar(ButtonBar.LINUX_ORDER) {
-        isIgnoreSpacing = true
-      }
-
-    assertNotNull(buttonBar)
-    assertTrue(buttonBar.isIgnoreSpacing)
-    assertEquals(1, parent.children.size)
-    assertTrue(parent.children[0] is Table)
-  }
-
-  @Test
-  fun `should create ListView`() {
-    val parent = scene2d.visTable()
-
-    val listView =
-      parent.listView(SimpleListAdapter(GdxArray.with("1", "2"))) {
-        mainTable.color = Color.BLUE
-      }
-
-    assertNotNull(listView)
-    assertEquals(listView.mainTable.color, Color.BLUE)
-    assertEquals(listOf("1", "2"), listView.adapter.iterable().toList())
-    assertTrue(listView.mainTable in parent.children)
-  }
-
-  @Test
-  fun `should create TabbedPane`() {
-    val parent = scene2d.visTable()
-
-    val pane =
-      parent.tabbedPane {
-        table.color = Color.BLUE
-      }
-
-    assertNotNull(pane)
-    assertEquals(pane.table.color, Color.BLUE)
-    assertTrue(pane.table in parent.children)
+      pane.shouldNotBeNull()
+      Color.BLUE shouldBe pane.table.color
+      (pane.table in parent.children) shouldBe true
+    }
   }
 }

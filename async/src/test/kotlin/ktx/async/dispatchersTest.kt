@@ -5,7 +5,11 @@ package ktx.async
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Timer
 import com.badlogic.gdx.utils.async.AsyncExecutor
-import io.kotlintest.mock.mock
+import io.kotest.assertions.withClue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -13,12 +17,7 @@ import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotSame
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.atomic.AtomicBoolean
@@ -35,124 +34,121 @@ abstract class CoroutineDispatcherTest : AsyncTest() {
 
   open val isConcurrent: Boolean = false
 
-  @Test
-  fun `should support asynchronous execution of tasks`() {
-    // Given:
-    val tested = tested
-    val result = AtomicInteger()
+  init {
+    test("should support asynchronous execution of tasks") {
+      // Given:
+      val tested = tested
+      val result = AtomicInteger()
 
-    // When:
-    runBlocking {
-      launch(tested) {
-        val a = async { 2 }
-        val b = async { 3 }
-        result.set(a.await() + b.await())
+      // When:
+      runBlocking {
+        launch(tested) {
+          val a = async { 2 }
+          val b = async { 3 }
+          result.set(a.await() + b.await())
+        }
       }
+
+      // Then:
+      result.get() shouldBe 5
     }
 
-    // Then:
-    assertEquals(5, result.get())
-  }
+    test("should support delaying and resuming on the execution thread") {
+      // Given:
+      val tested = tested
+      val executorThread = getExecutorThread()
+      val initialThread = CompletableFuture<Thread>()
+      val finalThread = CompletableFuture<Thread>()
+      val executionTime = AtomicLong()
 
-  @Test
-  fun `should support delaying and resuming on the execution thread`() {
-    // Given:
-    val tested = tested
-    val executorThread = getExecutorThread()
-    val initialThread = CompletableFuture<Thread>()
-    val finalThread = CompletableFuture<Thread>()
-    val executionTime = AtomicLong()
-
-    // When:
-    runBlocking {
-      launch(tested) {
-        initialThread.complete(Thread.currentThread())
-        val start = System.currentTimeMillis()
-        delay(50L)
-        executionTime.set(System.currentTimeMillis() - start)
-        finalThread.complete(Thread.currentThread())
+      // When:
+      runBlocking {
+        launch(tested) {
+          initialThread.complete(Thread.currentThread())
+          val start = System.currentTimeMillis()
+          delay(50L)
+          executionTime.set(System.currentTimeMillis() - start)
+          finalThread.complete(Thread.currentThread())
+        }
       }
-    }
 
-    // Then:
-    assertSame(initialThread.get(), finalThread.get())
-    assertNotSame(Thread.currentThread(), finalThread.get())
-    if (!isConcurrent) {
-      assertSame(executorThread, finalThread.get())
-    }
-    // Tolerance adjusted for the testing environment:
-    assertTrue("${executionTime.get()} must be around 50 millis.", executionTime.get() in 45L..200L)
-  }
-
-  @Test
-  fun `should support invocation on timeout`() {
-    // Note: normally you'd use withTimeout in coroutine scope to execute tasks with timeout.
-    // This tests the internal invokeOnTimeout API.
-
-    // Given:
-    val tested = tested
-    val start = System.currentTimeMillis()
-    val executionTime = AtomicLong()
-
-    // When:
-    tested.invokeOnTimeout(
-      50L,
-      Runnable {
-        executionTime.set(System.currentTimeMillis() - start)
-      },
-      GlobalScope.coroutineContext,
-    )
-
-    // Then:
-    delay(100L)
-    // Tolerance adjusted for the testing environment:
-    assertTrue("${executionTime.get()} must be around 50 millis.", executionTime.get() in 45L..200L)
-  }
-
-  @Test
-  fun `should support timeout task cancellation`() {
-    // Note: normally you'd use withTimeout in coroutine scope to execute tasks with timeout.
-    // This tests the internal invokeOnTimeout API.
-
-    // Given:
-    val tested = tested
-    val executed = AtomicBoolean()
-    val handle = tested.invokeOnTimeout(50L, Runnable { executed.set(true) }, GlobalScope.coroutineContext)
-
-    // When:
-    handle.dispose()
-
-    // Then:
-    delay(100L)
-    assertFalse(executed.get())
-  }
-
-  @Test
-  fun `should skip frame`() {
-    // Given:
-    val tested = tested
-    val initialFrame = AtomicLong()
-    val finalFrame = AtomicLong()
-    val executorThread = getExecutorThread()
-    val threadAfterSkip = CompletableFuture<Thread>()
-
-    // When:
-    runBlocking {
-      launch(tested) {
-        initialFrame.set(Gdx.graphics.frameId)
-        skipFrame()
-        finalFrame.set(Gdx.graphics.frameId)
-        threadAfterSkip.complete(Thread.currentThread())
+      // Then:
+      finalThread.get() shouldBeSameInstanceAs initialThread.get()
+      finalThread.get() shouldNotBeSameInstanceAs Thread.currentThread()
+      if (!isConcurrent) {
+        finalThread.get() shouldBeSameInstanceAs executorThread
       }
+      // Tolerance adjusted for the testing environment:
+      withClue("${executionTime.get()} must be around 50 millis.") { (executionTime.get() in 45L..200L) shouldBe true }
     }
 
-    // Then:
-    val thread = threadAfterSkip.get()
-    if (!isConcurrent) {
-      assertSame(executorThread, thread)
+    test("should support invocation on timeout") {
+      // Note: normally you'd use withTimeout in coroutine scope to execute tasks with timeout.
+      // This tests the internal invokeOnTimeout API.
+
+      // Given:
+      val tested = tested
+      val start = System.currentTimeMillis()
+      val executionTime = AtomicLong()
+
+      // When:
+      tested.invokeOnTimeout(
+        50L,
+        Runnable {
+          executionTime.set(System.currentTimeMillis() - start)
+        },
+        GlobalScope.coroutineContext,
+      )
+
+      // Then:
+      delay(100L)
+      // Tolerance adjusted for the testing environment:
+      withClue("${executionTime.get()} must be around 50 millis.") { (executionTime.get() in 45L..200L) shouldBe true }
     }
-    // There is no guarantee that only a single frame by the time we try to read it was skipped due to async execution:
-    assert(initialFrame.get() < finalFrame.get())
+
+    test("should support timeout task cancellation") {
+      // Note: normally you'd use withTimeout in coroutine scope to execute tasks with timeout.
+      // This tests the internal invokeOnTimeout API.
+
+      // Given:
+      val tested = tested
+      val executed = AtomicBoolean()
+      val handle = tested.invokeOnTimeout(50L, Runnable { executed.set(true) }, GlobalScope.coroutineContext)
+
+      // When:
+      handle.dispose()
+
+      // Then:
+      delay(100L)
+      executed.get() shouldBe false
+    }
+
+    test("should skip frame") {
+      // Given:
+      val tested = tested
+      val initialFrame = AtomicLong()
+      val finalFrame = AtomicLong()
+      val executorThread = getExecutorThread()
+      val threadAfterSkip = CompletableFuture<Thread>()
+
+      // When:
+      runBlocking {
+        launch(tested) {
+          initialFrame.set(Gdx.graphics.frameId)
+          skipFrame()
+          finalFrame.set(Gdx.graphics.frameId)
+          threadAfterSkip.complete(Thread.currentThread())
+        }
+      }
+
+      // Then:
+      val thread = threadAfterSkip.get()
+      if (!isConcurrent) {
+        thread shouldBeSameInstanceAs executorThread
+      }
+      // There is no guarantee that only a single frame by the time we try to read it was skipped due to async execution:
+      assert(initialFrame.get() < finalFrame.get())
+    }
   }
 }
 
@@ -161,24 +157,25 @@ class AsyncExecutorDispatcherTest : CoroutineDispatcherTest() {
 
   override fun getExecutorThread(): Thread = getExecutionThread(tested.executor)
 
-  @Test
-  fun `should execute tasks outside of the rendering thread`() {
-    // Given:
-    val renderingThread = getMainRenderingThread()
-    val executorThread = getExecutionThread(tested.executor)
-    val thread = CompletableFuture<Thread>()
+  init {
+    test("should execute tasks outside of the rendering thread") {
+      // Given:
+      val renderingThread = getMainRenderingThread()
+      val executorThread = getExecutionThread(tested.executor)
+      val thread = CompletableFuture<Thread>()
 
-    // When:
-    runBlocking {
-      launch(tested) {
-        thread.complete(Thread.currentThread())
+      // When:
+      runBlocking {
+        launch(tested) {
+          thread.complete(Thread.currentThread())
+        }
       }
-    }
 
-    // Then:
-    assertNotSame(Thread.currentThread(), thread.get())
-    assertNotSame(renderingThread, thread.get())
-    assertSame(executorThread, thread.get())
+      // Then:
+      thread.get() shouldNotBeSameInstanceAs Thread.currentThread()
+      thread.get() shouldNotBeSameInstanceAs renderingThread
+      thread.get() shouldBeSameInstanceAs executorThread
+    }
   }
 }
 
@@ -189,22 +186,23 @@ class ConcurrentAsyncExecutorDispatcherTest : CoroutineDispatcherTest() {
 
   override val isConcurrent: Boolean = true
 
-  @Test
-  fun `should execute tasks outside of the rendering thread`() {
-    // Given:
-    val renderingThread = getMainRenderingThread()
-    val thread = CompletableFuture<Thread>()
+  init {
+    test("should execute tasks outside of the rendering thread") {
+      // Given:
+      val renderingThread = getMainRenderingThread()
+      val thread = CompletableFuture<Thread>()
 
-    // When:
-    runBlocking {
-      launch(tested) {
-        thread.complete(Thread.currentThread())
+      // When:
+      runBlocking {
+        launch(tested) {
+          thread.complete(Thread.currentThread())
+        }
       }
-    }
 
-    // Then:
-    assertNotSame(Thread.currentThread(), thread.get())
-    assertNotSame(renderingThread, thread.get())
+      // Then:
+      thread.get() shouldNotBeSameInstanceAs Thread.currentThread()
+      thread.get() shouldNotBeSameInstanceAs renderingThread
+    }
   }
 }
 
@@ -213,28 +211,28 @@ class RenderingThreadDispatcherTest : CoroutineDispatcherTest() {
 
   override fun getExecutorThread(): Thread = getMainRenderingThread()
 
-  @Test
-  fun `should execute tasks on the rendering thread`() {
-    // Given:
-    val renderingThread = getMainRenderingThread()
-    val thread = CompletableFuture<Thread>()
+  init {
+    test("should execute tasks on the rendering thread") {
+      // Given:
+      val renderingThread = getMainRenderingThread()
+      val thread = CompletableFuture<Thread>()
 
-    // When:
-    runBlocking {
-      launch(tested) {
-        thread.complete(Thread.currentThread())
+      // When:
+      runBlocking {
+        launch(tested) {
+          thread.complete(Thread.currentThread())
+        }
       }
-    }
 
-    // Then:
-    assertSame(renderingThread, thread.get())
-    assertNotSame(Thread.currentThread(), thread.get())
+      // Then:
+      thread.get() shouldBeSameInstanceAs renderingThread
+      thread.get() shouldNotBeSameInstanceAs Thread.currentThread()
+    }
   }
 }
 
-class DisposableTimerTaskTest {
-  @Test
-  fun `should cancel task on dispose`() {
+class DisposableTimerTaskTest : FunSpec({
+  test("should cancel task on dispose") {
     // Given:
     val task = mock<Timer.Task>()
     val tested = DisposableTimerTask(task)
@@ -245,11 +243,10 @@ class DisposableTimerTaskTest {
     // Then:
     verify(task).cancel()
   }
-}
+})
 
-class RenderingThreadDispatcherFactoryTest {
-  @Test
-  fun `should provide MainDispatcher instance`() {
+class RenderingThreadDispatcherFactoryTest : FunSpec({
+  test("should provide MainDispatcher instance") {
     // Given:
     val tested = RenderingThreadDispatcherFactory()
 
@@ -257,6 +254,6 @@ class RenderingThreadDispatcherFactoryTest {
     val dispatcher = tested.createDispatcher(emptyList())
 
     // Then:
-    assertSame(MainDispatcher, dispatcher)
+    dispatcher shouldBeSameInstanceAs MainDispatcher
   }
-}
+})

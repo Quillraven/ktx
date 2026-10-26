@@ -2,21 +2,19 @@ package ktx.artemis
 
 import com.artemis.ArchetypeBuilder
 import com.artemis.World
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-object ArchetypeSpec : Spek({
-  describe("utilities for archetypes") {
-    val world by memoized { World() }
-    val archetypeBuilder by memoized { ArchetypeBuilder() }
-    val transformMapper by memoized { world.getMapper(Transform::class.java) }
-    val textureMapper by memoized { world.getMapper(Texture::class.java) }
-    val positionMapper by memoized { world.getMapper(Position::class.java) }
+class ArchetypeSpec : FunSpec({
+  context("utilities for archetypes") {
+    val world by lazy { World() }
+    val archetypeBuilder by lazy { ArchetypeBuilder() }
+    val transformMapper by lazy { world.getMapper(Transform::class.java) }
+    val textureMapper by lazy { world.getMapper(Texture::class.java) }
+    val positionMapper by lazy { world.getMapper(Position::class.java) }
 
-    describe("add component function") {
-      it("should add a component") {
+    context("add component function") {
+      test("should add a component") {
         val archetype =
           archetypeBuilder
             .add<Transform>()
@@ -24,9 +22,9 @@ object ArchetypeSpec : Spek({
 
         val entity = world.entity(archetype)
 
-        assertThat(transformMapper.has(entity)).isTrue()
+        transformMapper.has(entity) shouldBe true
       }
-      it("should add multiple components") {
+      test("should add multiple components") {
         val archetype =
           archetypeBuilder
             .add(
@@ -36,13 +34,13 @@ object ArchetypeSpec : Spek({
 
         val entity = world.entity(archetype)
 
-        assertThat(transformMapper.has(entity)).isTrue()
-        assertThat(textureMapper.has(entity)).isTrue()
+        transformMapper.has(entity) shouldBe true
+        textureMapper.has(entity) shouldBe true
       }
     }
 
-    describe("remove component function") {
-      it("should remove a component") {
+    context("remove component function") {
+      test("should remove a component") {
         val archetype =
           archetypeBuilder
             .add(
@@ -53,10 +51,10 @@ object ArchetypeSpec : Spek({
 
         val entity = world.entity(archetype)
 
-        assertThat(transformMapper.has(entity)).isTrue()
-        assertThat(!textureMapper.has(entity)).isTrue()
+        transformMapper.has(entity) shouldBe true
+        !textureMapper.has(entity) shouldBe true
       }
-      it("should remove multiple components") {
+      test("should remove multiple components") {
         val archetype =
           archetypeBuilder
             .add(
@@ -69,9 +67,9 @@ object ArchetypeSpec : Spek({
             ).build(world)
 
         val entity = world.entity(archetype)
-        assertThat(positionMapper.has(entity)).isTrue()
-        assertThat(!transformMapper.has(entity)).isTrue()
-        assertThat(!textureMapper.has(entity)).isTrue()
+        positionMapper.has(entity) shouldBe true
+        !transformMapper.has(entity) shouldBe true
+        !textureMapper.has(entity) shouldBe true
       }
     }
   }

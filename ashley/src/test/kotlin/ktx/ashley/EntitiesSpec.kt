@@ -2,124 +2,125 @@ package ktx.ashley
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.PooledEngine
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 
-object EntitiesSpec : Spek({
-  describe("utilities for entities") {
-    val transform by memoized {
+class EntitiesSpec : FunSpec({
+  context("utilities for entities") {
+    val transform by lazy {
       Transform()
     }
-    val entity by memoized {
+    val entity by lazy {
       Entity().apply {
         add(transform)
       }
     }
-    val engine by memoized {
+    val engine by lazy {
       PooledEngine()
     }
-    describe("get operator") {
-      it("should get component with component mapper for better performance") {
-        assertThat(entity[Transform.mapper]).isSameAs(transform)
+    context("get operator") {
+      test("should get component with component mapper for better performance") {
+        entity[Transform.mapper] shouldBeSameInstanceAs transform
       }
-      it("should return null if there is no component") {
-        assertThat(entity[Texture.mapper]).isNull()
-      }
-    }
-
-    describe("get component function") {
-      it("should get component by reified type") {
-        assertThat(entity.get<Transform>()).isSameAs(transform)
-      }
-      it("should return null if there is no component") {
-        assertThat(entity.get<Texture>()).isNull()
+      test("should return null if there is no component") {
+        entity[Texture.mapper].shouldBeNull()
       }
     }
 
-    describe("remove component function") {
-      it("should remove a component by reified type") {
+    context("get component function") {
+      test("should get component by reified type") {
+        entity.get<Transform>() shouldBeSameInstanceAs transform
+      }
+      test("should return null if there is no component") {
+        entity.get<Texture>().shouldBeNull()
+      }
+    }
+
+    context("remove component function") {
+      test("should remove a component by reified type") {
         val component = entity.remove<Transform>()
 
-        assertThat(entity.getComponent(Transform::class.java)).isNull()
-        assertThat(component).isEqualTo(transform)
+        entity.getComponent(Transform::class.java).shouldBeNull()
+        component shouldBe transform
       }
-      it("should fail to remove an absent component by reified type") {
+      test("should fail to remove an absent component by reified type") {
         val component = entity.remove<Texture>()
 
-        assertThat(entity.getComponent(Texture::class.java)).isNull()
-        assertThat(component).isNull()
+        entity.getComponent(Texture::class.java).shouldBeNull()
+        component.shouldBeNull()
       }
     }
 
-    describe("has component function") {
-      it("should return true if exists") {
-        assertThat(entity.has(Transform.mapper)).isTrue()
+    context("has component function") {
+      test("should return true if exists") {
+        entity.has(Transform.mapper) shouldBe true
       }
-      it("should return false if does not exists") {
-        assertThat(entity.has(Texture.mapper)).isFalse()
-      }
-    }
-
-    describe("has not component function") {
-      it("should return false if exists") {
-        assertThat(entity.hasNot(Transform.mapper)).isFalse()
-      }
-      it("should return true if does not exists") {
-        assertThat(entity.hasNot(Texture.mapper)).isTrue()
+      test("should return false if does not exists") {
+        entity.has(Texture.mapper) shouldBe false
       }
     }
 
-    describe("contains component function") {
-      it("should return true if component exists") {
-        assertThat(entity.contains(Transform.mapper)).isTrue()
+    context("has not component function") {
+      test("should return false if exists") {
+        entity.hasNot(Transform.mapper) shouldBe false
       }
-      it("should return false if component does not exists") {
-        assertThat(entity.contains(Texture.mapper)).isFalse()
-      }
-      it("should return true as operator if component exists") {
-        assertThat(Transform.mapper in entity).isTrue()
-      }
-      it("should return false as operator if component does not exists") {
-        assertThat(Texture.mapper !in entity).isTrue()
+      test("should return true if does not exists") {
+        entity.hasNot(Texture.mapper) shouldBe true
       }
     }
 
-    describe("plus assignment operator") {
-      it("should add a component to an entity") {
+    context("contains component function") {
+      test("should return true if component exists") {
+        entity.contains(Transform.mapper) shouldBe true
+      }
+      test("should return false if component does not exists") {
+        entity.contains(Texture.mapper) shouldBe false
+      }
+      test("should return true as operator if component exists") {
+        (Transform.mapper in entity) shouldBe true
+      }
+      test("should return false as operator if component does not exists") {
+        (Texture.mapper !in entity) shouldBe true
+      }
+    }
+
+    context("plus assignment operator") {
+      test("should add a component to an entity") {
         entity.remove<Transform>()
 
         entity += Transform(1f, 0f)
 
-        assertThat(Transform.mapper in entity).isTrue()
-        assertThat(entity[Transform.mapper]?.x).isEqualTo(1f)
+        (Transform.mapper in entity) shouldBe true
+        entity[Transform.mapper]?.x shouldBe 1f
       }
 
-      it("should replace a component of an entity") {
+      test("should replace a component of an entity") {
         entity += Transform(1f, 0f)
 
-        assertThat(entity[Transform.mapper]?.x).isEqualTo(1f)
-        assertThat(entity[Transform.mapper]).isNotSameAs(transform)
+        entity[Transform.mapper]?.x shouldBe 1f
+        entity[Transform.mapper] shouldNotBeSameInstanceAs transform
       }
     }
 
-    describe("add component function") {
-      it("should add a component with a configuration and return it") {
+    context("add component function") {
+      test("should add a component with a configuration and return it") {
         val component =
           entity.addComponent<Transform>(engine) {
             x = 3f
           }
-        assertThat(Transform.mapper in entity).isTrue()
-        assertThat(entity[Transform.mapper]).isEqualTo(component)
-        assertThat(component.x).isEqualTo(3f)
+        (Transform.mapper in entity) shouldBe true
+        entity[Transform.mapper] shouldBe component
+        component.x shouldBe 3f
       }
-      it("should configure component exactly once") {
+      test("should configure component exactly once") {
         val variable: Int
         entity.addComponent<Transform>(engine) {
           variable = 42
         }
-        assertThat(variable).isEqualTo(42)
+        variable shouldBe 42
       }
     }
   }

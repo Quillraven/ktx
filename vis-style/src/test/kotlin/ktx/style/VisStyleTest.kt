@@ -27,16 +27,15 @@ import com.kotcrab.vis.ui.widget.color.ColorPickerWidgetStyle
 import com.kotcrab.vis.ui.widget.spinner.Spinner.SpinnerStyle
 import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPane.TabbedPaneStyle
 import com.kotcrab.vis.ui.widget.toast.Toast.ToastStyle
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 import org.mockito.kotlin.mock
 
 /**
  * Tests building utilities of VisUI widget styles.
  */
-class VisStyleTest {
-  @Test
-  fun `should add Sizes`() {
+class VisStyleTest : FunSpec({
+  test("should add Sizes") {
     val skin =
       skin {
         sizes {
@@ -45,11 +44,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<Sizes>(defaultStyle)
-    assertEquals(1f, style.borderSize)
+    style.borderSize shouldBe 1f
   }
 
-  @Test
-  fun `should extend Sizes`() {
+  test("should extend Sizes") {
     val skin =
       skin {
         sizes("base") {
@@ -61,12 +59,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<Sizes>("new")
-    assertEquals(1f, style.borderSize)
-    assertEquals(1f, style.buttonBarSpacing)
+    style.borderSize shouldBe 1f
+    style.buttonBarSpacing shouldBe 1f
   }
 
-  @Test
-  fun `should add BusyBarStyle`() {
+  test("should add BusyBarStyle") {
     val skin =
       skin {
         busyBar {
@@ -75,11 +72,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<BusyBarStyle>(defaultStyle)
-    assertEquals(1, style.height)
+    style.height shouldBe 1
   }
 
-  @Test
-  fun `should extend BusyBarStyle`() {
+  test("should extend BusyBarStyle") {
     val skin =
       skin {
         busyBar("base") {
@@ -91,12 +87,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<BusyBarStyle>("new")
-    assertEquals(1, style.height)
-    assertEquals(1, style.segmentWidth)
+    style.height shouldBe 1
+    style.segmentWidth shouldBe 1
   }
 
-  @Test
-  fun `should add ColorPickerStyle`() {
+  test("should add ColorPickerStyle") {
     val skin =
       skin {
         colorPicker {
@@ -105,11 +100,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<ColorPickerStyle>(defaultStyle)
-    assertEquals(Color.RED, style.titleFontColor)
+    style.titleFontColor shouldBe Color.RED
   }
 
-  @Test
-  fun `should extend ColorPickerStyle`() {
+  test("should extend ColorPickerStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -123,12 +117,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<ColorPickerStyle>("new")
-    assertEquals(Color.RED, style.titleFontColor)
-    assertEquals(drawable, style.stageBackground)
+    style.titleFontColor shouldBe Color.RED
+    style.stageBackground shouldBe drawable
   }
 
-  @Test
-  fun `should add ColorPickerWidgetStyle`() {
+  test("should add ColorPickerWidgetStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -138,11 +131,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<ColorPickerWidgetStyle>(defaultStyle)
-    assertEquals(drawable, style.barSelector)
+    style.barSelector shouldBe drawable
   }
 
-  @Test
-  fun `should extend ColorPickerWidgetStyle`() {
+  test("should extend ColorPickerWidgetStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -155,12 +147,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<ColorPickerWidgetStyle>("new")
-    assertEquals(drawable, style.barSelector)
-    assertEquals(drawable, style.cross)
+    style.barSelector shouldBe drawable
+    style.cross shouldBe drawable
   }
 
-  @Test
-  fun `should add FormValidatorStyle`() {
+  test("should add FormValidatorStyle") {
     val skin =
       skin {
         formValidator {
@@ -169,11 +160,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<FormValidatorStyle>(defaultStyle)
-    assertEquals(1f, style.colorTransitionDuration)
+    style.colorTransitionDuration shouldBe 1f
   }
 
-  @Test
-  fun `should extend FormValidatorStyle`() {
+  test("should extend FormValidatorStyle") {
     val skin =
       skin {
         formValidator("base") {
@@ -185,12 +175,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<FormValidatorStyle>("new")
-    assertEquals(1f, style.colorTransitionDuration)
-    assertEquals(Color.RED, style.errorLabelColor)
+    style.colorTransitionDuration shouldBe 1f
+    style.errorLabelColor shouldBe Color.RED
   }
 
-  @Test
-  fun `should add LinkLabelStyle`() {
+  test("should add LinkLabelStyle") {
     val skin =
       skin {
         linkLabel {
@@ -199,11 +188,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<LinkLabelStyle>(defaultStyle)
-    assertEquals(Color.RED, style.fontColor)
+    style.fontColor shouldBe Color.RED
   }
 
-  @Test
-  fun `should extend LinkLabelStyle`() {
+  test("should extend LinkLabelStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -216,12 +204,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<LinkLabelStyle>("new")
-    assertEquals(Color.RED, style.fontColor)
-    assertEquals(drawable, style.background)
+    style.fontColor shouldBe Color.RED
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should add ListViewStyle`() {
+  test("should add ListViewStyle") {
     val scrollPane = mock<ScrollPaneStyle>()
     val skin =
       skin {
@@ -231,11 +218,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<ListViewStyle>(defaultStyle)
-    assertEquals(scrollPane, style.scrollPaneStyle)
+    style.scrollPaneStyle shouldBe scrollPane
   }
 
-  @Test
-  fun `should extend ListViewStyle`() {
+  test("should extend ListViewStyle") {
     val scrollPane = ScrollPaneStyle()
     val drawable = mock<Drawable>()
     scrollPane.background = drawable
@@ -251,12 +237,11 @@ class VisStyleTest {
 
     val style = skin.get<ListViewStyle>("new")
     // ScrollPaneStyle is copied, so nested properties are checked:
-    assertEquals(drawable, style.scrollPaneStyle.background)
-    assertEquals(drawable, style.scrollPaneStyle.corner)
+    style.scrollPaneStyle.background shouldBe drawable
+    style.scrollPaneStyle.corner shouldBe drawable
   }
 
-  @Test
-  fun `should add MenuStyle`() {
+  test("should add MenuStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -266,11 +251,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<MenuStyle>(defaultStyle)
-    assertEquals(drawable, style.border)
+    style.border shouldBe drawable
   }
 
-  @Test
-  fun `should extend MenuStyle`() {
+  test("should extend MenuStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -283,12 +267,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<MenuStyle>("new")
-    assertEquals(drawable, style.border)
-    assertEquals(drawable, style.background)
+    style.border shouldBe drawable
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should add MenuBarStyle`() {
+  test("should add MenuBarStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -298,11 +281,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<MenuBarStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend MenuBarStyle`() {
+  test("should extend MenuBarStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -313,11 +295,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<MenuBarStyle>("new")
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should add MenuItemStyle`() {
+  test("should add MenuItemStyle") {
     val skin =
       skin {
         menuItem {
@@ -326,11 +307,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<MenuItemStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend MenuItemStyle`() {
+  test("should extend MenuItemStyle") {
     val skin =
       skin {
         menuItem("base") {
@@ -342,12 +322,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<MenuItemStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add MultiSplitPaneStyle`() {
+  test("should add MultiSplitPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -357,11 +336,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<MultiSplitPaneStyle>(defaultStyle)
-    assertEquals(drawable, style.handle)
+    style.handle shouldBe drawable
   }
 
-  @Test
-  fun `should extend MultiSplitPaneStyle`() {
+  test("should extend MultiSplitPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -374,12 +352,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<MultiSplitPaneStyle>("new")
-    assertEquals(drawable, style.handle)
-    assertEquals(drawable, style.handleOver)
+    style.handle shouldBe drawable
+    style.handleOver shouldBe drawable
   }
 
-  @Test
-  fun `should add PopupMenuStyle`() {
+  test("should add PopupMenuStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -389,11 +366,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<PopupMenuStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend PopupMenuStyle`() {
+  test("should extend PopupMenuStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -406,12 +382,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<PopupMenuStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(drawable, style.border)
+    style.background shouldBe drawable
+    style.border shouldBe drawable
   }
 
-  @Test
-  fun `should add SeparatorStyle`() {
+  test("should add SeparatorStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -421,11 +396,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<SeparatorStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend SeparatorStyle`() {
+  test("should extend SeparatorStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -438,12 +412,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<SeparatorStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(1, style.thickness)
+    style.background shouldBe drawable
+    style.thickness shouldBe 1
   }
 
-  @Test
-  fun `should add SimpleListAdapterStyle`() {
+  test("should add SimpleListAdapterStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -453,11 +426,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<SimpleListAdapterStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend SimpleListAdapterStyle`() {
+  test("should extend SimpleListAdapterStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -470,12 +442,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<SimpleListAdapterStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(drawable, style.selection)
+    style.background shouldBe drawable
+    style.selection shouldBe drawable
   }
 
-  @Test
-  fun `should add SpinnerStyle`() {
+  test("should add SpinnerStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -485,11 +456,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<SpinnerStyle>(defaultStyle)
-    assertEquals(drawable, style.down)
+    style.down shouldBe drawable
   }
 
-  @Test
-  fun `should extend SpinnerStyle`() {
+  test("should extend SpinnerStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -502,12 +472,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<SpinnerStyle>("new")
-    assertEquals(drawable, style.down)
-    assertEquals(drawable, style.up)
+    style.down shouldBe drawable
+    style.up shouldBe drawable
   }
 
-  @Test
-  fun `should add TabbedPaneStyle`() {
+  test("should add TabbedPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -517,11 +486,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<TabbedPaneStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend TabbedPaneStyle`() {
+  test("should extend TabbedPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -534,12 +502,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<TabbedPaneStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(true, style.vertical)
+    style.background shouldBe drawable
+    style.vertical shouldBe true
   }
 
-  @Test
-  fun `should add ToastStyle`() {
+  test("should add ToastStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -549,11 +516,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<ToastStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend ToastStyle`() {
+  test("should extend ToastStyle") {
     val drawable = mock<Drawable>()
     val buttonStyle = mock<VisImageButtonStyle>()
 
@@ -568,12 +534,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<ToastStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(buttonStyle, style.closeButtonStyle)
+    style.background shouldBe drawable
+    style.closeButtonStyle shouldBe buttonStyle
   }
 
-  @Test
-  fun `should add VisCheckBoxStyle`() {
+  test("should add VisCheckBoxStyle") {
     val skin =
       skin {
         visCheckBox {
@@ -582,11 +547,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisCheckBoxStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend VisCheckBoxStyle`() {
+  test("should extend VisCheckBoxStyle") {
     val skin =
       skin {
         visCheckBox("base") {
@@ -598,12 +562,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisCheckBoxStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add VisImageButtonStyle`() {
+  test("should add VisImageButtonStyle") {
     val skin =
       skin {
         visImageButton {
@@ -612,11 +575,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisImageButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend VisImageButtonStyle`() {
+  test("should extend VisImageButtonStyle") {
     val skin =
       skin {
         visImageButton("base") {
@@ -628,12 +590,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisImageButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add VisImageTextButtonStyle`() {
+  test("should add VisImageTextButtonStyle") {
     val skin =
       skin {
         visImageTextButton {
@@ -642,11 +603,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisImageTextButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend VisImageTextButtonStyle`() {
+  test("should extend VisImageTextButtonStyle") {
     val skin =
       skin {
         visImageTextButton("base") {
@@ -658,12 +618,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisImageTextButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add VisSplitPaneStyle`() {
+  test("should add VisSplitPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -673,11 +632,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisSplitPaneStyle>(defaultStyle)
-    assertEquals(drawable, style.handle)
+    style.handle shouldBe drawable
   }
 
-  @Test
-  fun `should extend VisSplitPaneStyle`() {
+  test("should extend VisSplitPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -690,12 +648,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisSplitPaneStyle>("new")
-    assertEquals(drawable, style.handle)
-    assertEquals(drawable, style.handleOver)
+    style.handle shouldBe drawable
+    style.handleOver shouldBe drawable
   }
 
-  @Test
-  fun `should add VisTextButtonStyle`() {
+  test("should add VisTextButtonStyle") {
     val skin =
       skin {
         visTextButton {
@@ -704,11 +661,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisTextButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend VisTextButtonStyle`() {
+  test("should extend VisTextButtonStyle") {
     val skin =
       skin {
         visTextButton("base") {
@@ -720,12 +676,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisTextButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add VisTextFieldStyle`() {
+  test("should add VisTextFieldStyle") {
     val skin =
       skin {
         visTextField {
@@ -734,11 +689,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisTextFieldStyle>(defaultStyle)
-    assertEquals(Color.CYAN, style.fontColor)
+    style.fontColor shouldBe Color.CYAN
   }
 
-  @Test
-  fun `should extend VisTextFieldStyle`() {
+  test("should extend VisTextFieldStyle") {
     val skin =
       skin {
         visTextField("base") {
@@ -750,12 +704,11 @@ class VisStyleTest {
       }
 
     val style = skin.get<VisTextFieldStyle>("new")
-    assertEquals(Color.CYAN, style.fontColor)
-    assertEquals(Color.BLACK, style.disabledFontColor)
+    style.fontColor shouldBe Color.CYAN
+    style.disabledFontColor shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should add VisTooltipStyle`() {
+  test("should add VisTooltipStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -765,11 +718,10 @@ class VisStyleTest {
       }
 
     val style = skin.get<TooltipStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend VisTooltipStyle`() {
+  test("should extend VisTooltipStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -780,6 +732,6 @@ class VisStyleTest {
       }
 
     val style = skin.get<TooltipStyle>("new")
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
-}
+})

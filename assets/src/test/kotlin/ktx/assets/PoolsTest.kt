@@ -2,18 +2,16 @@ package ktx.assets
 
 import com.badlogic.gdx.utils.Pool
 import com.badlogic.gdx.utils.Pool.Poolable
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 
 /**
  * Tests [Pool] extensions.
  */
-class PoolsTest {
-  @Test
-  fun `should invoke pool as no parameter function to provide instances`() {
+class PoolsTest : FunSpec({
+  test("should invoke pool as no parameter function to provide instances") {
     // Given:
     val pool = MockPool()
 
@@ -21,13 +19,12 @@ class PoolsTest {
     val instance = pool()
 
     // Then: Should work as "obtain":
-    assertNotNull(instance)
+    instance.shouldNotBeNull()
     pool.free(instance)
-    assertSame(instance, pool()) // Since the object was freed, pool should return the same instance.
+    pool() shouldBeSameInstanceAs instance // Since the object was freed, pool should return the same instance.
   }
 
-  @Test
-  fun `should invoke pool as one parameter function to return instances`() {
+  test("should invoke pool as one parameter function to return instances") {
     // Given:
     val pool = MockPool()
     val instance = pool.obtain()
@@ -36,12 +33,11 @@ class PoolsTest {
     pool(instance)
 
     // Then: Should work as "free".
-    assertEquals(1, pool.free)
-    assertSame(instance, pool.obtain()) // Since the object was freed, pool should return the same instance.
+    pool.free shouldBe 1
+    pool.obtain() shouldBeSameInstanceAs instance // Since the object was freed, pool should return the same instance.
   }
 
-  @Test
-  fun `should create new pools with custom providers`() {
+  test("should create new pools with custom providers") {
     // Given: A pool that always returns the same instance:
     val provided = "10"
     val pool = pool { provided }
@@ -50,11 +46,10 @@ class PoolsTest {
     val obtained = pool()
 
     // Then:
-    assertSame(provided, obtained)
+    obtained shouldBeSameInstanceAs provided
   }
 
-  @Test
-  fun `should honor max setting`() {
+  test("should honor max setting") {
     // Given:
     val pool = pool(max = 5) { "Mock." }
 
@@ -62,11 +57,10 @@ class PoolsTest {
     for (index in 1..10) pool.free("Value.")
 
     // Then:
-    assertEquals(5, pool.free)
+    pool.free shouldBe 5
   }
 
-  @Test
-  fun `should create new pools with a custom discard function`() {
+  test("should create new pools with a custom discard function") {
     // Given: A pool that adds discarded objects to a list:
     val discarded = mutableListOf<String>()
     val pool = pool(max = 5, discard = { discarded.add(it) }) { "Mock." }
@@ -75,11 +69,10 @@ class PoolsTest {
     for (index in 1..10) pool.free("Value$index")
 
     // Then:
-    assertEquals(listOf("Value6", "Value7", "Value8", "Value9", "Value10"), discarded)
+    discarded shouldBe listOf("Value6", "Value7", "Value8", "Value9", "Value10")
   }
 
-  @Test
-  fun `should create new pools that reset discarded objects by default`() {
+  test("should create new pools that reset discarded objects by default") {
     // Given:
     val pool = pool(max = 1) { SamplePoolable() }
     val freed = pool()
@@ -90,24 +83,24 @@ class PoolsTest {
     pool.free(discarded)
 
     // Then:
-    assertTrue(discarded.isReset)
+    discarded.isReset shouldBe true
   }
+})
 
-  /**
-   * A simple data object implementing the [Poolable] interface.
-   */
-  private class SamplePoolable(
-    var isReset: Boolean = false,
-  ) : Poolable {
-    override fun reset() {
-      this.isReset = true
-    }
+/**
+ * A simple data object implementing the [Poolable] interface.
+ */
+private class SamplePoolable(
+  var isReset: Boolean = false,
+) : Poolable {
+  override fun reset() {
+    this.isReset = true
   }
+}
 
-  /**
-   * Provides new [Any] instances.
-   */
-  private class MockPool : Pool<Any>() {
-    override fun newObject(): Any = Any()
-  }
+/**
+ * Provides new [Any] instances.
+ */
+private class MockPool : Pool<Any>() {
+  override fun newObject(): Any = Any()
 }

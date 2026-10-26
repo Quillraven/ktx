@@ -4,108 +4,112 @@ import com.badlogic.ashley.core.Component
 import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.PooledEngine
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatExceptionOfType
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 
-object EnginesSpec : Spek({
-  describe("utilities for engines") {
-    val engine by memoized {
+class EnginesSpec : FunSpec({
+  context("utilities for engines") {
+    val engine by lazy {
       PooledEngine()
     }
-    describe("creating a component") {
+    context("creating a component") {
       val component = engine.create<Transform>()
-      it("should create a pooled component with reified type") {
-        assertThat(component.x).isEqualTo(0f)
-        assertThat(component.y).isEqualTo(0f)
+      test("should create a pooled component with reified type") {
+        component.x shouldBe 0f
+        component.y shouldBe 0f
       }
     }
-    describe("creating a component without a no-arg constructor") {
+    context("creating a component without a no-arg constructor") {
       @Suppress("UNUSED_PARAMETER")
       class MissingNoArgConstructorComponent(
         body: String,
       ) : Component
 
-      it("should throw an exception if the non-pooled engine was unable to create the component") {
+      test("should throw an exception if the non-pooled engine was unable to create the component") {
         val nonPooledEngine = Engine()
-        assertThatExceptionOfType(CreateComponentException::class.java).isThrownBy {
+        shouldThrow<CreateComponentException> {
           nonPooledEngine.create<MissingNoArgConstructorComponent>()
         }
       }
 
-      it("should throw an exception if the pooled engine was unable to create the component") {
-        assertThatExceptionOfType(CreateComponentException::class.java).isThrownBy {
+      test("should throw an exception if the pooled engine was unable to create the component") {
+        shouldThrow<CreateComponentException> {
           engine.create<MissingNoArgConstructorComponent>()
         }
       }
     }
-    describe("creating a corrupted component that throws an exception") {
+    context("creating a corrupted component that throws an exception") {
       class CorruptedComponent : Component {
         init {
           throw IllegalStateException()
         }
       }
-      it("should throw an exception if the non-pooled engine was unable to create the corrupted component") {
+      test("should throw an exception if the non-pooled engine was unable to create the corrupted component") {
         val nonPooledEngine = Engine()
-        assertThatExceptionOfType(CreateComponentException::class.java)
-          .isThrownBy {
-            nonPooledEngine.create<CorruptedComponent>()
-          }.withRootCauseInstanceOf(IllegalStateException::class.java)
+        shouldThrow<CreateComponentException> {
+          nonPooledEngine.create<CorruptedComponent>()
+        }.let { ex ->
+          generateSequence(ex.cause) { it.cause }.last().shouldBeInstanceOf<IllegalStateException>()
+        }
       }
 
-      it("should throw an exception if the pooled engine was unable to create the corrupted component") {
-        assertThatExceptionOfType(CreateComponentException::class.java)
-          .isThrownBy {
-            engine.create<CorruptedComponent>()
-          }.withRootCauseInstanceOf(IllegalStateException::class.java)
+      test("should throw an exception if the pooled engine was unable to create the corrupted component") {
+        shouldThrow<CreateComponentException> {
+          engine.create<CorruptedComponent>()
+        }.let { ex ->
+          generateSequence(ex.cause) { it.cause }.last().shouldBeInstanceOf<IllegalStateException>()
+        }
       }
     }
-    describe("creating a component with configuration") {
+    context("creating a component with configuration") {
       val component =
         engine.create<Transform> {
           x = 1f
           y = 2f
         }
-      it("should create a pooled component with reified type") {
-        assertThat(component.x).isEqualTo(1f)
-        assertThat(component.y).isEqualTo(2f)
+      test("should create a pooled component with reified type") {
+        component.x shouldBe 1f
+        component.y shouldBe 2f
       }
     }
-    describe("multiple entity creation DSL") {
-      it("should add an entity") {
+    context("multiple entity creation DSL") {
+      test("should add an entity") {
         engine.add {
           entity {}
         }
-        assertThat(engine.entities.size()).isEqualTo(1)
+        engine.entities.size() shouldBe 1
       }
 
-      it("should add multiple entities") {
+      test("should add multiple entities") {
         engine.add {
           entity {}
           entity {}
         }
-        assertThat(engine.entities.size()).isEqualTo(2)
+        engine.entities.size() shouldBe 2
       }
     }
 
-    describe("single entity creation DSL") {
-      it("should add an entity and return it") {
+    context("single entity creation DSL") {
+      test("should add an entity and return it") {
         val entity = engine.entity()
-        assertThat(engine.entities.size()).isEqualTo(1)
-        assertThat(engine.entities[0]).isEqualTo(entity)
+        engine.entities.size() shouldBe 1
+        engine.entities[0] shouldBe entity
       }
-      it("should add an entity with a component with default configuration") {
+      test("should add an entity with a component with default configuration") {
         engine.entity {
           with<Transform>()
         }
         val transformEntities = engine.getEntitiesFor(oneOf(Transform::class).get())
         val component = transformEntities.single().getComponent(Transform::class.java)
-        assertThat(component.x).isEqualTo(0f)
-        assertThat(component.y).isEqualTo(0f)
+        component.x shouldBe 0f
+        component.y shouldBe 0f
       }
-      it("should add an entity with a component with configuration") {
+      test("should add an entity with a component with configuration") {
         engine.entity {
           with<Transform> {
             x = 1f
@@ -114,58 +118,58 @@ object EnginesSpec : Spek({
         }
         val transformEntities = engine.getEntitiesFor(oneOf(Transform::class).get())
         val component = transformEntities.single().getComponent(Transform::class.java)
-        assertThat(component.x).isEqualTo(1f)
-        assertThat(component.y).isEqualTo(2f)
+        component.x shouldBe 1f
+        component.y shouldBe 2f
       }
-      it("should add multiple different components") {
+      test("should add multiple different components") {
         engine.entity {
           with<Transform>()
           with<Texture>()
         }
         val transformEntities = engine.getEntitiesFor(allOf(Transform::class, Texture::class).get())
-        assertThat(transformEntities.size()).isEqualTo(1)
+        transformEntities.size() shouldBe 1
 
         val entity = transformEntities.single()
-        assertThat(entity.getComponent(Transform::class.java)).isNotNull()
-        assertThat(entity.getComponent(Texture::class.java)).isNotNull()
+        entity.getComponent(Transform::class.java).shouldNotBeNull()
+        entity.getComponent(Texture::class.java).shouldNotBeNull()
       }
     }
 
-    describe("contracts API") {
-      it("should create entity exactly once") {
+    context("contracts API") {
+      test("should create entity exactly once") {
         val variable: Int
         engine.entity {
           with<Transform> {
             variable = 42
           }
         }
-        assertThat(variable).isEqualTo(42)
+        variable shouldBe 42
       }
-      it("should create component exactly once") {
+      test("should create component exactly once") {
         val variable: Int
         engine.create<Transform> {
           variable = 42
         }
-        assertThat(variable).isEqualTo(42)
+        variable shouldBe 42
       }
-      it("should add entities exactly once") {
+      test("should add entities exactly once") {
         val variable: Int
         engine.add {
           variable = 42
         }
-        assertThat(variable).isEqualTo(42)
+        variable shouldBe 42
       }
-      it("should configure entities exactly once") {
+      test("should configure entities exactly once") {
         val variable: Int
         engine.configureEntity(Entity()) {
           variable = 42
         }
-        assertThat(variable).isEqualTo(42)
+        variable shouldBe 42
       }
     }
 
-    describe("entity configuration with configureEntity") {
-      it("should capture entity and engine") {
+    context("entity configuration with configureEntity") {
+      test("should capture entity and engine") {
         val assignedEngine: Engine
         val assignedEntity: Entity
         val entity = Entity()
@@ -175,10 +179,10 @@ object EnginesSpec : Spek({
           assignedEntity = this.entity
         }
 
-        assertThat(assignedEngine).isSameAs(engine)
-        assertThat(assignedEntity).isSameAs(entity)
+        assignedEngine shouldBeSameInstanceAs engine
+        assignedEntity shouldBeSameInstanceAs entity
       }
-      it("should add a component with configuration") {
+      test("should add a component with configuration") {
         val entity = Entity()
 
         engine.configureEntity(entity) {
@@ -189,29 +193,29 @@ object EnginesSpec : Spek({
         }
 
         val component = entity.getComponent(Transform::class.java)
-        assertThat(component.x).isEqualTo(1f)
-        assertThat(component.y).isEqualTo(2f)
+        component.x shouldBe 1f
+        component.y shouldBe 2f
       }
     }
 
-    describe("getSystem function") {
-      it("should add a system and return it") {
+    context("getSystem function") {
+      test("should add a system and return it") {
         val system = TestSystem()
         engine.addSystem(system)
-        assertThat(engine.getSystem<TestSystem>()).isEqualTo(system)
+        engine.getSystem<TestSystem>() shouldBe system
       }
-      it("should add a system and return it as operator") {
+      test("should add a system and return it as operator") {
         val system = TestSystem()
         engine.addSystem(system)
-        assertThat(engine[TestSystem::class]).isEqualTo(system)
+        engine[TestSystem::class] shouldBe system
       }
-      it("should throw an exception if the system is missing in the engine") {
-        assertThatExceptionOfType(MissingEntitySystemException::class.java).isThrownBy {
+      test("should throw an exception if the system is missing in the engine") {
+        shouldThrow<MissingEntitySystemException> {
           engine.getSystem<TestSystem>()
         }
       }
-      it("should return null if the system is missing in the engine") {
-        assertThat(engine[TestSystem::class]).isNull()
+      test("should return null if the system is missing in the engine") {
+        engine[TestSystem::class].shouldBeNull()
       }
     }
   }

@@ -4,13 +4,11 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.utils.GdxRuntimeException
-import org.junit.After
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.any
 import org.mockito.kotlin.argThat
 import org.mockito.kotlin.doReturn
@@ -24,15 +22,13 @@ import org.mockito.kotlin.verify
 /**
  * Tests [KtxGame]: KTX equivalent of [com.badlogic.gdx.Game].
  */
-class KtxGameTest {
-  @Before
-  fun `set up OpenGL`() {
+class KtxGameTest : FunSpec({
+  beforeTest {
     Gdx.gl20 = mock()
     Gdx.gl = Gdx.gl20
   }
 
-  @Test
-  fun `should display firstScreen without registration`() {
+  test("should display firstScreen without registration") {
     val screen = mock<Screen>()
     val game = KtxGame(firstScreen = screen)
     Gdx.graphics =
@@ -43,15 +39,14 @@ class KtxGameTest {
 
     game.create()
 
-    assertSame(screen, game.shownScreen)
+    game.shownScreen shouldBeSameInstanceAs screen
     verify(screen).show()
     verify(screen).resize(800, 600)
     // addScreen must be called manually to keep firstScreen in context - should not contain initial Screen:
-    assertFalse(game.containsScreen<Screen>())
+    game.containsScreen<Screen>() shouldBe false
   }
 
-  @Test
-  fun `should clear screen on render`() {
+  test("should clear screen on render") {
     val game = KtxGame(firstScreen = MockScreen())
     Gdx.graphics = mock()
 
@@ -61,8 +56,7 @@ class KtxGameTest {
     verify(Gdx.gl).glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT)
   }
 
-  @Test
-  fun `should not clear screen on render if screen clearing is turned off`() {
+  test("should not clear screen on render if screen clearing is turned off") {
     val game = KtxGame(clearScreen = false, firstScreen = MockScreen())
     Gdx.graphics = mock()
 
@@ -72,8 +66,7 @@ class KtxGameTest {
     verify(Gdx.gl, never()).glClear(any())
   }
 
-  @Test
-  fun `should delegate resize call to current screen`() {
+  test("should delegate resize call to current screen") {
     val screen = mock<Screen>()
     val game = KtxGame(screen)
 
@@ -82,8 +75,7 @@ class KtxGameTest {
     verify(screen).resize(100, 200)
   }
 
-  @Test
-  fun `should delegate pause call to current screen`() {
+  test("should delegate pause call to current screen") {
     val screen = mock<Screen>()
     val game = KtxGame(screen)
 
@@ -92,8 +84,7 @@ class KtxGameTest {
     verify(screen).pause()
   }
 
-  @Test
-  fun `should delegate resume call to current screen`() {
+  test("should delegate resume call to current screen") {
     val screen = mock<Screen>()
     val game = KtxGame(screen)
 
@@ -102,57 +93,55 @@ class KtxGameTest {
     verify(screen).resume()
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should fail to provide non-registered Screen`() {
-    val game = KtxGame<Screen>()
+  test("should fail to provide non-registered Screen") {
+    shouldThrow<GdxRuntimeException> {
+      val game = KtxGame<Screen>()
 
-    game.getScreen<KtxScreen>()
+      game.getScreen<KtxScreen>()
+    }
   }
 
-  @Test
-  fun `should register Screen instance`() {
+  test("should register Screen instance") {
     val screen = mock<KtxScreen>()
     val game = KtxGame<Screen>()
 
     game.addScreen(screen)
 
-    assertTrue(game.containsScreen<KtxScreen>())
-    assertSame(screen, game.getScreen<KtxScreen>())
+    game.containsScreen<KtxScreen>() shouldBe true
+    game.getScreen<KtxScreen>() shouldBeSameInstanceAs screen
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should fail to register Screen instance to same type multiple times`() {
-    val game = KtxGame<Screen>()
+  test("should fail to register Screen instance to same type multiple times") {
+    shouldThrow<GdxRuntimeException> {
+      val game = KtxGame<Screen>()
 
-    game.addScreen(mock<KtxScreen>())
-    game.addScreen(mock<KtxScreen>())
+      game.addScreen(mock<KtxScreen>())
+      game.addScreen(mock<KtxScreen>())
+    }
   }
 
-  @Test
-  fun `should not throw exception when trying to remove unregistered Screen`() {
+  test("should not throw exception when trying to remove unregistered Screen") {
     val game = KtxGame<Screen>()
 
     val removed = game.removeScreen<KtxScreen>()
 
-    assertNull(removed)
-    assertFalse(game.containsScreen<KtxScreen>())
+    removed.shouldBeNull()
+    game.containsScreen<KtxScreen>() shouldBe false
   }
 
-  @Test
-  fun `should remove Screen`() {
+  test("should remove Screen") {
     val screen = mock<KtxScreen>()
     val game = KtxGame<Screen>()
     game.addScreen(screen)
 
     val removed = game.removeScreen<KtxScreen>()
 
-    assertSame(screen, removed)
-    assertFalse(game.containsScreen<KtxScreen>())
+    removed shouldBeSameInstanceAs screen
+    game.containsScreen<KtxScreen>() shouldBe false
     verify(screen, never()).dispose() // Should not dispose of Screen upon removal.
   }
 
-  @Test
-  fun `should reassign Screen`() {
+  test("should reassign Screen") {
     val game = KtxGame<Screen>()
     val initialScreen = mock<KtxScreen>()
     val replacement = mock<KtxScreen>()
@@ -161,13 +150,12 @@ class KtxGameTest {
     game.removeScreen<KtxScreen>()
     game.addScreen(replacement)
 
-    assertTrue(game.containsScreen<KtxScreen>())
-    assertSame(replacement, game.getScreen<KtxScreen>())
+    game.containsScreen<KtxScreen>() shouldBe true
+    game.getScreen<KtxScreen>() shouldBeSameInstanceAs replacement
     verify(initialScreen, never()).dispose() // Should not dispose of previous KtxScreen upon removal.
   }
 
-  @Test
-  fun `should set current Screen`() {
+  test("should set current Screen") {
     val firstScreen = mock<Screen>()
     val secondScreen = mock<KtxScreen>()
     val game = KtxGame(firstScreen)
@@ -180,21 +168,21 @@ class KtxGameTest {
 
     game.setScreen<KtxScreen>()
 
-    assertSame(secondScreen, game.shownScreen)
+    game.shownScreen shouldBeSameInstanceAs secondScreen
     verify(firstScreen).hide()
     verify(secondScreen).show()
     verify(secondScreen).resize(800, 600)
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should fail to set unregistered Screen`() {
-    val game = KtxGame<Screen>()
+  test("should fail to set unregistered Screen") {
+    shouldThrow<GdxRuntimeException> {
+      val game = KtxGame<Screen>()
 
-    game.setScreen<MockScreen>()
+      game.setScreen<MockScreen>()
+    }
   }
 
-  @Test
-  fun `should dispose of all registered Screen instances`() {
+  test("should dispose of all registered Screen instances") {
     val screen = mock<Screen>()
     val ktxScreen = mock<KtxScreen>()
     val game = KtxGame<Screen>()
@@ -207,8 +195,7 @@ class KtxGameTest {
     verify(ktxScreen).dispose()
   }
 
-  @Test
-  fun `should dispose of all registered Screen instances with error handling`() {
+  test("should dispose of all registered Screen instances with error handling") {
     Gdx.app = mock()
     val screen = mock<Screen>()
     val ktxScreen =
@@ -232,39 +219,37 @@ class KtxGameTest {
     verify(Gdx.app, times(2)).error(eq("KTX"), any(), argThat { this is GdxRuntimeException })
   }
 
-  @After
-  fun `clear static libGDX variables`() {
+  afterTest {
     Gdx.graphics = null
     Gdx.gl = null
     Gdx.gl20 = null
     Gdx.app = null
   }
+})
 
-  /** [Screen] implementation that tracks how many times it was rendered. */
-  open class MockScreen : KtxScreen {
-    private var rendered = false
-    private var renderedTimes = 0
+/** [Screen] implementation that tracks how many times it was rendered. */
+open class MockScreen : KtxScreen {
+  private var rendered = false
+  private var renderedTimes = 0
 
-    override fun render(delta: Float) {
-      rendered = true
-      renderedTimes++
-    }
+  override fun render(delta: Float) {
+    rendered = true
+    renderedTimes++
   }
 }
 
 /**
  * Tests [Screen] utilities.
  */
-class KtxScreenTest {
-  @Test
-  fun `should provide mock-up screen instance`() {
+class KtxScreenTest : FunSpec({
+  test("should provide mock-up screen instance") {
     val screen = emptyScreen()
 
-    assertTrue(Screen::class.isInstance(screen))
+    Screen::class.isInstance(screen) shouldBe true
   }
+})
 
-  @Suppress("unused", "ClassName")
-  class `should implement KtxScreen with no methods overridden` : KtxScreen {
-    // Guarantees all KtxScreen methods are optional to implement.
-  }
+@Suppress("unused", "ClassName")
+class `should implement KtxScreen with no methods overridden` : KtxScreen {
+  // Guarantees all KtxScreen methods are optional to implement.
 }

@@ -2,20 +2,18 @@ package ktx.app
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.PerformanceCounter
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.shouldBe
 import org.mockito.kotlin.mock
 
-class ProfilingTest {
-  @Before
-  fun `initiate libGDX`() {
+class ProfilingTest : FunSpec({
+  beforeTest {
     Gdx.app = mock()
   }
 
-  @Test
-  fun `should profile operation`() {
+  test("should profile operation") {
     var repeats = 0
 
     val performanceCounter =
@@ -24,15 +22,14 @@ class ProfilingTest {
         Thread.sleep(10L)
       }
 
-    assertEquals("Thread.sleep", performanceCounter.name)
-    assertEquals(10, performanceCounter.time.mean.windowSize)
-    assertEquals(10, performanceCounter.time.count)
-    assertEquals(10, repeats)
-    assertEquals(0.01f, performanceCounter.time.mean.mean, 0.002f)
+    performanceCounter.name shouldBe "Thread.sleep"
+    performanceCounter.time.mean.windowSize shouldBe 10
+    performanceCounter.time.count shouldBe 10
+    repeats shouldBe 10
+    performanceCounter.time.mean.mean shouldBe (0.01f plusOrMinus 0.002f)
   }
 
-  @Test
-  fun `should profile operation with existing PerformanceCounter`() {
+  test("should profile operation with existing PerformanceCounter") {
     val performanceCounter = PerformanceCounter("Thread.sleep", 10)
     var repeats = 0
 
@@ -41,14 +38,13 @@ class ProfilingTest {
       Thread.sleep(10L)
     }
 
-    assertEquals("Thread.sleep", performanceCounter.name)
-    assertEquals(10, performanceCounter.time.count)
-    assertEquals(10, repeats)
-    assertEquals(0.01f, performanceCounter.time.mean.mean, 0.002f)
+    performanceCounter.name shouldBe "Thread.sleep"
+    performanceCounter.time.count shouldBe 10
+    repeats shouldBe 10
+    performanceCounter.time.mean.mean shouldBe (0.01f plusOrMinus 0.002f)
   }
 
-  @After
-  fun `destroy libGDX`() {
+  afterTest {
     Gdx.app = null
   }
-}
+})

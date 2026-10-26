@@ -9,11 +9,12 @@ import com.badlogic.gdx.physics.box2d.CircleShape
 import com.badlogic.gdx.physics.box2d.EdgeShape
 import com.badlogic.gdx.physics.box2d.Fixture
 import com.badlogic.gdx.physics.box2d.World
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.never
 import org.mockito.kotlin.spy
 import org.mockito.kotlin.verify
@@ -22,297 +23,280 @@ import org.mockito.kotlin.verify
  * Tests [World] utilities and extension methods.
  */
 class WorldsTest : Box2DTest() {
-  @Test
-  fun `should roughly match Earth's gravity`() {
-    assertEquals(0f, earthGravity.x)
-    assertEquals(-9.8f, earthGravity.y)
-  }
-
-  @Test
-  fun `should create World with default gravity`() {
-    val world = createWorld()
-
-    assertEquals(Vector2(0f, 0f), world.gravity)
-    world.dispose()
-  }
-
-  @Test
-  fun `should create World with custom gravity`() {
-    val world = createWorld(gravity = Vector2(1f, 1f), allowSleep = false)
-
-    assertEquals(Vector2(1f, 1f), world.gravity)
-    world.dispose()
-  }
-
-  @Test
-  fun `should construct a Body`() {
-    val world = createWorld()
-
-    val body = world.body()
-
-    assertNotNull(body)
-    assertSame(world, body.world)
-    assertEquals(StaticBody, body.type)
-    world.dispose()
-  }
-
-  @Test
-  fun `should construct a Body of chosen BodyType`() {
-    val world = createWorld()
-
-    val body = world.body(type = KinematicBody)
-
-    assertNotNull(body)
-    assertSame(world, body.world)
-    assertEquals(KinematicBody, body.type)
-    world.dispose()
-  }
-
-  @Test
-  fun `should construct a customized Body with a Fixture`() {
-    val world = createWorld()
-
-    val body =
-      world.body {
-        type = DynamicBody
-        circle(radius = 2f) {
-          density = 0.5f
-        }
-      }
-
-    assertSame(world, body.world)
-    assertEquals(DynamicBody, body.type)
-    assertEquals(1, body.fixtureList.size)
-    val fixture = body.fixtureList[0]
-    assertEquals(0.5f, fixture.density)
-    assertTrue(fixture.shape is CircleShape)
-    assertEquals(2f, fixture.shape.radius)
-    world.dispose()
-  }
-
-  @Test
-  fun `should construct a customized Body with multiple Fixture instances`() {
-    val world = createWorld()
-
-    val body =
-      world.body {
-        type = DynamicBody
-        circle(radius = 2f) {
-          density = 0.5f
-        }
-        edge(from = Vector2(1f, 1f), to = Vector2(2f, 2f)) {
-          density = 0.75f
-        }
-      }
-
-    assertSame(world, body.world)
-    assertEquals(DynamicBody, body.type)
-    assertEquals(2, body.fixtureList.size)
-    val circle = body.fixtureList[0]
-    assertEquals(0.5f, circle.density)
-    assertTrue(circle.shape is CircleShape)
-    assertEquals(2f, circle.shape.radius)
-    val edge = body.fixtureList[1]
-    assertEquals(0.75f, edge.density)
-    assertTrue(edge.shape is EdgeShape)
-    assertEdgeEquals(Vector2(1f, 1f), Vector2(2f, 2f), edge.shape as EdgeShape)
-    world.dispose()
-  }
-
-  @Test
-  fun `should construct Body exactly once`() {
-    val world = createWorld()
-    val fixture: FixtureDefinition
-    val variable: Int
-
-    world.body {
-      fixture = circle()
-      variable = 42
+  init {
+    test("should roughly match Earth's gravity") {
+      earthGravity.x shouldBe 0f
+      earthGravity.y shouldBe -9.8f
     }
 
-    assertNotNull(fixture)
-    assertEquals(42, variable)
-  }
+    test("should create World with default gravity") {
+      val world = createWorld()
 
-  @Test
-  fun `should dispose of Shape instances during Body construction`() {
-    val world = createWorld()
-    val reusable = spy(CircleShape())
-    val disposable = spy(CircleShape())
-
-    world.body {
-      fixture(reusable, disposeOfShape = false)
-      fixture(disposable, disposeOfShape = true)
+      world.gravity shouldBe Vector2(0f, 0f)
+      world.dispose()
     }
 
-    verify(reusable, never()).dispose()
-    verify(disposable).dispose()
-  }
+    test("should create World with custom gravity") {
+      val world = createWorld(gravity = Vector2(1f, 1f), allowSleep = false)
 
-  @Test
-  fun `should set custom user data of bodies`() {
-    val world = createWorld()
-    val data = Any()
+      world.gravity shouldBe Vector2(1f, 1f)
+      world.dispose()
+    }
 
-    val body =
+    test("should construct a Body") {
+      val world = createWorld()
+
+      val body = world.body()
+
+      body.shouldNotBeNull()
+      body.world shouldBeSameInstanceAs world
+      body.type shouldBe StaticBody
+      world.dispose()
+    }
+
+    test("should construct a Body of chosen BodyType") {
+      val world = createWorld()
+
+      val body = world.body(type = KinematicBody)
+
+      body.shouldNotBeNull()
+      body.world shouldBeSameInstanceAs world
+      body.type shouldBe KinematicBody
+      world.dispose()
+    }
+
+    test("should construct a customized Body with a Fixture") {
+      val world = createWorld()
+
+      val body =
+        world.body {
+          type = DynamicBody
+          circle(radius = 2f) {
+            density = 0.5f
+          }
+        }
+
+      body.world shouldBeSameInstanceAs world
+      body.type shouldBe DynamicBody
+      body.fixtureList.size shouldBe 1
+      val fixture = body.fixtureList[0]
+      fixture.density shouldBe 0.5f
+      (fixture.shape is CircleShape) shouldBe true
+      fixture.shape.radius shouldBe 2f
+      world.dispose()
+    }
+
+    test("should construct a customized Body with multiple Fixture instances") {
+      val world = createWorld()
+
+      val body =
+        world.body {
+          type = DynamicBody
+          circle(radius = 2f) {
+            density = 0.5f
+          }
+          edge(from = Vector2(1f, 1f), to = Vector2(2f, 2f)) {
+            density = 0.75f
+          }
+        }
+
+      body.world shouldBeSameInstanceAs world
+      body.type shouldBe DynamicBody
+      body.fixtureList.size shouldBe 2
+      val circle = body.fixtureList[0]
+      circle.density shouldBe 0.5f
+      (circle.shape is CircleShape) shouldBe true
+      circle.shape.radius shouldBe 2f
+      val edge = body.fixtureList[1]
+      edge.density shouldBe 0.75f
+      (edge.shape is EdgeShape) shouldBe true
+      assertEdgeEquals(Vector2(1f, 1f), Vector2(2f, 2f), edge.shape as EdgeShape)
+      world.dispose()
+    }
+
+    test("should construct Body exactly once") {
+      val world = createWorld()
+      val fixture: FixtureDefinition
+      val variable: Int
+
       world.body {
-        userData = data
+        fixture = circle()
+        variable = 42
       }
 
-    assertSame(data, body.userData)
-    world.dispose()
-  }
+      fixture.shouldNotBeNull()
+      variable shouldBe 42
+    }
 
-  @Test
-  fun `should set custom user data of fixtures`() {
-    val world = createWorld()
-    val circleData = Any()
-    val boxData = Any()
+    test("should dispose of Shape instances during Body construction") {
+      val world = createWorld()
+      val reusable = spy(CircleShape())
+      val disposable = spy(CircleShape())
 
-    val body =
       world.body {
-        circle {
-          userData = circleData
-        }
-        box {
-          userData = boxData
-        }
+        fixture(reusable, disposeOfShape = false)
+        fixture(disposable, disposeOfShape = true)
       }
 
-    val circle = body.fixtureList[0]
-    assertSame(circleData, circle.userData)
-    val box = body.fixtureList[1]
-    assertSame(boxData, box.userData)
-    world.dispose()
-  }
+      verify(reusable, never()).dispose()
+      verify(disposable).dispose()
+    }
 
-  @Test
-  fun `should invoke body creation callback`() {
-    val world = createWorld()
-    var callbackParameter: Body? = null
+    test("should set custom user data of bodies") {
+      val world = createWorld()
+      val data = Any()
 
-    val body =
-      world.body {
-        onCreate {
-          callbackParameter = it
+      val body =
+        world.body {
+          userData = data
         }
-      }
 
-    assertSame(body, callbackParameter)
-    world.dispose()
-  }
+      body.userData shouldBeSameInstanceAs data
+      world.dispose()
+    }
 
-  @Test
-  fun `should invoke fixture creation callback`() {
-    val world = createWorld()
-    var callbackParameter: Fixture? = null
+    test("should set custom user data of fixtures") {
+      val world = createWorld()
+      val circleData = Any()
+      val boxData = Any()
 
-    val body =
-      world.body {
-        circle {
+      val body =
+        world.body {
+          circle {
+            userData = circleData
+          }
+          box {
+            userData = boxData
+          }
+        }
+
+      val circle = body.fixtureList[0]
+      circle.userData shouldBeSameInstanceAs circleData
+      val box = body.fixtureList[1]
+      box.userData shouldBeSameInstanceAs boxData
+      world.dispose()
+    }
+
+    test("should invoke body creation callback") {
+      val world = createWorld()
+      var callbackParameter: Body? = null
+
+      val body =
+        world.body {
           onCreate {
             callbackParameter = it
           }
         }
+
+      callbackParameter shouldBeSameInstanceAs body
+      world.dispose()
+    }
+
+    test("should invoke fixture creation callback") {
+      val world = createWorld()
+      var callbackParameter: Fixture? = null
+
+      val body =
+        world.body {
+          circle {
+            onCreate {
+              callbackParameter = it
+            }
+          }
+        }
+
+      callbackParameter shouldBeSameInstanceAs body.fixtureList[0]
+      world.dispose()
+    }
+
+    test("should ray-cast between two vectors") {
+      val world = createWorld()
+      val expectedEdge = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
+      var called = false
+
+      world.rayCast(Vector2(-1f, 1f), Vector2(1f, 1f)) { fixture, point, normal, fraction ->
+        called = true
+        fixture shouldBeSameInstanceAs expectedEdge
+        point shouldBe Vector2(0f, 1f)
+        normal shouldBe Vector2(-1f, 0f)
+        fraction shouldBe 0.5f
+        RayCast.TERMINATE
       }
 
-    assertSame(body.fixtureList[0], callbackParameter)
-    world.dispose()
-  }
-
-  @Test
-  fun `should ray-cast between two vectors`() {
-    val world = createWorld()
-    val expectedEdge = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
-    var called = false
-
-    world.rayCast(Vector2(-1f, 1f), Vector2(1f, 1f)) { fixture, point, normal, fraction ->
-      called = true
-      assertSame(expectedEdge, fixture)
-      assertEquals(Vector2(0f, 1f), point)
-      assertEquals(Vector2(-1f, 0f), normal)
-      assertEquals(0.5f, fraction)
-      RayCast.TERMINATE
+      called shouldBe true
+      world.dispose()
     }
 
-    assertTrue(called)
-    world.dispose()
-  }
+    test("should ray-cast between two coordinates") {
+      val world = createWorld()
+      val expectedEdge = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
+      var called = false
 
-  @Test
-  fun `should ray-cast between two coordinates`() {
-    val world = createWorld()
-    val expectedEdge = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
-    var called = false
+      world.rayCast(startX = -1f, startY = 1f, endX = 1f, endY = 1f) { fixture, point, normal, fraction ->
+        called = true
+        fixture shouldBeSameInstanceAs expectedEdge
+        point shouldBe Vector2(0f, 1f)
+        normal shouldBe Vector2(-1f, 0f)
+        fraction shouldBe 0.5f
+        RayCast.TERMINATE
+      }
 
-    world.rayCast(startX = -1f, startY = 1f, endX = 1f, endY = 1f) { fixture, point, normal, fraction ->
-      called = true
-      assertSame(expectedEdge, fixture)
-      assertEquals(Vector2(0f, 1f), point)
-      assertEquals(Vector2(-1f, 0f), normal)
-      assertEquals(0.5f, fraction)
-      RayCast.TERMINATE
+      called shouldBe true
+      world.dispose()
     }
 
-    assertTrue(called)
-    world.dispose()
-  }
+    test("should provide constants for ray-cast behavior") {
+      val tolerance = 0f
 
-  @Test
-  fun `should provide constants for ray-cast behavior`() {
-    val tolerance = 0f
-
-    assertEquals(1f, RayCast.CONTINUE, tolerance)
-    assertEquals(0f, RayCast.TERMINATE, tolerance)
-    assertEquals(-1f, RayCast.IGNORE, tolerance)
-  }
-
-  @Test
-  fun `should query for overlapping fixtures with AABB and stop`() {
-    val world = createWorld()
-    val matchingEdge1 = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
-    val matchingEdge2 = world.body().edge(from = Vector2(1f, 0f), to = Vector2(1f, 2f))
-    val matchedFixtures = mutableSetOf<Fixture>()
-
-    world.query(lowerX = -1f, lowerY = 1f, upperX = 1f, upperY = 1f) { fixture ->
-      matchedFixtures += fixture
-      Query.STOP
+      RayCast.CONTINUE shouldBe (1f plusOrMinus tolerance)
+      RayCast.TERMINATE shouldBe (0f plusOrMinus tolerance)
+      RayCast.IGNORE shouldBe (-1f plusOrMinus tolerance)
     }
 
-    assertEquals(1, matchedFixtures.size)
-    assertTrue(matchedFixtures.contains(matchingEdge1) || matchedFixtures.contains(matchingEdge2))
-    world.dispose()
-  }
+    test("should query for overlapping fixtures with AABB and stop") {
+      val world = createWorld()
+      val matchingEdge1 = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
+      val matchingEdge2 = world.body().edge(from = Vector2(1f, 0f), to = Vector2(1f, 2f))
+      val matchedFixtures = mutableSetOf<Fixture>()
 
-  @Test
-  fun `should query for overlapping fixtures with AABB and continue`() {
-    val world = createWorld()
-    val matchingEdge1 = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
-    val matchingEdge2 = world.body().edge(from = Vector2(1f, 0f), to = Vector2(1f, 2f))
-    val matchedFixtures = mutableSetOf<Fixture>()
+      world.query(lowerX = -1f, lowerY = 1f, upperX = 1f, upperY = 1f) { fixture ->
+        matchedFixtures += fixture
+        Query.STOP
+      }
 
-    world.query(lowerX = -1f, lowerY = 1f, upperX = 1f, upperY = 1f) { fixture ->
-      matchedFixtures += fixture
-      Query.CONTINUE
+      matchedFixtures.size shouldBe 1
+      (matchedFixtures.contains(matchingEdge1) || matchedFixtures.contains(matchingEdge2)) shouldBe true
+      world.dispose()
     }
 
-    assertEquals(setOf(matchingEdge1, matchingEdge2), matchedFixtures)
-    world.dispose()
-  }
+    test("should query for overlapping fixtures with AABB and continue") {
+      val world = createWorld()
+      val matchingEdge1 = world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
+      val matchingEdge2 = world.body().edge(from = Vector2(1f, 0f), to = Vector2(1f, 2f))
+      val matchedFixtures = mutableSetOf<Fixture>()
 
-  @Test
-  fun `should query world and not callback if there are no fixtures overlapping the AABB`() {
-    val world = createWorld()
-    world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
-    world.body().edge(from = Vector2(1f, 0f), to = Vector2(1f, 2f))
-    val matchedFixtures = mutableSetOf<Fixture>()
+      world.query(lowerX = -1f, lowerY = 1f, upperX = 1f, upperY = 1f) { fixture ->
+        matchedFixtures += fixture
+        Query.CONTINUE
+      }
 
-    world.query(lowerX = -2f, lowerY = 1f, upperX = -1f, upperY = 1f) { fixture ->
-      matchedFixtures += fixture
-      Query.CONTINUE
+      matchedFixtures shouldBe setOf(matchingEdge1, matchingEdge2)
+      world.dispose()
     }
 
-    assertTrue(matchedFixtures.isEmpty())
-    world.dispose()
+    test("should query world and not callback if there are no fixtures overlapping the AABB") {
+      val world = createWorld()
+      world.body().edge(from = Vector2.Zero, to = Vector2(0f, 2f))
+      world.body().edge(from = Vector2(1f, 0f), to = Vector2(1f, 2f))
+      val matchedFixtures = mutableSetOf<Fixture>()
+
+      world.query(lowerX = -2f, lowerY = 1f, upperX = -1f, upperY = 1f) { fixture ->
+        matchedFixtures += fixture
+        Query.CONTINUE
+      }
+
+      matchedFixtures.isEmpty() shouldBe true
+      world.dispose()
+    }
   }
 }

@@ -2,477 +2,426 @@ package ktx.collections
 
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Pool
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import java.util.LinkedList
 
 /**
  * Tests utilities for libGDX custom ArrayList equivalent - Array.
  */
-class ArraysTest {
-  @Test
-  fun `should create Array`() {
+class ArraysTest : FunSpec({
+  test("should create Array") {
     val array = gdxArrayOf<Any>()
 
-    assertNotNull(array)
-    assertEquals(0, array.size)
+    array.shouldNotBeNull()
+    array.size shouldBe 0
   }
 
-  @Test
-  fun `should create Array with custom initial capacity`() {
-    assertEquals(32, gdxArrayOf<Any>(initialCapacity = 32).items.size)
-    assertEquals(128, gdxArrayOf<Any>(initialCapacity = 128).items.size)
+  test("should create Array with custom initial capacity") {
+    gdxArrayOf<Any>(initialCapacity = 32).items.size shouldBe 32
+    gdxArrayOf<Any>(initialCapacity = 128).items.size shouldBe 128
   }
 
-  @Test
-  fun `should create Arrays with custom ordered setting`() {
-    assertFalse(gdxArrayOf<Any>(ordered = false).ordered)
-    assertTrue(gdxArrayOf<Any>(ordered = true).ordered)
+  test("should create Arrays with custom ordered setting") {
+    gdxArrayOf<Any>(ordered = false).ordered shouldBe false
+    gdxArrayOf<Any>(ordered = true).ordered shouldBe true
   }
 
-  @Test
-  fun `should create Array with custom elements`() {
+  test("should create Array with custom elements") {
     val array = gdxArrayOf("1", "2", "3")
 
-    assertEquals(3, array.size)
-    assertTrue("1" in array)
-    assertTrue("2" in array)
-    assertTrue("3" in array)
+    array.size shouldBe 3
+    ("1" in array) shouldBe true
+    ("2" in array) shouldBe true
+    ("3" in array) shouldBe true
   }
 
-  @Test
-  fun `should report size of Array`() {
+  test("should report size of Array") {
     val array = GdxArray.with("1", "2", "3")
 
-    assertEquals(3, array.size())
-    assertEquals(array.size, array.size())
+    array.size() shouldBe 3
+    array.size() shouldBe array.size
   }
 
-  @Test
-  fun `should return 0 as null Array size`() {
+  test("should return 0 as null Array size") {
     val nullArray: GdxArray<Any>? = null
 
-    assertEquals(0, nullArray.size())
+    nullArray.size() shouldBe 0
   }
 
-  @Test
-  fun `should report size of IntArray`() {
+  test("should report size of IntArray") {
     val array = GdxIntArray.with(1, 2, 3)
 
-    assertEquals(3, array.size())
-    assertEquals(array.size, array.size())
+    array.size() shouldBe 3
+    array.size() shouldBe array.size
   }
 
-  @Test
-  fun `should return 0 as null IntArray size`() {
+  test("should return 0 as null IntArray size") {
     val nullArray: GdxIntArray? = null
 
-    assertEquals(0, nullArray.size())
+    nullArray.size() shouldBe 0
   }
 
-  @Test
-  fun `should report size of FloatArray`() {
+  test("should report size of FloatArray") {
     val array = GdxFloatArray.with(1f, 2f, 3f)
 
-    assertEquals(3, array.size())
-    assertEquals(array.size, array.size())
+    array.size() shouldBe 3
+    array.size() shouldBe array.size
   }
 
-  @Test
-  fun `should return 0 as null FloatArray size`() {
+  test("should return 0 as null FloatArray size") {
     val nullArray: GdxFloatArray? = null
 
-    assertEquals(0, nullArray.size())
+    nullArray.size() shouldBe 0
   }
 
-  @Test
-  fun `should report size of BooleanArray`() {
+  test("should report size of BooleanArray") {
     val array = GdxBooleanArray.with(true, false, true)
 
-    assertEquals(3, array.size())
-    assertEquals(array.size, array.size())
+    array.size() shouldBe 3
+    array.size() shouldBe array.size
   }
 
-  @Test
-  fun `should return 0 as null BooleanArray size`() {
+  test("should return 0 as null BooleanArray size") {
     val nullArray: GdxBooleanArray? = null
 
-    assertEquals(0, nullArray.size())
+    nullArray.size() shouldBe 0
   }
 
-  @Test
-  fun `should report empty status`() {
-    assertFalse(GdxArray.with("1", "2", "3").isEmpty())
-    assertTrue(GdxArray<Any>().isEmpty())
-    assertTrue((null as GdxArray<Any>?).isEmpty())
+  test("should report empty status") {
+    GdxArray.with("1", "2", "3").isEmpty() shouldBe false
+    GdxArray<Any>().isEmpty() shouldBe true
+    (null as GdxArray<Any>?).isEmpty() shouldBe true
   }
 
-  @Test
-  fun `should verify empty status contract`() {
+  test("should verify empty status contract") {
     fun getArray(): GdxArray<Any>? = GdxArray.with("1")
 
     val array = getArray()
     if (!array.isEmpty()) {
-      assertTrue(array.size == 1)
+      (array.size == 1) shouldBe true
     }
   }
 
-  @Test
-  fun `should report non empty status`() {
-    assertTrue(GdxArray.with("1", "2", "3").isNotEmpty())
-    assertFalse(GdxArray<Any>().isNotEmpty())
-    assertFalse((null as GdxArray<Any>?).isNotEmpty())
+  test("should report non empty status") {
+    GdxArray.with("1", "2", "3").isNotEmpty() shouldBe true
+    GdxArray<Any>().isNotEmpty() shouldBe false
+    (null as GdxArray<Any>?).isNotEmpty() shouldBe false
   }
 
-  @Test
-  fun `should verify non empty status contract`() {
+  test("should verify non empty status contract") {
     fun getArray(): GdxArray<Any>? = GdxArray.with("1")
 
     val array = getArray()
     if (array.isNotEmpty()) {
-      assertTrue(array.size == 1)
+      (array.size == 1) shouldBe true
     }
   }
 
-  @Test
-  fun `should return last valid index of Array`() {
+  test("should return last valid index of Array") {
     val array = GdxArray.with("1", "2", "3")
 
-    assertEquals(2, array.lastIndex)
+    array.lastIndex shouldBe 2
   }
 
-  @Test
-  fun `should return last valid index of empty Array`() {
+  test("should return last valid index of empty Array") {
     val emptyArray = GdxArray<Any>()
 
-    assertEquals(-1, emptyArray.lastIndex)
+    emptyArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return negative last index for null Array`() {
+  test("should return negative last index for null Array") {
     val nullArray: GdxArray<Any>? = null
 
-    assertEquals(-1, nullArray.lastIndex)
+    nullArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return last valid index of IntArray`() {
+  test("should return last valid index of IntArray") {
     val array = GdxIntArray.with(1, 2, 3)
 
-    assertEquals(2, array.lastIndex)
+    array.lastIndex shouldBe 2
   }
 
-  @Test
-  fun `should return last valid index of empty IntArray`() {
+  test("should return last valid index of empty IntArray") {
     val emptyArray = GdxIntArray()
 
-    assertEquals(-1, emptyArray.lastIndex)
+    emptyArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return negative last index for null IntArray`() {
+  test("should return negative last index for null IntArray") {
     val nullArray: GdxIntArray? = null
 
-    assertEquals(-1, nullArray.lastIndex)
+    nullArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return last valid index of FloatArray`() {
+  test("should return last valid index of FloatArray") {
     val array = GdxFloatArray.with(1f, 2f, 3f)
 
-    assertEquals(2, array.lastIndex)
+    array.lastIndex shouldBe 2
   }
 
-  @Test
-  fun `should return last valid index of empty FloatArray`() {
+  test("should return last valid index of empty FloatArray") {
     val emptyArray = GdxFloatArray()
 
-    assertEquals(-1, emptyArray.lastIndex)
+    emptyArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return negative last index for null FloatArray`() {
+  test("should return negative last index for null FloatArray") {
     val nullArray: GdxFloatArray? = null
 
-    assertEquals(-1, nullArray.lastIndex)
+    nullArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return last valid index of BooleanArray`() {
+  test("should return last valid index of BooleanArray") {
     val array = GdxBooleanArray.with(true, false, true)
 
-    assertEquals(2, array.lastIndex)
+    array.lastIndex shouldBe 2
   }
 
-  @Test
-  fun `should return last valid index of empty BooleanArray`() {
+  test("should return last valid index of empty BooleanArray") {
     val emptyArray = GdxBooleanArray()
 
-    assertEquals(-1, emptyArray.lastIndex)
+    emptyArray.lastIndex shouldBe -1
   }
 
-  @Test
-  fun `should return negative last index for null BooleanArray`() {
+  test("should return negative last index for null BooleanArray") {
     val nullArray: GdxBooleanArray? = null
 
-    assertEquals(-1, nullArray.lastIndex)
+    nullArray.lastIndex shouldBe -1
   }
 
-  @Test
-  @Suppress("ReplaceGetOrSet")
-  fun `should return alternative if element is null`() {
+  test("should return alternative if element is null") {
     val array = GdxArray.with("0", null, "2")
 
-    assertEquals("0", array.get(0, "3"))
-    assertEquals("3", array[1, "3"]) // This method is also available through square bracket operator.
-    assertEquals("2", array.get(2, "3"))
-    assertEquals("3", array[3, "3"])
+    array.get(0, "3") shouldBe "0"
+    array[1, "3"] shouldBe "3" // This method is also available through square bracket operator.
+    array.get(2, "3") shouldBe "2"
+    array[3, "3"] shouldBe "3"
   }
 
-  @Test
-  fun `should add all values from Iterable`() {
+  test("should add all values from Iterable") {
     val array = GdxArray<String>()
 
     array.addAll(listOf("1", "2", "3"))
 
-    assertEquals(3, array.size)
-    assertTrue("1" in array)
-    assertTrue("2" in array)
-    assertTrue("3" in array)
+    array.size shouldBe 3
+    ("1" in array) shouldBe true
+    ("2" in array) shouldBe true
+    ("3" in array) shouldBe true
   }
 
-  @Test
-  fun `should remove all values from Iterable`() {
+  test("should remove all values from Iterable") {
     val array = GdxArray.with("1", "2", "3")
 
     array.removeAll(listOf("1", "2", "3"))
 
-    assertEquals(0, array.size)
-    assertFalse("1" in array)
-    assertFalse("2" in array)
-    assertFalse("3" in array)
+    array.size shouldBe 0
+    ("1" in array) shouldBe false
+    ("2" in array) shouldBe false
+    ("3" in array) shouldBe false
   }
 
-  @Test
-  fun `should remove all values from native Array`() {
+  test("should remove all values from native Array") {
     val array = GdxArray.with("1", "2", "3")
 
     array.removeAll(arrayOf("1", "2", "3"))
 
-    assertEquals(0, array.size)
-    assertFalse("1" in array)
-    assertFalse("2" in array)
-    assertFalse("3" in array)
+    array.size shouldBe 0
+    ("1" in array) shouldBe false
+    ("2" in array) shouldBe false
+    ("3" in array) shouldBe false
   }
 
-  @Test
-  fun `should add elements with += operator`() {
+  test("should add elements with += operator") {
     val array = GdxArray.with("1")
 
     array += "2"
 
-    assertEquals(gdxArrayOf("1", "2"), array)
+    array shouldBe gdxArrayOf("1", "2")
   }
 
-  @Test
-  fun `should add Iterable with += operator`() {
+  test("should add Iterable with += operator") {
     val array = GdxArray.with("1")
 
     array += listOf("2", "3") as Iterable<String>
 
-    assertEquals(gdxArrayOf("1", "2", "3"), array)
+    array shouldBe gdxArrayOf("1", "2", "3")
   }
 
-  @Test
-  fun `should add Collection with += operator`() {
+  test("should add Collection with += operator") {
     val array = GdxArray.with("1")
 
     array += listOf("2", "3")
 
-    assertEquals(gdxArrayOf("1", "2", "3"), array)
+    array shouldBe gdxArrayOf("1", "2", "3")
   }
 
-  @Test
-  fun `should add GdxArray with += operator`() {
+  test("should add GdxArray with += operator") {
     val array = GdxArray.with("1")
 
     array += GdxArray.with("2", "3")
 
-    assertEquals(gdxArrayOf("1", "2", "3"), array)
+    array shouldBe gdxArrayOf("1", "2", "3")
   }
 
-  @Test
-  fun `should add arrays and elements with + operator`() {
+  test("should add arrays and elements with + operator") {
     val array = GdxArray<String>()
 
     val result = array + "1"
 
-    assertEquals(gdxArrayOf("1"), result)
-    assertEquals(gdxArrayOf<String>(), array)
+    result shouldBe gdxArrayOf("1")
+    array shouldBe gdxArrayOf<String>()
 
     val chained = result + "2" + "3"
 
-    assertEquals(gdxArrayOf("1", "2", "3"), chained)
-    assertEquals(gdxArrayOf("1"), result)
+    chained shouldBe gdxArrayOf("1", "2", "3")
+    result shouldBe gdxArrayOf("1")
   }
 
-  @Test
-  fun `should add arrays and Iterables with + operator`() {
+  test("should add arrays and Iterables with + operator") {
     val array = GdxArray.with("0")
 
     val result = array + listOf("1", "2", "3")
 
-    assertEquals(gdxArrayOf("0", "1", "2", "3"), result)
-    assertEquals(gdxArrayOf("0"), array)
+    result shouldBe gdxArrayOf("0", "1", "2", "3")
+    array shouldBe gdxArrayOf("0")
   }
 
-  @Test
-  fun `should add arrays and native Arrays with + operator`() {
+  test("should add arrays and native Arrays with + operator") {
     val array = GdxArray.with("0")
 
     val result = array + arrayOf("1", "2", "3")
 
-    assertEquals(gdxArrayOf("0", "1", "2", "3"), result)
-    assertEquals(gdxArrayOf("0"), array)
+    result shouldBe gdxArrayOf("0", "1", "2", "3")
+    array shouldBe gdxArrayOf("0")
   }
 
-  @Test
-  fun `should remove values with - operator`() {
+  test("should remove values with - operator") {
     var array = GdxArray.with("1", "2", "3", "4", "5", "6")
 
     var result = array - "1"
 
-    assertEquals(gdxArrayOf("2", "3", "4", "5", "6"), result)
-    assertEquals(gdxArrayOf("1", "2", "3", "4", "5", "6"), array)
+    result shouldBe gdxArrayOf("2", "3", "4", "5", "6")
+    array shouldBe gdxArrayOf("1", "2", "3", "4", "5", "6")
 
     array = result
     result = array - listOf("2", "3")
 
-    assertEquals(gdxArrayOf("4", "5", "6"), result)
-    assertEquals(gdxArrayOf("2", "3", "4", "5", "6"), array)
+    result shouldBe gdxArrayOf("4", "5", "6")
+    array shouldBe gdxArrayOf("2", "3", "4", "5", "6")
 
     array = result
     result = array - arrayOf("4", "5")
 
-    assertEquals(gdxArrayOf("6"), result)
-    assertEquals(gdxArrayOf("4", "5", "6"), array)
+    result shouldBe gdxArrayOf("6")
+    array shouldBe gdxArrayOf("4", "5", "6")
   }
 
-  @Test
-  fun `should remove values with -= operator`() {
+  test("should remove values with -= operator") {
     val array = GdxArray.with("1", "2", "3", "4", "5", "6")
 
     array -= "1"
 
-    assertEquals(gdxArrayOf("2", "3", "4", "5", "6"), array)
+    array shouldBe gdxArrayOf("2", "3", "4", "5", "6")
 
     array -= listOf("2", "3")
 
-    assertEquals(gdxArrayOf("4", "5", "6"), array)
+    array shouldBe gdxArrayOf("4", "5", "6")
 
     array -= arrayOf("4", "5")
 
-    assertEquals(gdxArrayOf("6"), array)
+    array shouldBe gdxArrayOf("6")
   }
 
-  @Test
-  fun `should chain operators`() {
+  test("should chain operators") {
     val array = GdxArray.with("1", "2", "3", "4")
 
     val result = array + "5" - "2" + GdxArray.with("7") - GdxArray.with("4", "6")
 
-    assertEquals(GdxArray.with("1", "3", "5", "7"), result)
+    result shouldBe GdxArray.with("1", "3", "5", "7")
   }
 
-  @Test
-  fun `should find elements with in operator`() {
+  test("should find elements with in operator") {
     val array = GdxArray.with("1")
     val identityCheck = false // Will compare with equals(Object).
 
-    assertTrue(array.contains("1", identityCheck)) // Standard libGDX API.
-    assertTrue("1" in array)
-    assertTrue(array.contains("1")) // Operator method alias.
+    array.contains("1", identityCheck) shouldBe true // Standard libGDX API.
+    ("1" in array) shouldBe true
+    array.contains("1") shouldBe true // Operator method alias.
 
     array.removeValue("1", identityCheck)
 
-    assertFalse(array.contains("1", identityCheck)) // Standard libGDX API.
-    assertFalse("1" in array)
-    assertFalse(array.contains("1"))
+    array.contains("1", identityCheck) shouldBe false // Standard libGDX API.
+    ("1" in array) shouldBe false
+    array.contains("1") shouldBe false
   }
 
-  @Test
-  fun `should allow to iterate Array with iterator reference`() {
+  test("should allow to iterate Array with iterator reference") {
     val array = GdxArray.with("1", "2", "3")
 
     array.iterate { value, iterator -> if (value == "2") iterator.remove() }
 
-    assertEquals(2, array.size)
-    assertFalse("2" in array)
+    array.size shouldBe 2
+    ("2" in array) shouldBe false
   }
 
-  @Test
-  fun `should sort elements in descending natural order`() {
+  test("should sort elements in descending natural order") {
     val array = GdxArray.with(1, 2, 3)
 
     array.sortDescending()
 
-    assertEquals(GdxArray.with(3, 2, 1), array)
+    array shouldBe GdxArray.with(3, 2, 1)
   }
 
-  @Test
-  fun `should sort elements by property`() {
+  test("should sort elements by property") {
     val array = GdxArray.with("Twenty-one", "Eleven", "One")
 
     array.sortBy { it.length }
 
-    assertEquals(GdxArray.with("One", "Eleven", "Twenty-one"), array)
+    array shouldBe GdxArray.with("One", "Eleven", "Twenty-one")
   }
 
-  @Test
-  fun `should sort elements by property in descending order`() {
+  test("should sort elements by property in descending order") {
     val array = GdxArray.with("One", "Eleven", "Twenty-one")
 
     array.sortByDescending { it.length }
 
-    assertEquals(GdxArray.with("Twenty-one", "Eleven", "One"), array)
+    array shouldBe GdxArray.with("Twenty-one", "Eleven", "One")
   }
 
-  @Test
-  fun `should remove elements from existing GdxArray`() {
+  test("should remove elements from existing GdxArray") {
     val array = GdxArray.with(1, 2, 3, 4, 5)
     val noneRemovedResult = array.removeAll { it > 10 }
     assert(!noneRemovedResult)
-    assertEquals(GdxArray.with(1, 2, 3, 4, 5), array)
+    array shouldBe GdxArray.with(1, 2, 3, 4, 5)
 
     val evensRemovedResult = array.removeAll { it % 2 == 0 }
     assert(evensRemovedResult)
-    assertEquals(GdxArray.with(1, 3, 5), array)
+    array shouldBe GdxArray.with(1, 3, 5)
 
     val allRemovedResult = array.removeAll { it is Number }
     assert(allRemovedResult)
-    assertEquals(GdxArray<Int>(), array)
+    array shouldBe GdxArray<Int>()
 
     val emptyRemoveResult = array.removeAll { it > 0 }
     assert(!emptyRemoveResult)
-    assertEquals(GdxArray<Int>(), array)
+    array shouldBe GdxArray<Int>()
   }
 
-  @Test
-  fun `should free removed elements`() {
+  test("should free removed elements") {
     val array = GdxArray.with(Vector2(), Vector2(1f, 1f), Vector2(2f, 2f))
     val pool =
       object : Pool<Vector2>() {
         override fun newObject() = Vector2()
       }
     array.removeAll(pool) { it.len() > 0.5f }
-    assertEquals(pool.peak, 2)
+    2 shouldBe pool.peak
   }
 
-  @Test
-  fun `should transfer elements matching predicate`() {
+  test("should transfer elements matching predicate") {
     val array = GdxArray.with(0, 1, 2, 3, 4)
     val target = GdxArray.with<Int>()
 
@@ -480,12 +429,11 @@ class ArraysTest {
       it % 2 == 0
     }
 
-    assertEquals(GdxArray.with(1, 3), array)
-    assertEquals(GdxArray.with(0, 2, 4), target)
+    array shouldBe GdxArray.with(1, 3)
+    target shouldBe GdxArray.with(0, 2, 4)
   }
 
-  @Test
-  fun `should transfer all elements`() {
+  test("should transfer all elements") {
     val array = GdxArray.with(0, 1, 2, 3, 4)
     val target = GdxArray.with<Int>()
 
@@ -493,12 +441,11 @@ class ArraysTest {
       true
     }
 
-    assertEquals(GdxArray.with<Int>(), array)
-    assertEquals(GdxArray.with(0, 1, 2, 3, 4), target)
+    array shouldBe GdxArray.with<Int>()
+    target shouldBe GdxArray.with(0, 1, 2, 3, 4)
   }
 
-  @Test
-  fun `should transfer no elements`() {
+  test("should transfer no elements") {
     val array = GdxArray.with(0, 1, 2, 3, 4)
     val target = GdxArray.with<Int>()
 
@@ -506,12 +453,11 @@ class ArraysTest {
       false
     }
 
-    assertEquals(GdxArray.with(0, 1, 2, 3, 4), array)
-    assertEquals(GdxArray.with<Int>(), target)
+    array shouldBe GdxArray.with(0, 1, 2, 3, 4)
+    target shouldBe GdxArray.with<Int>()
   }
 
-  @Test
-  fun `should not transfer any elements from empty array`() {
+  test("should not transfer any elements from empty array") {
     val array = GdxArray.with<Int>()
     val target = GdxArray.with<Int>()
 
@@ -519,12 +465,11 @@ class ArraysTest {
       it % 2 == 0
     }
 
-    assertEquals(GdxArray.with<Int>(), array)
-    assertEquals(GdxArray.with<Int>(), target)
+    array shouldBe GdxArray.with<Int>()
+    target shouldBe GdxArray.with<Int>()
   }
 
-  @Test
-  fun `should transfer to wider typed array`() {
+  test("should transfer to wider typed array") {
     val array = GdxArray.with("ABC", "AB", "ABC")
     val target = GdxArray<CharSequence>()
 
@@ -532,150 +477,135 @@ class ArraysTest {
       it.length < 3
     }
 
-    assertEquals(GdxArray.with("ABC", "ABC"), array)
-    assertEquals(GdxArray.with("AB" as CharSequence), target)
+    array shouldBe GdxArray.with("ABC", "ABC")
+    target shouldBe GdxArray.with("AB" as CharSequence)
   }
 
-  @Test
-  fun `should retain elements from existing GdxArray`() {
+  test("should retain elements from existing GdxArray") {
     val array = GdxArray.with(1, 2, 3, 4, 5)
     val allRetainedResult = array.retainAll { it < 6 }
     assert(!allRetainedResult)
-    assertEquals(GdxArray.with(1, 2, 3, 4, 5), array)
+    array shouldBe GdxArray.with(1, 2, 3, 4, 5)
 
     val oddsRetainedResult = array.retainAll { it % 2 == 1 }
     assert(oddsRetainedResult)
-    assertEquals(GdxArray.with(1, 3, 5), array)
+    array shouldBe GdxArray.with(1, 3, 5)
 
     val noneRetainedResult = array.retainAll { it < 0 }
     assert(noneRetainedResult)
-    assertEquals(GdxArray<Int>(), array)
+    array shouldBe GdxArray<Int>()
 
     val emptyRetainResult = array.retainAll { it > 0 }
     assert(!emptyRetainResult)
-    assertEquals(GdxArray<Int>(), array)
+    array shouldBe GdxArray<Int>()
   }
 
-  @Test
-  fun `should free unretained elements`() {
+  test("should free unretained elements") {
     val array = GdxArray.with(Vector2(), Vector2(1f, 1f), Vector2(2f, 2f))
     val pool =
       object : Pool<Vector2>() {
         override fun newObject() = Vector2()
       }
     array.retainAll(pool) { it.len() < 0.5f }
-    assertEquals(pool.peak, 2)
+    2 shouldBe pool.peak
   }
 
-  @Test
-  fun `should map elements into a new GdxArray`() {
+  test("should map elements into a new GdxArray") {
     val array = GdxArray.with(1, 2, 3)
 
     val result = array.map { it * 2 }
 
-    assertEquals(GdxArray.with(2, 4, 6), result)
+    result shouldBe GdxArray.with(2, 4, 6)
   }
 
-  @Test
-  fun `should filter elements into a new GdxArray`() {
+  test("should filter elements into a new GdxArray") {
     val array = GdxArray.with(1, 2, 3, 4, 5)
 
     val result = array.filter { it % 2 == 1 }
 
-    assertEquals(GdxArray.with(1, 3, 5), result)
+    result shouldBe GdxArray.with(1, 3, 5)
   }
 
-  @Test
-  fun `should flatten elements into a new GdxArray`() {
+  test("should flatten elements into a new GdxArray") {
     val array = GdxArray.with(GdxArray.with(1), listOf<Int>(), LinkedList(arrayListOf(2, 3)))
 
     val result = array.flatten()
 
-    assertEquals(GdxArray.with(1, 2, 3), result)
+    result shouldBe GdxArray.with(1, 2, 3)
   }
 
-  @Test
-  fun `should map elements to lists and flatten them into a new GdxArray`() {
+  test("should map elements to lists and flatten them into a new GdxArray") {
     val array = GdxArray.with(1, 2, 3)
 
     val result = array.flatMap { counter -> List(counter) { counter } }
 
-    assertEquals(GdxArray.with(1, 2, 2, 3, 3, 3), result)
+    result shouldBe GdxArray.with(1, 2, 2, 3, 3, 3)
   }
 
-  @Test
-  fun `should convert Array to ObjectSet`() {
+  test("should convert Array to ObjectSet") {
     val array = GdxArray.with("1", "2", "3")
 
     val set = array.toGdxSet()
 
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    set shouldBe gdxSetOf("1", "2", "3")
   }
 
-  @Test
-  fun `should convert Iterables to Arrays`() {
+  test("should convert Iterables to Arrays") {
     val listAsArray = listOf("1", "2", "3").toGdxArray()
 
-    assertEquals(gdxArrayOf("1", "2", "3"), listAsArray)
+    listAsArray shouldBe gdxArrayOf("1", "2", "3")
   }
 
-  @Test
-  fun `should convert native Arrays to GdxArrays`() {
+  test("should convert native Arrays to GdxArrays") {
     val array = arrayOf("1", "2", "3").toGdxArray()
 
-    assertEquals(gdxArrayOf("1", "2", "3"), array)
+    array shouldBe gdxArrayOf("1", "2", "3")
   }
 
-  @Test
-  fun `should convert native IntArrays to GdxIntArrays`() {
+  test("should convert native IntArrays to GdxIntArrays") {
     val intArray = intArrayOf(1, 2, 3).toGdxArray()
 
-    assertEquals(GdxIntArray.with(1, 2, 3), intArray)
+    intArray shouldBe GdxIntArray.with(1, 2, 3)
   }
 
-  @Test
-  fun `should convert native FloatArrays to GdxFloatArrays`() {
+  test("should convert native FloatArrays to GdxFloatArrays") {
     val floatArray = floatArrayOf(1f, 2f, 3f).toGdxArray()
 
-    assertEquals(3, floatArray.size)
-    assertTrue(1f in floatArray)
-    assertTrue(2f in floatArray)
-    assertTrue(3f in floatArray)
-    assertEquals(1f, floatArray[0], 0.001f)
-    assertEquals(2f, floatArray[1], 0.001f)
-    assertEquals(3f, floatArray[2], 0.001f)
+    floatArray.size shouldBe 3
+    (1f in floatArray) shouldBe true
+    (2f in floatArray) shouldBe true
+    (3f in floatArray) shouldBe true
+    floatArray[0] shouldBe (1f plusOrMinus 0.001f)
+    floatArray[1] shouldBe (2f plusOrMinus 0.001f)
+    floatArray[2] shouldBe (3f plusOrMinus 0.001f)
   }
 
-  @Test
-  fun `should convert native BooleanArrays to GdxBooleanArrays`() {
+  test("should convert native BooleanArrays to GdxBooleanArrays") {
     val booleanArray = booleanArrayOf(true, false, true).toGdxArray()
 
-    assertEquals(3, booleanArray.size)
-    assertEquals(true, booleanArray[0])
-    assertEquals(false, booleanArray[1])
-    assertEquals(true, booleanArray[2])
+    booleanArray.size shouldBe 3
+    booleanArray[0] shouldBe true
+    booleanArray[1] shouldBe false
+    booleanArray[2] shouldBe true
   }
 
-  @Test
-  @Suppress("USELESS_IS_CHECK") // Description of the API.
-  fun `should provide aliases for collections with conflicting names`() {
-    assertTrue(GdxArray<Any>() is com.badlogic.gdx.utils.Array<Any>)
-    assertTrue(GdxIntArray() is com.badlogic.gdx.utils.IntArray)
-    assertTrue(GdxFloatArray() is com.badlogic.gdx.utils.FloatArray)
-    assertTrue(GdxBooleanArray() is com.badlogic.gdx.utils.BooleanArray)
-    assertTrue(GdxCharArray() is com.badlogic.gdx.utils.CharArray)
-    assertTrue(GdxLongArray() is com.badlogic.gdx.utils.LongArray)
-    assertTrue(GdxShortArray() is com.badlogic.gdx.utils.ShortArray)
+  test("should provide aliases for collections with conflicting names") {
+    (GdxArray<Any>() is com.badlogic.gdx.utils.Array<Any>) shouldBe true
+    (GdxIntArray() is com.badlogic.gdx.utils.IntArray) shouldBe true
+    (GdxFloatArray() is com.badlogic.gdx.utils.FloatArray) shouldBe true
+    (GdxBooleanArray() is com.badlogic.gdx.utils.BooleanArray) shouldBe true
+    (GdxCharArray() is com.badlogic.gdx.utils.CharArray) shouldBe true
+    (GdxLongArray() is com.badlogic.gdx.utils.LongArray) shouldBe true
+    (GdxShortArray() is com.badlogic.gdx.utils.ShortArray) shouldBe true
   }
 
-  @Test
-  fun `should create gdx arrays from vararg elements`() {
-    assertEquals(GdxBooleanArray.with(true, false), gdxBooleanArrayOf(true, false))
-    assertEquals(GdxByteArray.with(0, 1), gdxByteArrayOf(0, 1))
-    assertEquals(GdxCharArray.with('0', '1'), gdxCharArrayOf('0', '1'))
-    assertEquals(GdxShortArray.with(0, 1), gdxShortArrayOf(0, 1))
-    assertEquals(GdxIntArray.with(0, 1), gdxIntArrayOf(0, 1))
-    assertEquals(GdxLongArray.with(0L, 1L), gdxLongArrayOf(0L, 1L))
-    assertEquals(GdxFloatArray.with(0.1F, 0.2F), gdxFloatArrayOf(0.1F, 0.2F))
+  test("should create gdx arrays from vararg elements") {
+    gdxBooleanArrayOf(true, false) shouldBe GdxBooleanArray.with(true, false)
+    gdxByteArrayOf(0, 1) shouldBe GdxByteArray.with(0, 1)
+    gdxCharArrayOf('0', '1') shouldBe GdxCharArray.with('0', '1')
+    gdxShortArrayOf(0, 1) shouldBe GdxShortArray.with(0, 1)
+    gdxIntArrayOf(0, 1) shouldBe GdxIntArray.with(0, 1)
+    gdxLongArrayOf(0L, 1L) shouldBe GdxLongArray.with(0L, 1L)
+    gdxFloatArrayOf(0.1F, 0.2F) shouldBe GdxFloatArray.with(0.1F, 0.2F)
   }
-}
+})

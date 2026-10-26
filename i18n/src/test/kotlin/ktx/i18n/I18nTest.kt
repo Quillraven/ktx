@@ -2,101 +2,91 @@ package ktx.i18n
 
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.utils.I18NBundle
-import io.kotlintest.mock.mock
-import ktx.i18n.I18nTest.BundleEnum.key
-import ktx.i18n.I18nTest.BundleEnum.keyWithArgument
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import ktx.i18n.BundleEnum.key
+import ktx.i18n.BundleEnum.keyWithArgument
+import org.mockito.kotlin.mock
 import java.io.File
 
 /**
  * Tests internationalization-related classes and functions stored in *i18n.kt*.
  */
-class I18nTest {
-  private val bundleContent = """
+class I18nTest : FunSpec({
+  val bundleContent = """
 key=Value.
 keyWithArgument=Value with {0} argument.
 """
-  private val bundleFile = FileHandle(File.createTempFile("nls", ".properties"))
-  private var bundle: I18NBundle = mock()
+  val bundleFile = FileHandle(File.createTempFile("nls", ".properties"))
+  var bundle: I18NBundle = mock()
 
-  @Before
-  fun `create I18NBundle`() {
+  beforeTest {
     bundleFile.writeString(bundleContent, false)
     bundle = I18NBundle.createBundle(bundleFile.sibling(bundleFile.nameWithoutExtension()))
     BundleEnum.i18nBundle = bundle
   }
 
-  @Test
-  fun `should access bundle lines with brace operator`() {
-    assertEquals("Value.", bundle["key"])
+  test("should access bundle lines with brace operator") {
+    bundle["key"] shouldBe "Value."
   }
 
-  @Test
-  fun `should format bundle lines with brace operator and arguments`() {
-    assertEquals("Value with 1 argument.", bundle["keyWithArgument", 1])
+  test("should format bundle lines with brace operator and arguments") {
+    bundle["keyWithArgument", 1] shouldBe "Value with 1 argument."
   }
 
-  @Test
-  fun `should access values of BundleLine instances with brace operator`() {
-    assertEquals("Value.", bundle[key])
+  test("should access values of BundleLine instances with brace operator") {
+    bundle[key] shouldBe "Value."
   }
 
-  @Test
-  fun `should format values of BundleLine instances with brace operator and arguments`() {
-    assertEquals("Value with 1 argument.", bundle[keyWithArgument, 1])
+  test("should format values of BundleLine instances with brace operator and arguments") {
+    bundle[keyWithArgument, 1] shouldBe "Value with 1 argument."
   }
 
-  @Test
-  fun `should find BundleLine value with nls property`() {
-    assertEquals("Value.", key.nls)
+  test("should find BundleLine value with nls property") {
+    key.nls shouldBe "Value."
   }
 
-  @Test
-  fun `should format BundleLine value using nls method with arguments`() {
-    assertEquals("Value with 1 argument.", keyWithArgument.nls(1))
+  test("should format BundleLine value using nls method with arguments") {
+    keyWithArgument.nls(1) shouldBe "Value with 1 argument."
   }
 
-  @Test
-  fun `should find BundleLine value with invocation syntax`() {
-    assertEquals("Value.", key())
+  test("should find BundleLine value with invocation syntax") {
+    key() shouldBe "Value."
   }
 
-  @Test
-  fun `should format BundleLine value with invocation syntax and arguments`() {
-    assertEquals("Value with 1 argument.", keyWithArgument(1))
+  test("should format BundleLine value with invocation syntax and arguments") {
+    keyWithArgument(1) shouldBe "Value with 1 argument."
   }
 
-  @Test(expected = NotImplementedError::class)
-  fun `should prohibit bundle property access when not overridden`() {
-    val bundleLine = object : BundleLine {}
+  test("should prohibit bundle property access when not overridden") {
+    shouldThrow<NotImplementedError> {
+      val bundleLine = object : BundleLine {}
 
-    bundleLine.bundle
+      bundleLine.bundle
+    }
   }
 
-  @After
-  fun `delete temporary file`() {
+  afterTest {
     bundleFile.delete()
   }
+})
 
-  /** For [BundleLine] tests. */
-  @Suppress("ktlint:standard:enum-entry-name-case")
-  internal enum class BundleEnum : BundleLine {
-    /** "Value." */
-    key,
+/** For [BundleLine] tests. */
+@Suppress("ktlint:standard:enum-entry-name-case")
+internal enum class BundleEnum : BundleLine {
+  /** "Value." */
+  key,
 
-    /** "Value with {0} argument." */
-    keyWithArgument,
+  /** "Value with {0} argument." */
+  keyWithArgument,
 
-    ;
+  ;
 
-    override val bundle: I18NBundle
-      get() = i18nBundle!!
+  override val bundle: I18NBundle
+    get() = i18nBundle!!
 
-    companion object {
-      var i18nBundle: I18NBundle? = null
-    }
+  companion object {
+    var i18nBundle: I18NBundle? = null
   }
 }

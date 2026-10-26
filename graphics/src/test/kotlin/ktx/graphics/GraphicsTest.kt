@@ -8,9 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.glutils.FrameBuffer
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.math.Matrix4
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
@@ -22,36 +22,33 @@ import java.io.File
 /**
  * Tests general utilities related to libGDX graphics API.
  */
-class GraphicsTest {
-  @Test
-  fun `should begin and end Batch`() {
+class GraphicsTest : FunSpec({
+  test("should begin and end Batch") {
     val batch = mock<Batch>()
 
     batch.use {
       verify(batch).begin()
-      assertSame(batch, it)
+      it shouldBeSameInstanceAs batch
       verify(batch, never()).end()
     }
     verify(batch).end()
     verify(batch, never()).projectionMatrix = any()
   }
 
-  @Test
-  fun `should set projection matrix`() {
+  test("should set projection matrix") {
     val batch = mock<Batch>()
     val matrix = Matrix4((0..15).map { it.toFloat() }.toFloatArray())
 
     batch.use(matrix) {
       verify(batch).projectionMatrix = matrix
       verify(batch).begin()
-      assertSame(batch, it)
+      it shouldBeSameInstanceAs batch
       verify(batch, never()).end()
     }
     verify(batch).end()
   }
 
-  @Test
-  fun `should use Batch exactly once`() {
+  test("should use Batch exactly once") {
     val batch = mock<Batch>()
     val variable: Int
 
@@ -59,25 +56,23 @@ class GraphicsTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should set projection matrix if a camera is passed`() {
+  test("should set projection matrix if a camera is passed") {
     val batch = mock<Batch>()
     val camera = OrthographicCamera()
 
     batch.use(camera) {
       verify(batch).projectionMatrix = camera.combined
       verify(batch).begin()
-      assertSame(batch, it)
+      it shouldBeSameInstanceAs batch
       verify(batch, never()).end()
     }
     verify(batch).end()
   }
 
-  @Test
-  fun `should use Batch with camera exactly once`() {
+  test("should use Batch with camera exactly once") {
     val batch = mock<Batch>()
     val variable: Int
 
@@ -85,11 +80,10 @@ class GraphicsTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should begin with provided projection matrix`() {
+  test("should begin with provided projection matrix") {
     val batch = mock<Batch>()
     val matrix = Matrix4(FloatArray(16) { it.toFloat() })
 
@@ -99,8 +93,7 @@ class GraphicsTest {
     verify(batch).begin()
   }
 
-  @Test
-  fun `should use Batch with projection matrix exactly once`() {
+  test("should use Batch with projection matrix exactly once") {
     val batch = mock<Batch>()
     val variable: Int
 
@@ -108,11 +101,10 @@ class GraphicsTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should begin with provided camera combined matrix`() {
+  test("should begin with provided camera combined matrix") {
     val batch = mock<Batch>()
     val camera = OrthographicCamera()
 
@@ -122,18 +114,16 @@ class GraphicsTest {
     verify(batch).begin()
   }
 
-  @Test
-  fun `should bind ShaderProgram`() {
+  test("should bind ShaderProgram") {
     val shaderProgram = mock<ShaderProgram>()
 
     shaderProgram.use {
       verify(shaderProgram).bind()
-      assertSame(shaderProgram, it)
+      it shouldBeSameInstanceAs shaderProgram
     }
   }
 
-  @Test
-  fun `should use ShaderProgram exactly once`() {
+  test("should use ShaderProgram exactly once") {
     val shaderProgram = mock<ShaderProgram>()
     val variable: Int
 
@@ -141,23 +131,21 @@ class GraphicsTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should begin and end FrameBuffer`() {
+  test("should begin and end FrameBuffer") {
     val frameBuffer = mock<FrameBuffer>()
 
     frameBuffer.use {
       verify(frameBuffer).begin()
-      assertSame(frameBuffer, it)
+      it shouldBeSameInstanceAs frameBuffer
       verify(frameBuffer, never()).end()
     }
     verify(frameBuffer).end()
   }
 
-  @Test
-  fun `should use FrameBuffer exactly once`() {
+  test("should use FrameBuffer exactly once") {
     val frameBuffer = mock<FrameBuffer>()
     val variable: Int
 
@@ -165,11 +153,10 @@ class GraphicsTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should take screenshot`() {
+  test("should take screenshot") {
     LwjglNativesLoader.load()
     Gdx.gl = mock()
     Gdx.graphics =
@@ -183,4 +170,4 @@ class GraphicsTest {
 
     verify(fileHandle).write(false)
   }
-}
+})

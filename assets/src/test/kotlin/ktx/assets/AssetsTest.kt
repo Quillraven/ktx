@@ -10,16 +10,14 @@ import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Disposable
 import com.badlogic.gdx.utils.GdxRuntimeException
-import ktx.assets.AssetsTest.MockAssetLoader.MockParameter
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
-import org.junit.Before
-import org.junit.Test
+import io.kotest.assertions.fail
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import ktx.assets.MockAssetLoader.MockParameter
 import org.mockito.kotlin.doThrow
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
@@ -28,140 +26,138 @@ import org.mockito.kotlin.verify
  * Tests asset-related utilities and [AssetManager] extensions.
  */
 @Suppress("USELESS_IS_CHECK") // Explicitly checking loaded asset types.
-class AssetsTest {
+class AssetsTest : FunSpec({
+  /**
+   * Creates an [AssetManager] with registered [MockAssetLoader].
+   */
+  fun managerWithMockAssetLoader() =
+    AssetManager().apply {
+      setLoader(MockAssetLoader(fileHandleResolver))
+    }
+
   val assetManager: AssetManager = managerWithMockAssetLoader()
 
-  @Before
-  fun `mock files`() {
+  beforeTest {
     Gdx.files = MockFiles()
   }
 
-  @Test
-  fun `should schedule asset loading`() {
+  test("should schedule asset loading") {
     val assetWrapper = assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
 
-    assertTrue(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe true
     val asset = assetWrapper.asset
-    assertTrue(asset is MockAsset)
-    assertSame(assetManager["test"], asset)
-    assertEquals("test", asset.data)
-    assertSame(assetManager, (assetWrapper as ManagedAsset).manager)
+    (asset is MockAsset) shouldBe true
+    asset shouldBeSameInstanceAs assetManager["test"]
+    asset.data shouldBe "test"
+    (assetWrapper as ManagedAsset).manager shouldBeSameInstanceAs assetManager
   }
 
-  @Test
-  fun `should schedule asset loading with parameters`() {
+  test("should schedule asset loading with parameters") {
     val assetWrapper = assetManager.load("test", MockParameter("additional"))
     assetManager.finishLoading()
 
-    assertTrue(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe true
     val asset = assetWrapper.asset
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
-    assertEquals("additional", asset.additional)
-    assertSame(assetManager, (assetWrapper as ManagedAsset).manager)
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
+    asset.additional shouldBe "additional"
+    (assetWrapper as ManagedAsset).manager shouldBeSameInstanceAs assetManager
   }
 
-  @Test
-  fun `should schedule asset loading with AssetDescriptor`() {
+  test("should schedule asset loading with AssetDescriptor") {
     val assetWrapper = assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
     assetManager.finishLoading()
 
-    assertTrue(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe true
     val asset = assetWrapper.asset
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
-    assertSame(assetManager, (assetWrapper as ManagedAsset).manager)
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
+    (assetWrapper as ManagedAsset).manager shouldBeSameInstanceAs assetManager
   }
 
-  @Test
-  fun `should load on demand`() {
+  test("should load on demand") {
     val assetWrapper = assetManager.loadOnDemand<MockAsset>("test")
 
-    assertFalse(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe false
     assetManager.finishLoading()
     // Loading was not supposed to be scheduled, should be still unloaded:
-    assertFalse(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe false
     // Loaded on first asset getter call:
     val asset = assetWrapper.asset
-    assertTrue(assetWrapper.isLoaded())
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
-    assertSame(assetManager, (assetWrapper as DelayedAsset).manager)
+    assetWrapper.isLoaded() shouldBe true
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
+    (assetWrapper as DelayedAsset).manager shouldBeSameInstanceAs assetManager
   }
 
-  @Test
-  fun `should load on demand with parameters`() {
+  test("should load on demand with parameters") {
     val assetWrapper = assetManager.loadOnDemand("test", MockParameter("additional"))
 
-    assertFalse(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe false
     assetManager.finishLoading()
     // Loading was not supposed to be scheduled, should be still unloaded:
-    assertFalse(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe false
     // Loaded on first asset getter call:
     val asset = assetWrapper.asset
-    assertTrue(assetWrapper.isLoaded())
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
-    assertEquals("additional", asset.additional)
-    assertSame(assetManager, (assetWrapper as DelayedAsset).manager)
+    assetWrapper.isLoaded() shouldBe true
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
+    asset.additional shouldBe "additional"
+    (assetWrapper as DelayedAsset).manager shouldBeSameInstanceAs assetManager
   }
 
-  @Test
-  fun `should load on demand with descriptor`() {
+  test("should load on demand with descriptor") {
     val assetWrapper = assetManager.loadOnDemand(assetDescriptor<MockAsset>("test"))
 
-    assertFalse(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe false
     assetManager.finishLoading()
     // Loading was not supposed to be scheduled, should be still unloaded:
-    assertFalse(assetWrapper.isLoaded())
+    assetWrapper.isLoaded() shouldBe false
     // Loaded on first asset getter call:
     val asset = assetWrapper.asset
-    assertTrue(assetWrapper.isLoaded())
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
-    assertSame(assetManager, (assetWrapper as DelayedAsset).manager)
+    assetWrapper.isLoaded() shouldBe true
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
+    (assetWrapper as DelayedAsset).manager shouldBeSameInstanceAs assetManager
   }
 
-  @Test
-  fun `should extract loaded asset with explicit type from manager`() {
+  test("should extract loaded asset with explicit type from manager") {
     assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
 
     val asset = assetManager.getAsset<MockAsset>("test")
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should fail to extract unloaded asset`() {
-    assetManager.getAsset<MockAsset>("unloaded")
+  test("should fail to extract unloaded asset") {
+    shouldThrow<GdxRuntimeException> {
+      assetManager.getAsset<MockAsset>("unloaded")
+    }
   }
 
-  @Test
-  fun `should unload asset gracefully`() {
+  test("should unload asset gracefully") {
     assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
     val asset = assetManager.getAsset<MockAsset>("test")
 
     assetManager.unloadSafely("test")
-    assertFalse(assetManager.isLoaded("test"))
-    assertTrue(asset.disposed)
+    assetManager.isLoaded("test") shouldBe false
+    asset.disposed shouldBe true
   }
 
-  @Test
-  fun `should ignore unloading exception due to asset not being loaded`() {
+  test("should ignore unloading exception due to asset not being loaded") {
     assetManager.unloadSafely("unloaded") // unload("unloaded") would throw exception.
   }
 
-  @Test
-  fun `should ignore exceptions thrown during unloading`() {
+  test("should ignore exceptions thrown during unloading") {
     val assetManager =
       mock<AssetManager> {
         on { unload("test") } doThrow GdxRuntimeException("Expected.")
@@ -170,19 +166,17 @@ class AssetsTest {
     verify(assetManager).unload("test")
   }
 
-  @Test
-  fun `should ignore exception due to multiple asset unload requests`() {
+  test("should ignore exception due to multiple asset unload requests") {
     assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
 
     assetManager.unloadSafely("test")
     assetManager.unloadSafely("test")
     assetManager.unloadSafely("test")
-    assertFalse(assetManager.isLoaded("test"))
+    assetManager.isLoaded("test") shouldBe false
   }
 
-  @Test
-  fun `should ignore exception due to prior disposal`() {
+  test("should ignore exception due to prior disposal") {
     assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
     val mockAsset = assetManager.get<MockAsset>("test")
@@ -190,8 +184,7 @@ class AssetsTest {
     assetManager.unloadSafely("test")
   }
 
-  @Test
-  fun `should unload asset handling exception`() {
+  test("should unload asset handling exception") {
     assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
     val asset = assetManager.getAsset<MockAsset>("test")
@@ -199,34 +192,31 @@ class AssetsTest {
     assetManager.unload("test") {
       fail("Exception should not be thrown.")
     }
-    assertFalse(assetManager.isLoaded("test"))
-    assertTrue(asset.disposed)
+    assetManager.isLoaded("test") shouldBe false
+    asset.disposed shouldBe true
   }
 
-  @Test
-  fun `should handle unloading exception due to asset not being loaded`() {
+  test("should handle unloading exception due to asset not being loaded") {
     var exception: Exception? = null
     assetManager.unload("unloaded") { expected ->
-      assertTrue(expected is GdxRuntimeException)
+      (expected is GdxRuntimeException) shouldBe true
       exception = expected
     }
-    assertNotNull(exception)
+    exception.shouldNotBeNull()
   }
 
-  @Test
-  fun `should handle exceptions thrown during unloading`() {
+  test("should handle exceptions thrown during unloading") {
     val assetManager =
       mock<AssetManager> {
         on { unload("test") } doThrow GdxRuntimeException("Expected.")
       }
     assetManager.unload("test") { exception ->
-      assertTrue(exception is GdxRuntimeException)
+      (exception is GdxRuntimeException) shouldBe true
     }
     verify(assetManager).unload("test")
   }
 
-  @Test
-  fun `should delegate field to scheduled asset`() {
+  test("should delegate field to scheduled asset") {
     class TestDelegate {
       val asset by assetManager.load<MockAsset>("test")
     }
@@ -234,39 +224,39 @@ class AssetsTest {
     val test = TestDelegate()
     assetManager.finishLoading()
 
-    assertTrue(test.asset is MockAsset)
-    assertEquals(assetManager["test"], test.asset)
-    assertEquals("test", test.asset.data)
+    (test.asset is MockAsset) shouldBe true
+    test.asset shouldBe assetManager["test"]
+    test.asset.data shouldBe "test"
   }
 
-  @Test
-  fun `should delegate local variable to scheduled asset`() {
+  test("should delegate local variable to scheduled asset") {
     val asset by assetManager.load<MockAsset>("test")
     assetManager.finishLoading()
 
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should throw if using delegate field before loading`() {
-    class TestDelegate {
-      val asset by assetManager.load<MockAsset>("test")
+  test("should throw if using delegate field before loading") {
+    shouldThrow<GdxRuntimeException> {
+      class TestDelegate {
+        val asset by assetManager.load<MockAsset>("test")
+      }
+
+      val test = TestDelegate()
+      test.asset.data
     }
-
-    val test = TestDelegate()
-    test.asset.data
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should throw if using delegate local variable before loading`() {
-    val asset by assetManager.load<MockAsset>("test")
-    asset.data
+  test("should throw if using delegate local variable before loading") {
+    shouldThrow<GdxRuntimeException> {
+      val asset by assetManager.load<MockAsset>("test")
+      asset.data
+    }
   }
 
-  @Test
-  fun `should delegate field to eagerly loaded asset`() {
+  test("should delegate field to eagerly loaded asset") {
     class TestDelegate {
       val asset by assetManager.loadOnDemand<MockAsset>("test")
     }
@@ -274,30 +264,28 @@ class AssetsTest {
     val test = TestDelegate()
 
     // Should be loaded after first usage:
-    assertFalse(assetManager.isLoaded("test"))
-    assertTrue(test.asset is MockAsset)
+    assetManager.isLoaded("test") shouldBe false
+    (test.asset is MockAsset) shouldBe true
     // Previous check should have loaded the asset:
-    assertTrue(assetManager.isLoaded("test"))
-    assertEquals(assetManager["test"], test.asset)
-    assertEquals("test", test.asset.data)
-    assertTrue(test.asset === test.asset) // Is instance cached?
+    assetManager.isLoaded("test") shouldBe true
+    test.asset shouldBe assetManager["test"]
+    test.asset.data shouldBe "test"
+    (test.asset === test.asset) shouldBe true // Is instance cached?
   }
 
-  @Test
-  fun `should delegate local variable to eagerly loaded asset`() {
+  test("should delegate local variable to eagerly loaded asset") {
     val asset by assetManager.loadOnDemand<MockAsset>("test")
 
     // Should be loaded after first usage:
-    assertFalse(assetManager.isLoaded("test"))
-    assertTrue(asset is MockAsset)
+    assetManager.isLoaded("test") shouldBe false
+    (asset is MockAsset) shouldBe true
     // Previous check should have loaded the asset:
-    assertTrue(assetManager.isLoaded("test"))
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
+    assetManager.isLoaded("test") shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
   }
 
-  @Test
-  fun `should delegate field to scheduled asset with descriptor`() {
+  test("should delegate field to scheduled asset with descriptor") {
     class TestDelegate {
       val asset by assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
     }
@@ -305,39 +293,39 @@ class AssetsTest {
     val test = TestDelegate()
     assetManager.finishLoading()
 
-    assertTrue(test.asset is MockAsset)
-    assertEquals(assetManager["test"], test.asset)
-    assertEquals("test", test.asset.data)
+    (test.asset is MockAsset) shouldBe true
+    test.asset shouldBe assetManager["test"]
+    test.asset.data shouldBe "test"
   }
 
-  @Test
-  fun `should delegate local variable to scheduled asset with descriptor`() {
+  test("should delegate local variable to scheduled asset with descriptor") {
     val asset by assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
     assetManager.finishLoading()
 
-    assertTrue(asset is MockAsset)
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
+    (asset is MockAsset) shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should throw if using delegate field before loading with descriptor`() {
-    class TestDelegate {
-      val asset by assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
+  test("should throw if using delegate field before loading with descriptor") {
+    shouldThrow<GdxRuntimeException> {
+      class TestDelegate {
+        val asset by assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
+      }
+
+      val test = TestDelegate()
+      test.asset.data
     }
-
-    val test = TestDelegate()
-    test.asset.data
   }
 
-  @Test(expected = GdxRuntimeException::class)
-  fun `should throw if using delegate local variable before loading with descriptor`() {
-    val asset by assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
-    asset.data
+  test("should throw if using delegate local variable before loading with descriptor") {
+    shouldThrow<GdxRuntimeException> {
+      val asset by assetManager.loadAsset(assetDescriptor<MockAsset>("test"))
+      asset.data
+    }
   }
 
-  @Test
-  fun `should delegate field to eagerly loaded asset with descriptor`() {
+  test("should delegate field to eagerly loaded asset with descriptor") {
     class TestDelegate {
       val asset by assetManager.loadOnDemand(assetDescriptor<MockAsset>("test"))
     }
@@ -345,118 +333,106 @@ class AssetsTest {
     val test = TestDelegate()
 
     // Should be loaded after first usage:
-    assertFalse(assetManager.isLoaded("test"))
-    assertTrue(test.asset is MockAsset)
+    assetManager.isLoaded("test") shouldBe false
+    (test.asset is MockAsset) shouldBe true
     // Previous check should have loaded the asset:
-    assertTrue(assetManager.isLoaded("test"))
-    assertEquals(assetManager["test"], test.asset)
-    assertEquals("test", test.asset.data)
-    assertTrue(test.asset === test.asset) // Is instance cached?
+    assetManager.isLoaded("test") shouldBe true
+    test.asset shouldBe assetManager["test"]
+    test.asset.data shouldBe "test"
+    (test.asset === test.asset) shouldBe true // Is instance cached?
   }
 
-  @Test
-  fun `should delegate local variable to eagerly loaded asset with descriptor`() {
+  test("should delegate local variable to eagerly loaded asset with descriptor") {
     val asset by assetManager.loadOnDemand(assetDescriptor<MockAsset>("test"))
 
     // Should be loaded after first usage:
-    assertFalse(assetManager.isLoaded("test"))
-    assertTrue(asset is MockAsset)
+    assetManager.isLoaded("test") shouldBe false
+    (asset is MockAsset) shouldBe true
     // Previous check should have loaded the asset:
-    assertTrue(assetManager.isLoaded("test"))
-    assertEquals(assetManager["test"], asset)
-    assertEquals("test", asset.data)
+    assetManager.isLoaded("test") shouldBe true
+    asset shouldBe assetManager["test"]
+    asset.data shouldBe "test"
   }
 
-  @Test
-  fun `should create asset descriptor with string path`() {
+  test("should create asset descriptor with string path") {
     val descriptor = assetDescriptor<MockAsset>("mock.file")
 
-    assertEquals(MockAsset::class.java, descriptor.type)
-    assertEquals("mock.file", descriptor.fileName)
+    descriptor.type shouldBe MockAsset::class.java
+    descriptor.fileName shouldBe "mock.file"
   }
 
-  @Test
-  fun `should create asset description with string path and loading parameters`() {
+  test("should create asset description with string path and loading parameters") {
     val parameter = MockParameter("mock")
     val descriptorWithParams = assetDescriptor("mock.file", parameter)
 
-    assertEquals(MockAsset::class.java, descriptorWithParams.type)
-    assertEquals("mock.file", descriptorWithParams.fileName)
-    assertEquals(parameter, descriptorWithParams.params)
+    descriptorWithParams.type shouldBe MockAsset::class.java
+    descriptorWithParams.fileName shouldBe "mock.file"
+    descriptorWithParams.params shouldBe parameter
   }
 
-  @Test
-  fun `should create asset descriptor with FileHandle`() {
+  test("should create asset descriptor with FileHandle") {
     val descriptor = assetDescriptor<MockAsset>(FileHandle("mock.file"))
 
-    assertEquals(MockAsset::class.java, descriptor.type)
-    assertEquals("mock.file", descriptor.file.path())
+    descriptor.type shouldBe MockAsset::class.java
+    descriptor.file.path() shouldBe "mock.file"
   }
 
-  @Test
-  fun `should create asset descriptor with FileHandle and loading parameters`() {
+  test("should create asset descriptor with FileHandle and loading parameters") {
     val parameter = MockParameter("mock")
     val descriptorWithParams = assetDescriptor(FileHandle("mock.file"), parameter)
 
-    assertEquals(MockAsset::class.java, descriptorWithParams.type)
-    assertEquals("mock.file", descriptorWithParams.file.path())
-    assertEquals(parameter, descriptorWithParams.params)
+    descriptorWithParams.type shouldBe MockAsset::class.java
+    descriptorWithParams.file.path() shouldBe "mock.file"
+    descriptorWithParams.params shouldBe parameter
   }
 
-  @Test
-  fun `should find no AssetLoader for unknown asset type`() {
+  test("should find no AssetLoader for unknown asset type") {
     val manager = AssetManager()
-    assertNull(manager.getLoader<MockAsset>())
+    manager.getLoader<MockAsset>().shouldBeNull()
   }
 
-  @Test
-  fun `should find no AssetLoader for unknown suffix`() {
+  test("should find no AssetLoader for unknown suffix") {
     val manager = AssetManager()
     val loader = MockAssetLoader(manager.fileHandleResolver)
     manager.setLoader(loader, "suffix")
 
-    assertNull(manager.getLoader<MockAsset>("unknown"))
+    manager.getLoader<MockAsset>("unknown").shouldBeNull()
   }
 
-  @Test
-  fun `should find AssetLoader`() {
+  test("should find AssetLoader") {
     val manager = AssetManager()
     val loader = MockAssetLoader(manager.fileHandleResolver)
     manager.setLoader(loader)
 
-    assertSame(loader, manager.getLoader<MockAsset>())
+    manager.getLoader<MockAsset>() shouldBeSameInstanceAs loader
   }
 
-  @Test
-  fun `should find AssetLoader with suffix`() {
+  test("should find AssetLoader with suffix") {
     val manager = AssetManager()
     val loader = MockAssetLoader(manager.fileHandleResolver)
     manager.setLoader(loader, "suffix")
 
-    assertSame(loader, manager.getLoader<MockAsset>("suffix"))
-    assertNull(manager.getLoader<MockAsset>())
+    manager.getLoader<MockAsset>("suffix") shouldBeSameInstanceAs loader
+    manager.getLoader<MockAsset>().shouldBeNull()
   }
 
-  @Test
-  fun `should set AssetLoader`() {
+  test("should set AssetLoader") {
     val manager = AssetManager()
     val loader = MockAssetLoader(manager.fileHandleResolver)
     manager.setLoader(loader)
 
-    assertSame(loader, manager.getLoader(MockAsset::class.java))
+    manager.getLoader(MockAsset::class.java) shouldBeSameInstanceAs loader
   }
 
-  @Test
-  fun `should set AssetLoader with suffix`() {
+  test("should set AssetLoader with suffix") {
     val manager = AssetManager()
     val loader = MockAssetLoader(manager.fileHandleResolver)
     manager.setLoader(loader, ".mock")
 
-    assertSame(loader, manager.getLoader(MockAsset::class.java, ".mock"))
+    manager.getLoader(MockAsset::class.java, ".mock") shouldBeSameInstanceAs loader
   }
 
-  @Test
-  fun `should load and unload members`() {
+  test("should load and unload members") {
     class TestAssetGroup : AssetGroup(assetManager) {
       val member1 by asset<MockAsset>("member1")
       val member2 by asset<MockAsset>("member2")
@@ -464,18 +440,17 @@ class AssetsTest {
 
     val group = TestAssetGroup()
     group.finishLoading()
-    assertTrue(group.isLoaded())
+    group.isLoaded() shouldBe true
 
     val mockAssets = listOf(group.member1, group.member2)
     group.unloadAll()
-    assertTrue(!group.isLoaded())
+    !group.isLoaded() shouldBe true
     for (mockAsset in mockAssets) {
-      assertTrue(mockAsset.disposed)
+      mockAsset.disposed shouldBe true
     }
   }
 
-  @Test
-  fun `should load by update`() {
+  test("should load by update") {
     class TestAssetGroup : AssetGroup(assetManager) {
       val member1 by asset<MockAsset>("member1")
       val member2 by asset<MockAsset>("member2")
@@ -491,12 +466,11 @@ class AssetsTest {
         break
       }
     }
-    assertTrue(group.isLoaded())
-    assertTrue(listOf(group.member1, group.member2, group.member3).all { !it.disposed })
+    group.isLoaded() shouldBe true
+    (listOf(group.member1, group.member2, group.member3).all { !it.disposed }) shouldBe true
   }
 
-  @Test
-  fun `should catch exceptions`() {
+  test("should catch exceptions") {
     class TestAssetGroup : AssetGroup(assetManager) {
       val member1 by asset<MockAsset>("member1")
       val member2 by asset<MockAsset>("member2")
@@ -513,11 +487,10 @@ class AssetsTest {
     group.unloadAllSafely { _, _ ->
       caught++
     }
-    assertEquals(caught, 2)
+    2 shouldBe caught
   }
 
-  @Test
-  fun `should apply prefix`() {
+  test("should apply prefix") {
     class TestAssetGroup : AssetGroup(assetManager, "prefix/") {
       val member1 = delayedAsset<MockAsset>("member1")
       val member2 = delayedAsset<MockAsset>("member2")
@@ -530,78 +503,70 @@ class AssetsTest {
       }
 
     for (index in 1..2) {
-      assertTrue(group.manager.isLoaded("prefix/member$index"))
+      group.manager.isLoaded("prefix/member$index") shouldBe true
     }
-    assertNotNull(group.member1)
-    assertNotNull(group.member2)
+    group.member1.shouldNotBeNull()
+    group.member2.shouldNotBeNull()
+  }
+})
+
+/**
+ * Represents a mock-up asset. Implements [Disposable] for testing utility.
+ * @param data path of the file.
+ * @param additional optional string value passed with [MockParameter].
+ */
+class MockAsset(
+  val data: String,
+  val additional: String?,
+) : Disposable {
+  var disposed = false
+
+  override fun dispose() {
+    require(!disposed) { "Was already disposed!" } // Simulate behavior of some Gdx assets
+    disposed = true
+  }
+}
+
+/**
+ * Mocks asynchronous file loading. Sets [MockAsset.data] as file path. Extracts [MockAsset.additional] from
+ * [MockParameter] (if present).
+ */
+class MockAssetLoader(
+  fileHandleResolver: FileHandleResolver,
+) : AsynchronousAssetLoader<MockAsset, MockParameter>(fileHandleResolver) {
+  @Volatile
+  private var additional: String? = null
+
+  override fun loadAsync(
+    manager: AssetManager,
+    fileName: String,
+    file: FileHandle,
+    parameter: MockParameter?,
+  ) {
+    if (parameter != null) {
+      additional = parameter.additional
+    }
   }
 
-  /**
-   * Creates an [AssetManager] with registered [MockAssetLoader].
-   */
-  private fun managerWithMockAssetLoader() =
-    AssetManager().apply {
-      setLoader(MockAssetLoader(fileHandleResolver))
-    }
+  override fun loadSync(
+    manager: AssetManager,
+    fileName: String,
+    file: FileHandle,
+    parameter: MockParameter?,
+  ): MockAsset {
+    val asset = MockAsset(file.path(), additional)
+    additional = null
+    return asset
+  }
 
-  /**
-   * Represents a mock-up asset. Implements [Disposable] for testing utility.
-   * @param data path of the file.
-   * @param additional optional string value passed with [MockParameter].
-   */
-  class MockAsset(
-    val data: String,
+  override fun getDependencies(
+    fileName: String?,
+    file: FileHandle?,
+    parameter: MockParameter?,
+  ): Array<AssetDescriptor<Any>>? = null
+
+  /** Allows to set [MockAsset.additional] via loader. Tests assets parameters API. */
+  class MockParameter(
     val additional: String?,
-  ) : Disposable {
-    var disposed = false
-
-    override fun dispose() {
-      require(!disposed) { "Was already disposed!" } // Simulate behavior of some Gdx assets
-      disposed = true
-    }
-  }
-
-  /**
-   * Mocks asynchronous file loading. Sets [MockAsset.data] as file path. Extracts [MockAsset.additional] from
-   * [MockParameter] (if present).
-   */
-  class MockAssetLoader(
-    fileHandleResolver: FileHandleResolver,
-  ) : AsynchronousAssetLoader<MockAsset, MockParameter>(fileHandleResolver) {
-    @Volatile
-    private var additional: String? = null
-
-    override fun loadAsync(
-      manager: AssetManager,
-      fileName: String,
-      file: FileHandle,
-      parameter: MockParameter?,
-    ) {
-      if (parameter != null) {
-        additional = parameter.additional
-      }
-    }
-
-    override fun loadSync(
-      manager: AssetManager,
-      fileName: String,
-      file: FileHandle,
-      parameter: MockParameter?,
-    ): MockAsset {
-      val asset = MockAsset(file.path(), additional)
-      additional = null
-      return asset
-    }
-
-    override fun getDependencies(
-      fileName: String?,
-      file: FileHandle?,
-      parameter: MockParameter?,
-    ): Array<AssetDescriptor<Any>>? = null
-
-    /** Allows to set [MockAsset.additional] via loader. Tests assets parameters API. */
-    class MockParameter(
-      val additional: String?,
-    ) : AssetLoaderParameters<MockAsset>()
-  }
+  ) : AssetLoaderParameters<MockAsset>()
 }

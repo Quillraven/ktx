@@ -6,31 +6,30 @@ import com.badlogic.gdx.physics.box2d.ChainShape
 import com.badlogic.gdx.physics.box2d.EdgeShape
 import com.badlogic.gdx.physics.box2d.PolygonShape
 import com.badlogic.gdx.utils.GdxNativesLoader
-import org.junit.Assert.assertEquals
-import org.junit.BeforeClass
+import io.kotest.assertions.withClue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.shouldBe
 
 /**
  * Initiates Box2D native library. Provides comparison methods for common Box2D data objects that cannot be easily
  * compared with standard `equals`.
  */
-abstract class Box2DTest {
+abstract class Box2DTest : FunSpec() {
   protected val floatTolerance = 0.0001f
 
   protected fun assertChainEquals(
     vertices: Array<Vector2>,
     shape: ChainShape,
   ) {
-    assertEquals(
-      "${vertices.size} vertices expected, ${shape.vertexCount} found instead.",
-      vertices.size,
-      shape.vertexCount,
-    )
+    withClue("${vertices.size} vertices expected, ${shape.vertexCount} found instead.") { shape.vertexCount shouldBe vertices.size }
     val vertex = Vector2()
     vertices.forEachIndexed { index, expected ->
       shape.getVertex(index, vertex)
       val errorMessage = "Vertex at $index should equal $expected, $vertex found instead."
-      assertEquals(errorMessage, expected.x, vertex.x, floatTolerance)
-      assertEquals(errorMessage, expected.y, vertex.y, floatTolerance)
+      withClue(errorMessage) { vertex.x shouldBe (expected.x plusOrMinus floatTolerance) }
+      withClue(errorMessage) { vertex.y shouldBe (expected.y plusOrMinus floatTolerance) }
     }
   }
 
@@ -38,17 +37,13 @@ abstract class Box2DTest {
     vertices: Array<Vector2>,
     shape: PolygonShape,
   ) {
-    assertEquals(
-      "${vertices.size} vertices expected, ${shape.vertexCount} found instead.",
-      vertices.size,
-      shape.vertexCount,
-    )
+    withClue("${vertices.size} vertices expected, ${shape.vertexCount} found instead.") { shape.vertexCount shouldBe vertices.size }
     val vertex = Vector2()
     vertices.forEachIndexed { index, expected ->
       shape.getVertex(index, vertex)
       val errorMessage = "Vertex at $index should equal $expected, $vertex found instead."
-      assertEquals(errorMessage, expected.x, vertex.x, floatTolerance)
-      assertEquals(errorMessage, expected.y, vertex.y, floatTolerance)
+      withClue(errorMessage) { vertex.x shouldBe (expected.x plusOrMinus floatTolerance) }
+      withClue(errorMessage) { vertex.y shouldBe (expected.y plusOrMinus floatTolerance) }
     }
   }
 
@@ -59,15 +54,13 @@ abstract class Box2DTest {
   ) {
     val vertex = Vector2()
     edgeShape.getVertex1(vertex)
-    assertEquals(from, vertex)
+    vertex shouldBe from
     edgeShape.getVertex2(vertex)
-    assertEquals(to, vertex)
+    vertex shouldBe to
   }
 
-  companion object {
-    @JvmStatic
-    @BeforeClass
-    fun `initiate Box2D`() {
+  init {
+    beforeSpec {
       GdxNativesLoader.load()
       Box2D.init()
     }

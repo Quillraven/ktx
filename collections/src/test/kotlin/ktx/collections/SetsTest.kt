@@ -1,360 +1,321 @@
 package ktx.collections
 
 import com.badlogic.gdx.utils.ObjectSet
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import java.util.LinkedList
 
 /**
  * Tests utilities for libGDX custom HashSet equivalent - [ObjectSet].
  */
-class SetsTest {
-  @Test
-  fun `should create GdxSet`() {
+class SetsTest : FunSpec({
+  test("should create GdxSet") {
     val set = gdxSetOf<Any>()
 
-    assertNotNull(set)
-    assertEquals(0, set.size)
+    set.shouldNotBeNull()
+    set.size shouldBe 0
   }
 
-  @Test
-  fun `should create GdxSet with custom initial capacity`() {
+  test("should create GdxSet with custom initial capacity") {
     val set = gdxSetOf<Any>(initialCapacity = 32)
 
-    assertNotNull(set)
-    assertEquals(0, set.size)
+    set.shouldNotBeNull()
+    set.size shouldBe 0
   }
 
-  @Test
-  fun `should create GdxSet with custom load factor`() {
+  test("should create GdxSet with custom load factor") {
     val set = gdxSetOf<Any>(loadFactor = 0.4f)
 
-    assertNotNull(set)
-    assertEquals(0, set.size)
+    set.shouldNotBeNull()
+    set.size shouldBe 0
   }
 
-  @Test
-  fun `should create GdxSet with custom elements`() {
+  test("should create GdxSet with custom elements") {
     val set = gdxSetOf("1", "2", "3")
 
-    assertEquals(3, set.size)
-    assertTrue("1" in set)
-    assertTrue("2" in set)
-    assertTrue("3" in set)
+    set.size shouldBe 3
+    ("1" in set) shouldBe true
+    ("2" in set) shouldBe true
+    ("3" in set) shouldBe true
   }
 
-  @Test
-  fun `should report size`() {
+  test("should report size") {
     val set: ObjectSet<String>? = ObjectSet.with("1", "2", "3")
 
-    assertEquals(3, set.size())
-    assertEquals(set!!.size, set.size())
+    set.size() shouldBe 3
+    set.size() shouldBe set!!.size
     val nullSet: ObjectSet<Any>? = null
-    assertEquals(0, nullSet.size())
+    nullSet.size() shouldBe 0
   }
 
-  @Test
-  fun `should report empty status`() {
-    assertFalse(ObjectSet.with("1", "2", "3").isEmpty())
-    assertTrue(ObjectSet<Any>().isEmpty())
-    assertTrue((null as ObjectSet<Any>?).isEmpty())
+  test("should report empty status") {
+    ObjectSet.with("1", "2", "3").isEmpty() shouldBe false
+    ObjectSet<Any>().isEmpty() shouldBe true
+    (null as ObjectSet<Any>?).isEmpty() shouldBe true
   }
 
-  @Test
-  fun `should verify empty status contract`() {
+  test("should verify empty status contract") {
     fun getSet(): GdxSet<Any>? = ObjectSet.with("1")
 
     val set = getSet()
     if (!set.isEmpty()) {
-      assertTrue(set.size == 1)
+      (set.size == 1) shouldBe true
     }
   }
 
-  @Test
-  fun `should report non empty status`() {
-    assertTrue(ObjectSet.with("1", "2", "3").isNotEmpty())
-    assertFalse(ObjectSet<Any>().isNotEmpty())
-    assertFalse((null as ObjectSet<Any>?).isNotEmpty())
+  test("should report non empty status") {
+    ObjectSet.with("1", "2", "3").isNotEmpty() shouldBe true
+    ObjectSet<Any>().isNotEmpty() shouldBe false
+    (null as ObjectSet<Any>?).isNotEmpty() shouldBe false
   }
 
-  @Test
-  fun `should verify non empty status contract`() {
+  test("should verify non empty status contract") {
     fun getSet(): GdxSet<Any>? = ObjectSet.with("1")
 
     val set = getSet()
     if (set.isNotEmpty()) {
-      assertTrue(set.size == 1)
+      (set.size == 1) shouldBe true
     }
   }
 
-  @Test
-  fun `should add all values from custom iterable`() {
+  test("should add all values from custom iterable") {
     val set = ObjectSet<String>()
 
     set.addAll(listOf("1", "2", "3"))
 
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    set shouldBe gdxSetOf("1", "2", "3")
   }
 
-  @Test
-  fun `should remove all values from custom iterable`() {
+  test("should remove all values from custom iterable") {
     val set = ObjectSet.with("1", "2", "3")
 
     set.removeAll(listOf("1", "2", "3"))
 
-    assertEquals(gdxSetOf<String>(), set)
+    set shouldBe gdxSetOf<String>()
   }
 
-  @Test
-  fun `should remove all values from Array`() {
+  test("should remove all values from Array") {
     val set = ObjectSet.with("1", "2", "3")
 
     set.removeAll(arrayOf("1", "2", "3"))
 
-    assertEquals(gdxSetOf<String>(), set)
+    set shouldBe gdxSetOf<String>()
   }
 
-  @Test
-  fun `should add values with += operator`() {
+  test("should add values with += operator") {
     val set = ObjectSet.with("1", "2")
 
     set += "3"
 
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    set shouldBe gdxSetOf("1", "2", "3")
   }
 
-  @Test
-  fun `should add values with + operator`() {
+  test("should add values with + operator") {
     val set = ObjectSet<String>()
 
     val result = set + "1"
 
-    assertEquals(gdxSetOf("1"), result)
-    assertEquals(gdxSetOf<String>(), set)
+    result shouldBe gdxSetOf("1")
+    set shouldBe gdxSetOf<String>()
 
     val chained = result + "2" + "3"
 
-    assertEquals(gdxSetOf("1", "2", "3"), chained)
-    assertEquals(gdxSetOf("1"), result)
+    chained shouldBe gdxSetOf("1", "2", "3")
+    result shouldBe gdxSetOf("1")
   }
 
-  @Test
-  fun `should remove values with -= operator`() {
+  test("should remove values with -= operator") {
     val set = ObjectSet.with("1", "2", "3")
 
     set -= "1"
 
-    assertEquals(gdxSetOf("2", "3"), set)
+    set shouldBe gdxSetOf("2", "3")
 
     set -= "4"
 
-    assertEquals(gdxSetOf("2", "3"), set)
+    set shouldBe gdxSetOf("2", "3")
   }
 
-  @Test
-  fun `should remove values with - operator`() {
+  test("should remove values with - operator") {
     val set = ObjectSet.with("1", "2", "3")
 
     val result = set - "1"
 
-    assertEquals(gdxSetOf("2", "3"), result)
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    result shouldBe gdxSetOf("2", "3")
+    set shouldBe gdxSetOf("1", "2", "3")
 
     val chained = result - "2" - "3"
 
-    assertEquals(gdxSetOf<String>(), chained)
-    assertEquals(gdxSetOf("2", "3"), result)
+    chained shouldBe gdxSetOf<String>()
+    result shouldBe gdxSetOf("2", "3")
   }
 
-  @Test
-  fun `should chain operators`() {
+  test("should chain operators") {
     val set = ObjectSet.with("1", "2", "3")
 
     val result = set + "5" - "2" + "7"
 
-    assertEquals(gdxSetOf("1", "3", "5", "7"), result)
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    result shouldBe gdxSetOf("1", "3", "5", "7")
+    set shouldBe gdxSetOf("1", "2", "3")
   }
 
-  @Test
-  fun `should add elements from iterables with += operator`() {
+  test("should add elements from iterables with += operator") {
     val set = ObjectSet.with("1", "2")
 
     set += ObjectSet.with("2", "3")
 
-    assertEquals(ObjectSet.with("1", "2", "3"), set)
+    set shouldBe ObjectSet.with("1", "2", "3")
   }
 
-  @Test
-  fun `should add elements from iterables with + operator`() {
+  test("should add elements from iterables with + operator") {
     val set = ObjectSet.with("1", "2")
 
     val result = set + ObjectSet.with("2", "3")
 
-    assertEquals(ObjectSet.with("1", "2", "3"), result)
-    assertEquals(ObjectSet.with("1", "2"), set)
+    result shouldBe ObjectSet.with("1", "2", "3")
+    set shouldBe ObjectSet.with("1", "2")
   }
 
-  @Test
-  fun `should add elements from Arrays with += operator`() {
+  test("should add elements from Arrays with += operator") {
     val set = ObjectSet.with("1", "2")
 
     set += arrayOf("2", "3")
 
-    assertEquals(ObjectSet.with("1", "2", "3"), set)
+    set shouldBe ObjectSet.with("1", "2", "3")
   }
 
-  @Test
-  fun `should add elements from Arrays with + operator`() {
+  test("should add elements from Arrays with + operator") {
     val set = ObjectSet.with("1", "2")
 
     val result = set + arrayOf("2", "3")
 
-    assertEquals(ObjectSet.with("1", "2", "3"), result)
-    assertEquals(ObjectSet.with("1", "2"), set)
+    result shouldBe ObjectSet.with("1", "2", "3")
+    set shouldBe ObjectSet.with("1", "2")
   }
 
-  @Test
-  fun `should remove elements from iterables with -= operator`() {
+  test("should remove elements from iterables with -= operator") {
     val set = ObjectSet.with("1", "2", "3")
 
     set -= ObjectSet.with("2", "3", "4")
 
-    assertEquals(gdxSetOf("1"), set)
+    set shouldBe gdxSetOf("1")
   }
 
-  @Test
-  fun `should remove elements from Arrays with -= operator`() {
+  test("should remove elements from Arrays with -= operator") {
     val set = ObjectSet.with("1", "2", "3")
 
     set -= arrayOf("2", "3", "4")
 
-    assertEquals(gdxSetOf("1"), set)
+    set shouldBe gdxSetOf("1")
   }
 
-  @Test
-  fun `should remove elements from iterables with - operator`() {
+  test("should remove elements from iterables with - operator") {
     val set = ObjectSet.with("1", "2", "3")
 
     val result = set - ObjectSet.with("2", "3", "4")
 
-    assertEquals(gdxSetOf("1"), result)
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    result shouldBe gdxSetOf("1")
+    set shouldBe gdxSetOf("1", "2", "3")
   }
 
-  @Test
-  fun `should remove elements from Arrays with - operator`() {
+  test("should remove elements from Arrays with - operator") {
     val set = ObjectSet.with("1", "2", "3")
 
     val result = set - arrayOf("2", "3", "4")
 
-    assertEquals(gdxSetOf("1"), result)
-    assertEquals(gdxSetOf("1", "2", "3"), set)
+    result shouldBe gdxSetOf("1")
+    set shouldBe gdxSetOf("1", "2", "3")
   }
 
-  @Test
-  fun `should chain collection operators`() {
+  test("should chain collection operators") {
     val set =
       ObjectSet.with("1", "2", "3", "4") +
         ObjectSet.with("3", "5") -
         arrayOf("2", "4", "6") +
         arrayOf("5", "7")
 
-    assertEquals(ObjectSet.with("1", "3", "5", "7"), set)
+    set shouldBe ObjectSet.with("1", "3", "5", "7")
   }
 
-  @Test
-  fun `should allow to iterate with iterator reference`() {
+  test("should allow to iterate with iterator reference") {
     val set = ObjectSet.with("1", "2", "3")
 
     set.iterate { value, iterator -> if (value == "2") iterator.remove() }
 
-    assertEquals(2, set.size)
-    assertFalse("2" in set)
+    set.size shouldBe 2
+    ("2" in set) shouldBe false
   }
 
-  @Test
-  fun `should map elements into a new GdxSet`() {
+  test("should map elements into a new GdxSet") {
     val set = GdxSet.with(1, 2, 3)
 
     val result = set.map { it * 2 }
 
-    assertEquals(gdxSetOf(4, 2, 6), result)
+    result shouldBe gdxSetOf(4, 2, 6)
   }
 
-  @Test
-  fun `should filter elements into a new GdxSet`() {
+  test("should filter elements into a new GdxSet") {
     val set = GdxSet.with(1, 2, 3, 4, 5)
 
     val result = set.filter { it % 2 == 1 }
 
-    assertEquals(gdxSetOf(3, 1, 5), result)
+    result shouldBe gdxSetOf(3, 1, 5)
   }
 
-  @Test
-  fun `should flatten elements into a new GdxSet`() {
+  test("should flatten elements into a new GdxSet") {
     val set = GdxSet.with(GdxArray.with(1, 2), listOf<Int>(), LinkedList(arrayListOf(2, 3)))
 
     val result = set.flatten()
 
-    assertEquals(gdxSetOf(1, 2, 3), result)
+    result shouldBe gdxSetOf(1, 2, 3)
   }
 
-  @Test
-  fun `should map elements to lists and flatten them into a new GdxSet`() {
+  test("should map elements to lists and flatten them into a new GdxSet") {
     val set = GdxSet.with(1, 2, 3)
 
     val result = set.flatMap { count -> List(count) { it } }
 
-    assertEquals(gdxSetOf(0, 1, 2), result)
+    result shouldBe gdxSetOf(0, 1, 2)
   }
 
-  @Test
-  fun `should convert Set to Array`() {
+  test("should convert Set to Array") {
     val setAsArray = ObjectSet.with("1", "2", "3").toGdxArray()
 
-    assertEquals(3, setAsArray.size)
-    assertTrue("1" in setAsArray)
-    assertTrue("2" in setAsArray)
-    assertTrue("3" in setAsArray)
+    setAsArray.size shouldBe 3
+    ("1" in setAsArray) shouldBe true
+    ("2" in setAsArray) shouldBe true
+    ("3" in setAsArray) shouldBe true
   }
 
-  @Test
-  fun `should convert iterables to Sets`() {
+  test("should convert iterables to Sets") {
     val listAsSet = listOf("1", "2", "3").toGdxSet()
 
-    assertEquals(3, listAsSet.size)
-    assertTrue("1" in listAsSet)
-    assertTrue("2" in listAsSet)
-    assertTrue("3" in listAsSet)
+    listAsSet.size shouldBe 3
+    ("1" in listAsSet) shouldBe true
+    ("2" in listAsSet) shouldBe true
+    ("3" in listAsSet) shouldBe true
   }
 
-  @Test
-  fun `should convert Arrays to Sets`() {
+  test("should convert Arrays to Sets") {
     val arrayAsSet = arrayOf("1", "2", "3").toGdxSet()
 
-    assertEquals(3, arrayAsSet.size)
-    assertTrue("1" in arrayAsSet)
-    assertTrue("2" in arrayAsSet)
-    assertTrue("3" in arrayAsSet)
+    arrayAsSet.size shouldBe 3
+    ("1" in arrayAsSet) shouldBe true
+    ("2" in arrayAsSet) shouldBe true
+    ("3" in arrayAsSet) shouldBe true
   }
 
-  @Test
-  fun `should convert IntArrays to IntSets`() {
+  test("should convert IntArrays to IntSets") {
     val arrayAsSet = intArrayOf(1, 2, 3).toGdxSet()
 
-    assertEquals(3, arrayAsSet.size)
-    assertTrue(1 in arrayAsSet)
-    assertTrue(2 in arrayAsSet)
-    assertTrue(3 in arrayAsSet)
+    arrayAsSet.size shouldBe 3
+    (1 in arrayAsSet) shouldBe true
+    (2 in arrayAsSet) shouldBe true
+    (3 in arrayAsSet) shouldBe true
   }
 
-  @Test
-  fun `should provide alias for compatibility with other libGDX collections`() {
-    @Suppress("USELESS_IS_CHECK")
-    assertTrue(GdxSet<Any>() is ObjectSet<Any>)
+  test("should provide alias for compatibility with other libGDX collections") {
+    (GdxSet<Any>() is ObjectSet<Any>) shouldBe true
   }
-}
+})

@@ -1,26 +1,24 @@
 package ktx.artemis
 
 import com.artemis.World
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-object AspectSpec : Spek({
-  describe("utilities for aspects") {
-    val world by memoized { World() }
-    val textureEntity by memoized {
+class AspectSpec : FunSpec({
+  context("utilities for aspects") {
+    val world by lazy { World() }
+    val textureEntity by lazy {
       world.createEntity().apply {
         edit().add(Texture())
       }
     }
-    val rigidBodyEntity by memoized {
+    val rigidBodyEntity by lazy {
       world.createEntity().apply {
         edit().add(RigidBody())
       }
     }
 
-    val textureAndTransformEntity by memoized {
+    val textureAndTransformEntity by lazy {
       world.createEntity().apply {
         edit()
           .add(Texture())
@@ -28,7 +26,7 @@ object AspectSpec : Spek({
       }
     }
 
-    val threeComponentsEntity by memoized {
+    val threeComponentsEntity by lazy {
       world.createEntity().apply {
         edit()
           .add(Texture())
@@ -37,25 +35,25 @@ object AspectSpec : Spek({
       }
     }
 
-    it("should create an aspect that matches one of the components") {
+    test("should create an aspect that matches one of the components") {
       val aspect = oneOf(Texture::class, Transform::class).build(world)
 
-      assertThat(aspect.isInterested(textureEntity)).isTrue()
-      assertThat(aspect.isInterested(textureAndTransformEntity)).isTrue()
-      assertThat(aspect.isInterested(rigidBodyEntity)).isFalse()
+      aspect.isInterested(textureEntity) shouldBe true
+      aspect.isInterested(textureAndTransformEntity) shouldBe true
+      aspect.isInterested(rigidBodyEntity) shouldBe false
     }
-    it("should create an aspect that matches all the components") {
+    test("should create an aspect that matches all the components") {
       val aspect = allOf(Texture::class, Transform::class).build(world)
 
-      assertThat(aspect.isInterested(textureEntity)).isFalse()
-      assertThat(aspect.isInterested(textureAndTransformEntity)).isTrue()
+      aspect.isInterested(textureEntity) shouldBe false
+      aspect.isInterested(textureAndTransformEntity) shouldBe true
     }
-    it("should create an aspect that excludes components") {
-      assertThat(exclude(Transform::class).build(world).isInterested(textureEntity)).isTrue()
-      assertThat(exclude(Texture::class).build(world).isInterested(textureEntity)).isFalse()
+    test("should create an aspect that excludes components") {
+      exclude(Transform::class).build(world).isInterested(textureEntity) shouldBe true
+      exclude(Texture::class).build(world).isInterested(textureEntity) shouldBe false
     }
 
-    it("should create an aspect that matches all, one of and excludes components") {
+    test("should create an aspect that matches all, one of and excludes components") {
       val aspect =
         exclude(Remove::class)
           .oneOf(Position::class, RigidBody::class)
@@ -63,12 +61,12 @@ object AspectSpec : Spek({
           .exclude(Dead::class)
           .build(world)
 
-      assertThat(aspect.isInterested(rigidBodyEntity)).isFalse()
-      assertThat(aspect.isInterested(threeComponentsEntity)).isTrue()
+      aspect.isInterested(rigidBodyEntity) shouldBe false
+      aspect.isInterested(threeComponentsEntity) shouldBe true
 
       threeComponentsEntity.edit().add(Dead())
 
-      assertThat(aspect.isInterested(threeComponentsEntity)).isFalse()
+      aspect.isInterested(threeComponentsEntity) shouldBe false
     }
   }
 })

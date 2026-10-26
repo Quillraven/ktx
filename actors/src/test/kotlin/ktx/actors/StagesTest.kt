@@ -9,20 +9,25 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.Scaling.stretch
 import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.badlogic.gdx.utils.viewport.Viewport
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
-import org.junit.Before
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.any
 import org.mockito.kotlin.doAnswer
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import java.nio.IntBuffer
 
-class StagesTest {
-  @Before
-  fun `mock libGDX statics`() {
+class StagesTest : FunSpec({
+  fun assertIsDefaultViewport(viewport: Viewport) {
+    assert(viewport is ScalingViewport)
+    (viewport as ScalingViewport).scaling shouldBeSameInstanceAs stretch
+    viewport.worldWidth shouldBe Gdx.graphics.width.toFloat()
+    viewport.worldHeight shouldBe Gdx.graphics.height.toFloat()
+    assert(viewport.camera is OrthographicCamera)
+  }
+
+  beforeTest {
     LwjglNativesLoader.load()
     Gdx.app = mock()
     Gdx.gl =
@@ -51,8 +56,7 @@ class StagesTest {
       }
   }
 
-  @Test
-  fun `should initiate Stage`() {
+  test("should initiate Stage") {
     // When:
     val stage = stage()
 
@@ -61,8 +65,7 @@ class StagesTest {
     assertIsDefaultViewport(stage.viewport)
   }
 
-  @Test
-  fun `should initiate Stage with custom Viewport`() {
+  test("should initiate Stage with custom Viewport") {
     // Given:
     val viewport = mock<Viewport>()
 
@@ -71,11 +74,10 @@ class StagesTest {
 
     // Then:
     assert(stage.batch is SpriteBatch)
-    assertSame(viewport, stage.viewport)
+    stage.viewport shouldBeSameInstanceAs viewport
   }
 
-  @Test
-  fun `should initiate Stage with custom Batch`() {
+  test("should initiate Stage with custom Batch") {
     // Given:
     val batch = mock<Batch>()
 
@@ -83,20 +85,11 @@ class StagesTest {
     val stage = stage(batch)
 
     // Then:
-    assertSame(batch, stage.batch)
+    stage.batch shouldBeSameInstanceAs batch
     assertIsDefaultViewport(stage.viewport)
   }
 
-  private fun assertIsDefaultViewport(viewport: Viewport) {
-    assert(viewport is ScalingViewport)
-    assertSame(stretch, (viewport as ScalingViewport).scaling)
-    assertEquals(Gdx.graphics.width.toFloat(), viewport.worldWidth)
-    assertEquals(Gdx.graphics.height.toFloat(), viewport.worldHeight)
-    assert(viewport.camera is OrthographicCamera)
-  }
-
-  @Test
-  fun `should initiate Stage with custom Batch and Viewport`() {
+  test("should initiate Stage with custom Batch and Viewport") {
     // Given:
     val batch = mock<Batch>()
     val viewport = mock<Viewport>()
@@ -105,15 +98,14 @@ class StagesTest {
     val stage = stage(batch, viewport)
 
     // Then:
-    assertSame(batch, stage.batch)
-    assertSame(viewport, stage.viewport)
+    stage.batch shouldBeSameInstanceAs batch
+    stage.viewport shouldBeSameInstanceAs viewport
   }
 
-  @After
-  fun `remove libGDX statics`() {
+  afterTest {
     Gdx.gl = null
     Gdx.app = null
     Gdx.gl20 = null
     Gdx.graphics = null
   }
-}
+})

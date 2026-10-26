@@ -1,13 +1,11 @@
 package ktx.ashley
 
 import com.badlogic.ashley.core.Entity
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-object FamiliesSpec : Spek({
-  describe("utilities for component families") {
+class FamiliesSpec : FunSpec({
+  context("utilities for component families") {
     val textureEntity =
       Entity().apply {
         add(Texture())
@@ -31,40 +29,40 @@ object FamiliesSpec : Spek({
         add(RigidBody())
       }
 
-    it("should create a family that matches one of component") {
+    test("should create a family that matches one of component") {
       val family = oneOf(Texture::class, Transform::class).get()
-      assertThat(family.matches(textureEntity)).isTrue()
-      assertThat(family.matches(rigidBodyEntity)).isFalse()
+      family.matches(textureEntity) shouldBe true
+      family.matches(rigidBodyEntity) shouldBe false
     }
 
-    it("should create a family that matches all components") {
+    test("should create a family that matches all components") {
       val family = allOf(Texture::class, Transform::class).get()
-      assertThat(family.matches(textureEntity)).isFalse()
-      assertThat(family.matches(textureAndTransformEntity)).isTrue()
+      family.matches(textureEntity) shouldBe false
+      family.matches(textureAndTransformEntity) shouldBe true
     }
 
-    it("should create a family that matches any excluded components") {
-      assertThat(exclude(Transform::class).get().matches(textureEntity)).isTrue()
-      assertThat(exclude(Texture::class).get().matches(textureEntity)).isFalse()
+    test("should create a family that matches any excluded components") {
+      exclude(Transform::class).get().matches(textureEntity) shouldBe true
+      exclude(Texture::class).get().matches(textureEntity) shouldBe false
     }
 
-    describe("composite families") {
-      it("should build a family chained with matching any of one component") {
+    context("composite families") {
+      test("should build a family chained with matching any of one component") {
         val family = exclude(Transform::class).oneOf(Texture::class, RigidBody::class)
-        assertThat(family.get().matches(textureEntity)).isTrue()
-        assertThat(family.get().matches(textureAndTransformEntity)).isFalse()
+        family.get().matches(textureEntity) shouldBe true
+        family.get().matches(textureAndTransformEntity) shouldBe false
       }
 
-      it("should build a family chained with matching all components") {
+      test("should build a family chained with matching all components") {
         val family = exclude(RigidBody::class).allOf(Texture::class, Transform::class)
-        assertThat(family.get().matches(allComponentsEntity)).isFalse()
-        assertThat(family.get().matches(textureAndTransformEntity)).isTrue()
+        family.get().matches(allComponentsEntity) shouldBe false
+        family.get().matches(textureAndTransformEntity) shouldBe true
       }
 
-      it("should build a family chained with excluding components") {
+      test("should build a family chained with excluding components") {
         val family = oneOf(RigidBody::class).exclude(Texture::class, Transform::class)
-        assertThat(family.get().matches(allComponentsEntity)).isFalse()
-        assertThat(family.get().matches(rigidBodyEntity)).isTrue()
+        family.get().matches(allComponentsEntity) shouldBe false
+        family.get().matches(rigidBodyEntity) shouldBe true
       }
     }
   }

@@ -2,23 +2,21 @@ package ktx.ai
 
 import com.badlogic.gdx.ai.btree.BehaviorTree
 import com.badlogic.gdx.ai.btree.Task
-import io.kotlintest.mock.mock
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import org.mockito.kotlin.mock
 
-class BranchTasksTest {
-  @Test
-  fun `dynamicGuardSelector function should add DynamicGuardSelector to BehaviorTree`() {
+class BranchTasksTest : FunSpec({
+  test("dynamicGuardSelector function should add DynamicGuardSelector to BehaviorTree") {
     val tree = BehaviorTree<Cat>()
     val initialChildCount = tree.childCount
 
     tree.dynamicGuardSelector()
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `dynamicGuardSelector function inside of behaviorTree function's init block should add DynamicGuardSelector to BehaviorTree`() {
+  test("dynamicGuardSelector function inside of behaviorTree function's init block should add DynamicGuardSelector to BehaviorTree") {
     val initialChildCount: Int
 
     val tree =
@@ -27,21 +25,19 @@ class BranchTasksTest {
         dynamicGuardSelector()
       }
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `dynamicGuardSelector function should return index where DynamicGuardSelector is added`() {
+  test("dynamicGuardSelector function should return index where DynamicGuardSelector is added") {
     val receiverTask = GdxAiSelector<Cat>()
     val index1 = receiverTask.dynamicGuardSelector()
     val index2 = receiverTask.dynamicGuardSelector()
 
-    assertEquals(0, index1)
-    assertEquals(1, index2)
+    index1 shouldBe 0
+    index2 shouldBe 1
   }
 
-  @Test
-  fun `dynamicGuardSelector function's init block should configure DynamicGuardSelector exactly once`() {
+  test("dynamicGuardSelector function's init block should configure DynamicGuardSelector exactly once") {
     val receiverTask = mock<Task<Cat>>()
     val variable: Int
 
@@ -49,21 +45,19 @@ class BranchTasksTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `parallel function should add Parallel to BehaviorTree`() {
+  test("parallel function should add Parallel to BehaviorTree") {
     val tree = BehaviorTree<Cat>()
     val initialChildCount = tree.childCount
 
     tree.parallel()
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `parallel function inside of behaviorTree function's init block should add Parallel to BehaviorTree`() {
+  test("parallel function inside of behaviorTree function's init block should add Parallel to BehaviorTree") {
     val initialChildCount: Int
 
     val tree =
@@ -72,21 +66,19 @@ class BranchTasksTest {
         parallel()
       }
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `parallel function should return index where Parallel is added`() {
+  test("parallel function should return index where Parallel is added") {
     val receiverTask = GdxAiSelector<Cat>()
     val index1 = receiverTask.parallel()
     val index2 = receiverTask.parallel()
 
-    assertEquals(0, index1)
-    assertEquals(1, index2)
+    index1 shouldBe 0
+    index2 shouldBe 1
   }
 
-  @Test
-  fun `parallel function's init block should configure Parallel exactly once`() {
+  test("parallel function's init block should configure Parallel exactly once") {
     val receiverTask = mock<Task<Cat>>()
     val variable: Int
 
@@ -94,21 +86,19 @@ class BranchTasksTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `randomSelector function should add RandomSelector to BehaviorTree`() {
+  test("randomSelector function should add RandomSelector to BehaviorTree") {
     val tree = BehaviorTree<Cat>()
     val initialChildCount = tree.childCount
 
     tree.randomSelector()
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `randomSelector function inside of behaviorTree function's init block should add RandomSelector to BehaviorTree`() {
+  test("randomSelector function inside of behaviorTree function's init block should add RandomSelector to BehaviorTree") {
     val initialChildCount: Int
 
     val tree =
@@ -117,21 +107,19 @@ class BranchTasksTest {
         randomSelector()
       }
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `randomSelector function should return index where RandomSelector is added`() {
+  test("randomSelector function should return index where RandomSelector is added") {
     val receiverTask = GdxAiSelector<Cat>()
     val index1 = receiverTask.randomSelector()
     val index2 = receiverTask.randomSelector()
 
-    assertEquals(0, index1)
-    assertEquals(1, index2)
+    index1 shouldBe 0
+    index2 shouldBe 1
   }
 
-  @Test
-  fun `randomSelector function's init block should configure RandomSelector exactly once`() {
+  test("randomSelector function's init block should configure RandomSelector exactly once") {
     val receiverTask = mock<Task<Cat>>()
     val variable: Int
 
@@ -139,21 +127,19 @@ class BranchTasksTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `randomSequence function should add RandomSequence to BehaviorTree`() {
+  test("randomSequence function should add RandomSequence to BehaviorTree") {
     val tree = BehaviorTree<Cat>()
     val initialChildCount = tree.childCount
 
     tree.randomSequence()
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `randomSequence inside of behaviorTree function's init block should add RandomSequence to BehaviorTree`() {
+  test("randomSequence inside of behaviorTree function's init block should add RandomSequence to BehaviorTree") {
     val initialChildCount: Int
 
     val tree =
@@ -162,21 +148,19 @@ class BranchTasksTest {
         randomSequence()
       }
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `randomSequence function should return index where RandomSequence is added`() {
+  test("randomSequence function should return index where RandomSequence is added") {
     val receiverTask = GdxAiSelector<Cat>()
     val index1 = receiverTask.randomSequence()
     val index2 = receiverTask.randomSequence()
 
-    assertEquals(0, index1)
-    assertEquals(1, index2)
+    index1 shouldBe 0
+    index2 shouldBe 1
   }
 
-  @Test
-  fun `randomSequence function's init block should configure RandomSequence exactly once`() {
+  test("randomSequence function's init block should configure RandomSequence exactly once") {
     val receiverTask = mock<Task<Cat>>()
     val variable: Int
 
@@ -184,21 +168,19 @@ class BranchTasksTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `selector function should add GdxSelector to BehaviorTree`() {
+  test("selector function should add GdxSelector to BehaviorTree") {
     val tree = BehaviorTree<Cat>()
     val initialChildCount = tree.childCount
 
     tree.selector()
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `selector inside of behaviorTree function's init block adds GdxSelector to BehaviorTree`() {
+  test("selector inside of behaviorTree function's init block adds GdxSelector to BehaviorTree") {
     val initialChildCount: Int
 
     val tree =
@@ -207,21 +189,19 @@ class BranchTasksTest {
         selector()
       }
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `selector function should return index where GdxSelector is added`() {
+  test("selector function should return index where GdxSelector is added") {
     val receiverTask = GdxAiSequence<Cat>()
     val index1 = receiverTask.selector()
     val index2 = receiverTask.selector()
 
-    assertEquals(0, index1)
-    assertEquals(1, index2)
+    index1 shouldBe 0
+    index2 shouldBe 1
   }
 
-  @Test
-  fun `selector function's init block should configure GdxSelector exactly once`() {
+  test("selector function's init block should configure GdxSelector exactly once") {
     val receiverTask = mock<Task<Cat>>()
     val variable: Int
 
@@ -229,21 +209,19 @@ class BranchTasksTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `sequence function should add GdxSequence to BehaviorTree`() {
+  test("sequence function should add GdxSequence to BehaviorTree") {
     val tree = BehaviorTree<Cat>()
     val initialChildCount = tree.childCount
 
     tree.sequence()
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `sequence inside of behaviorTree function's init block should add GdxSequence to BehaviorTree`() {
+  test("sequence inside of behaviorTree function's init block should add GdxSequence to BehaviorTree") {
     val initialChildCount: Int
 
     val tree =
@@ -252,21 +230,19 @@ class BranchTasksTest {
         sequence()
       }
 
-    assertEquals(initialChildCount + 1, tree.childCount)
+    tree.childCount shouldBe (initialChildCount + 1)
   }
 
-  @Test
-  fun `sequence function should return index where GdxSequence is added`() {
+  test("sequence function should return index where GdxSequence is added") {
     val receiverTask = GdxAiSelector<Cat>()
     val index1 = receiverTask.sequence()
     val index2 = receiverTask.sequence()
 
-    assertEquals(0, index1)
-    assertEquals(1, index2)
+    index1 shouldBe 0
+    index2 shouldBe 1
   }
 
-  @Test
-  fun `sequence function's init block should configure GdxSequence exactly once`() {
+  test("sequence function's init block should configure GdxSequence exactly once") {
     val receiverTask = mock<Task<Cat>>()
     val variable: Int
 
@@ -274,6 +250,6 @@ class BranchTasksTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
-}
+})

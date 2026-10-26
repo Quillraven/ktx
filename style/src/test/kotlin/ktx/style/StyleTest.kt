@@ -21,20 +21,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle
 import com.badlogic.gdx.scenes.scene2d.ui.Tree.TreeStyle
 import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable
-import io.kotlintest.matchers.shouldBe
-import io.kotlintest.matchers.shouldNotBe
-import io.kotlintest.mock.mock
-import ktx.style.StyleTest.TestEnum.TEST
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import ktx.style.TestEnum.TEST
+import org.mockito.kotlin.mock
 
 /**
  * Tests [Skin] building utilities.
  */
-class StyleTest {
-  @Test
-  fun `should use valid default style name`() {
+class StyleTest : FunSpec({
+  test("should use valid default style name") {
     val skin = Skin()
     skin.add(defaultStyle, "Mock resource.")
 
@@ -46,15 +44,13 @@ class StyleTest {
     // If this test fails, libGDX changed name of default resources or removed the unnamed resource getter.
   }
 
-  @Test
-  fun `should create new skin`() {
+  test("should create new skin") {
     val skin = skin()
 
     skin shouldNotBe null
   }
 
-  @Test
-  fun `should create new skin with init block`() {
+  test("should create new skin with init block") {
     val skin =
       skin {
         add("mock", "Test.")
@@ -64,26 +60,23 @@ class StyleTest {
     skin.get("mock", String::class.java) shouldNotBe null
   }
 
-  @Test
-  fun `should configure skin exactly once`() {
+  test("should configure skin exactly once") {
     val variable: Int
 
     skin {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should create new skin with TextureAtlas`() {
+  test("should create new skin with TextureAtlas") {
     val skin = skin(TextureAtlas())
 
     skin shouldNotBe null
   }
 
-  @Test
-  fun `should create new skin with TextureAtlas and init block`() {
+  test("should create new skin with TextureAtlas and init block") {
     val skin =
       skin(TextureAtlas()) {
         add("mock", "Test.")
@@ -93,19 +86,17 @@ class StyleTest {
     skin.get("mock", String::class.java) shouldNotBe null
   }
 
-  @Test
-  fun `should configure skin with TextureAtlas exactly once`() {
+  test("should configure skin with TextureAtlas exactly once") {
     val variable: Int
 
     skin(TextureAtlas()) {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should register assets`() {
+  test("should register assets") {
     val skin = Skin()
 
     skin.register {
@@ -115,8 +106,7 @@ class StyleTest {
     skin.get("mock", String::class.java) shouldNotBe null
   }
 
-  @Test
-  fun `should register assets exactly once`() {
+  test("should register assets exactly once") {
     val skin = Skin()
     val variable: Int
 
@@ -124,11 +114,10 @@ class StyleTest {
       variable = 42
     }
 
-    assertEquals(42, variable)
+    variable shouldBe 42
   }
 
-  @Test
-  fun `should extract resource with explicit reified type`() {
+  test("should extract resource with explicit reified type") {
     val skin = Skin()
     skin.add("mock", "Test.")
 
@@ -137,8 +126,7 @@ class StyleTest {
     resource shouldBe "Test."
   }
 
-  @Test
-  fun `should extract resource with implicit reified type`() {
+  test("should extract resource with implicit reified type") {
     val skin = Skin()
     skin.add("mock", "Test.")
 
@@ -147,8 +135,7 @@ class StyleTest {
     reified shouldBe "Test."
   }
 
-  @Test
-  fun `should extract optional resource with default style name`() {
+  test("should extract optional resource with default style name") {
     val skin = Skin()
 
     skin.add(defaultStyle, "Test.")
@@ -156,8 +143,7 @@ class StyleTest {
     skin.optional<String>() shouldBe "Test."
   }
 
-  @Test
-  fun `should extract optional resource`() {
+  test("should extract optional resource") {
     val skin = Skin()
 
     skin.add("mock", "Test.")
@@ -165,8 +151,7 @@ class StyleTest {
     skin.optional<String>("mock") shouldBe "Test."
   }
 
-  @Test
-  fun `should extract optional resource and return null`() {
+  test("should extract optional resource and return null") {
     val skin = Skin()
 
     skin.add("asset", "Test.")
@@ -174,8 +159,7 @@ class StyleTest {
     skin.optional<Color>("mock") shouldBe null
   }
 
-  @Test
-  fun `should extract resource with default style name`() {
+  test("should extract resource with default style name") {
     val skin = Skin()
 
     skin[defaultStyle] = "Asset."
@@ -183,8 +167,7 @@ class StyleTest {
     skin.get<String>() shouldBe "Asset."
   }
 
-  @Test
-  fun `should add resources with brace operator`() {
+  test("should add resources with brace operator") {
     val skin = Skin()
 
     skin["name"] = "Asset."
@@ -192,8 +175,7 @@ class StyleTest {
     skin.get<String>("name") shouldBe "Asset."
   }
 
-  @Test
-  fun `should add resource with brace operator with enum name`() {
+  test("should add resource with brace operator with enum name") {
     val skin = Skin()
 
     skin[TEST] = "Test."
@@ -201,8 +183,7 @@ class StyleTest {
     skin.get<String>("TEST") shouldBe "Test."
   }
 
-  @Test
-  fun `should extract resource with brace operator with enum name`() {
+  test("should extract resource with brace operator with enum name") {
     val skin = Skin()
     skin["TEST"] = "Test."
 
@@ -211,8 +192,7 @@ class StyleTest {
     resource shouldBe "Test."
   }
 
-  @Test
-  fun `should add and extract resource with brace operator with enum name`() {
+  test("should add and extract resource with brace operator with enum name") {
     val skin = Skin()
 
     skin[TEST] = "Test."
@@ -221,19 +201,17 @@ class StyleTest {
     resource shouldBe "Test."
   }
 
-  @Test
-  fun `should add existing style to skin`() {
+  test("should add existing style to skin") {
     val skin = Skin()
     val existing = LabelStyle()
 
     skin.addStyle("mock", existing)
 
     val style = skin.get<LabelStyle>("mock")
-    assertSame(existing, style)
+    style shouldBeSameInstanceAs existing
   }
 
-  @Test
-  fun `should add existing style to skin with init block`() {
+  test("should add existing style to skin with init block") {
     val skin = Skin()
     val existing = LabelStyle()
 
@@ -242,12 +220,11 @@ class StyleTest {
     }
 
     val style = skin.get<LabelStyle>("mock")
-    assertSame(existing, style)
+    style shouldBeSameInstanceAs existing
     style.fontColor shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should add resource with default style name`() {
+  test("should add resource with default style name") {
     val skin = Skin()
 
     skin.add("Test.")
@@ -255,8 +232,7 @@ class StyleTest {
     skin.get<String>() shouldBe "Test."
   }
 
-  @Test
-  fun `should add resource with default style name with plusAssign`() {
+  test("should add resource with default style name with plusAssign") {
     val skin = Skin()
 
     skin += "Test."
@@ -264,8 +240,7 @@ class StyleTest {
     skin.get<String>() shouldBe "Test."
   }
 
-  @Test
-  fun `should remove resource with default style name`() {
+  test("should remove resource with default style name") {
     val skin = Skin()
 
     skin.add(defaultStyle, "Test.")
@@ -275,8 +250,7 @@ class StyleTest {
     skin.has(defaultStyle, String::class.java) shouldBe false
   }
 
-  @Test
-  fun `should remove resource`() {
+  test("should remove resource") {
     val skin = Skin()
 
     skin.add("mock", "Test.")
@@ -286,8 +260,7 @@ class StyleTest {
     skin.has("mock", String::class.java) shouldBe false
   }
 
-  @Test
-  fun `should check if resource is present`() {
+  test("should check if resource is present") {
     val skin = Skin()
 
     skin.add("mock", "Test.")
@@ -296,8 +269,7 @@ class StyleTest {
     skin.has<String>("mock-2") shouldBe false
   }
 
-  @Test
-  fun `should check if resource with default style name is present`() {
+  test("should check if resource with default style name is present") {
     val skin = Skin()
 
     skin.add(defaultStyle, "Test.")
@@ -305,8 +277,7 @@ class StyleTest {
     skin.has<String>() shouldBe true
   }
 
-  @Test
-  fun `should return a map of all resources of a type`() {
+  test("should return a map of all resources of a type") {
     val skin = Skin()
 
     skin.add("mock-1", "Test.")
@@ -315,15 +286,13 @@ class StyleTest {
     skin.getAll<String>()!!.size shouldBe 2
   }
 
-  @Test
-  fun `should return null if resource is not in skin`() {
+  test("should return null if resource is not in skin") {
     val skin = Skin()
 
     skin.getAll<String>() shouldBe null
   }
 
-  @Test
-  fun `should add color`() {
+  test("should add color") {
     val skin = Skin()
 
     skin.color("black", red = 0f, green = 0f, blue = 0f)
@@ -331,8 +300,7 @@ class StyleTest {
     skin.getColor("black") shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should add ButtonStyle`() {
+  test("should add ButtonStyle") {
     val skin =
       skin {
         button {
@@ -340,11 +308,10 @@ class StyleTest {
         }
       }
     val style = skin.get<ButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend ButtonStyle`() {
+  test("should extend ButtonStyle") {
     val skin =
       skin {
         button("base") {
@@ -356,12 +323,11 @@ class StyleTest {
       }
 
     val style = skin.get<ButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add CheckBoxStyle`() {
+  test("should add CheckBoxStyle") {
     val skin =
       skin {
         checkBox {
@@ -370,11 +336,10 @@ class StyleTest {
       }
 
     val style = skin.get<CheckBoxStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend CheckBoxStyle`() {
+  test("should extend CheckBoxStyle") {
     val skin =
       skin {
         checkBox("base") {
@@ -386,12 +351,11 @@ class StyleTest {
       }
 
     val style = skin.get<CheckBoxStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add ImageButtonStyle`() {
+  test("should add ImageButtonStyle") {
     val skin =
       skin {
         imageButton {
@@ -400,11 +364,10 @@ class StyleTest {
       }
 
     val style = skin.get<ImageButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend ImageButtonStyle`() {
+  test("should extend ImageButtonStyle") {
     val skin =
       skin {
         imageButton("base") {
@@ -416,12 +379,11 @@ class StyleTest {
       }
 
     val style = skin.get<ImageButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add ImageTextButtonStyle`() {
+  test("should add ImageTextButtonStyle") {
     val skin =
       skin {
         imageTextButton {
@@ -430,11 +392,10 @@ class StyleTest {
       }
 
     val style = skin.get<ImageTextButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend ImageTextButtonStyle`() {
+  test("should extend ImageTextButtonStyle") {
     val skin =
       skin {
         imageTextButton("base") {
@@ -446,12 +407,11 @@ class StyleTest {
       }
 
     val style = skin.get<ImageTextButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add LabelStyle`() {
+  test("should add LabelStyle") {
     val skin =
       skin {
         label {
@@ -460,11 +420,10 @@ class StyleTest {
       }
 
     val style = skin.get<LabelStyle>(defaultStyle)
-    assertEquals(Color.BLACK, style.fontColor)
+    style.fontColor shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should extend LabelStyle`() {
+  test("should extend LabelStyle") {
     val skin =
       skin {
         label("base") {
@@ -475,11 +434,10 @@ class StyleTest {
       }
 
     val style = skin.get<LabelStyle>("new")
-    assertEquals(Color.BLACK, style.fontColor)
+    style.fontColor shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should add ListStyle`() {
+  test("should add ListStyle") {
     val skin =
       skin {
         list {
@@ -488,11 +446,10 @@ class StyleTest {
       }
 
     val style = skin.get<ListStyle>(defaultStyle)
-    assertEquals(Color.BLACK, style.fontColorSelected)
+    style.fontColorSelected shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should extend ListStyle`() {
+  test("should extend ListStyle") {
     val skin =
       skin {
         list("base") {
@@ -504,12 +461,11 @@ class StyleTest {
       }
 
     val style = skin.get<ListStyle>("new")
-    assertEquals(Color.BLACK, style.fontColorSelected)
-    assertEquals(Color.CYAN, style.fontColorUnselected)
+    style.fontColorSelected shouldBe Color.BLACK
+    style.fontColorUnselected shouldBe Color.CYAN
   }
 
-  @Test
-  fun `should add ProgressBarStyle`() {
+  test("should add ProgressBarStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -519,11 +475,10 @@ class StyleTest {
       }
 
     val style = skin.get<ProgressBarStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend ProgressBarStyle`() {
+  test("should extend ProgressBarStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -536,12 +491,11 @@ class StyleTest {
       }
 
     val style = skin.get<ProgressBarStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(drawable, style.knob)
+    style.background shouldBe drawable
+    style.knob shouldBe drawable
   }
 
-  @Test
-  fun `should add ScrollPaneStyle`() {
+  test("should add ScrollPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -551,11 +505,10 @@ class StyleTest {
       }
 
     val style: ScrollPaneStyle = skin.get()
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend ScrollPaneStyle`() {
+  test("should extend ScrollPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -568,12 +521,11 @@ class StyleTest {
       }
 
     val style = skin.get<ScrollPaneStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(drawable, style.corner)
+    style.background shouldBe drawable
+    style.corner shouldBe drawable
   }
 
-  @Test
-  fun `should add SelectBoxStyle`() {
+  test("should add SelectBoxStyle") {
     val skin =
       skin {
         selectBox {
@@ -582,11 +534,10 @@ class StyleTest {
       }
 
     val style = skin.get<SelectBoxStyle>(defaultStyle)
-    assertEquals(Color.CYAN, style.fontColor)
+    style.fontColor shouldBe Color.CYAN
   }
 
-  @Test
-  fun `should extend SelectBoxStyle`() {
+  test("should extend SelectBoxStyle") {
     val skin =
       skin {
         list() // Necessary for copy constructor.
@@ -602,12 +553,11 @@ class StyleTest {
       }
 
     val style = skin.get<SelectBoxStyle>("new")
-    assertEquals(Color.CYAN, style.fontColor)
-    assertEquals(Color.BLACK, style.disabledFontColor)
+    style.fontColor shouldBe Color.CYAN
+    style.disabledFontColor shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should add SliderStyle`() {
+  test("should add SliderStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -617,11 +567,10 @@ class StyleTest {
       }
 
     val style = skin.get<SliderStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend SliderStyle`() {
+  test("should extend SliderStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -634,12 +583,11 @@ class StyleTest {
       }
 
     val style = skin.get<SliderStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(drawable, style.knob)
+    style.background shouldBe drawable
+    style.knob shouldBe drawable
   }
 
-  @Test
-  fun `should add SplitPaneStyle`() {
+  test("should add SplitPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -649,11 +597,10 @@ class StyleTest {
       }
 
     val style = skin.get<SplitPaneStyle>(defaultStyle)
-    assertEquals(drawable, style.handle)
+    style.handle shouldBe drawable
   }
 
-  @Test
-  fun `should extend SplitPaneStyle`() {
+  test("should extend SplitPaneStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -664,11 +611,10 @@ class StyleTest {
       }
 
     val style = skin.get<SplitPaneStyle>("new")
-    assertEquals(drawable, style.handle)
+    style.handle shouldBe drawable
   }
 
-  @Test
-  fun `should add TextButtonStyle`() {
+  test("should add TextButtonStyle") {
     val skin =
       skin {
         textButton {
@@ -677,11 +623,10 @@ class StyleTest {
       }
 
     val style = skin.get<TextButtonStyle>(defaultStyle)
-    assertEquals(1f, style.pressedOffsetX)
+    style.pressedOffsetX shouldBe 1f
   }
 
-  @Test
-  fun `should extend TextButtonStyle`() {
+  test("should extend TextButtonStyle") {
     val skin =
       skin {
         textButton("base") {
@@ -693,12 +638,11 @@ class StyleTest {
       }
 
     val style = skin.get<TextButtonStyle>("new")
-    assertEquals(1f, style.pressedOffsetX)
-    assertEquals(1f, style.pressedOffsetY)
+    style.pressedOffsetX shouldBe 1f
+    style.pressedOffsetY shouldBe 1f
   }
 
-  @Test
-  fun `should add TextFieldStyle`() {
+  test("should add TextFieldStyle") {
     val skin =
       skin {
         textField {
@@ -707,11 +651,10 @@ class StyleTest {
       }
 
     val style = skin.get<TextFieldStyle>(defaultStyle)
-    assertEquals(Color.CYAN, style.fontColor)
+    style.fontColor shouldBe Color.CYAN
   }
 
-  @Test
-  fun `should extend TextFieldStyle`() {
+  test("should extend TextFieldStyle") {
     val skin =
       skin {
         textField("base") {
@@ -723,12 +666,11 @@ class StyleTest {
       }
 
     val style = skin.get<TextFieldStyle>("new")
-    assertEquals(Color.CYAN, style.fontColor)
-    assertEquals(Color.BLACK, style.disabledFontColor)
+    style.fontColor shouldBe Color.CYAN
+    style.disabledFontColor shouldBe Color.BLACK
   }
 
-  @Test
-  fun `should add TextTooltipStyle`() {
+  test("should add TextTooltipStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -738,11 +680,10 @@ class StyleTest {
       }
 
     val style = skin.get<TextTooltipStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend TextTooltipStyle`() {
+  test("should extend TextTooltipStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -756,12 +697,11 @@ class StyleTest {
       }
 
     val style = skin.get<TextTooltipStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(1f, style.wrapWidth)
+    style.background shouldBe drawable
+    style.wrapWidth shouldBe 1f
   }
 
-  @Test
-  fun `should add TouchpadStyle`() {
+  test("should add TouchpadStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -771,11 +711,10 @@ class StyleTest {
       }
 
     val style = skin.get<TouchpadStyle>(defaultStyle)
-    assertEquals(drawable, style.knob)
+    style.knob shouldBe drawable
   }
 
-  @Test
-  fun `should extend TouchpadStyle`() {
+  test("should extend TouchpadStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -788,12 +727,11 @@ class StyleTest {
       }
 
     val style = skin.get<TouchpadStyle>("new")
-    assertEquals(drawable, style.knob)
-    assertEquals(drawable, style.background)
+    style.knob shouldBe drawable
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should add TreeStyle`() {
+  test("should add TreeStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -803,11 +741,10 @@ class StyleTest {
       }
 
     val style = skin.get<TreeStyle>(defaultStyle)
-    assertEquals(drawable, style.plus)
+    style.plus shouldBe drawable
   }
 
-  @Test
-  fun `should extend TreeStyle`() {
+  test("should extend TreeStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -820,12 +757,11 @@ class StyleTest {
       }
 
     val style = skin.get<TreeStyle>("new")
-    assertEquals(drawable, style.plus)
-    assertEquals(drawable, style.minus)
+    style.plus shouldBe drawable
+    style.minus shouldBe drawable
   }
 
-  @Test
-  fun `should add WindowStyle`() {
+  test("should add WindowStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -835,11 +771,10 @@ class StyleTest {
       }
 
     val style = skin.get<WindowStyle>(defaultStyle)
-    assertEquals(drawable, style.background)
+    style.background shouldBe drawable
   }
 
-  @Test
-  fun `should extend WindowStyle`() {
+  test("should extend WindowStyle") {
     val drawable = mock<Drawable>()
     val skin =
       skin {
@@ -852,12 +787,12 @@ class StyleTest {
       }
 
     val style = skin.get<WindowStyle>("new")
-    assertEquals(drawable, style.background)
-    assertEquals(drawable, style.stageBackground)
+    style.background shouldBe drawable
+    style.stageBackground shouldBe drawable
   }
+})
 
-  /** For [StyleTest] tests. */
-  internal enum class TestEnum {
-    TEST,
-  }
+/** For [StyleTest] tests. */
+internal enum class TestEnum {
+  TEST,
 }

@@ -9,8 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable
 import com.badlogic.gdx.utils.Array
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
-import io.kotlintest.matchers.shouldThrow
-import io.kotlintest.mock.mock
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import ktx.scene2d.ApplicationTest
 import ktx.scene2d.KNode
 import ktx.scene2d.defaultHorizontalStyle
@@ -20,12 +23,7 @@ import ktx.scene2d.label
 import ktx.scene2d.scene2d
 import ktx.scene2d.table
 import ktx.scene2d.tree
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.mockito.kotlin.mock
 
 // Tests of customized VisUI parent widgets.
 
@@ -33,62 +31,60 @@ import org.junit.Test
  * Tests KTX-adapted widget: [KVisTree].
  */
 class KVisTreeTest : ApplicationTest() {
-  @Test
-  fun `should add widget to group and return its node`() {
-    val tree = scene2d.visTree()
-    val actor = Actor()
+  init {
+    test("should add widget to group and return its node") {
+      val tree = scene2d.visTree()
+      val actor = Actor()
 
-    val result: KNode<Actor> = tree.storeActor(actor)
+      val result: KNode<Actor> = tree.storeActor(actor)
 
-    assertTrue(actor in tree.children)
-    assertSame(actor, result.actor)
-  }
-
-  @Test
-  fun `should provide access to children nodes`() {
-    val tree = scene2d.visTree()
-    tree.apply {
-      val label = label("Test")
-
-      val node: KNode<Label> = label.inNode
-
-      assertNotNull(node)
-      assertSame(label, node.actor)
+      (actor in tree.children) shouldBe true
+      result.actor shouldBeSameInstanceAs actor
     }
-  }
 
-  @Test
-  fun `should allow to configure children nodes`() {
-    val tree = scene2d.visTree()
-    val icon = mock<Drawable>()
-    tree.apply {
-      val node: KNode<Label> =
-        label("Test") {}
-          .node(
-            icon = icon,
-            selectable = false,
-            expanded = true,
-            userObject = "Test",
-          ).inNode
+    test("should provide access to children nodes") {
+      val tree = scene2d.visTree()
+      tree.apply {
+        val label = label("Test")
 
-      assertSame(icon, node.icon)
-      assertFalse(node.isSelectable)
-      assertTrue(node.isExpanded)
-      assertEquals("Test", node.value)
+        val node: KNode<Label> = label.inNode
+
+        node.shouldNotBeNull()
+        node.actor shouldBeSameInstanceAs label
+      }
     }
-  }
 
-  @Test
-  fun `should spawn nodes`() {
-    val tree = KVisTree(defaultStyle)
-    val actor = Actor()
+    test("should allow to configure children nodes") {
+      val tree = scene2d.visTree()
+      val icon = mock<Drawable>()
+      tree.apply {
+        val node: KNode<Label> =
+          label("Test") {}
+            .node(
+              icon = icon,
+              selectable = false,
+              expanded = true,
+              userObject = "Test",
+            ).inNode
 
-    val node = tree.add(actor)
+        node.icon shouldBeSameInstanceAs icon
+        node.isSelectable shouldBe false
+        node.isExpanded shouldBe true
+        node.value shouldBe "Test"
+      }
+    }
 
-    assertSame(actor, node.actor)
-    assertSame(tree, node.tree)
-    assertSame(tree, node.actor.parent)
-    assertSame(node, tree.rootNodes.first())
+    test("should spawn nodes") {
+      val tree = KVisTree(defaultStyle)
+      val actor = Actor()
+
+      val node = tree.add(actor)
+
+      node.actor shouldBeSameInstanceAs actor
+      node.tree shouldBeSameInstanceAs tree
+      node.actor.parent shouldBeSameInstanceAs tree
+      tree.rootNodes.first() shouldBeSameInstanceAs node
+    }
   }
 }
 
@@ -96,19 +92,20 @@ class KVisTreeTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KDragPane].
  */
 class KDragPaneTest : ApplicationTest() {
-  @Test
-  fun `should add actors to its table`() {
-    val label: Label
-    val image: Image
+  init {
+    test("should add actors to its table") {
+      val label: Label
+      val image: Image
 
-    val pane =
-      scene2d.dragPane {
-        label = label("Test")
-        image = visImage("white")
-      }
+      val pane =
+        scene2d.dragPane {
+          label = label("Test")
+          image = visImage("white")
+        }
 
-    assertTrue(label in pane.table.children)
-    assertTrue(image in pane.table.children)
+      (label in pane.table.children) shouldBe true
+      (image in pane.table.children) shouldBe true
+    }
   }
 }
 
@@ -116,110 +113,105 @@ class KDragPaneTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KTabbedPane].
  */
 class KTabbedPaneTest : ApplicationTest() {
-  @Test
-  fun `should add tabs`() {
-    val tab: Tab
-    val label: Label
+  init {
+    test("should add tabs") {
+      val tab: Tab
+      val label: Label
 
-    val pane =
-      scene2d.tabbedPane {
-        tab =
-          tab(title = "Test", savable = true, closeableByUser = true) {
-            label = label("Test")
-          }
-      }
+      val pane =
+        scene2d.tabbedPane {
+          tab =
+            tab(title = "Test", savable = true, closeableByUser = true) {
+              label = label("Test")
+            }
+        }
 
-    assertTrue(tab in pane.tabs)
-    assertTrue(label in tab.contentTable.children)
-    assertSame(pane, tab.pane)
-  }
-
-  @Test
-  fun `should pass content table when added to group`() {
-    var invoked: Boolean
-
-    scene2d.tabbedPane { contentTable ->
-      assertSame(this.table, contentTable)
-      invoked = true
+      (tab in pane.tabs) shouldBe true
+      (label in tab.contentTable.children) shouldBe true
+      tab.pane shouldBeSameInstanceAs pane
     }
 
-    assertTrue(invoked)
-  }
+    test("should pass content table when added to group") {
+      var invoked: Boolean
 
-  @Test
-  fun `should pass content table cell when added to table`() {
-    var invoked: Boolean
-
-    scene2d.table {
-      tabbedPane { cell ->
-        assertSame(this.table, cell.actor)
+      scene2d.tabbedPane { contentTable ->
+        contentTable shouldBeSameInstanceAs this.table
         invoked = true
       }
+
+      invoked shouldBe true
     }
 
-    assertTrue(invoked)
-  }
+    test("should pass content table cell when added to table") {
+      var invoked: Boolean
 
-  @Test
-  fun `should pass content table node when added to tree`() {
-    var invoked: Boolean
-
-    scene2d.tree {
-      tabbedPane { node ->
-        assertSame(this.table, node.actor)
-        invoked = true
+      scene2d.table {
+        tabbedPane { cell ->
+          cell.actor shouldBeSameInstanceAs this.table
+          invoked = true
+        }
       }
+
+      invoked shouldBe true
     }
 
-    assertTrue(invoked)
-  }
+    test("should pass content table node when added to tree") {
+      var invoked: Boolean
 
-  @Test
-  fun `should allow to add content to Table`() {
-    val table = Table()
-    val tab: Tab
-    val pane =
-      scene2d.tabbedPane {
-        addTabContentsTo(table)
-        tab("Inactive")
-        tab = tab("Active")
+      scene2d.tree {
+        tabbedPane { node ->
+          node.actor shouldBeSameInstanceAs this.table
+          invoked = true
+        }
       }
 
-    pane.switchTab(tab)
+      invoked shouldBe true
+    }
 
-    assertTrue(tab.contentTable in table.children)
-  }
+    test("should allow to add content to Table") {
+      val table = Table()
+      val tab: Tab
+      val pane =
+        scene2d.tabbedPane {
+          addTabContentsTo(table)
+          tab("Inactive")
+          tab = tab("Active")
+        }
 
-  @Test
-  fun `should allow to add content to Group`() {
-    val group = Group()
-    val tab: Tab
-    val pane =
-      scene2d.tabbedPane {
-        addTabContentsTo(group)
-        tab("Inactive")
-        tab = tab("Active")
-      }
+      pane.switchTab(tab)
 
-    pane.switchTab(tab)
+      (tab.contentTable in table.children) shouldBe true
+    }
 
-    assertTrue(tab.contentTable in group.children)
-  }
+    test("should allow to add content to Group") {
+      val group = Group()
+      val tab: Tab
+      val pane =
+        scene2d.tabbedPane {
+          addTabContentsTo(group)
+          tab("Inactive")
+          tab = tab("Active")
+        }
 
-  @Test
-  fun `should allow to add content to Container`() {
-    val container = Container<Actor>()
-    val tab: Tab
-    val pane =
-      scene2d.tabbedPane {
-        addTabContentsTo(container)
-        tab("Inactive")
-        tab = tab("Active")
-      }
+      pane.switchTab(tab)
 
-    pane.switchTab(tab)
+      (tab.contentTable in group.children) shouldBe true
+    }
 
-    assertTrue(tab.contentTable in container.children)
+    test("should allow to add content to Container") {
+      val container = Container<Actor>()
+      val tab: Tab
+      val pane =
+        scene2d.tabbedPane {
+          addTabContentsTo(container)
+          tab("Inactive")
+          tab = tab("Active")
+        }
+
+      pane.switchTab(tab)
+
+      (tab.contentTable in container.children) shouldBe true
+    }
   }
 }
 
@@ -227,35 +219,35 @@ class KTabbedPaneTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KVisList].
  */
 class KVisListTest : ApplicationTest() {
-  @Test
-  fun `should add items`() {
-    val list = KVisList<String>(defaultStyle)
+  init {
+    test("should add items") {
+      val list = KVisList<String>(defaultStyle)
 
-    list.apply {
-      -"one"
-      -"two"
-      -"three"
+      list.apply {
+        -"one"
+        -"two"
+        -"three"
+      }
+
+      list.items shouldBe Array.with("one", "two", "three")
     }
 
-    assertEquals(Array.with("one", "two", "three"), list.items)
-  }
+    test("should not clear items on refresh") {
+      // Normally list.setItems(list.items) clears the items instead, as the internal "setter" implementation clear the
+      // internal array and copies the one passed as the argument, even if both are the same object.
+      val list = KVisList<String>(defaultStyle)
 
-  @Test
-  fun `should not clear items on refresh`() {
-    // Normally list.setItems(list.items) clears the items instead, as the internal "setter" implementation clear the
-    // internal array and copies the one passed as the argument, even if both are the same object.
-    val list = KVisList<String>(defaultStyle)
+      list.items.apply {
+        add("one")
+        add("two")
+        add("three")
+      }
 
-    list.items.apply {
-      add("one")
-      add("two")
-      add("three")
+      list.items.size shouldBe 3
+      list.refreshItems() // This implementation fails the test: list.setItems(list.items)
+      list.items.size shouldBe 3
+      list.items shouldBe Array.with("one", "two", "three")
     }
-
-    assertEquals(3, list.items.size)
-    list.refreshItems() // This implementation fails the test: list.setItems(list.items)
-    assertEquals(3, list.items.size)
-    assertEquals(Array.with("one", "two", "three"), list.items)
   }
 }
 
@@ -263,25 +255,25 @@ class KVisListTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KVisScrollPane].
  */
 class KVisScrollPaneTest : ApplicationTest() {
-  @Test
-  fun `should store child`() {
-    val scrollPane = KVisScrollPane(defaultStyle)
-    val actor = Actor()
+  init {
+    test("should store child") {
+      val scrollPane = KVisScrollPane(defaultStyle)
+      val actor = Actor()
 
-    scrollPane.addActor(actor)
+      scrollPane.addActor(actor)
 
-    assertEquals(actor, scrollPane.actor)
-    assertTrue(actor in scrollPane.children)
-  }
+      scrollPane.actor shouldBe actor
+      (actor in scrollPane.children) shouldBe true
+    }
 
-  @Test
-  fun `should fail to store multiple children`() {
-    val scrollPane = KVisScrollPane(defaultStyle)
+    test("should fail to store multiple children") {
+      val scrollPane = KVisScrollPane(defaultStyle)
 
-    scrollPane.addActor(Actor())
-
-    shouldThrow<IllegalStateException> {
       scrollPane.addActor(Actor())
+
+      shouldThrow<IllegalStateException> {
+        scrollPane.addActor(Actor())
+      }
     }
   }
 }
@@ -290,35 +282,35 @@ class KVisScrollPaneTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KVisSelectBox].
  */
 class KSelectBoxTest : ApplicationTest() {
-  @Test
-  fun `should add items`() {
-    val selectBox = KVisSelectBox<String>(defaultStyle)
+  init {
+    test("should add items") {
+      val selectBox = KVisSelectBox<String>(defaultStyle)
 
-    selectBox.apply {
-      -"one"
-      -"two"
-      -"three"
+      selectBox.apply {
+        -"one"
+        -"two"
+        -"three"
+      }
+
+      selectBox.items shouldBe Array.with("one", "two", "three")
     }
 
-    assertEquals(Array.with("one", "two", "three"), selectBox.items)
-  }
+    test("should not clear items on refresh") {
+      // Normally actor.items = actor.items clears the items instead, as the internal "setter" implementation clear the
+      // internal array and copies the one passed as the argument, even if both are the same object.
+      val selectBox = KVisSelectBox<String>(defaultStyle)
 
-  @Test
-  fun `should not clear items on refresh`() {
-    // Normally actor.items = actor.items clears the items instead, as the internal "setter" implementation clear the
-    // internal array and copies the one passed as the argument, even if both are the same object.
-    val selectBox = KVisSelectBox<String>(defaultStyle)
+      selectBox.items.apply {
+        add("one")
+        add("two")
+        add("three")
+      }
 
-    selectBox.items.apply {
-      add("one")
-      add("two")
-      add("three")
+      selectBox.items.size shouldBe 3
+      selectBox.refreshItems() // This implementation fails the test: selectBox.items = selectBox.items
+      selectBox.items.size shouldBe 3
+      selectBox.items shouldBe Array.with("one", "two", "three")
     }
-
-    assertEquals(3, selectBox.items.size)
-    selectBox.refreshItems() // This implementation fails the test: selectBox.items = selectBox.items
-    assertEquals(3, selectBox.items.size)
-    assertEquals(Array.with("one", "two", "three"), selectBox.items)
   }
 }
 
@@ -326,29 +318,29 @@ class KSelectBoxTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KVisSplitPane].
  */
 class KVisSplitPaneTest : ApplicationTest() {
-  @Test
-  fun `should store two children`() {
-    val splitPane = KVisSplitPane(false, defaultHorizontalStyle)
-    val first = Actor()
-    val second = Actor()
+  init {
+    test("should store two children") {
+      val splitPane = KVisSplitPane(false, defaultHorizontalStyle)
+      val first = Actor()
+      val second = Actor()
 
-    splitPane.addActor(first)
-    splitPane.addActor(second)
+      splitPane.addActor(first)
+      splitPane.addActor(second)
 
-    assertTrue(first in splitPane.children)
-    assertTrue(second in splitPane.children)
-    // No way to access first and second widget managed internally by SplitPane (except for reflection...).
-  }
+      (first in splitPane.children) shouldBe true
+      (second in splitPane.children) shouldBe true
+      // No way to access first and second widget managed internally by SplitPane (except for reflection...).
+    }
 
-  @Test
-  fun `should fail to store more than two children`() {
-    val splitPane = KVisSplitPane(true, defaultVerticalStyle)
+    test("should fail to store more than two children") {
+      val splitPane = KVisSplitPane(true, defaultVerticalStyle)
 
-    splitPane.addActor(Actor())
-    splitPane.addActor(Actor())
-
-    shouldThrow<IllegalStateException> {
       splitPane.addActor(Actor())
+      splitPane.addActor(Actor())
+
+      shouldThrow<IllegalStateException> {
+        splitPane.addActor(Actor())
+      }
     }
   }
 }
@@ -357,20 +349,21 @@ class KVisSplitPaneTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KMultiSplitPane].
  */
 class KMultiSplitPaneTest : ApplicationTest() {
-  @Test
-  fun `should store multiple children`() {
-    val splitPane = KMultiSplitPane(false, defaultHorizontalStyle)
-    val first = Actor()
-    val second = Actor()
-    val third = Actor()
+  init {
+    test("should store multiple children") {
+      val splitPane = KMultiSplitPane(false, defaultHorizontalStyle)
+      val first = Actor()
+      val second = Actor()
+      val third = Actor()
 
-    splitPane.addActor(first)
-    splitPane.addActor(second)
-    splitPane.addActor(third)
+      splitPane.addActor(first)
+      splitPane.addActor(second)
+      splitPane.addActor(third)
 
-    assertTrue(first in splitPane.children)
-    assertTrue(second in splitPane.children)
-    assertTrue(third in splitPane.children)
+      (first in splitPane.children) shouldBe true
+      (second in splitPane.children) shouldBe true
+      (third in splitPane.children) shouldBe true
+    }
   }
 }
 
@@ -378,19 +371,20 @@ class KMultiSplitPaneTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KCollapsible].
  */
 class KCollapsibleTest : ApplicationTest() {
-  @Test
-  fun `should add actors to its table`() {
-    val label: Label
-    val image: Image
+  init {
+    test("should add actors to its table") {
+      val label: Label
+      val image: Image
 
-    val collapsible =
-      scene2d.collapsible {
-        label = label("Test").cell(expand = true)
-        image = visImage("white")
-      }
+      val collapsible =
+        scene2d.collapsible {
+          label = label("Test").cell(expand = true)
+          image = visImage("white")
+        }
 
-    assertTrue(label in collapsible.table.children)
-    assertTrue(image in collapsible.table.children)
+      (label in collapsible.table.children) shouldBe true
+      (image in collapsible.table.children) shouldBe true
+    }
   }
 }
 
@@ -398,19 +392,20 @@ class KCollapsibleTest : ApplicationTest() {
  * Tests KTX-adapted widget: [KHorizontalCollapsible].
  */
 class KHorizontalCollapsibleTest : ApplicationTest() {
-  @Test
-  fun `should add actors to its table`() {
-    val label: Label
-    val image: Image
+  init {
+    test("should add actors to its table") {
+      val label: Label
+      val image: Image
 
-    val collapsible =
-      scene2d.horizontalCollapsible {
-        label = label("Test").cell(expand = true)
-        image = visImage("white")
-      }
+      val collapsible =
+        scene2d.horizontalCollapsible {
+          label = label("Test").cell(expand = true)
+          image = visImage("white")
+        }
 
-    assertTrue(label in collapsible.table.children)
-    assertTrue(image in collapsible.table.children)
+      (label in collapsible.table.children) shouldBe true
+      (image in collapsible.table.children) shouldBe true
+    }
   }
 }
 

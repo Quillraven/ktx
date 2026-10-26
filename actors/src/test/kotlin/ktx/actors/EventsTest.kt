@@ -13,120 +13,107 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent
 import com.badlogic.gdx.scenes.scene2d.utils.FocusListener.FocusEvent
 import com.badlogic.gdx.scenes.scene2d.utils.FocusListener.FocusEvent.Type.keyboard
 import com.badlogic.gdx.scenes.scene2d.utils.FocusListener.FocusEvent.Type.scroll
-import io.kotlintest.mock.mock
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import org.mockito.kotlin.mock
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * Tests events and listeners utilities.
  */
 @Suppress("UNUSED_PARAMETER", "UNUSED_ANONYMOUS_PARAMETER") // Unused lambda parameters showcase the listeners API.
-class EventsTest {
-  @Test
-  fun `should attach ChangeListener`() {
+class EventsTest : FunSpec({
+  test("should attach ChangeListener") {
     val actor = Actor()
     var changed = false
 
     val listener = actor.onChange { changed = true }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
     actor.fire(ChangeEvent())
-    assertTrue(changed)
+    changed shouldBe true
   }
 
-  @Test
-  fun `should attach ChangeListener consuming ChangeEvent`() {
+  test("should attach ChangeListener consuming ChangeEvent") {
     val actor = Actor()
     var changed = false
 
     val listener = actor.onChangeEvent { event -> changed = true }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
     actor.fire(ChangeEvent())
-    assertTrue(changed)
+    changed shouldBe true
   }
 
-  @Test
-  fun `should attach ClickListener`() {
+  test("should attach ClickListener") {
     val actor = Actor()
 
     val listener = actor.onClick { }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach ClickListener consuming InputEvent`() {
+  test("should attach ClickListener consuming InputEvent") {
     val actor = Actor()
 
     val listener = actor.onClickEvent { event -> }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach ClickListener consuming InputEvent with local coordinates`() {
+  test("should attach ClickListener consuming InputEvent with local coordinates") {
     val actor = Actor()
 
     val listener = actor.onClickEvent { event, x, y -> }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach ClickListener triggered on enter events`() {
+  test("should attach ClickListener triggered on enter events") {
     val actor = Actor()
 
     val listener = actor.onEnter { }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener triggered on exit events`() {
+  test("should attach InputListener triggered on exit events") {
     val actor = Actor()
 
     val listener = actor.onExit { }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach ClickListener consuming onEnter events with local coordinates`() {
+  test("should attach ClickListener consuming onEnter events with local coordinates") {
     val actor = Actor()
 
     val listener = actor.onEnterEvent { event, x, y -> }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach ClickListener consuming onExit events with local coordinates`() {
+  test("should attach ClickListener consuming onExit events with local coordinates") {
     val actor = Actor()
 
     val listener = actor.onExitEvent { event, x, y -> }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  class SampleNode : Tree.Node<SampleNode, Any, Actor>(mock())
-
-  @Test
-  fun `should attach ChangeListener to a Tree consuming Selection with the selected Nodes`() {
+  test("should attach ChangeListener to a Tree consuming Selection with the selected Nodes") {
     val style = mock<Tree.TreeStyle>()
     style.plus = mock()
     style.minus = mock()
@@ -134,12 +121,11 @@ class EventsTest {
 
     val listener = tree.onSelectionChange {}
 
-    assertNotNull(listener)
-    assertTrue(listener in tree.listeners)
+    listener.shouldNotBeNull()
+    (listener in tree.listeners) shouldBe true
   }
 
-  @Test
-  fun `should invoke attached ChangeListener when tree Selection changes`() {
+  test("should invoke attached ChangeListener when tree Selection changes") {
     val style = mock<Tree.TreeStyle>()
     style.plus = mock()
     style.minus = mock()
@@ -160,33 +146,30 @@ class EventsTest {
 
     tree.selection.add(selected)
 
-    assertEquals(1, executions.get())
-    assertEquals(1, selectedNodes.size)
-    assertSame(selected, selectedNodes.first())
+    executions.get() shouldBe 1
+    selectedNodes.size shouldBe 1
+    selectedNodes.first() shouldBeSameInstanceAs selected
   }
 
-  @Test
-  fun `should attach InputListener for touchDown`() {
+  test("should attach InputListener for touchDown") {
     val actor = Actor()
 
     val listener = actor.onTouchDown { }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener for touchUp`() {
+  test("should attach InputListener for touchUp") {
     val actor = Actor()
 
     val listener = actor.onTouchUp { }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener consuming InputEvent for touch events`() {
+  test("should attach InputListener consuming InputEvent for touch events") {
     val actor = Actor()
 
     val listener =
@@ -195,12 +178,11 @@ class EventsTest {
         onUp = { event -> },
       )
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener consuming InputEvent for touch events with local coordinates`() {
+  test("should attach InputListener consuming InputEvent for touch events with local coordinates") {
     val actor = Actor()
 
     val listener =
@@ -209,12 +191,11 @@ class EventsTest {
         onUp = { event, x, y -> },
       )
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener consuming InputEvent for touch events with local coordinates, pointer and button`() {
+  test("should attach InputListener consuming InputEvent for touch events with local coordinates, pointer and button") {
     val actor = Actor()
 
     val listener =
@@ -223,258 +204,244 @@ class EventsTest {
         onUp = { event, x, y, pointer, button -> },
       )
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener and trigger touchDown event`() {
+  test("should attach InputListener and trigger touchDown event") {
     val actor = Actor()
     var result = false
 
     val listener = actor.onTouchEvent { event -> result = event.type == touchDown }
     listener.touchDown(InputEvent().apply { type = touchDown }, 0f, 0f, 0, 0)
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertTrue(result)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    result shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener and trigger touchUp event`() {
+  test("should attach InputListener and trigger touchUp event") {
     val actor = Actor()
     var result = false
 
     val listener = actor.onTouchEvent { event -> result = event.type == touchUp }
     listener.touchDown(InputEvent().apply { type = touchUp }, 0f, 0f, 0, 0)
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertTrue(result)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    result shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener and trigger touchDown event with local coordinates, pointer and button`() {
+  test("should attach InputListener and trigger touchDown event with local coordinates, pointer and button") {
     val actor = Actor()
     var result = false
 
     val listener = actor.onTouchEvent { event, x, y, pointer, button -> result = event.type == touchDown }
     listener.touchDown(InputEvent().apply { type = touchDown }, 0f, 0f, 0, 0)
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertTrue(result)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    result shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener and trigger touchUp event with local coordinates, pointer and button`() {
+  test("should attach InputListener and trigger touchUp event with local coordinates, pointer and button") {
     val actor = Actor()
     var result = false
 
     val listener = actor.onTouchEvent { event, x, y, pointer, button -> result = event.type == touchUp }
     listener.touchDown(InputEvent().apply { type = touchUp }, 0f, 0f, 0, 0)
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertTrue(result)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    result shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener and trigger touchDown event with local coordinates`() {
+  test("should attach InputListener and trigger touchDown event with local coordinates") {
     val actor = Actor()
     var result = false
 
     val listener = actor.onTouchEvent { event, x, y -> result = event.type == touchDown }
     listener.touchDown(InputEvent().apply { type = touchDown }, 0f, 0f, 0, 0)
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertTrue(result)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    result shouldBe true
   }
 
-  @Test
-  fun `should attach InputListener and trigger touchUp event with local coordinates`() {
+  test("should attach InputListener and trigger touchUp event with local coordinates") {
     val actor = Actor()
     var result = false
 
     val listener = actor.onTouchEvent { event, x, y -> result = event.type == touchUp }
     listener.touchDown(InputEvent().apply { type = touchUp }, 0f, 0f, 0, 0)
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertTrue(result)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    result shouldBe true
   }
 
-  @Test
-  fun `should attach key listener`() {
+  test("should attach key listener") {
     val actor = Actor()
     var typed: Char? = null
 
     val listener = actor.onKey { key -> typed = key }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertNull(typed)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    typed.shouldBeNull()
     val event = InputEvent()
     event.character = 'a'
     event.type = keyTyped
     actor.fire(event)
-    assertEquals('a', typed)
+    typed shouldBe 'a'
   }
 
-  @Test
-  fun `should attach key listener consuming InputEvent`() {
+  test("should attach key listener consuming InputEvent") {
     val actor = Actor()
     var typed: Char? = null
 
     val listener = actor.onKeyEvent { event, key -> typed = key }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertNull(typed)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    typed.shouldBeNull()
     val event = InputEvent()
     event.character = 'a'
     event.type = keyTyped
     actor.fire(event)
-    assertEquals('a', typed)
+    typed shouldBe 'a'
   }
 
-  @Test
-  fun `should attach key down listener`() {
+  test("should attach key down listener") {
     val actor = Actor()
     var pressed: Int? = null
 
     val listener = actor.onKeyDown { keyCode -> pressed = keyCode }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertNull(pressed)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    pressed.shouldBeNull()
     val event = InputEvent()
     event.keyCode = Keys.A
     event.type = keyDown
     actor.fire(event)
-    assertEquals(Keys.A, pressed)
+    pressed shouldBe Keys.A
   }
 
-  @Test
-  fun `should attach key down listener consuming InputEvent`() {
+  test("should attach key down listener consuming InputEvent") {
     val actor = Actor()
     var pressed: Int? = null
 
     val listener = actor.onKeyDownEvent { event, keyCode -> pressed = keyCode }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
-    assertNull(pressed)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
+    pressed.shouldBeNull()
     val event = InputEvent()
     event.keyCode = Keys.A
     event.type = keyDown
     actor.fire(event)
-    assertEquals(Keys.A, pressed)
+    pressed shouldBe Keys.A
   }
 
-  @Test
-  fun `should attach key up listener`() {
+  test("should attach key up listener") {
     val actor = Actor()
     var released: Int? = null
 
     val listener = actor.onKeyUp { keyCode -> released = keyCode }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
 
-    assertNull(released)
+    released.shouldBeNull()
     val event = InputEvent()
     event.keyCode = Keys.A
     event.type = keyUp
     actor.fire(event)
-    assertEquals(Keys.A, released)
+    released shouldBe Keys.A
   }
 
-  @Test
-  fun `should attach key up listener consuming InputEvent`() {
+  test("should attach key up listener consuming InputEvent") {
     val actor = Actor()
     var released: Int? = null
 
     val listener = actor.onKeyUpEvent { event, keyCode -> released = keyCode }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
 
-    assertNull(released)
+    released.shouldBeNull()
     val event = InputEvent()
     event.keyCode = Keys.A
     event.type = keyUp
     actor.fire(event)
-    assertEquals(Keys.A, released)
+    released shouldBe Keys.A
   }
 
-  @Test
-  fun `should attach scroll focus listener`() {
+  test("should attach scroll focus listener") {
     val actor = Actor()
     var focused = false
 
     val listener = actor.onScrollFocus { focused = it }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
     val event = FocusEvent()
     event.type = scroll
     event.isFocused = true
     actor.fire(event)
-    assertTrue(focused)
+    focused shouldBe true
   }
 
-  @Test
-  fun `should attach scroll focus listener consuming FocusEvent`() {
+  test("should attach scroll focus listener consuming FocusEvent") {
     val actor = Actor()
     var focused = false
 
     val listener = actor.onScrollFocusEvent { event -> focused = event.isFocused }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
     val event = FocusEvent()
     event.type = scroll
     event.isFocused = true
     actor.fire(event)
-    assertTrue(focused)
+    focused shouldBe true
   }
 
-  @Test
-  fun `should attach keyboard focus listener`() {
+  test("should attach keyboard focus listener") {
     val actor = Actor()
     var focused = false
 
     val listener = actor.onKeyboardFocus { focused = it }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
     val event = FocusEvent()
     event.type = keyboard
     event.isFocused = true
     actor.fire(event)
-    assertTrue(focused)
+    focused shouldBe true
   }
 
-  @Test
-  fun `should attach keyboard focus listener consuming FocusEvent`() {
+  test("should attach keyboard focus listener consuming FocusEvent") {
     val actor = Actor()
     var focused = false
 
     val listener = actor.onKeyboardFocusEvent { event -> focused = event.isFocused }
 
-    assertNotNull(listener)
-    assertTrue(listener in actor.listeners)
+    listener.shouldNotBeNull()
+    (listener in actor.listeners) shouldBe true
     val event = FocusEvent()
     event.type = keyboard
     event.isFocused = true
     actor.fire(event)
-    assertTrue(focused)
+    focused shouldBe true
   }
+})
 
-  @Suppress("unused", "ClassName")
-  class `should extend KtxInputListener with no methods overridden` : KtxInputListener() {
-    // Guarantees all KtxInputListener methods are optional to implement.
-  }
+class SampleNode : Tree.Node<SampleNode, Any, Actor>(mock())
+
+@Suppress("unused", "ClassName")
+class `should extend KtxInputListener with no methods overridden` : KtxInputListener() {
+  // Guarantees all KtxInputListener methods are optional to implement.
 }

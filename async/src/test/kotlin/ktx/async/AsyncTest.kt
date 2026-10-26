@@ -4,9 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.headless.HeadlessApplication
 import com.badlogic.gdx.utils.async.AsyncExecutor
-import org.junit.After
-import org.junit.Assert.assertSame
-import org.junit.Before
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit.SECONDS
 
@@ -14,8 +13,7 @@ import java.util.concurrent.TimeUnit.SECONDS
  * Base class for asynchronous API tests. Initiates a [HeadlessApplication] to handle the rendering loop and execution
  * of scheduled tasks.
  */
-abstract class AsyncTest {
-  @Before
+abstract class AsyncTest : FunSpec() {
   open fun `setup libGDX application`() {
     Gdx.app = HeadlessApplication(object : ApplicationAdapter() {})
     val initTask = CompletableFuture<Unit>()
@@ -25,7 +23,7 @@ abstract class AsyncTest {
       initTask.complete(Unit)
     }
     initTask.join()
-    assertSame(getExecutionThread(Gdx.app::postRunnable), getMainRenderingThread())
+    getMainRenderingThread() shouldBeSameInstanceAs getExecutionThread(Gdx.app::postRunnable)
   }
 
   /**
@@ -70,8 +68,13 @@ abstract class AsyncTest {
     Thread.sleep(millis)
   }
 
-  @After
   open fun `exit libGDX application`() {
     Gdx.app.exit()
+  }
+
+  init {
+    beforeTest { `setup libGDX application`() }
+
+    afterTest { `exit libGDX application`() }
   }
 }

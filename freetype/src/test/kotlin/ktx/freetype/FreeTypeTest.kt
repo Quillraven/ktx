@@ -9,14 +9,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.mock
 
 /**
@@ -24,249 +20,233 @@ import org.mockito.kotlin.mock
  *
  * Uses Hack font for testing. See https://github.com/source-foundry/Hack for details.
  */
-open class FreeTypeTest {
+open class FreeTypeTest : FunSpec() {
   protected open val ttfFile = "ktx/freetype/hack.ttf"
   protected open val otfFile = "ktx/freetype/hack.otf"
 
   protected open fun assetManager() = AssetManager(ClasspathFileHandleResolver())
 
-  @Test
-  fun `should initiate font loading parameters`() {
-    val variable: Int
+  init {
+    test("should initiate font loading parameters") {
+      val variable: Int
 
-    val parameters =
-      freeTypeFontParameters("file.ttf") {
-        size = 12
-        flip = false
-        variable = 42
-      }
+      val parameters =
+        freeTypeFontParameters("file.ttf") {
+          size = 12
+          flip = false
+          variable = 42
+        }
 
-    assertEquals("file.ttf", parameters.fontFileName)
-    assertEquals(12, parameters.fontParameters.size)
-    assertFalse(parameters.fontParameters.flip)
-    assertEquals(42, variable)
-  }
+      parameters.fontFileName shouldBe "file.ttf"
+      parameters.fontParameters.size shouldBe 12
+      parameters.fontParameters.flip shouldBe false
+      variable shouldBe 42
+    }
 
-  @Test
-  fun `should register FreeType font loaders`() {
-    val assetManager = assetManager()
+    test("should register FreeType font loaders") {
+      val assetManager = assetManager()
 
-    assetManager.registerFreeTypeFontLoaders()
+      assetManager.registerFreeTypeFontLoaders()
 
-    assertTrue(assetManager.getLoader(FreeTypeFontGenerator::class.java) is FreeTypeFontGeneratorLoader)
-    assertTrue(assetManager.getLoader(BitmapFont::class.java, ".ttf") is FreetypeFontLoader)
-    assertTrue(assetManager.getLoader(BitmapFont::class.java, ".otf") is FreetypeFontLoader)
-  }
+      (assetManager.getLoader(FreeTypeFontGenerator::class.java) is FreeTypeFontGeneratorLoader) shouldBe true
+      (assetManager.getLoader(BitmapFont::class.java, ".ttf") is FreetypeFontLoader) shouldBe true
+      (assetManager.getLoader(BitmapFont::class.java, ".otf") is FreetypeFontLoader) shouldBe true
+    }
 
-  @Test
-  fun `should register FreeType font loaders with custom extensions`() {
-    val assetManager = assetManager()
+    test("should register FreeType font loaders with custom extensions") {
+      val assetManager = assetManager()
 
-    assetManager.registerFreeTypeFontLoaders(fileExtensions = arrayOf(".custom"))
+      assetManager.registerFreeTypeFontLoaders(fileExtensions = arrayOf(".custom"))
 
-    assertTrue(assetManager.getLoader(FreeTypeFontGenerator::class.java) is FreeTypeFontGeneratorLoader)
-    assertTrue(assetManager.getLoader(BitmapFont::class.java, ".custom") is FreetypeFontLoader)
-    // Should not register loader for unlisted extensions:
-    assertFalse(assetManager.getLoader(BitmapFont::class.java, ".ttf") is FreetypeFontLoader)
-    assertFalse(assetManager.getLoader(BitmapFont::class.java, ".otf") is FreetypeFontLoader)
-  }
+      (assetManager.getLoader(FreeTypeFontGenerator::class.java) is FreeTypeFontGeneratorLoader) shouldBe true
+      (assetManager.getLoader(BitmapFont::class.java, ".custom") is FreetypeFontLoader) shouldBe true
+      // Should not register loader for unlisted extensions:
+      (assetManager.getLoader(BitmapFont::class.java, ".ttf") is FreetypeFontLoader) shouldBe false
+      (assetManager.getLoader(BitmapFont::class.java, ".otf") is FreetypeFontLoader) shouldBe false
+    }
 
-  @Test
-  fun `should register FreeType font loaders and override default BitmapFont loader`() {
-    val assetManager = assetManager()
+    test("should register FreeType font loaders and override default BitmapFont loader") {
+      val assetManager = assetManager()
 
-    assetManager.registerFreeTypeFontLoaders(replaceDefaultBitmapFontLoader = true)
+      assetManager.registerFreeTypeFontLoaders(replaceDefaultBitmapFontLoader = true)
 
-    assertTrue(assetManager.getLoader(FreeTypeFontGenerator::class.java) is FreeTypeFontGeneratorLoader)
-    assertTrue(assetManager.getLoader(BitmapFont::class.java) is FreetypeFontLoader)
-  }
+      (assetManager.getLoader(FreeTypeFontGenerator::class.java) is FreeTypeFontGeneratorLoader) shouldBe true
+      (assetManager.getLoader(BitmapFont::class.java) is FreetypeFontLoader) shouldBe true
+    }
 
-  @Test
-  fun `should load OTF file into BitmapFont`() {
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
+    test("should load OTF file into BitmapFont") {
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
 
-    val asset = assetManager.loadFreeTypeFont(otfFile)
+      val asset = assetManager.loadFreeTypeFont(otfFile)
 
-    asset.finishLoading()
-    val font = assetManager.get<BitmapFont>(otfFile)
-    assertNotNull(font)
-    assertTrue(font is BitmapFont)
-    assertSame(asset.asset, font)
-  }
+      asset.finishLoading()
+      val font = assetManager.get<BitmapFont>(otfFile)
+      font.shouldNotBeNull()
+      (font is BitmapFont) shouldBe true
+      font shouldBeSameInstanceAs asset.asset
+    }
 
-  @Test
-  fun `should load OTF file into BitmapFont with custom parameters`() {
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
-    val variable: Int
+    test("should load OTF file into BitmapFont with custom parameters") {
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
+      val variable: Int
 
-    val asset =
-      assetManager.loadFreeTypeFont(otfFile) {
-        size = 12
-        borderWidth = 1f
-        variable = 42
-      }
+      val asset =
+        assetManager.loadFreeTypeFont(otfFile) {
+          size = 12
+          borderWidth = 1f
+          variable = 42
+        }
 
-    asset.finishLoading()
-    val font = assetManager.get<BitmapFont>(otfFile)
-    assertNotNull(font)
-    assertTrue(font is BitmapFont)
-    assertSame(asset.asset, font)
-    assertEquals(42, variable)
-  }
+      asset.finishLoading()
+      val font = assetManager.get<BitmapFont>(otfFile)
+      font.shouldNotBeNull()
+      (font is BitmapFont) shouldBe true
+      font shouldBeSameInstanceAs asset.asset
+      variable shouldBe 42
+    }
 
-  @Test
-  fun `should load TTF file into BitmapFont`() {
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
+    test("should load TTF file into BitmapFont") {
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
 
-    val asset = assetManager.loadFreeTypeFont(ttfFile)
+      val asset = assetManager.loadFreeTypeFont(ttfFile)
 
-    asset.finishLoading()
-    val font = assetManager.get<BitmapFont>(ttfFile)
-    assertNotNull(font)
-    assertTrue(font is BitmapFont)
-    assertSame(asset.asset, font)
-  }
+      asset.finishLoading()
+      val font = assetManager.get<BitmapFont>(ttfFile)
+      font.shouldNotBeNull()
+      (font is BitmapFont) shouldBe true
+      font shouldBeSameInstanceAs asset.asset
+    }
 
-  @Test
-  fun `should load TTF file into BitmapFont with custom parameters`() {
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
-    val variable: Int
+    test("should load TTF file into BitmapFont with custom parameters") {
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
+      val variable: Int
 
-    val asset =
-      assetManager.loadFreeTypeFont(ttfFile) {
-        size = 12
-        borderWidth = 1f
-        variable = 42
-      }
+      val asset =
+        assetManager.loadFreeTypeFont(ttfFile) {
+          size = 12
+          borderWidth = 1f
+          variable = 42
+        }
 
-    asset.finishLoading()
-    val font = assetManager.get<BitmapFont>(ttfFile)
-    assertNotNull(font)
-    assertTrue(font is BitmapFont)
-    assertSame(asset.asset, font)
-    assertEquals(42, variable)
-  }
+      asset.finishLoading()
+      val font = assetManager.get<BitmapFont>(ttfFile)
+      font.shouldNotBeNull()
+      (font is BitmapFont) shouldBe true
+      font shouldBeSameInstanceAs asset.asset
+      variable shouldBe 42
+    }
 
-  @Test
-  fun `should use FreeType loader to load OTF file into BitmapFont`() {
-    // Note that this tests uses "raw" libGDX AssetManager API without font loading utilities.
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
-    assetManager.load(otfFile, BitmapFont::class.java, freeTypeFontParameters(otfFile))
-    assetManager.finishLoading()
+    test("should use FreeType loader to load OTF file into BitmapFont") {
+      // Note that this tests uses "raw" libGDX AssetManager API without font loading utilities.
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
+      assetManager.load(otfFile, BitmapFont::class.java, freeTypeFontParameters(otfFile))
+      assetManager.finishLoading()
 
-    val font = assetManager.get<BitmapFont>(otfFile)
+      val font = assetManager.get<BitmapFont>(otfFile)
 
-    assertNotNull(font)
-    assertTrue(font is BitmapFont)
-  }
+      font.shouldNotBeNull()
+      (font is BitmapFont) shouldBe true
+    }
 
-  @Test
-  fun `should use FreeType loader to load TTF file into BitmapFont`() {
-    // Note that this tests uses "raw" libGDX AssetManager API without font loading utilities.
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
-    assetManager.load(ttfFile, BitmapFont::class.java, freeTypeFontParameters(ttfFile))
-    assetManager.finishLoading()
+    test("should use FreeType loader to load TTF file into BitmapFont") {
+      // Note that this tests uses "raw" libGDX AssetManager API without font loading utilities.
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
+      assetManager.load(ttfFile, BitmapFont::class.java, freeTypeFontParameters(ttfFile))
+      assetManager.finishLoading()
 
-    val font = assetManager.get<BitmapFont>(ttfFile)
+      val font = assetManager.get<BitmapFont>(ttfFile)
 
-    assertNotNull(font)
-    assertTrue(font is BitmapFont)
-  }
+      font.shouldNotBeNull()
+      (font is BitmapFont) shouldBe true
+    }
 
-  @Test
-  fun `should load OTF file into FreeTypeFontGenerator`() {
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
-    assetManager.load(otfFile, FreeTypeFontGenerator::class.java)
-    assetManager.finishLoading()
+    test("should load OTF file into FreeTypeFontGenerator") {
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
+      assetManager.load(otfFile, FreeTypeFontGenerator::class.java)
+      assetManager.finishLoading()
 
-    val fontGenerator = assetManager.get<FreeTypeFontGenerator>(otfFile)
+      val fontGenerator = assetManager.get<FreeTypeFontGenerator>(otfFile)
 
-    assertNotNull(fontGenerator)
-    assertTrue(fontGenerator is FreeTypeFontGenerator)
-  }
+      fontGenerator.shouldNotBeNull()
+      (fontGenerator is FreeTypeFontGenerator) shouldBe true
+    }
 
-  @Test
-  fun `should load TTF file into FreeTypeFontGenerator`() {
-    val assetManager = assetManager()
-    assetManager.registerFreeTypeFontLoaders()
-    assetManager.load(ttfFile, FreeTypeFontGenerator::class.java)
-    assetManager.finishLoading()
+    test("should load TTF file into FreeTypeFontGenerator") {
+      val assetManager = assetManager()
+      assetManager.registerFreeTypeFontLoaders()
+      assetManager.load(ttfFile, FreeTypeFontGenerator::class.java)
+      assetManager.finishLoading()
 
-    val fontGenerator = assetManager.get<FreeTypeFontGenerator>(ttfFile)
+      val fontGenerator = assetManager.get<FreeTypeFontGenerator>(ttfFile)
 
-    assertNotNull(fontGenerator)
-    assertTrue(fontGenerator is FreeTypeFontGenerator)
-  }
+      fontGenerator.shouldNotBeNull()
+      (fontGenerator is FreeTypeFontGenerator) shouldBe true
+    }
 
-  @Test
-  fun `should generate font from TTF file`() {
-    val generator = FreeTypeFontGenerator(Gdx.files.classpath(ttfFile))
+    test("should generate font from TTF file") {
+      val generator = FreeTypeFontGenerator(Gdx.files.classpath(ttfFile))
 
-    val font = generator.generateFont()
+      val font = generator.generateFont()
 
-    assertNotNull(font)
-  }
+      font.shouldNotBeNull()
+    }
 
-  @Test
-  fun `should generate font from TTF file with custom parameters `() {
-    val generator = FreeTypeFontGenerator(Gdx.files.classpath(ttfFile))
-    val variable: Int
+    test("should generate font from TTF file with custom parameters ") {
+      val generator = FreeTypeFontGenerator(Gdx.files.classpath(ttfFile))
+      val variable: Int
 
-    val font =
-      generator.generateFont {
-        size = 40
-        variable = 42
-      }
+      val font =
+        generator.generateFont {
+          size = 40
+          variable = 42
+        }
 
-    assertNotNull(font)
-    assertEquals(42, variable)
-  }
+      font.shouldNotBeNull()
+      variable shouldBe 42
+    }
 
-  @Test
-  fun `should generate font from OTF file`() {
-    val generator = FreeTypeFontGenerator(Gdx.files.classpath(otfFile))
+    test("should generate font from OTF file") {
+      val generator = FreeTypeFontGenerator(Gdx.files.classpath(otfFile))
 
-    val font = generator.generateFont()
+      val font = generator.generateFont()
 
-    assertNotNull(font)
-  }
+      font.shouldNotBeNull()
+    }
 
-  @Test
-  fun `should generate font from OTF file with custom parameters `() {
-    val generator = FreeTypeFontGenerator(Gdx.files.classpath(otfFile))
-    val variable: Int
+    test("should generate font from OTF file with custom parameters ") {
+      val generator = FreeTypeFontGenerator(Gdx.files.classpath(otfFile))
+      val variable: Int
 
-    val font =
-      generator.generateFont {
-        size = 40
-        variable = 42
-      }
+      val font =
+        generator.generateFont {
+          size = 40
+          variable = 42
+        }
 
-    assertNotNull(font)
-    assertEquals(42, variable)
-  }
+      font.shouldNotBeNull()
+      variable shouldBe 42
+    }
 
-  @Before
-  fun `setup libGDX`() {
-    LwjglNativesLoader.load()
-    Gdx.gl = mock()
-    Gdx.gl20 = Gdx.gl
-    Gdx.graphics = mock()
-    Gdx.files = LwjglFiles()
-  }
+    beforeTest {
+      LwjglNativesLoader.load()
+      Gdx.gl = mock()
+      Gdx.gl20 = Gdx.gl
+      Gdx.graphics = mock()
+      Gdx.files = LwjglFiles()
+    }
 
-  @After
-  fun `cleanup libGDX`() {
-    Gdx.gl = null
-    Gdx.gl20 = null
-    Gdx.files = null
-    Gdx.graphics = null
+    afterTest {
+      Gdx.gl = null
+      Gdx.gl20 = null
+      Gdx.files = null
+      Gdx.graphics = null
+    }
   }
 }

@@ -4,13 +4,10 @@ import com.badlogic.gdx.Application
 import com.badlogic.gdx.Application.ApplicationType
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.GdxRuntimeException
-import io.kotlintest.matchers.shouldThrow
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 
@@ -18,8 +15,8 @@ import org.mockito.kotlin.mock
  * Tests [Platform] utilities.
  */
 @Suppress("DEPRECATION") // For Applet tests.
-class PlatformTest {
-  private fun fakeApp(
+class PlatformTest : FunSpec({
+  fun fakeApp(
     platform: ApplicationType? = null,
     version: Int = 0,
   ): Application =
@@ -28,13 +25,11 @@ class PlatformTest {
       on { it.version } doReturn version
     }
 
-  @After
-  fun `clean libGDX application`() {
+  afterTest {
     Gdx.app = null
   }
 
-  @Test
-  fun `should return current platform if application is defined`() {
+  test("should return current platform if application is defined") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -42,11 +37,10 @@ class PlatformTest {
     val platform = Platform.currentPlatform
 
     // Then:
-    assertSame(ApplicationType.Desktop, platform)
+    platform shouldBeSameInstanceAs ApplicationType.Desktop
   }
 
-  @Test
-  fun `should throw exception if application is undefined`() {
+  test("should throw exception if application is undefined") {
     // Given:
     Gdx.app = null
 
@@ -56,8 +50,7 @@ class PlatformTest {
     }
   }
 
-  @Test
-  fun `should throw exception if application type is undefined`() {
+  test("should throw exception if application type is undefined") {
     // Given:
     Gdx.app = fakeApp(platform = null)
 
@@ -67,8 +60,7 @@ class PlatformTest {
     }
   }
 
-  @Test
-  fun `should check if the current platform is Applet`() {
+  test("should check if the current platform is Applet") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Applet)
 
@@ -76,11 +68,10 @@ class PlatformTest {
     val isApplet = Platform.isApplet
 
     // Then:
-    assertTrue(isApplet)
+    isApplet shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not Applet`() {
+  test("should check if the current platform is not Applet") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.WebGL)
 
@@ -88,11 +79,10 @@ class PlatformTest {
     val isApplet = Platform.isApplet
 
     // Then:
-    assertFalse(isApplet)
+    isApplet shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is Applet`() {
+  test("should execute action if the current platform is Applet") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Applet)
 
@@ -100,11 +90,10 @@ class PlatformTest {
     val executed = Platform.runOnApplet { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not Applet`() {
+  test("should not execute action if the current platform is not Applet") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.WebGL)
 
@@ -112,11 +101,10 @@ class PlatformTest {
     val executed = Platform.runOnApplet { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should check if the current platform is Android`() {
+  test("should check if the current platform is Android") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android)
 
@@ -124,11 +112,10 @@ class PlatformTest {
     val isAndroid = Platform.isAndroid
 
     // Then:
-    assertTrue(isAndroid)
+    isAndroid shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not Android`() {
+  test("should check if the current platform is not Android") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.iOS)
 
@@ -136,11 +123,10 @@ class PlatformTest {
     val isAndroid = Platform.isAndroid
 
     // Then:
-    assertFalse(isAndroid)
+    isAndroid shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is Android`() {
+  test("should execute action if the current platform is Android") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android)
 
@@ -148,11 +134,10 @@ class PlatformTest {
     val executed = Platform.runOnAndroid { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not Android`() {
+  test("should not execute action if the current platform is not Android") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.iOS)
 
@@ -160,11 +145,10 @@ class PlatformTest {
     val executed = Platform.runOnAndroid { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should check if the current platform is Desktop`() {
+  test("should check if the current platform is Desktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -172,11 +156,10 @@ class PlatformTest {
     val isDesktop = Platform.isDesktop
 
     // Then:
-    assertTrue(isDesktop)
+    isDesktop shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not Desktop`() {
+  test("should check if the current platform is not Desktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.HeadlessDesktop)
 
@@ -184,11 +167,10 @@ class PlatformTest {
     val isDesktop = Platform.isDesktop
 
     // Then:
-    assertFalse(isDesktop)
+    isDesktop shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is Desktop`() {
+  test("should execute action if the current platform is Desktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -196,11 +178,10 @@ class PlatformTest {
     val executed = Platform.runOnDesktop { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not Desktop`() {
+  test("should not execute action if the current platform is not Desktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.HeadlessDesktop)
 
@@ -208,11 +189,10 @@ class PlatformTest {
     val executed = Platform.runOnDesktop { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should check if the current platform is HeadlessDesktop`() {
+  test("should check if the current platform is HeadlessDesktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.HeadlessDesktop)
 
@@ -220,11 +200,10 @@ class PlatformTest {
     val isHeadless = Platform.isHeadless
 
     // Then:
-    assertTrue(isHeadless)
+    isHeadless shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not HeadlessDesktop`() {
+  test("should check if the current platform is not HeadlessDesktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -232,11 +211,10 @@ class PlatformTest {
     val isHeadless = Platform.isHeadless
 
     // Then:
-    assertFalse(isHeadless)
+    isHeadless shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is HeadlessDesktop`() {
+  test("should execute action if the current platform is HeadlessDesktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.HeadlessDesktop)
 
@@ -244,11 +222,10 @@ class PlatformTest {
     val executed = Platform.runOnHeadless { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not HeadlessDesktop`() {
+  test("should not execute action if the current platform is not HeadlessDesktop") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -256,11 +233,10 @@ class PlatformTest {
     val executed = Platform.runOnHeadless { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should check if the current platform is iOS`() {
+  test("should check if the current platform is iOS") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.iOS)
 
@@ -268,11 +244,10 @@ class PlatformTest {
     val isiOS = Platform.isiOS
 
     // Then:
-    assertTrue(isiOS)
+    isiOS shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not iOS`() {
+  test("should check if the current platform is not iOS") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android)
 
@@ -280,11 +255,10 @@ class PlatformTest {
     val isiOS = Platform.isiOS
 
     // Then:
-    assertFalse(isiOS)
+    isiOS shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is iOS`() {
+  test("should execute action if the current platform is iOS") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.iOS)
 
@@ -292,11 +266,10 @@ class PlatformTest {
     val executed = Platform.runOniOS { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not iOS`() {
+  test("should not execute action if the current platform is not iOS") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android)
 
@@ -304,11 +277,10 @@ class PlatformTest {
     val executed = Platform.runOniOS { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should check if the current platform is mobile on Android`() {
+  test("should check if the current platform is mobile on Android") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android)
 
@@ -316,11 +288,10 @@ class PlatformTest {
     val isMobile = Platform.isMobile
 
     // Then:
-    assertTrue(isMobile)
+    isMobile shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is mobile on iOS`() {
+  test("should check if the current platform is mobile on iOS") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.iOS)
 
@@ -328,11 +299,10 @@ class PlatformTest {
     val isMobile = Platform.isMobile
 
     // Then:
-    assertTrue(isMobile)
+    isMobile shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not mobile`() {
+  test("should check if the current platform is not mobile") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -340,11 +310,10 @@ class PlatformTest {
     val isMobile = Platform.isMobile
 
     // Then:
-    assertFalse(isMobile)
+    isMobile shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is mobile on iOS`() {
+  test("should execute action if the current platform is mobile on iOS") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.iOS)
 
@@ -352,11 +321,10 @@ class PlatformTest {
     val executed = Platform.runOnMobile { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should execute action if the current platform is mobile on Android`() {
+  test("should execute action if the current platform is mobile on Android") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android)
 
@@ -364,11 +332,10 @@ class PlatformTest {
     val executed = Platform.runOnMobile { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not mobile`() {
+  test("should not execute action if the current platform is not mobile") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -376,11 +343,10 @@ class PlatformTest {
     val executed = Platform.runOnMobile { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should check if the current platform is WebGL`() {
+  test("should check if the current platform is WebGL") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.WebGL)
 
@@ -388,11 +354,10 @@ class PlatformTest {
     val isWebGL = Platform.isWeb
 
     // Then:
-    assertTrue(isWebGL)
+    isWebGL shouldBe true
   }
 
-  @Test
-  fun `should check if the current platform is not WebGL`() {
+  test("should check if the current platform is not WebGL") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Applet)
 
@@ -400,11 +365,10 @@ class PlatformTest {
     val isWebGL = Platform.isWeb
 
     // Then:
-    assertFalse(isWebGL)
+    isWebGL shouldBe false
   }
 
-  @Test
-  fun `should execute action if the current platform is WebGL`() {
+  test("should execute action if the current platform is WebGL") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.WebGL)
 
@@ -412,11 +376,10 @@ class PlatformTest {
     val executed = Platform.runOnWeb { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute action if the current platform is not WebGL`() {
+  test("should not execute action if the current platform is not WebGL") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Applet)
 
@@ -424,11 +387,10 @@ class PlatformTest {
     val executed = Platform.runOnWeb { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should return platform version`() {
+  test("should return platform version") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android, version = 20)
 
@@ -436,11 +398,10 @@ class PlatformTest {
     val version = Platform.version
 
     // Then:
-    assertEquals(20, version)
+    version shouldBe 20
   }
 
-  @Test
-  fun `should return default version on platforms without API version`() {
+  test("should return default version on platforms without API version") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -448,11 +409,10 @@ class PlatformTest {
     val version = Platform.version
 
     // Then:
-    assertEquals(0, version)
+    version shouldBe 0
   }
 
-  @Test
-  fun `should return -1 if application is not defined`() {
+  test("should return -1 if application is not defined") {
     // Given:
     Gdx.app = null
 
@@ -460,11 +420,10 @@ class PlatformTest {
     val version = Platform.version
 
     // Then:
-    assertEquals(-1, version)
+    version shouldBe -1
   }
 
-  @Test
-  fun `should execute if version is above the minimum given value`() {
+  test("should execute if version is above the minimum given value") {
     // Given:
     Gdx.app = fakeApp(version = 10)
 
@@ -472,11 +431,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(minVersion = 5) { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should execute if version is equal to the minimum given value`() {
+  test("should execute if version is equal to the minimum given value") {
     // Given:
     Gdx.app = fakeApp(version = 10)
 
@@ -484,11 +442,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(minVersion = 10) { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute if version is below the minimum given value`() {
+  test("should not execute if version is below the minimum given value") {
     // Given:
     Gdx.app = fakeApp(version = 10)
 
@@ -496,11 +453,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(minVersion = 15) { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should execute if version is below the maximum given value`() {
+  test("should execute if version is below the maximum given value") {
     // Given:
     Gdx.app = fakeApp(version = 10)
 
@@ -508,11 +464,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(maxVersion = 15) { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should execute if version is equal to the maximum given value`() {
+  test("should execute if version is equal to the maximum given value") {
     // Given:
     Gdx.app = fakeApp(version = 10)
 
@@ -520,11 +475,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(maxVersion = 10) { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute if version is above the maximum given value`() {
+  test("should not execute if version is above the maximum given value") {
     // Given:
     Gdx.app = fakeApp(version = 10)
 
@@ -532,11 +486,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(maxVersion = 5) { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should execute if platform is not specified`() {
+  test("should execute if platform is not specified") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -544,11 +497,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(platform = null) { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should execute if platform is equal to the given value`() {
+  test("should execute if platform is equal to the given value") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -556,11 +508,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(platform = ApplicationType.Desktop) { true } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute if platform is not equal to the given value`() {
+  test("should not execute if platform is not equal to the given value") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Desktop)
 
@@ -568,11 +519,10 @@ class PlatformTest {
     val executed = Platform.runOnVersion(platform = ApplicationType.Android) { true } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
 
-  @Test
-  fun `should execute if version requirements are met`() {
+  test("should execute if version requirements are met") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android, version = 25)
 
@@ -583,11 +533,10 @@ class PlatformTest {
       } ?: false
 
     // Then:
-    assertTrue(executed)
+    executed shouldBe true
   }
 
-  @Test
-  fun `should not execute if version requirements are not met`() {
+  test("should not execute if version requirements are not met") {
     // Given:
     Gdx.app = fakeApp(platform = ApplicationType.Android, version = 25)
 
@@ -598,6 +547,6 @@ class PlatformTest {
       } ?: false
 
     // Then:
-    assertFalse(executed)
+    executed shouldBe false
   }
-}
+})

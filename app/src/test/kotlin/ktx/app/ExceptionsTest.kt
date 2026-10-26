@@ -1,51 +1,46 @@
 package ktx.app
 
 import com.badlogic.gdx.utils.GdxRuntimeException
-import io.kotlintest.matchers.shouldThrow
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 
-class ExceptionsTest {
-  @Test
-  fun `should throw error`() {
+class ExceptionsTest : FunSpec({
+  test("should throw error") {
     shouldThrow<GdxRuntimeException> {
       gdxError()
     }
   }
 
-  @Test
-  fun `should throw error given a null message`() {
+  test("should throw error given a null message") {
     val exception =
       shouldThrow<GdxRuntimeException> {
         gdxError(null)
       }
 
-    assertEquals("null", exception.message)
+    exception.message shouldBe "null"
   }
 
-  @Test
-  fun `should throw error given a string message`() {
+  test("should throw error given a string message") {
     val exception =
       shouldThrow<GdxRuntimeException> {
         gdxError("Test")
       }
 
-    assertEquals("Test", exception.message)
+    exception.message shouldBe "Test"
   }
 
-  @Test
-  fun `should throw error given an object message`() {
+  test("should throw error given an object message") {
     val exception =
       shouldThrow<GdxRuntimeException> {
         gdxError(42)
       }
 
-    assertEquals("42", exception.message)
+    exception.message shouldBe "42"
   }
 
-  @Test
-  fun `should throw error given a cause`() {
+  test("should throw error given a cause") {
     val cause = Exception()
 
     val exception =
@@ -53,7 +48,7 @@ class ExceptionsTest {
         gdxError("Message", cause)
       }
 
-    assertEquals("Message", exception.message)
-    assertSame(cause, exception.cause)
+    exception.message shouldBe "Message"
+    exception.cause shouldBeSameInstanceAs cause
   }
-}
+})

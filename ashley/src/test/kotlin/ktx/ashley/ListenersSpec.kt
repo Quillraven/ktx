@@ -6,17 +6,15 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IntervalIteratingSystem
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.ashley.systems.SortedIteratingSystem
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 import java.util.Comparator
 
-object ListenersSpec : Spek({
-  describe("utilities for entity listeners") {
+class ListenersSpec : FunSpec({
+  context("utilities for entity listeners") {
     val engine = Engine()
 
-    it("should invoke an addition entity listener") {
+    test("should invoke an addition entity listener") {
       var invoked = false
       val listener =
         object : EntityAdditionListener {
@@ -27,11 +25,11 @@ object ListenersSpec : Spek({
       engine.addEntityListener(listener)
       val entity = engine.entity()
       engine.removeEntity(entity)
-      assertThat(invoked).isTrue()
+      invoked shouldBe true
       engine.removeEntityListener(listener)
     }
 
-    it("should invoke a removal entity listener") {
+    test("should invoke a removal entity listener") {
       var invoked = false
       val listener =
         object : EntityRemovalListener {
@@ -42,23 +40,23 @@ object ListenersSpec : Spek({
       val entity = engine.entity()
       engine.addEntityListener(listener)
       engine.removeEntity(entity)
-      assertThat(invoked).isTrue()
+      invoked shouldBe true
       engine.removeEntityListener(listener)
     }
 
-    it("should invoke an addition entity listener made with a lambda") {
+    test("should invoke an addition entity listener made with a lambda") {
       var invoked = false
       val listener =
         engine.onEntityAdded {
           invoked = true
         }
       val entity = engine.entity()
-      assertThat(invoked).isTrue()
+      invoked shouldBe true
       engine.removeEntity(entity)
       engine.removeEntityListener(listener)
     }
 
-    it("should invoke a removal entity listener made with a lambda") {
+    test("should invoke a removal entity listener made with a lambda") {
       var invoked = false
       val entity = engine.entity()
       val listener =
@@ -66,11 +64,11 @@ object ListenersSpec : Spek({
           invoked = true
         }
       engine.removeEntity(entity)
-      assertThat(invoked).isTrue()
+      invoked shouldBe true
       engine.removeEntityListener(listener)
     }
 
-    it("should run listeners bound to an iterating system") {
+    test("should run listeners bound to an iterating system") {
       var addAssertion = false
       var removeAssertion = false
 
@@ -113,8 +111,8 @@ object ListenersSpec : Spek({
       engine.addSystem(system)
 
       engine.entity().apply(engine::removeEntity)
-      assertThat(addAssertion).isFalse
-      assertThat(removeAssertion).isFalse
+      addAssertion shouldBe false
+      removeAssertion shouldBe false
 
       val entity =
         engine.entity {
@@ -123,11 +121,11 @@ object ListenersSpec : Spek({
       engine.removeEntity(entity)
       engine.removeSystem(system)
 
-      assertThat(addAssertion).isTrue
-      assertThat(removeAssertion).isTrue
+      addAssertion shouldBe true
+      removeAssertion shouldBe true
     }
 
-    it("should run listeners bound to an interval iterating system") {
+    test("should run listeners bound to an interval iterating system") {
       var addAssertion = false
       var removeAssertion = false
 
@@ -167,8 +165,8 @@ object ListenersSpec : Spek({
       engine.addSystem(system)
 
       engine.entity().apply(engine::removeEntity)
-      assertThat(addAssertion).isFalse
-      assertThat(removeAssertion).isFalse
+      addAssertion shouldBe false
+      removeAssertion shouldBe false
 
       val entity =
         engine.entity {
@@ -177,11 +175,11 @@ object ListenersSpec : Spek({
       engine.removeEntity(entity)
       engine.removeSystem(system)
 
-      assertThat(addAssertion).isTrue
-      assertThat(removeAssertion).isTrue
+      addAssertion shouldBe true
+      removeAssertion shouldBe true
     }
 
-    it("should run listeners bound to a sorted iterating system") {
+    test("should run listeners bound to a sorted iterating system") {
       var addAssertion = false
       var removeAssertion = false
 
@@ -224,8 +222,8 @@ object ListenersSpec : Spek({
       engine.addSystem(system)
 
       engine.entity().apply(engine::removeEntity)
-      assertThat(addAssertion).isFalse
-      assertThat(removeAssertion).isFalse
+      addAssertion shouldBe false
+      removeAssertion shouldBe false
 
       val entity =
         engine.entity {
@@ -234,8 +232,8 @@ object ListenersSpec : Spek({
       engine.removeEntity(entity)
       engine.removeSystem(system)
 
-      assertThat(addAssertion).isTrue
-      assertThat(removeAssertion).isTrue
+      addAssertion shouldBe true
+      removeAssertion shouldBe true
     }
   }
 })

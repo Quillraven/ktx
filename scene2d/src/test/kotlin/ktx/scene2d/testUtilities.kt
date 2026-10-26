@@ -4,10 +4,9 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.lwjgl.LwjglFiles
 import com.badlogic.gdx.backends.lwjgl.LwjglNativesLoader
 import com.kotcrab.vis.ui.VisUI
-import org.junit.AfterClass
-import org.junit.Before
-import org.junit.BeforeClass
+import io.kotest.core.spec.style.FunSpec
 import org.mockito.kotlin.mock
+import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * Utility value for numeric tests.
@@ -17,11 +16,13 @@ const val TOLERANCE = 0.0001f
 /**
  * Tests that require mocked libGDX environment should inherit from this class.
  */
-abstract class ApplicationTest {
-  companion object {
-    @JvmStatic
-    @BeforeClass
-    fun `initiate libGDX context`() {
+private val activeSpecs = AtomicInteger()
+
+abstract class ApplicationTest : FunSpec() {
+  init {
+    beforeSpec {
+      if (activeSpecs.getAndIncrement() > 0) return@beforeSpec
+
       LwjglNativesLoader.load()
 
       Gdx.files = LwjglFiles()
@@ -34,9 +35,9 @@ abstract class ApplicationTest {
       VisUI.load()
     }
 
-    @JvmStatic
-    @AfterClass
-    fun `destroy libGDX context`() {
+    afterSpec {
+      if (activeSpecs.decrementAndGet() > 0) return@afterSpec
+
       Gdx.graphics = null
       Gdx.files = null
       Gdx.gl20 = null
@@ -45,10 +46,9 @@ abstract class ApplicationTest {
 
       VisUI.dispose()
     }
-  }
 
-  @Before
-  fun setDefaultSkin() {
-    Scene2DSkin.defaultSkin = VisUI.getSkin()
+    beforeTest {
+      Scene2DSkin.defaultSkin = VisUI.getSkin()
+    }
   }
 }

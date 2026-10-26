@@ -6,12 +6,12 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.assets.loaders.AssetLoader
 import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader
 import com.badlogic.gdx.files.FileHandle
-import io.kotlintest.matchers.shouldThrow
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotSame
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
@@ -21,9 +21,10 @@ import com.badlogic.gdx.utils.Array as GdxArray
 /**
  * Tests [AssetLoaderStorage] - manager of [AssetLoader] instances used by an [AssetStorage] to load assets.
  */
-class AssetLoaderStorageTest {
-  @Test
-  fun `should return null when requested to return loader for unknown type`() {
+class AssetLoaderStorageTest : FunSpec({
+  fun mockStringLoader() = mock<SynchronousAssetLoader<String, AssetLoaderParameters<String>>>()
+
+  test("should return null when requested to return loader for unknown type") {
     // Given:
     val storage = AssetLoaderStorage()
 
@@ -31,11 +32,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java)
 
     // Then:
-    assertNull(loader)
+    loader.shouldBeNull()
   }
 
-  @Test
-  fun `should return null when requested to return loader with suffix for unknown type`() {
+  test("should return null when requested to return loader with suffix for unknown type") {
     // Given:
     val storage = AssetLoaderStorage()
 
@@ -43,11 +43,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java, ".txt")
 
     // Then:
-    assertNull(loader)
+    loader.shouldBeNull()
   }
 
-  @Test
-  fun `should return loader for known type`() {
+  test("should return loader for known type") {
     // Given:
     val storage = AssetLoaderStorage()
     val stringLoader = mockStringLoader()
@@ -57,11 +56,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java)
 
     // Then:
-    assertSame(stringLoader, loader)
+    loader shouldBeSameInstanceAs stringLoader
   }
 
-  @Test
-  fun `should return null when requested main loader for known type without appropriate suffix`() {
+  test("should return null when requested main loader for known type without appropriate suffix") {
     // Given:
     val storage = AssetLoaderStorage()
     storage.setLoaderProvider(String::class.java, suffix = ".txt") { mockStringLoader() }
@@ -70,11 +68,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java)
 
     // Then:
-    assertNull(loader)
+    loader.shouldBeNull()
   }
 
-  @Test
-  fun `should return null when requested loader for known type with invalid suffix`() {
+  test("should return null when requested loader for known type with invalid suffix") {
     // Given:
     val storage = AssetLoaderStorage()
     storage.setLoaderProvider(String::class.java, suffix = ".txt") { mockStringLoader() }
@@ -83,11 +80,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java, path = "invalid.md")
 
     // Then:
-    assertNull(loader)
+    loader.shouldBeNull()
   }
 
-  @Test
-  fun `should return main loader if suffix does not match specific loader`() {
+  test("should return main loader if suffix does not match specific loader") {
     // Given:
     val storage = AssetLoaderStorage()
     val mainLoader = mockStringLoader()
@@ -99,11 +95,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java, path = "test.txt")
 
     // Then:
-    assertSame(mainLoader, loader)
+    loader shouldBeSameInstanceAs mainLoader
   }
 
-  @Test
-  fun `should return loader for known type with valid suffix`() {
+  test("should return loader for known type with valid suffix") {
     // Given:
     val storage = AssetLoaderStorage()
     val stringLoader = mockStringLoader()
@@ -113,11 +108,10 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java, path = "test.txt")
 
     // Then:
-    assertSame(stringLoader, loader)
+    loader shouldBeSameInstanceAs stringLoader
   }
 
-  @Test
-  fun `should override main loader`() {
+  test("should override main loader") {
     // Given:
     val storage = AssetLoaderStorage()
     val previousLoader = mockStringLoader()
@@ -129,12 +123,11 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java)
 
     // Then:
-    assertNotSame(previousLoader, loader)
-    assertSame(stringLoader, loader)
+    loader shouldNotBeSameInstanceAs previousLoader
+    loader shouldBeSameInstanceAs stringLoader
   }
 
-  @Test
-  fun `should override loader with suffix`() {
+  test("should override loader with suffix") {
     // Given:
     val storage = AssetLoaderStorage()
     val previousLoader = mockStringLoader()
@@ -146,12 +139,11 @@ class AssetLoaderStorageTest {
     val loader = storage.getLoader(String::class.java)
 
     // Then:
-    assertNotSame(previousLoader, loader)
-    assertSame(stringLoader, loader)
+    loader shouldNotBeSameInstanceAs previousLoader
+    loader shouldBeSameInstanceAs stringLoader
   }
 
-  @Test
-  fun `should not cache loaders and invoke loader provider for each request`() {
+  test("should not cache loaders and invoke loader provider for each request") {
     // Given:
     val storage = AssetLoaderStorage()
     storage.setLoaderProvider(String::class.java) { mockStringLoader() }
@@ -161,11 +153,10 @@ class AssetLoaderStorageTest {
     val secondLoader = storage.getLoader(String::class.java)
 
     // Then:
-    assertNotSame(firstLoader, secondLoader)
+    secondLoader shouldNotBeSameInstanceAs firstLoader
   }
 
-  @Test
-  fun `should reject loader that does not extend SynchronousAssetLoader or AsynchronousAssetLoader`() {
+  test("should reject loader that does not extend SynchronousAssetLoader or AsynchronousAssetLoader") {
     // Given:
     val storage = AssetLoaderStorage()
     val invalidLoader = mock<AssetLoader<String, AssetLoaderParameters<String>>>()
@@ -175,16 +166,13 @@ class AssetLoaderStorageTest {
       storage.setLoaderProvider(String::class.java) { invalidLoader }
     }
   }
-
-  private fun mockStringLoader() = mock<SynchronousAssetLoader<String, AssetLoaderParameters<String>>>()
-}
+})
 
 /**
  * Tests [AssetLoader] extensions.
  */
-class LoadersTest {
-  @Test
-  fun `should get dependencies`() {
+class LoadersTest : FunSpec({
+  test("should get dependencies") {
     // Given:
     val dependencies = GdxArray<AssetDescriptor<*>>()
     val file = FileHandle(File("test"))
@@ -199,12 +187,11 @@ class LoadersTest {
     val result = loader.getDependencies(assetDescriptor)
 
     // Then:
-    assertSame(dependencies, result)
+    result shouldBeSameInstanceAs dependencies
     verify(loader).getDependencies("test", file, null)
   }
 
-  @Test
-  fun `should load synchronously`() {
+  test("should load synchronously") {
     // Given:
     val assetManager = mock<AssetManager>()
     val file = FileHandle(File("test"))
@@ -219,12 +206,11 @@ class LoadersTest {
     val asset = loader.load(assetManager, assetDescriptor)
 
     // Then:
-    assertSame("Asset.", asset)
+    asset shouldBeSameInstanceAs "Asset."
     verify(loader).load(assetManager, "test", file, null)
   }
 
-  @Test
-  fun `should load asynchronously`() {
+  test("should load asynchronously") {
     // Given:
     val assetManager = mock<AssetManager>()
     val file = FileHandle(File("test"))
@@ -240,27 +226,25 @@ class LoadersTest {
     val asset = loader.loadSync(assetManager, assetDescriptor)
 
     // Then:
-    assertSame("Asset.", asset)
+    asset shouldBeSameInstanceAs "Asset."
     verify(loader).loadAsync(assetManager, "test", file, null)
     verify(loader).loadSync(assetManager, "test", file, null)
   }
-}
+})
 
 /**
  * Tests [ManualLoader] implementation.
  */
-class ManualLoaderTest {
-  @Test
-  fun `should return empty dependencies array`() {
+class ManualLoaderTest : FunSpec({
+  test("should return empty dependencies array") {
     // When:
     val dependencies = ManualLoader.getDependencies("file.path", mock(), null)
 
     // Then:
-    assertEquals(GdxArray<AssetDescriptor<*>>(0), dependencies)
+    dependencies shouldBe GdxArray<AssetDescriptor<*>>(0)
   }
 
-  @Test
-  fun `should return empty dependencies array with loading parameters`() {
+  test("should return empty dependencies array with loading parameters") {
     // When:
     val dependencies =
       ManualLoader.getDependencies(
@@ -270,6 +254,6 @@ class ManualLoaderTest {
       )
 
     // Then:
-    assertEquals(GdxArray<AssetDescriptor<*>>(0), dependencies)
+    dependencies shouldBe GdxArray<AssetDescriptor<*>>(0)
   }
-}
+})

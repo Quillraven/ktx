@@ -56,8 +56,9 @@ dependencies {
   implementation(libs.kotlin.stdlib)
   implementation(libs.gdx)
   testImplementation(libs.kotlin.stdlib)
-  testImplementation(libs.junit)
-  testImplementation(libs.kotlintest)
+  testImplementation(libs.kotest.runner.junit5)
+  testImplementation(libs.kotest.assertions.core)
+  testRuntimeOnly(libs.junit.platform.launcher)
   testImplementation(libs.mockito.kotlin)
   testImplementation(libs.kotlin.reflect)
 
@@ -83,6 +84,10 @@ tasks.register<JavaExec>("format") {
 }
 
 tasks.withType<Test> {
+  // JUnit creates a new test class instance per test, so Kotest is configured to do the same.
+  useJUnitPlatform()
+  systemProperty("kotest.framework.isolation.mode", "InstancePerTest")
+
   testLogging {
     events = setOf(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.STANDARD_OUT)
     exceptionFormat = TestExceptionFormat.FULL

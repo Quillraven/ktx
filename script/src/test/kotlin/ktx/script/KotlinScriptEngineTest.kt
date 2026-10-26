@@ -2,131 +2,108 @@ package ktx.script
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Files
-import io.kotlintest.matchers.shouldThrow
-import org.junit.AfterClass
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.BeforeClass
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import kotlin.reflect.KClass
 import com.badlogic.gdx.utils.Array as GdxArray
 
 /**
  * Tests the [KotlinScriptEngine].
  */
-class KotlinScriptEngineTest {
-  data class Data(
-    var text: String,
-  )
+class KotlinScriptEngineTest : FunSpec({
+  val engine = KotlinScriptEngine()
 
-  private val engine = KotlinScriptEngine()
-
-  companion object {
-    @JvmStatic
-    @BeforeClass
-    fun `initiate libGDX files`() {
-      Gdx.files = Lwjgl3Files()
-    }
-
-    @JvmStatic
-    @AfterClass
-    fun `remove libGDX files`() {
-      Gdx.files = null
-    }
+  beforeSpec {
+    Gdx.files = Lwjgl3Files()
   }
 
-  @Test
-  fun `should evaluate Kotlin scripts`() {
+  afterSpec {
+    Gdx.files = null
+  }
+
+  test("should evaluate Kotlin scripts") {
     // When:
     val result = engine.evaluateAs<String>("\"42\"")
 
     // Then:
-    assertEquals("42", result)
+    result shouldBe "42"
   }
 
-  @Test
-  fun `should import class`() {
+  test("should import class") {
     // When:
-    engine.import("ktx.script.KotlinScriptEngineTest.Data")
+    engine.import("ktx.script.Data")
 
     // Then:
-    assertEquals(Data("test"), engine.evaluateAs<Data>("""Data("test")"""))
+    engine.evaluateAs<Data>("""Data("test")""") shouldBe Data("test")
   }
 
-  @Test
-  fun `should import class with alias`() {
+  test("should import class with alias") {
     // When:
-    engine.import("ktx.script.KotlinScriptEngineTest.Data", alias = "Alias")
+    engine.import("ktx.script.Data", alias = "Alias")
 
     // Then:
-    assertEquals(Data("test"), engine.evaluateAs<Data>("""Alias("test")"""))
+    engine.evaluateAs<Data>("""Alias("test")""") shouldBe Data("test")
   }
 
-  @Test
-  fun `should import classes`() {
+  test("should import classes") {
     // When:
-    engine.importAll("ktx.script.KotlinScriptEngineTest.Data")
+    engine.importAll("ktx.script.Data")
 
     // Then:
-    assertEquals(Data("test"), engine.evaluateAs<Data>("""Data("test")"""))
+    engine.evaluateAs<Data>("""Data("test")""") shouldBe Data("test")
   }
 
-  @Test
-  fun `should import classes with aliases`() {
+  test("should import classes with aliases") {
     // When:
-    engine.importAll("ktx.script.KotlinScriptEngineTest.Data as Alias")
+    engine.importAll("ktx.script.Data as Alias")
 
     // Then:
-    assertEquals(Data("test"), engine.evaluateAs<Data>("""Alias("test")"""))
+    engine.evaluateAs<Data>("""Alias("test")""") shouldBe Data("test")
   }
 
-  @Test
-  fun `should import classes from iterable`() {
+  test("should import classes from iterable") {
     // When:
-    engine.importAll(listOf("ktx.script.KotlinScriptEngineTest.Data"))
+    engine.importAll(listOf("ktx.script.Data"))
 
     // Then:
-    assertEquals(Data("test"), engine.evaluateAs<Data>("""Data("test")"""))
+    engine.evaluateAs<Data>("""Data("test")""") shouldBe Data("test")
   }
 
-  @Test
-  fun `should import classes with aliases from iterable`() {
+  test("should import classes with aliases from iterable") {
     // When:
-    engine.importAll(listOf("ktx.script.KotlinScriptEngineTest.Data as Alias"))
+    engine.importAll(listOf("ktx.script.Data as Alias"))
 
     // Then:
-    assertEquals(Data("test"), engine.evaluateAs<Data>("""Alias("test")"""))
+    engine.evaluateAs<Data>("""Alias("test")""") shouldBe Data("test")
   }
 
-  @Test
-  fun `should set script package`() {
+  test("should set script package") {
     // When:
     engine.setPackage("ktx.script")
 
     // Then: should access classes without an import:
-    assertEquals(KotlinScriptEngineTest::class, engine.evaluateAs<KClass<*>>("KotlinScriptEngineTest::class"))
+    engine.evaluateAs<KClass<*>>("KotlinScriptEngineTest::class") shouldBe KotlinScriptEngineTest::class
   }
 
-  @Test
-  fun `should evaluate script`() {
+  test("should evaluate script") {
     // When:
     val result = engine.evaluate("42")
 
     // Then:
-    assertEquals(42, result)
+    result shouldBe 42
   }
 
-  @Test
-  fun `should throw exception if unable to evaluate script`() {
+  test("should throw exception if unable to evaluate script") {
     // Expect:
     shouldThrow<ScriptEngineException> {
       engine.evaluate("import")
     }
   }
 
-  @Test
-  fun `should evaluate script from file`() {
+  test("should evaluate script from file") {
     // Given:
     val file = Gdx.files.classpath("ktx/script/script.kts")
 
@@ -134,11 +111,10 @@ class KotlinScriptEngineTest {
     val result = engine.evaluate(file)
 
     // Then:
-    assertEquals("test", result)
+    result shouldBe "test"
   }
 
-  @Test
-  fun `should throw exception if unable to evaluate script from file`() {
+  test("should throw exception if unable to evaluate script from file") {
     // Given:
     val file = Gdx.files.classpath("ktx/script/broken.script")
 
@@ -148,25 +124,22 @@ class KotlinScriptEngineTest {
     }
   }
 
-  @Test
-  fun `should evaluate script and return its result`() {
+  test("should evaluate script and return its result") {
     // When:
     val result = engine.evaluateAs<Int>("42")
 
     // Then:
-    assertEquals(42, result)
+    result shouldBe 42
   }
 
-  @Test
-  fun `should throw exception if the script result does not match the expected type`() {
+  test("should throw exception if the script result does not match the expected type") {
     // Expect:
     shouldThrow<ClassCastException> {
       engine.evaluateAs<String>("1")
     }
   }
 
-  @Test
-  fun `should evaluate script from file and return its result`() {
+  test("should evaluate script from file and return its result") {
     // Given:
     val file = Gdx.files.classpath("ktx/script/script.kts")
 
@@ -174,11 +147,10 @@ class KotlinScriptEngineTest {
     val result = engine.evaluateAs<String>(file)
 
     // Then:
-    assertEquals("test", result)
+    result shouldBe "test"
   }
 
-  @Test
-  fun `should throw exception if the result of script from file does not match the expected type`() {
+  test("should throw exception if the result of script from file does not match the expected type") {
     // Given:
     val file = Gdx.files.classpath("ktx/script/script.kts")
 
@@ -188,8 +160,7 @@ class KotlinScriptEngineTest {
     }
   }
 
-  @Test
-  fun `should execute script with custom functions, lambdas and classes`() {
+  test("should execute script with custom functions, lambdas and classes") {
     // Given:
     engine.setPackage("ktx.script")
     engine.import("com.badlogic.gdx.utils.Array", alias = "GdxArray")
@@ -201,7 +172,7 @@ class KotlinScriptEngineTest {
         class Helper {
           fun toArray(vararg objects: Any) = GdxArray.with(*objects)
         }
-        fun data(text: String) = KotlinScriptEngineTest.Data(text)
+        fun data(text: String) = Data(text)
         val lambda: () -> String = { "test" }
 
         Helper().toArray(data(lambda()), data(lambda()), data(lambda()))
@@ -209,11 +180,10 @@ class KotlinScriptEngineTest {
       )
 
     // Then:
-    assertEquals(GdxArray.with(Data("test"), Data("test"), Data("test")), result)
+    result shouldBe GdxArray.with(Data("test"), Data("test"), Data("test"))
   }
 
-  @Test
-  fun `should execute script with a receiver`() {
+  test("should execute script with a receiver") {
     // Given:
     val receiver = Data(text = "")
 
@@ -226,11 +196,10 @@ class KotlinScriptEngineTest {
     )
 
     // Then:
-    assertEquals("test", receiver.text)
+    receiver.text shouldBe "test"
   }
 
-  @Test
-  fun `should execute script with a receiver and an import`() {
+  test("should execute script with a receiver and an import") {
     // Given:
     val receiver = Data(text = "")
 
@@ -245,11 +214,10 @@ class KotlinScriptEngineTest {
     )
 
     // Then:
-    assertEquals("test", receiver.text)
+    receiver.text shouldBe "test"
   }
 
-  @Test
-  fun `should execute script from a file with a receiver`() {
+  test("should execute script from a file with a receiver") {
     // Given:
     val receiver = Data(text = "")
     val file = Gdx.files.classpath("ktx/script/receiver")
@@ -258,11 +226,10 @@ class KotlinScriptEngineTest {
     engine.evaluateOn(receiver, file)
 
     // Then:
-    assertEquals("test", receiver.text)
+    receiver.text shouldBe "test"
   }
 
-  @Test
-  fun `should assign context variable`() {
+  test("should assign context variable") {
     // Given:
     val variable = Data("test")
 
@@ -270,12 +237,11 @@ class KotlinScriptEngineTest {
     engine["variable"] = variable
 
     // Then:
-    assertSame(variable, engine["variable"])
-    assertEquals("test", engine.evaluateAs<String>("variable.text"))
+    engine.get<Any>("variable") shouldBeSameInstanceAs variable
+    engine.evaluateAs<String>("variable.text") shouldBe "test"
   }
 
-  @Test
-  fun `should allow to modify context variable`() {
+  test("should allow to modify context variable") {
     // Given:
     val variable = Data("test")
     engine["variable"] = variable
@@ -288,11 +254,10 @@ class KotlinScriptEngineTest {
     )
 
     // Then:
-    assertEquals("new", variable.text)
+    variable.text shouldBe "new"
   }
 
-  @Test
-  fun `should remove context variable`() {
+  test("should remove context variable") {
     // Given:
     val variable = Data("test")
     engine["variable"] = variable
@@ -301,16 +266,19 @@ class KotlinScriptEngineTest {
     val removed = engine.remove("variable")
 
     // Then:
-    assertNull(engine["variable"])
-    assertSame(variable, removed)
+    engine.get<Any>("variable").shouldBeNull()
+    removed shouldBeSameInstanceAs variable
   }
 
-  @Test
-  fun `should not throw an exception when removing an absent variable`() {
+  test("should not throw an exception when removing an absent variable") {
     // When:
     val result = engine.remove("absent")
 
     // Then:
-    assertNull(result)
+    result.shouldBeNull()
   }
-}
+})
+
+data class Data(
+  var text: String,
+)

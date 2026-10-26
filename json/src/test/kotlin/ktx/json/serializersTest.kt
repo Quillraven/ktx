@@ -2,9 +2,9 @@ package ktx.json
 
 import com.badlogic.gdx.utils.Json
 import com.badlogic.gdx.utils.JsonValue
-import io.kotlintest.matchers.shouldEqual
-import io.kotlintest.matchers.shouldThrow
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
@@ -20,9 +20,8 @@ class `should implement ReadOnlyJsonSerializer with no 'write' method overridden
   ): T = throw NotImplementedError()
 }
 
-class ReadOnlyJsonSerializerTest {
-  @Test
-  fun `default implementation for 'write' method should throw UnsupportedOperationException`() {
+class ReadOnlyJsonSerializerTest : FunSpec({
+  test("default implementation for 'write' method should throw UnsupportedOperationException") {
     val readOnlyJsonSerializer =
       object : ReadOnlyJsonSerializer<Any> {
         override fun read(
@@ -36,11 +35,10 @@ class ReadOnlyJsonSerializerTest {
       readOnlyJsonSerializer.write(Json(), JsonValue(JsonValue.ValueType.`object`), Any::class.java)
     }
   }
-}
+})
 
-class ReadOnlyJsonSerializerFactoryTest {
-  @Test
-  fun `should return readonly serializer that calls lambda function with 3 parameters`() {
+class ReadOnlyJsonSerializerFactoryTest : FunSpec({
+  test("should return readonly serializer that calls lambda function with 3 parameters") {
     val json = Json()
     val jsonValue = JsonValue(JsonValue.ValueType.`object`)
     val readFunction: (Json, JsonValue, Class<*>?) -> Data = mock()
@@ -50,19 +48,17 @@ class ReadOnlyJsonSerializerFactoryTest {
     verify(readFunction).invoke(json, jsonValue, Data::class.java)
   }
 
-  @Test
-  fun `should return readonly serializer that returns result of calling lambda with 3 parameters`() {
+  test("should return readonly serializer that returns result of calling lambda with 3 parameters") {
     val data = Data(intField = 10, stringField = "Test", doubleField = 11.254)
     val jsonData = JsonValue(JsonValue.ValueType.`object`)
     val readFunction: (Json, JsonValue, Class<*>?) -> Data = { _, _, _ -> data }
 
     val value = readOnlySerializer(readFunction).read(Json(), jsonData, Data::class.java)
 
-    value shouldEqual data
+    value shouldBe data
   }
 
-  @Test
-  fun `should return readonly serializer that calls lambda function with 2 parameters`() {
+  test("should return readonly serializer that calls lambda function with 2 parameters") {
     val jsonData = JsonValue(JsonValue.ValueType.`object`)
     val readFunction: (JsonValue) -> Data = mock()
 
@@ -71,20 +67,19 @@ class ReadOnlyJsonSerializerFactoryTest {
     verify(readFunction).invoke(jsonData)
   }
 
-  @Test
-  fun `should return readonly serializer that returns result of calling lambda with 2 parameters`() {
+  test("should return readonly serializer that returns result of calling lambda with 2 parameters") {
     val data = Data(intField = 10, stringField = "Test", doubleField = 11.254)
     val jsonData = JsonValue(JsonValue.ValueType.`object`)
     val readFunction: (JsonValue) -> Data = { data }
 
     val value = readOnlySerializer(readFunction).read(Json(), jsonData, Data::class.java)
 
-    value shouldEqual data
+    value shouldBe data
   }
+})
 
-  data class Data(
-    val intField: Int,
-    val stringField: String,
-    val doubleField: Double,
-  )
-}
+data class Data(
+  val intField: Int,
+  val stringField: String,
+  val doubleField: Double,
+)

@@ -2,25 +2,23 @@ package ktx.artemis
 
 import com.artemis.EntityTransmuterFactory
 import com.artemis.World
-import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-object TransmuterSpec : Spek({
-  describe("utilities for transmuters") {
-    val world by memoized { World() }
-    val transmuterFactory by memoized { EntityTransmuterFactory(world) }
-    val transformMapper by memoized { world.getMapper(Transform::class.java) }
-    val textureMapper by memoized { world.getMapper(Texture::class.java) }
-    val entity by memoized {
+class TransmuterSpec : FunSpec({
+  context("utilities for transmuters") {
+    val world by lazy { World() }
+    val transmuterFactory by lazy { EntityTransmuterFactory(world) }
+    val transformMapper by lazy { world.getMapper(Transform::class.java) }
+    val textureMapper by lazy { world.getMapper(Texture::class.java) }
+    val entity by lazy {
       world.entity {
         add(Transform())
       }
     }
 
-    describe("add component function") {
-      it("should add a component to an entity") {
+    context("add component function") {
+      test("should add a component to an entity") {
         val transmuter =
           transmuterFactory
             .add<Texture>()
@@ -28,11 +26,11 @@ object TransmuterSpec : Spek({
 
         transmuter.transmute(entity)
 
-        assertThat(textureMapper.has(entity)).isTrue()
+        textureMapper.has(entity) shouldBe true
       }
     }
-    describe("remove component function") {
-      it("should remove a component from an entity") {
+    context("remove component function") {
+      test("should remove a component from an entity") {
         val transmuter =
           transmuterFactory
             .add<Texture>()
@@ -41,8 +39,8 @@ object TransmuterSpec : Spek({
 
         transmuter.transmute(entity)
 
-        assertThat(textureMapper.has(entity)).isTrue()
-        assertThat(!transformMapper.has(entity)).isTrue()
+        textureMapper.has(entity) shouldBe true
+        !transformMapper.has(entity) shouldBe true
       }
     }
   }

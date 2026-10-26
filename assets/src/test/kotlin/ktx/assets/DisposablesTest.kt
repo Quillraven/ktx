@@ -2,13 +2,11 @@ package ktx.assets
 
 import com.badlogic.gdx.utils.Disposable
 import com.badlogic.gdx.utils.GdxRuntimeException
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
-import org.junit.Test
+import io.kotest.assertions.fail
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.doThrow
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
@@ -19,9 +17,8 @@ import com.badlogic.gdx.utils.Array as GdxArray
 /**
  * Tests [Disposable] utilities.
  */
-class DisposablesTest {
-  @Test
-  fun `should safely dispose heavy resources`() {
+class DisposablesTest : FunSpec({
+  test("should safely dispose heavy resources") {
     val disposable = mock<Disposable>()
 
     disposable.disposeSafely()
@@ -29,8 +26,7 @@ class DisposablesTest {
     verify(disposable).dispose()
   }
 
-  @Test
-  fun `should silently ignore exceptions during safe disposing`() {
+  test("should silently ignore exceptions during safe disposing") {
     val disposable =
       mock<Disposable> {
         on(it.dispose()) doThrow GdxRuntimeException("Expected.")
@@ -41,26 +37,23 @@ class DisposablesTest {
     verify(disposable).dispose()
   }
 
-  @Test
-  fun `should Silently Ignore Nulls During Safe Disposing`() {
+  test("should Silently Ignore Nulls During Safe Disposing") {
     val disposable: Disposable? = null
 
     disposable.disposeSafely()
 
-    assertNull(disposable)
+    disposable.shouldBeNull()
   }
 
-  @Test
-  fun `should Dispose With Catch Block`() {
+  test("should Dispose With Catch Block") {
     val disposable = mock<Disposable>()
 
-    disposable.dispose { ex -> fail(ex.message) } // Fails on error.
+    disposable.dispose { ex -> fail(ex.message.orEmpty()) } // Fails on error.
 
     verify(disposable).dispose()
   }
 
-  @Test
-  fun `should pass exceptions to catch block`() {
+  test("should pass exceptions to catch block") {
     val exception = GdxRuntimeException("Expected.")
     var thrown: Exception? = null
     val disposable =
@@ -70,12 +63,11 @@ class DisposablesTest {
 
     disposable.dispose { thrown = it }
 
-    assertSame(exception, thrown)
+    thrown shouldBeSameInstanceAs exception
     verify(disposable).dispose()
   }
 
-  @Test
-  fun `should dispose iterables of assets`() {
+  test("should dispose iterables of assets") {
     val disposables = GdxArray.with(mock<Disposable>(), mock(), mock())
 
     disposables.dispose()
@@ -83,8 +75,7 @@ class DisposablesTest {
     disposables.forEach { verify(it).dispose() }
   }
 
-  @Test
-  fun `should ignore nulls during iterables disposing`() {
+  test("should ignore nulls during iterables disposing") {
     val disposables = GdxArray.with(mock<Disposable>(), mock(), null)
 
     disposables.dispose()
@@ -92,8 +83,7 @@ class DisposablesTest {
     disposables.forEach { it?.let { verify(it).dispose() } }
   }
 
-  @Test
-  fun shouldSafelyDisposeIterablesOfAssets() {
+  test("shouldSafelyDisposeIterablesOfAssets") {
     val disposables =
       GdxArray.with(
         mock<Disposable>(),
@@ -108,17 +98,15 @@ class DisposablesTest {
     disposables.forEach { it?.let { verify(it).dispose() } }
   }
 
-  @Test
-  fun `should dispose iterables of assets with catch block`() {
+  test("should dispose iterables of assets with catch block") {
     val disposables = GdxArray.with(mock<Disposable>(), mock(), mock())
 
-    disposables.dispose { fail(it.message) } // Fails on unexpected exception.
+    disposables.dispose { fail(it.message.orEmpty()) } // Fails on unexpected exception.
 
     disposables.forEach { verify(it).dispose() }
   }
 
-  @Test
-  fun `should pass exception on dispose of iterables of assets with catch block`() {
+  test("should pass exception on dispose of iterables of assets with catch block") {
     val exception = GdxRuntimeException("Expected.")
     val disposables =
       GdxArray.with(
@@ -129,13 +117,12 @@ class DisposablesTest {
         },
       )
 
-    disposables.dispose { assertSame(exception, it) }
+    disposables.dispose { it shouldBeSameInstanceAs exception }
 
     disposables.forEach { it?.let { verify(it).dispose() } }
   }
 
-  @Test
-  fun `should dispose arrays of assets`() {
+  test("should dispose arrays of assets") {
     val disposables = arrayOf(mock<Disposable>(), mock(), mock())
 
     disposables.dispose()
@@ -143,8 +130,7 @@ class DisposablesTest {
     disposables.forEach { verify(it).dispose() }
   }
 
-  @Test
-  fun `should safely dispose arrays of assets`() {
+  test("should safely dispose arrays of assets") {
     val disposables =
       arrayOf(
         mock<Disposable>(),
@@ -159,17 +145,15 @@ class DisposablesTest {
     disposables.forEach { verify(it).dispose() }
   }
 
-  @Test
-  fun `should dispose arrays of assets with catch block`() {
+  test("should dispose arrays of assets with catch block") {
     val disposables = arrayOf(mock<Disposable>(), mock(), mock())
 
-    disposables.dispose { fail(it.message) } // Fails on unexpected exception.
+    disposables.dispose { fail(it.message.orEmpty()) } // Fails on unexpected exception.
 
     disposables.forEach { verify(it).dispose() }
   }
 
-  @Test
-  fun `should pass exception on dispose of arrays of assets with catch block`() {
+  test("should pass exception on dispose of arrays of assets with catch block") {
     val exception = GdxRuntimeException("Expected.")
     val disposables =
       arrayOf(
@@ -180,13 +164,12 @@ class DisposablesTest {
         },
       )
 
-    disposables.dispose { assertSame(exception, it) }
+    disposables.dispose { it shouldBeSameInstanceAs exception }
 
     disposables.forEach { verify(it).dispose() }
   }
 
-  @Test
-  fun `should ignore exceptions with a no-op`() {
+  test("should ignore exceptions with a no-op") {
     val exception = mock<Exception>()
 
     exception.ignore()
@@ -194,14 +177,13 @@ class DisposablesTest {
     verifyNoInteractions(exception)
   }
 
-  @Test
-  fun `should register disposables`() {
+  test("should register disposables") {
     class Parent : DisposableRegistry by DisposableContainer() {
       val disposableA = mock<Disposable>()
 
       init {
         val initialSuccess = register(disposableA)
-        assertTrue(initialSuccess)
+        initialSuccess shouldBe true
       }
 
       val disposableB = mock<Disposable>().alsoRegister()
@@ -210,15 +192,14 @@ class DisposablesTest {
     val instance = Parent()
     val children = listOf(instance.disposableA, instance.disposableB)
     val registered = instance.registeredDisposables
-    assertTrue(registered.containsAll(children))
-    assertEquals(children.size, registered.size)
+    registered.containsAll(children) shouldBe true
+    registered.size shouldBe children.size
 
     val repeatedSuccess = instance.register(instance.disposableA)
-    assertFalse(repeatedSuccess)
+    repeatedSuccess shouldBe false
   }
 
-  @Test
-  fun `should deregister disposables`() {
+  test("should deregister disposables") {
     class Parent : DisposableRegistry by DisposableContainer() {
       val disposableA = mock<Disposable>().alsoRegister()
       val disposableB = mock<Disposable>().alsoRegister()
@@ -228,18 +209,17 @@ class DisposablesTest {
 
     val instance = Parent()
     val initialSuccess = instance.deregister(instance.disposableA)
-    assertTrue(initialSuccess)
+    initialSuccess shouldBe true
     instance.deregisterB()
-    assertTrue(instance.registeredDisposables.isEmpty())
+    instance.registeredDisposables.isEmpty() shouldBe true
     instance.dispose()
     verify(instance.disposableA, never()).dispose()
     verify(instance.disposableB, never()).dispose()
     val repeatedSuccess = instance.deregister(instance.disposableA)
-    assertFalse(repeatedSuccess)
+    repeatedSuccess shouldBe false
   }
 
-  @Test
-  fun `should deregister all disposables`() {
+  test("should deregister all disposables") {
     class Parent : DisposableRegistry by DisposableContainer() {
       val disposableA = mock<Disposable>().alsoRegister()
       val disposableB = mock<Disposable>().alsoRegister()
@@ -247,17 +227,16 @@ class DisposablesTest {
 
     val instance = Parent()
     val initialSuccess = instance.deregisterAll()
-    assertTrue(initialSuccess)
-    assertTrue(instance.registeredDisposables.isEmpty())
+    initialSuccess shouldBe true
+    instance.registeredDisposables.isEmpty() shouldBe true
     instance.dispose()
     verify(instance.disposableA, never()).dispose()
     verify(instance.disposableB, never()).dispose()
     val repeatedSuccess = instance.deregisterAll()
-    assertFalse(repeatedSuccess)
+    repeatedSuccess shouldBe false
   }
 
-  @Test
-  fun `should dispose registered disposables`() {
+  test("should dispose registered disposables") {
     class Parent : DisposableRegistry by DisposableContainer() {
       val disposableA = mock<Disposable>().alsoRegister()
       val disposableB = mock<Disposable>().alsoRegister()
@@ -269,8 +248,7 @@ class DisposablesTest {
     verify(instance.disposableB).dispose()
   }
 
-  @Test
-  fun `should safely dispose registered disposables`() {
+  test("should safely dispose registered disposables") {
     class Parent : DisposableRegistry by DisposableContainer() {
       val disposable =
         mock<Disposable> {
@@ -283,8 +261,7 @@ class DisposablesTest {
     verify(instance.disposable).dispose()
   }
 
-  @Test
-  fun `should register disposables by identity`() {
+  test("should register disposables by identity") {
     class Asset : Disposable {
       var disposed = false
 
@@ -307,8 +284,8 @@ class DisposablesTest {
     instance.dispose()
     val children = with(instance) { listOf(disposableA, disposableB, disposableC) }
     val registered = instance.registeredDisposables
-    assertTrue(children.all(Asset::disposed))
-    assertTrue(children.all { child -> registered.find { it === child } != null })
-    assertEquals(children.size, registered.size)
+    children.all(Asset::disposed) shouldBe true
+    (children.all { child -> registered.find { it === child } != null }) shouldBe true
+    registered.size shouldBe children.size
   }
-}
+})

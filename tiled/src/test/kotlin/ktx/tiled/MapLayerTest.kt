@@ -6,15 +6,14 @@ import com.badlogic.gdx.maps.MapLayers
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
-import org.junit.Test
+import io.kotest.assertions.fail
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
 
-class MapLayerTest {
-  private val mapLayer =
+class MapLayerTest : FunSpec({
+  val mapLayer =
     MapLayer().apply {
       properties.apply {
         put("active", true)
@@ -22,77 +21,68 @@ class MapLayerTest {
       }
     }
 
-  @Test
-  fun `should retrieve properties from MapLayer`() {
-    assertEquals(true, mapLayer.property<Boolean>("active"))
-    assertEquals(123, mapLayer.property<Int>("customProperty"))
+  test("should retrieve properties from MapLayer") {
+    mapLayer.property<Boolean>("active") shouldBe true
+    mapLayer.property<Int>("customProperty") shouldBe 123
   }
 
-  @Test
-  fun `should retrieve properties from MapLayer with default value`() {
-    assertEquals(true, mapLayer.property("active", false))
-    assertEquals(123, mapLayer.property("customProperty", 0))
-    assertEquals(-1f, mapLayer.property("x", -1f))
+  test("should retrieve properties from MapLayer with default value") {
+    mapLayer.property("active", false) shouldBe true
+    mapLayer.property("customProperty", 0) shouldBe 123
+    mapLayer.property("x", -1f) shouldBe -1f
   }
 
-  @Test
-  fun `should retrieve properties from MapLayer without default value`() {
-    assertNull(mapLayer.propertyOrNull("x"))
-    assertEquals(123, mapLayer.propertyOrNull<Int>("customProperty"))
+  test("should retrieve properties from MapLayer without default value") {
+    mapLayer.propertyOrNull<Any>("x").shouldBeNull()
+    mapLayer.propertyOrNull<Int>("customProperty") shouldBe 123
   }
 
-  @Test
-  fun `should check if property from MapLayer exists`() {
-    assertTrue(mapLayer.containsProperty("active"))
-    assertFalse(mapLayer.containsProperty("x"))
+  test("should check if property from MapLayer exists") {
+    mapLayer.containsProperty("active") shouldBe true
+    mapLayer.containsProperty("x") shouldBe false
   }
 
-  @Test(expected = MissingPropertyException::class)
-  fun `should not retrieve non-existing property from MapLayer`() {
-    mapLayer.property<String>("non-existing")
+  test("should not retrieve non-existing property from MapLayer") {
+    shouldThrow<MissingPropertyException> {
+      mapLayer.property<String>("non-existing")
+    }
   }
 
-  @Test
-  fun `should return true when MapLayers is empty`() {
+  test("should return true when MapLayers is empty") {
     val actual = MapLayers()
 
-    assertTrue(actual.isEmpty())
+    actual.isEmpty() shouldBe true
   }
 
-  @Test
-  fun `should return false when MapLayers is not empty`() {
+  test("should return false when MapLayers is not empty") {
     val actual = MapLayers()
     actual.add(MapLayer())
 
-    assertFalse(actual.isEmpty())
+    actual.isEmpty() shouldBe false
   }
 
-  @Test
-  fun `should return true when MapLayers becomes empty`() {
+  test("should return true when MapLayers becomes empty") {
     val actual = MapLayers()
     actual.add(MapLayer())
     actual.remove(0)
 
-    assertTrue(actual.isEmpty())
+    actual.isEmpty() shouldBe true
   }
 
-  @Test
-  fun `should return true when MapLayers is not empty`() {
+  test("should return true when MapLayers is not empty") {
     val actual = MapLayers()
     actual.add(MapLayer())
 
-    assertTrue(actual.isNotEmpty())
+    actual.isNotEmpty() shouldBe true
   }
 
-  @Test
-  fun `should return false when MapLayers is empty`() {
+  test("should return false when MapLayers is empty") {
     val actual = MapLayers()
 
-    assertFalse(actual.isNotEmpty())
+    actual.isNotEmpty() shouldBe false
   }
 
-  @Test
-  fun `should execute action per cell of TiledMapTileLayer`() {
+  test("should execute action per cell of TiledMapTileLayer") {
     val tileLayer =
       TiledMapTileLayer(2, 2, 32, 32).apply {
         setCell(0, 0, Cell().setTile(StaticTiledMapTile(TextureRegion())))
@@ -105,15 +95,14 @@ class MapLayerTest {
       visitedCells += cellX to cellY
     }
 
-    assertEquals(setOf(0 to 0, 1 to 1), visitedCells)
+    visitedCells shouldBe setOf(0 to 0, 1 to 1)
   }
 
-  @Test
-  fun `should not execute any action for TiledMapTileLayer without cells`() {
+  test("should not execute any action for TiledMapTileLayer without cells") {
     val tileLayer = TiledMapTileLayer(2, 2, 32, 32)
 
     tileLayer.forEachCell { _, _, _ ->
-      fail()
+      fail("Test failed.")
     }
   }
-}
+})

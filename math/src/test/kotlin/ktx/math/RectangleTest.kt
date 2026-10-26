@@ -1,19 +1,18 @@
 package ktx.math
 
 import com.badlogic.gdx.math.Rectangle
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class RectangleTest {
-  @Test
-  fun `should destructure Rectangle`() {
+class RectangleTest : FunSpec({
+  test("should destructure Rectangle") {
     val rect = Rectangle(1f, 2f, 3f, 4f)
 
     val (x, y, w, h) = rect
 
-    assertEquals(1f, x)
-    assertEquals(2f, y)
-    assertEquals(3f, w)
-    assertEquals(4f, h)
+    x shouldBe 1f
+    y shouldBe 2f
+    w shouldBe 3f
+    h shouldBe 4f
   }
-}
+})

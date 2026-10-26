@@ -5,44 +5,42 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile
 import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile
 import com.badlogic.gdx.utils.Array
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
 
-abstract class TiledMapTileTest<T : TiledMapTile> {
+abstract class TiledMapTileTest<T : TiledMapTile> : FunSpec() {
   abstract val tile: T
 
-  @Test
-  fun `should retrieve properties from tile`() {
-    assertEquals(true, tile.property<Boolean>("prop1"))
-    assertEquals("text", tile.property<String>("prop2"))
-  }
+  init {
+    test("should retrieve properties from tile") {
+      tile.property<Boolean>("prop1") shouldBe true
+      tile.property<String>("prop2") shouldBe "text"
+    }
 
-  @Test
-  fun `should retrieve properties from tile with default value`() {
-    assertEquals(true, tile.property("prop1", false))
-    assertEquals("text", tile.property("prop2", ""))
-    assertEquals(-1f, tile.property("non-existing", -1f))
-  }
+    test("should retrieve properties from tile with default value") {
+      tile.property("prop1", false) shouldBe true
+      tile.property("prop2", "") shouldBe "text"
+      tile.property("non-existing", -1f) shouldBe -1f
+    }
 
-  @Test
-  fun `should retrieve properties from tile without default value`() {
-    assertNull(tile.propertyOrNull("non-existing"))
-    assertEquals("text", tile.propertyOrNull("prop2"))
-  }
+    test("should retrieve properties from tile without default value") {
+      tile.propertyOrNull<Any>("non-existing").shouldBeNull()
+      tile.propertyOrNull<String>("prop2") shouldBe "text"
+    }
 
-  @Test
-  fun `should check if property from tile exists`() {
-    assertTrue(tile.containsProperty("prop1"))
-    assertTrue(tile.containsProperty("prop2"))
-    assertFalse(tile.containsProperty("non-existing"))
-  }
+    test("should check if property from tile exists") {
+      tile.containsProperty("prop1") shouldBe true
+      tile.containsProperty("prop2") shouldBe true
+      tile.containsProperty("non-existing") shouldBe false
+    }
 
-  @Test(expected = MissingPropertyException::class)
-  fun `retrieve non-existing property from Tile using exception`() {
-    tile.property<String>("non-existing")
+    test("retrieve non-existing property from Tile using exception") {
+      shouldThrow<MissingPropertyException> {
+        tile.property<String>("non-existing")
+      }
+    }
   }
 }
 

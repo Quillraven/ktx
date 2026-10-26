@@ -1,17 +1,43 @@
 package ktx.math
 
 import com.badlogic.gdx.math.Matrix3
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.shouldBe
 
 /**
  * Tests [Matrix3]-related utilities.
  */
-class Matrix3Test {
-  private val floatTolerance = 0.00001f
+class Matrix3Test : FunSpec({
+  val floatTolerance = 0.00001f
 
-  @Test
-  fun `should create matrix`() {
+  fun assertMatrixEquals(
+    matrix: Matrix3,
+    m00: Float,
+    m01: Float,
+    m02: Float,
+    m10: Float,
+    m11: Float,
+    m12: Float,
+    m20: Float,
+    m21: Float,
+    m22: Float,
+    tolerance: Float = floatTolerance,
+  ) {
+    val values = matrix.`val`
+    values[Matrix3.M00] shouldBe (m00 plusOrMinus tolerance)
+    values[Matrix3.M01] shouldBe (m01 plusOrMinus tolerance)
+    values[Matrix3.M02] shouldBe (m02 plusOrMinus tolerance)
+    values[Matrix3.M10] shouldBe (m10 plusOrMinus tolerance)
+    values[Matrix3.M11] shouldBe (m11 plusOrMinus tolerance)
+    values[Matrix3.M12] shouldBe (m12 plusOrMinus tolerance)
+    values[Matrix3.M20] shouldBe (m20 plusOrMinus tolerance)
+    values[Matrix3.M21] shouldBe (m21 plusOrMinus tolerance)
+    values[Matrix3.M22] shouldBe (m22 plusOrMinus tolerance)
+  }
+
+  test("should create matrix") {
     val matrix =
       mat3(
         1f,
@@ -39,8 +65,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should negate matrix values`() {
+  test("should negate matrix values") {
     val matrix =
       mat3(
         1f,
@@ -82,8 +107,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should invert matrix`() {
+  test("should invert matrix") {
     val matrix =
       mat3(
         1f,
@@ -125,8 +149,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should addAssign matrices`() {
+  test("should addAssign matrices") {
     val matrix =
       mat3(
         1f,
@@ -167,8 +190,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should subtractAssign matrices`() {
+  test("should subtractAssign matrices") {
     val matrix =
       mat3(
         1f,
@@ -209,8 +231,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiplyAssign matrices`() {
+  test("should multiplyAssign matrices") {
     val matrix =
       mat3(
         1f,
@@ -251,8 +272,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiplyAssign matrices with scalar`() {
+  test("should multiplyAssign matrices with scalar") {
     val matrix =
       mat3(
         1f,
@@ -282,8 +302,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiply matricesAssign with Vector2 scale`() {
+  test("should multiply matricesAssign with Vector2 scale") {
     val matrix =
       mat3(
         1f,
@@ -313,8 +332,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiplyAssign matrices with Vector3 scale`() {
+  test("should multiplyAssign matrices with Vector3 scale") {
     val matrix =
       mat3(
         3f,
@@ -344,8 +362,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiplyAssign Vector2 with matrices`() {
+  test("should multiplyAssign Vector2 with matrices") {
     val vector = vec2(1f, 2f)
 
     vector *=
@@ -361,12 +378,11 @@ class Matrix3Test {
         9f,
       )
 
-    assertEquals(1f * 1f + 2f * 2f + 1f * 3f, vector.x, floatTolerance)
-    assertEquals(1f * 4f + 2f * 5f + 1f * 6f, vector.y, floatTolerance)
+    vector.x shouldBe ((1f * 1f + 2f * 2f + 1f * 3f) plusOrMinus floatTolerance)
+    vector.y shouldBe ((1f * 4f + 2f * 5f + 1f * 6f) plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add matrices`() {
+  test("should add matrices") {
     val matrix =
       mat3(
         1f,
@@ -408,8 +424,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should subtract matrices`() {
+  test("should subtract matrices") {
     val matrix =
       mat3(
         1f,
@@ -451,8 +466,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiply matrices`() {
+  test("should multiply matrices") {
     val matrix =
       mat3(
         1f,
@@ -494,8 +508,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiply matrices with scalar`() {
+  test("should multiply matrices with scalar") {
     val matrix =
       mat3(
         1f,
@@ -525,8 +538,7 @@ class Matrix3Test {
     )
   }
 
-  @Test
-  fun `should multiply matrices with Vector2`() {
+  test("should multiply matrices with Vector2") {
     val matrix =
       mat3(
         1f,
@@ -542,12 +554,11 @@ class Matrix3Test {
 
     val result = matrix * vec2(3f, 2f)
 
-    assertEquals(3f * 1f + 2f * 2f + 1f * 3f, result.x, floatTolerance)
-    assertEquals(3f * 4f + 2f * 5f + 1f * 6f, result.y, floatTolerance)
+    result.x shouldBe ((3f * 1f + 2f * 2f + 1f * 3f) plusOrMinus floatTolerance)
+    result.y shouldBe ((3f * 4f + 2f * 5f + 1f * 6f) plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should destruct matrices into nine floats`() {
+  test("should destruct matrices into nine floats") {
     val matrix =
       mat3(
         1f,
@@ -567,41 +578,16 @@ class Matrix3Test {
       x2y0, x2y1, x2y2,
     ) = matrix
 
-    assertEquals(1f, x0y0, floatTolerance)
-    assertEquals(2f, x0y1, floatTolerance)
-    assertEquals(3f, x0y2, floatTolerance)
+    x0y0 shouldBe (1f plusOrMinus floatTolerance)
+    x0y1 shouldBe (2f plusOrMinus floatTolerance)
+    x0y2 shouldBe (3f plusOrMinus floatTolerance)
 
-    assertEquals(4f, x1y0, floatTolerance)
-    assertEquals(5f, x1y1, floatTolerance)
-    assertEquals(6f, x1y2, floatTolerance)
+    x1y0 shouldBe (4f plusOrMinus floatTolerance)
+    x1y1 shouldBe (5f plusOrMinus floatTolerance)
+    x1y2 shouldBe (6f plusOrMinus floatTolerance)
 
-    assertEquals(7f, x2y0, floatTolerance)
-    assertEquals(8f, x2y1, floatTolerance)
-    assertEquals(9f, x2y2, floatTolerance)
+    x2y0 shouldBe (7f plusOrMinus floatTolerance)
+    x2y1 shouldBe (8f plusOrMinus floatTolerance)
+    x2y2 shouldBe (9f plusOrMinus floatTolerance)
   }
-
-  private fun assertMatrixEquals(
-    matrix: Matrix3,
-    m00: Float,
-    m01: Float,
-    m02: Float,
-    m10: Float,
-    m11: Float,
-    m12: Float,
-    m20: Float,
-    m21: Float,
-    m22: Float,
-    tolerance: Float = floatTolerance,
-  ) {
-    val values = matrix.`val`
-    assertEquals(m00, values[Matrix3.M00], tolerance)
-    assertEquals(m01, values[Matrix3.M01], tolerance)
-    assertEquals(m02, values[Matrix3.M02], tolerance)
-    assertEquals(m10, values[Matrix3.M10], tolerance)
-    assertEquals(m11, values[Matrix3.M11], tolerance)
-    assertEquals(m12, values[Matrix3.M12], tolerance)
-    assertEquals(m20, values[Matrix3.M20], tolerance)
-    assertEquals(m21, values[Matrix3.M21], tolerance)
-    assertEquals(m22, values[Matrix3.M22], tolerance)
-  }
-}
+})

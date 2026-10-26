@@ -7,84 +7,80 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.Window
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import org.mockito.kotlin.mock
 
 class StageWidgetTest : ApplicationTest() {
-  @Test
-  fun `should add Actor to the Stage`() {
-    val stage = Stage(mock(), mock())
-    val actor = Actor()
-    val stageWidget = StageWidget(stage)
+  init {
+    test("should add Actor to the Stage") {
+      val stage = Stage(mock(), mock())
+      val actor = Actor()
+      val stageWidget = StageWidget(stage)
 
-    stageWidget.storeActor(actor)
+      stageWidget.storeActor(actor)
 
-    assertTrue(actor in stage.actors)
-    assertTrue(actor in stage.root.children)
-  }
-
-  @Test
-  fun `should add multiple top-level actors to the Stage within actors block`() {
-    val stage = Stage(mock(), mock())
-    val label: Label
-    val table: Table
-    val button: Button
-
-    stage.actors {
-      label = label("Test")
-      table =
-        table {
-          button = button()
-        }
-      assertSame(stage, this.stage)
+      (actor in stage.actors) shouldBe true
+      (actor in stage.root.children) shouldBe true
     }
 
-    assertTrue(label in stage.actors)
-    assertTrue(label in stage.root.children)
-    assertTrue(table in stage.actors)
-    assertTrue(table in stage.root.children)
-    assertFalse(button in stage.actors)
-    assertFalse(button in stage.root.children)
-    assertTrue(button in table.children)
-  }
+    test("should add multiple top-level actors to the Stage within actors block") {
+      val stage = Stage(mock(), mock())
+      val label: Label
+      val table: Table
+      val button: Button
 
-  @Test
-  fun `should configure Stage exactly once`() {
-    val stage = Stage(mock(), mock())
-    val variable: Int
+      stage.actors {
+        label = label("Test")
+        table =
+          table {
+            button = button()
+          }
+        this.stage shouldBeSameInstanceAs stage
+      }
 
-    stage.actors {
-      variable = 42
+      (label in stage.actors) shouldBe true
+      (label in stage.root.children) shouldBe true
+      (table in stage.actors) shouldBe true
+      (table in stage.root.children) shouldBe true
+      (button in stage.actors) shouldBe false
+      (button in stage.root.children) shouldBe false
+      (button in table.children) shouldBe true
     }
 
-    assertEquals(42, variable)
-  }
+    test("should configure Stage exactly once") {
+      val stage = Stage(mock(), mock())
+      val variable: Int
 
-  @Test
-  fun `should store root actors in Stage when using actors block`() {
-    val stage = Stage(mock(), mock())
-    val window: Window
-    val dialog: Dialog
-    val label: Label
+      stage.actors {
+        variable = 42
+      }
 
-    stage.actors {
-      window = window("Test")
-      dialog =
-        dialog("Test") {
-          label = label("Test")
-        }
+      variable shouldBe 42
     }
 
-    assertTrue(window in stage.actors)
-    assertTrue(window in stage.root.children)
-    assertTrue(dialog in stage.actors)
-    assertTrue(dialog in stage.root.children)
-    assertFalse(label in stage.actors)
-    assertFalse(label in stage.root.children)
-    assertTrue(label in dialog.children)
+    test("should store root actors in Stage when using actors block") {
+      val stage = Stage(mock(), mock())
+      val window: Window
+      val dialog: Dialog
+      val label: Label
+
+      stage.actors {
+        window = window("Test")
+        dialog =
+          dialog("Test") {
+            label = label("Test")
+          }
+      }
+
+      (window in stage.actors) shouldBe true
+      (window in stage.root.children) shouldBe true
+      (dialog in stage.actors) shouldBe true
+      (dialog in stage.root.children) shouldBe true
+      (label in stage.actors) shouldBe false
+      (label in stage.root.children) shouldBe false
+      (label in dialog.children) shouldBe true
+    }
   }
 }

@@ -13,14 +13,13 @@ import com.badlogic.gdx.maps.objects.TextureMapObject
 import com.badlogic.gdx.math.Circle
 import com.badlogic.gdx.math.Ellipse
 import com.badlogic.gdx.math.Rectangle
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
 
-class MapObjectTest {
-  private val mapObject =
+class MapObjectTest : FunSpec({
+  val mapObject =
     MapObject().apply {
       properties.apply {
         put("id", 13)
@@ -35,136 +34,122 @@ class MapObjectTest {
       }
     }
 
-  @Test
-  fun `should retrieve properties from MapObject`() {
-    assertEquals(1, mapObject.property<Int>("x"))
-    assertEquals(20f, mapObject.property<Float>("width"))
-    assertEquals("Property", mapObject.property<String>("name"))
-    assertEquals(true, mapObject.property<Boolean>("active"))
+  test("should retrieve properties from MapObject") {
+    mapObject.property<Int>("x") shouldBe 1
+    mapObject.property<Float>("width") shouldBe 20f
+    mapObject.property<String>("name") shouldBe "Property"
+    mapObject.property<Boolean>("active") shouldBe true
   }
 
-  @Test
-  fun `should retrieve properties from MapObject with default value`() {
-    assertEquals(1, mapObject.property("x", 0))
-    assertEquals(0, mapObject.property("non-existing", 0))
-    assertEquals(20f, mapObject.property("width", 0f))
-    assertEquals("Property", mapObject.property("name", ""))
-    assertEquals(true, mapObject.property("active", false))
+  test("should retrieve properties from MapObject with default value") {
+    mapObject.property("x", 0) shouldBe 1
+    mapObject.property("non-existing", 0) shouldBe 0
+    mapObject.property("width", 0f) shouldBe 20f
+    mapObject.property("name", "") shouldBe "Property"
+    mapObject.property("active", false) shouldBe true
   }
 
-  @Test
-  fun `should retrieve properties from MapObject without default value`() {
-    assertNull(mapObject.propertyOrNull("non-existing"))
-    assertEquals(1, mapObject.propertyOrNull<Int>("x"))
+  test("should retrieve properties from MapObject without default value") {
+    mapObject.propertyOrNull<Any>("non-existing").shouldBeNull()
+    mapObject.propertyOrNull<Int>("x") shouldBe 1
   }
 
-  @Test
-  fun `should check if property from MapObject exists`() {
-    assertTrue(mapObject.containsProperty("x"))
-    assertFalse(mapObject.containsProperty("non-existing"))
+  test("should check if property from MapObject exists") {
+    mapObject.containsProperty("x") shouldBe true
+    mapObject.containsProperty("non-existing") shouldBe false
   }
 
-  @Test
-  fun `should retrieve standard properties of MapObject`() {
-    assertEquals(13, mapObject.id)
-    assertEquals(1f, mapObject.x)
-    assertEquals(0f, mapObject.y)
-    assertEquals(20f, mapObject.width)
-    assertEquals(30f, mapObject.height)
-    assertEquals(-2.33f, mapObject.rotation)
-    assertEquals("SomeType", mapObject.type)
+  test("should retrieve standard properties of MapObject") {
+    mapObject.id shouldBe 13
+    mapObject.x shouldBe 1f
+    mapObject.y shouldBe 0f
+    mapObject.width shouldBe 20f
+    mapObject.height shouldBe 30f
+    mapObject.rotation shouldBe -2.33f
+    mapObject.type shouldBe "SomeType"
   }
 
-  @Test(expected = MissingPropertyException::class)
-  fun `should not retrieve non-existing property from MapObject`() {
-    mapObject.property<String>("non-existing")
+  test("should not retrieve non-existing property from MapObject") {
+    shouldThrow<MissingPropertyException> {
+      mapObject.property<String>("non-existing")
+    }
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Circle type`() {
+  test("should retrieve shape from MapObject with Circle type") {
     val circleObject = CircleMapObject()
 
-    assertEquals(Circle(0f, 0f, 1f), circleObject.shape)
+    circleObject.shape shouldBe Circle(0f, 0f, 1f)
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Ellipse type`() {
+  test("should retrieve shape from MapObject with Ellipse type") {
     val ellipseObject = EllipseMapObject()
 
-    assertEquals(Ellipse(0f, 0f, 1f, 1f), ellipseObject.shape)
+    ellipseObject.shape shouldBe Ellipse(0f, 0f, 1f, 1f)
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Polyline type`() {
+  test("should retrieve shape from MapObject with Polyline type") {
     val polylineVertices = floatArrayOf(0f, 0f, 1f, 1f)
     val polylineObject = PolylineMapObject(polylineVertices)
 
-    assertEquals(polylineObject.polyline, polylineObject.shape)
+    polylineObject.shape shouldBe polylineObject.polyline
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Polygon type`() {
+  test("should retrieve shape from MapObject with Polygon type") {
     val polygonVertices = floatArrayOf(0f, 0f, 1f, 1f, 2f, 0f)
     val polygonObject = PolygonMapObject(polygonVertices)
 
-    assertEquals(polygonObject.polygon, polygonObject.shape)
+    polygonObject.shape shouldBe polygonObject.polygon
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Rectangle type`() {
+  test("should retrieve shape from MapObject with Rectangle type") {
     val rectObject = RectangleMapObject()
 
-    assertEquals(Rectangle(0f, 0f, 1f, 1f), rectObject.shape)
+    rectObject.shape shouldBe Rectangle(0f, 0f, 1f, 1f)
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Point type`() {
+  test("should retrieve shape from MapObject with Point type") {
     val pointObject = PointMapObject()
 
-    assertEquals(Rectangle(0f, 0f, 0f, 0f), pointObject.shape)
+    pointObject.shape shouldBe Rectangle(0f, 0f, 0f, 0f)
   }
 
-  @Test
-  fun `should retrieve shape from MapObject with Text type`() {
+  test("should retrieve shape from MapObject with Text type") {
     val textObject = TextMapObject()
 
-    assertEquals(Rectangle(0f, 0f, 1f, 1f), textObject.shape)
+    textObject.shape shouldBe Rectangle(0f, 0f, 1f, 1f)
   }
 
-  @Test(expected = MissingShapeException::class)
-  fun `retrieve shape from unsupported MapObject`() {
-    val textureObject = TextureMapObject()
+  test("retrieve shape from unsupported MapObject") {
+    shouldThrow<MissingShapeException> {
+      val textureObject = TextureMapObject()
 
-    textureObject.shape
+      textureObject.shape
+    }
   }
 
-  @Test
-  fun `should return true when MapObjects is empty`() {
+  test("should return true when MapObjects is empty") {
     val actual = MapObjects()
 
-    assertTrue(actual.isEmpty())
+    actual.isEmpty() shouldBe true
   }
 
-  @Test
-  fun `should return false when MapObjects is not empty`() {
-    val actual = MapObjects()
-    actual.add(MapObject())
-
-    assertFalse(actual.isEmpty())
-  }
-
-  @Test
-  fun `should return true when MapObjects is not empty`() {
+  test("should return false when MapObjects is not empty") {
     val actual = MapObjects()
     actual.add(MapObject())
 
-    assertTrue(actual.isNotEmpty())
+    actual.isEmpty() shouldBe false
   }
 
-  @Test
-  fun `should return false when MapObjects is empty`() {
+  test("should return true when MapObjects is not empty") {
+    val actual = MapObjects()
+    actual.add(MapObject())
+
+    actual.isNotEmpty() shouldBe true
+  }
+
+  test("should return false when MapObjects is empty") {
     val actual = MapObjects()
 
-    assertFalse(actual.isNotEmpty())
+    actual.isNotEmpty() shouldBe false
   }
-}
+})

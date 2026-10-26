@@ -1,354 +1,321 @@
 package ktx.math
 
 import com.badlogic.gdx.math.Vector2
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
+import io.kotest.matchers.floats.plusOrMinus
+import io.kotest.matchers.shouldBe
 
 /**
  * Tests [Vector2]-related utilities.
  */
-class Vector2Test {
-  private val floatTolerance = 0.00001f
+class Vector2Test : FunSpec({
+  val floatTolerance = 0.00001f
 
-  @Test
-  fun `should create vector with default values`() {
+  test("should create vector with default values") {
     val vector = vec2()
 
-    assertEquals(0f, vector.x, floatTolerance)
-    assertEquals(0f, vector.y, floatTolerance)
+    vector.x shouldBe (0f plusOrMinus floatTolerance)
+    vector.y shouldBe (0f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should create vector`() {
+  test("should create vector") {
     val vector = vec2(x = 10f, y = -10f)
 
-    assertEquals(10f, vector.x, floatTolerance)
-    assertEquals(-10f, vector.y, floatTolerance)
+    vector.x shouldBe (10f plusOrMinus floatTolerance)
+    vector.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should invert values with unary - operator`() {
+  test("should invert values with unary - operator") {
     val vector = Vector2(10f, 10f)
 
     val result = -vector
 
-    assertEquals(-10f, result.x, floatTolerance)
-    assertEquals(-10f, result.y, floatTolerance)
-    assertEquals(10f, vector.x, floatTolerance)
-    assertEquals(10f, vector.y, floatTolerance)
+    result.x shouldBe (-10f plusOrMinus floatTolerance)
+    result.y shouldBe (-10f plusOrMinus floatTolerance)
+    vector.x shouldBe (10f plusOrMinus floatTolerance)
+    vector.y shouldBe (10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add vectors with += operator`() {
+  test("should add vectors with += operator") {
     val vector = Vector2(10f, 10f)
 
     vector += Vector2(20f, -20f)
 
-    assertEquals(30f, vector.x, floatTolerance)
-    assertEquals(-10f, vector.y, floatTolerance)
+    vector.x shouldBe (30f plusOrMinus floatTolerance)
+    vector.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add floats with += operator`() {
+  test("should add floats with += operator") {
     val vector = Vector2(10f, 10f)
 
     vector += 10f
 
-    assertEquals(20f, vector.x, floatTolerance)
-    assertEquals(20f, vector.y, floatTolerance)
+    vector.x shouldBe (20f plusOrMinus floatTolerance)
+    vector.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add ints with += operator`() {
+  test("should add ints with += operator") {
     val vector = Vector2(10f, 10f)
 
     vector += 10
 
-    assertEquals(20f, vector.x, floatTolerance)
-    assertEquals(20f, vector.y, floatTolerance)
+    vector.x shouldBe (20f plusOrMinus floatTolerance)
+    vector.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should subtract vectors with -= operator`() {
+  test("should subtract vectors with -= operator") {
     val vector = Vector2(10f, 10f)
 
     vector -= Vector2(20f, -20f)
 
-    assertEquals(-10f, vector.x, floatTolerance)
-    assertEquals(30f, vector.y, floatTolerance)
+    vector.x shouldBe (-10f plusOrMinus floatTolerance)
+    vector.y shouldBe (30f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should subtract floats with -= operator`() {
+  test("should subtract floats with -= operator") {
     val vector = Vector2(10f, 10f)
 
     vector -= 20f
 
-    assertEquals(-10f, vector.x, floatTolerance)
-    assertEquals(-10f, vector.y, floatTolerance)
+    vector.x shouldBe (-10f plusOrMinus floatTolerance)
+    vector.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should subtract ints with -= operator`() {
+  test("should subtract ints with -= operator") {
     val vector = Vector2(10f, 10f)
 
     vector -= 5
 
-    assertEquals(5f, vector.x, floatTolerance)
-    assertEquals(5f, vector.y, floatTolerance)
+    vector.x shouldBe (5f plusOrMinus floatTolerance)
+    vector.y shouldBe (5f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should multiply vectors with timesAssign operator`() {
+  test("should multiply vectors with timesAssign operator") {
     val vector = Vector2(10f, 10f)
 
     vector *= Vector2(3f, -1f)
 
-    assertEquals(30f, vector.x, floatTolerance)
-    assertEquals(-10f, vector.y, floatTolerance)
+    vector.x shouldBe (30f plusOrMinus floatTolerance)
+    vector.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should divide vectors with divAssign operator`() {
+  test("should divide vectors with divAssign operator") {
     val vector = Vector2(10f, 10f)
 
     vector /= Vector2(2f, -5f)
 
-    assertEquals(5f, vector.x, floatTolerance)
-    assertEquals(-2f, vector.y, floatTolerance)
+    vector.x shouldBe (5f plusOrMinus floatTolerance)
+    vector.y shouldBe (-2f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should multiply vectors by int scalars with timesAssign operator`() {
+  test("should multiply vectors by int scalars with timesAssign operator") {
     val vector = Vector2(10f, 10f)
 
     vector *= 2
 
-    assertEquals(20f, vector.x, floatTolerance)
-    assertEquals(20f, vector.y, floatTolerance)
+    vector.x shouldBe (20f plusOrMinus floatTolerance)
+    vector.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should divide vectors by int scalars with divAssign operator`() {
+  test("should divide vectors by int scalars with divAssign operator") {
     val vector = Vector2(10f, 10f)
 
     vector /= 2
 
-    assertEquals(5f, vector.x, floatTolerance)
-    assertEquals(5f, vector.y, floatTolerance)
+    vector.x shouldBe (5f plusOrMinus floatTolerance)
+    vector.y shouldBe (5f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should multiply vectors by float scalars with timesAssign operator`() {
+  test("should multiply vectors by float scalars with timesAssign operator") {
     val vector = Vector2(10f, 10f)
 
     vector *= 2.5f
 
-    assertEquals(25f, vector.x, floatTolerance)
-    assertEquals(25f, vector.y, floatTolerance)
+    vector.x shouldBe (25f plusOrMinus floatTolerance)
+    vector.y shouldBe (25f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should divide vectors by float scalars with divAssign operator`() {
+  test("should divide vectors by float scalars with divAssign operator") {
     val vector = Vector2(10f, 10f)
 
     vector /= 2.5f
 
-    assertEquals(4f, vector.x, floatTolerance)
-    assertEquals(4f, vector.y, floatTolerance)
+    vector.x shouldBe (4f plusOrMinus floatTolerance)
+    vector.y shouldBe (4f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add vectors with + operator`() {
+  test("should add vectors with + operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector + Vector2(20f, -20f)
 
-    assertEquals(30f, result.x, floatTolerance)
-    assertEquals(-10f, result.y, floatTolerance)
+    result.x shouldBe (30f plusOrMinus floatTolerance)
+    result.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add vector and float with + operator`() {
+  test("should add vector and float with + operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector + 10f
 
-    assertEquals(20f, result.x, floatTolerance)
-    assertEquals(20f, result.y, floatTolerance)
+    result.x shouldBe (20f plusOrMinus floatTolerance)
+    result.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should add vector and int with + operator`() {
+  test("should add vector and int with + operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector + 10
 
-    assertEquals(20f, result.x, floatTolerance)
-    assertEquals(20f, result.y, floatTolerance)
+    result.x shouldBe (20f plusOrMinus floatTolerance)
+    result.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should subtract vectors with - operator`() {
+  test("should subtract vectors with - operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector - Vector2(20f, -20f)
 
-    assertEquals(-10f, result.x, floatTolerance)
-    assertEquals(30f, result.y, floatTolerance)
+    result.x shouldBe (-10f plusOrMinus floatTolerance)
+    result.y shouldBe (30f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should subtract vector and float with - operator`() {
+  test("should subtract vector and float with - operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector - 20f
 
-    assertEquals(-10f, result.x, floatTolerance)
-    assertEquals(-10f, result.y, floatTolerance)
+    result.x shouldBe (-10f plusOrMinus floatTolerance)
+    result.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should subtract vector and int with - operator`() {
+  test("should subtract vector and int with - operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector - 20
 
-    assertEquals(-10f, result.x, floatTolerance)
-    assertEquals(-10f, result.y, floatTolerance)
+    result.x shouldBe (-10f plusOrMinus floatTolerance)
+    result.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should multiply vectors with times operator`() {
+  test("should multiply vectors with times operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector * Vector2(3f, -1f)
 
-    assertEquals(30f, result.x, floatTolerance)
-    assertEquals(-10f, result.y, floatTolerance)
+    result.x shouldBe (30f plusOrMinus floatTolerance)
+    result.y shouldBe (-10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should multiply vectors by float scalars with times operator`() {
+  test("should multiply vectors by float scalars with times operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector * 2.5f
 
-    assertEquals(25f, result.x, floatTolerance)
-    assertEquals(25f, result.y, floatTolerance)
+    result.x shouldBe (25f plusOrMinus floatTolerance)
+    result.y shouldBe (25f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should multiply vectors by int scalars with times operator`() {
+  test("should multiply vectors by int scalars with times operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector * 2
 
-    assertEquals(20f, result.x, floatTolerance)
-    assertEquals(20f, result.y, floatTolerance)
+    result.x shouldBe (20f plusOrMinus floatTolerance)
+    result.y shouldBe (20f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should divide vectors with div operator`() {
+  test("should divide vectors with div operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector / Vector2(2f, -5f)
 
-    assertEquals(5f, result.x, floatTolerance)
-    assertEquals(-2f, result.y, floatTolerance)
+    result.x shouldBe (5f plusOrMinus floatTolerance)
+    result.y shouldBe (-2f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should divide vectors by int scalars with div operator`() {
+  test("should divide vectors by int scalars with div operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector / 2
 
-    assertEquals(5f, result.x, floatTolerance)
-    assertEquals(5f, result.y, floatTolerance)
+    result.x shouldBe (5f plusOrMinus floatTolerance)
+    result.y shouldBe (5f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should divide vectors by float scalars with div operator`() {
+  test("should divide vectors by float scalars with div operator") {
     val vector = Vector2(10f, 10f)
 
     val result = vector / 2.5f
 
-    assertEquals(4f, result.x, floatTolerance)
-    assertEquals(4f, result.y, floatTolerance)
+    result.x shouldBe (4f plusOrMinus floatTolerance)
+    result.y shouldBe (4f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should increment vector values with ++ operator`() {
+  test("should increment vector values with ++ operator") {
     val originalVector = Vector2(10f, 10f)
     var vector = originalVector
 
     vector++
 
-    assertEquals(11f, vector.x, floatTolerance)
-    assertEquals(11f, vector.y, floatTolerance)
-    assertEquals(10f, originalVector.x, floatTolerance)
-    assertEquals(10f, originalVector.y, floatTolerance)
+    vector.x shouldBe (11f plusOrMinus floatTolerance)
+    vector.y shouldBe (11f plusOrMinus floatTolerance)
+    originalVector.x shouldBe (10f plusOrMinus floatTolerance)
+    originalVector.y shouldBe (10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should decrement vector values with -- operator`() {
+  test("should decrement vector values with -- operator") {
     val originalVector = Vector2(10f, 10f)
     var vector = originalVector
 
     vector--
 
-    assertEquals(9f, vector.x, floatTolerance)
-    assertEquals(9f, vector.y, floatTolerance)
-    assertEquals(10f, originalVector.x, floatTolerance)
-    assertEquals(10f, originalVector.y, floatTolerance)
+    vector.x shouldBe (9f plusOrMinus floatTolerance)
+    vector.y shouldBe (9f plusOrMinus floatTolerance)
+    originalVector.x shouldBe (10f plusOrMinus floatTolerance)
+    originalVector.y shouldBe (10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should destruct vector into two floats`() {
+  test("should destruct vector into two floats") {
     val (x, y) = Vector2(10f, 10f)
 
-    assertEquals(10f, x, floatTolerance)
-    assertEquals(10f, y, floatTolerance)
+    x shouldBe (10f plusOrMinus floatTolerance)
+    y shouldBe (10f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should compare vectors by length`() {
+  test("should compare vectors by length") {
     val vec1 = Vector2(10f, 10f)
     val vec2 = Vector2(10f, -20f) // This vector has the greatest overall length.
     val vec3 = Vector2(10f, 10f)
 
-    assertTrue(vec1 < vec2)
-    assertTrue(vec1 <= vec2)
-    assertFalse(vec1 > vec2)
-    assertFalse(vec1 >= vec2)
+    (vec1 < vec2) shouldBe true
+    (vec1 <= vec2) shouldBe true
+    (vec1 > vec2) shouldBe false
+    (vec1 >= vec2) shouldBe false
 
-    assertTrue(vec1 == vec3)
-    assertTrue(vec1 >= vec3)
-    assertTrue(vec1 <= vec3)
-    assertFalse(vec1 < vec3)
-    assertFalse(vec1 > vec3)
+    (vec1 == vec3) shouldBe true
+    (vec1 >= vec3) shouldBe true
+    (vec1 <= vec3) shouldBe true
+    (vec1 < vec3) shouldBe false
+    (vec1 > vec3) shouldBe false
   }
 
-  @Test
-  fun `should be the dot product of two vectors`() {
+  test("should be the dot product of two vectors") {
     val vec1 = Vector2(2f, 1f)
     val vec2 = Vector2(3f, -4f)
 
     val result = vec1 dot vec2
 
-    assertEquals(2f, result, floatTolerance)
+    result shouldBe (2f plusOrMinus floatTolerance)
   }
 
-  @Test
-  fun `should be the cross product of two vectors`() {
+  test("should be the cross product of two vectors") {
     val vec1 = Vector2(2f, 1f)
     val vec2 = Vector2(3f, -4f)
 
     val result = vec1 x vec2
 
-    assertEquals(-11f, result, floatTolerance)
+    result shouldBe (-11f plusOrMinus floatTolerance)
   }
-}
+})

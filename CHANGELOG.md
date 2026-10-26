@@ -4,6 +4,7 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
 - **[UPDATE]** Updated to Gradle 9.8.1.
 - **[UPDATE]** Updated to Kotlin 2.4.21.
 - **[UPDATE]** Updated to TextraTypist 2.5.0.
+- **[CHANGE]** Unified all unit tests of the project on Kotest (`FunSpec` with Kotest assertions) and Mockito-Kotlin. JUnit 4, Spek, KotlinTest and AssertJ are no longer used.
 
 #### 1.14.2-rc2
 

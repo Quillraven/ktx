@@ -1,21 +1,22 @@
 package ktx.scene2d.vis
 
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import ktx.scene2d.ApplicationTest
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
 
 class ValidationTest : ApplicationTest() {
-  @Test
-  fun `should create FormValidator`() {
-    var invoked: Boolean
+  init {
+    test("should create FormValidator") {
+      var invoked: Boolean
 
-    val formValidator =
-      validator {
-        invoked = true
-      }
+      val formValidator =
+        validator {
+          invoked = true
+        }
 
-    assertNotNull(formValidator)
-    assertTrue(invoked)
+      formValidator.shouldNotBeNull()
+      invoked shouldBe true
+    }
   }
 }
