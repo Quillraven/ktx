@@ -47,8 +47,8 @@ optionally be passed to automatically free the removed items.
 nested safely - unlike `Iterable.any`, `for` loops or `iterate`, which throw "#iterator() cannot be used nested".
 `forEachItem` is not called `forEach`, because `java.lang.Iterable.forEach` is a member of `Array` and would always win
 over an extension. `GdxIntArray.forEach` is also available.
-- `removeAt` is an alias for `removeIndex`. `containsIdentity` checks for an element with reference equality, while
-the `in` operator uses `equals`.
+- `removeAt` is an alias for `removeIndex`. `containsIdentity` and `removeIdentity` check for an element with reference
+equality, while the `in` operator and `-=` use `equals`.
 - Every iterable and array can be converted to `Array` using `toGdxArray` method.
 - `IntArray`, `BooleanArray` and `FloatArray` can be converted to corresponding libGDX primitive collections using
 `toGdxArray` method.

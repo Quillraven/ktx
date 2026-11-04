@@ -708,6 +708,17 @@ class ArraysTest : FunSpec({
     gdxArrayOf<String>().containsIdentity(first) shouldBe false
   }
 
+  test("should remove element by identity") {
+    val first = String(charArrayOf('a'))
+    val equalCopy = String(charArrayOf('a'))
+    val array = gdxArrayOf(first)
+
+    array.removeIdentity(equalCopy) shouldBe false
+    array.size shouldBe 1
+    array.removeIdentity(first) shouldBe true
+    array.size shouldBe 0
+  }
+
   test("should find first element or null") {
     val array = gdxArrayOf(1, 2, 3)
 

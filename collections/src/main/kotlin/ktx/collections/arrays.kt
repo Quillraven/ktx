@@ -312,6 +312,14 @@ operator fun <Type> GdxArray<Type>.contains(element: Type): Boolean = this.conta
 inline fun <Type> GdxArray<Type>.containsIdentity(element: Type): Boolean = this.contains(element, true)
 
 /**
+ * Removes the first occurrence of the [element] using reference comparison (`===`). Use `-=` to remove by `equals`
+ * instead.
+ * @param element should be removed from the array.
+ * @return true if the exact same instance was stored in the array and got removed.
+ */
+inline fun <Type> GdxArray<Type>.removeIdentity(element: Type): Boolean = this.removeValue(element, true)
+
+/**
  * Allows to iterate over the array with access to [MutableIterator], which allows to remove elements from the collection
  * during iteration.
  * @param action will be invoked for each array element. Allows to remove elements during iteration. The first function
