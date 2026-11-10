@@ -104,7 +104,7 @@ class NoInitBlockActorFactoriesTest : ApplicationTest() {
     // Ensuring the child is not null and owned by the parent:
     child.shouldNotBeNull()
     (child in parent.children) shouldBe true
-    validate(child!!) // Additional validation specific to widget.
+    validate(child) // Additional validation specific to widget.
   }
 
   init {
@@ -340,7 +340,7 @@ class InlinedInitBlockActorFactoriesTest : ApplicationTest() {
     child.shouldNotBeNull()
     (child in parent.children) shouldBe true
     withClue("For the purpose of this test, the actor must include 'color = Color.BLUE' in its init block.") {
-      child!!.color shouldBe
+      child.color shouldBe
         Color.BLUE
     }
     validate(child) // Performing widget-specific validation.
