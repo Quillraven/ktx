@@ -589,7 +589,6 @@ class AsyncAssetManagerFreeTypeTest : FreeTypeTest() {
       val asset = runBlocking { reference.await() }
       val font = assetManager.get<BitmapFont>(otfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset
     }
 
@@ -612,7 +611,6 @@ class AsyncAssetManagerFreeTypeTest : FreeTypeTest() {
       val asset = runBlocking { reference.await() }
       val font = assetManager.get<BitmapFont>(otfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset
       variable shouldBe 42
     }
@@ -630,7 +628,6 @@ class AsyncAssetManagerFreeTypeTest : FreeTypeTest() {
       val asset = runBlocking { reference.await() }
       val font = assetManager.get<BitmapFont>(ttfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset
     }
 
@@ -653,7 +650,6 @@ class AsyncAssetManagerFreeTypeTest : FreeTypeTest() {
       val asset = runBlocking { reference.await() }
       val font = assetManager.get<BitmapFont>(ttfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset
       variable shouldBe 42
     }
