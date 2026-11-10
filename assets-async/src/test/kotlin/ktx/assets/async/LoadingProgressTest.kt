@@ -2,11 +2,9 @@ package ktx.assets.async
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class LoadingProgressTest : FunSpec({
   test("should increase count of scheduled assets") {
@@ -220,9 +218,9 @@ class LoadingProgressTest : FunSpec({
     val progress = LoadingProgress()
 
     // When:
-    val jobs =
-      (1..1000).map { id ->
-        GlobalScope.launch {
+    withContext(Dispatchers.Default) {
+      for (id in 1..1000) {
+        launch {
           when (id % 4) {
             0 -> progress.registerScheduledAsset()
             1 -> progress.registerLoadedAsset()
@@ -231,9 +229,9 @@ class LoadingProgressTest : FunSpec({
           }
         }
       }
+    }
 
     // Then:
-    runBlocking { jobs.joinAll() }
     progress.total shouldBe 500
     progress.loaded shouldBe 500
     progress.failed shouldBe 250
@@ -244,9 +242,9 @@ class LoadingProgressTest : FunSpec({
     val progress = LoadingProgress()
 
     // When:
-    val jobs =
-      (1..1000).map { id ->
-        GlobalScope.launch {
+    withContext(Dispatchers.Default) {
+      for (id in 1..1000) {
+        launch {
           when (id % 4) {
             0 -> progress.registerScheduledAsset()
             1 -> progress.registerLoadedAsset()
@@ -261,9 +259,9 @@ class LoadingProgressTest : FunSpec({
           }
         }
       }
+    }
 
     // Then:
-    runBlocking { jobs.joinAll() }
     progress.total shouldBe (900 - 600)
     progress.loaded shouldBe (500 - 200)
     progress.failed shouldBe (250 - 200)

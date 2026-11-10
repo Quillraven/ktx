@@ -198,6 +198,22 @@ class AssetStorageTest : AsyncTest() {
     ): FakeAsset = FakeAsset().also(onLoad)
   }
 
+  /** For loaders testing. Generic loader that matches the type of any asset. Never actually loads anything. */
+  class FakeTypedLoader<Asset> : SynchronousAssetLoader<Asset, AssetLoaderParameters<Asset>>(ClasspathFileHandleResolver()) {
+    override fun getDependencies(
+      fileName: String?,
+      file: FileHandle?,
+      parameter: AssetLoaderParameters<Asset>?,
+    ): GdxArray<AssetDescriptor<Any>>? = null
+
+    override fun load(
+      assetManager: AssetManager,
+      fileName: String?,
+      file: FileHandle?,
+      parameter: AssetLoaderParameters<Asset>?,
+    ): Asset = error("Not supported.")
+  }
+
   /** For loaders testing. */
   class FakeParameters : AssetLoaderParameters<FakeAsset>()
 
@@ -2182,7 +2198,7 @@ class AssetStorageTest : AsyncTest() {
 
       // Then:
       storage.isLoaded<FakeAsset>(path) shouldBe false
-      val asset: Asset<FakeAsset> = snapshot.assets[id] as Asset<FakeAsset>
+      val asset = snapshot.assets[id].shouldNotBeNull()
       asset.identifier shouldBe id
       asset.reference.isCompleted shouldBe false
       asset.reference.isCancelled shouldBe false
@@ -2190,7 +2206,7 @@ class AssetStorageTest : AsyncTest() {
       asset.dependencies shouldBe listOf<Asset<*>>()
 
       // When: modifying asset loading manually:
-      asset.reference.complete(FakeAsset())
+      asset.reference.cancel()
       asset.referenceCount = 10
 
       // Then: internal state should be unmodified:
@@ -2222,7 +2238,7 @@ class AssetStorageTest : AsyncTest() {
           identifier = firstId,
           reference = CompletableDeferred("test"),
           dependencies = listOf(),
-          loader = FakeSyncLoader() as Loader<String>,
+          loader = FakeTypedLoader<String>(),
           referenceCount = 2,
         )
       val secondId = Identifier("second.file", Int::class.java)
@@ -2233,7 +2249,7 @@ class AssetStorageTest : AsyncTest() {
           identifier = secondId,
           reference = CompletableDeferred(),
           dependencies = listOf(first),
-          loader = FakeSyncLoader() as Loader<Int>,
+          loader = FakeTypedLoader<Int>(),
           referenceCount = 1,
         )
       val snapshot =
@@ -2254,13 +2270,13 @@ class AssetStorageTest : AsyncTest() {
     references=2,
     dependencies=[],
     loaded=true,
-    loader=ktx.assets.async.AssetStorageTest${"$"}FakeSyncLoader,
+    loader=ktx.assets.async.AssetStorageTest${"$"}FakeTypedLoader,
   },
   "second.file" (int) {
     references=1,
     dependencies=["first.file" (java.lang.String)],
     loaded=false,
-    loader=ktx.assets.async.AssetStorageTest${"$"}FakeSyncLoader,
+    loader=ktx.assets.async.AssetStorageTest${"$"}FakeTypedLoader,
   },
 ]"""
     }
