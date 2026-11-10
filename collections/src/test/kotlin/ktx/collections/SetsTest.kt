@@ -317,7 +317,7 @@ class SetsTest : FunSpec({
   }
 
   test("should provide alias for compatibility with other libGDX collections") {
-    (GdxSet<Any>() is ObjectSet<Any>) shouldBe true
+    GdxSet<Any>()::class shouldBe ObjectSet::class
   }
 
   test("should forEach over IntSet") {

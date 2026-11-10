@@ -264,7 +264,7 @@ class MapsTest : FunSpec({
   }
 
   test("should provide alias for compatibility with other libGDX collections") {
-    (GdxMap<Any, Any>() is ObjectMap<Any, Any>) shouldBe true
+    GdxMap<Any, Any>()::class shouldBe ObjectMap::class
   }
 
   test("should destruct ObjectMap#Entry into key and value") {

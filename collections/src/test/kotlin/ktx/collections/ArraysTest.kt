@@ -590,13 +590,13 @@ class ArraysTest : FunSpec({
   }
 
   test("should provide aliases for collections with conflicting names") {
-    (GdxArray<Any>() is com.badlogic.gdx.utils.Array<Any>) shouldBe true
-    (GdxIntArray() is com.badlogic.gdx.utils.IntArray) shouldBe true
-    (GdxFloatArray() is com.badlogic.gdx.utils.FloatArray) shouldBe true
-    (GdxBooleanArray() is com.badlogic.gdx.utils.BooleanArray) shouldBe true
-    (GdxCharArray() is com.badlogic.gdx.utils.CharArray) shouldBe true
-    (GdxLongArray() is com.badlogic.gdx.utils.LongArray) shouldBe true
-    (GdxShortArray() is com.badlogic.gdx.utils.ShortArray) shouldBe true
+    GdxArray<Any>()::class shouldBe com.badlogic.gdx.utils.Array::class
+    GdxIntArray()::class shouldBe com.badlogic.gdx.utils.IntArray::class
+    GdxFloatArray()::class shouldBe com.badlogic.gdx.utils.FloatArray::class
+    GdxBooleanArray()::class shouldBe com.badlogic.gdx.utils.BooleanArray::class
+    GdxCharArray()::class shouldBe com.badlogic.gdx.utils.CharArray::class
+    GdxLongArray()::class shouldBe com.badlogic.gdx.utils.LongArray::class
+    GdxShortArray()::class shouldBe com.badlogic.gdx.utils.ShortArray::class
   }
 
   test("should create gdx arrays from vararg elements") {
