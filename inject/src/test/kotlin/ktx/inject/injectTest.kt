@@ -62,7 +62,7 @@ class DependencyInjectionTest : FunSpec({
   }
 
   test("should bind singletons to custom type") {
-    val singleton = java.lang.String("Singleton")
+    val singleton = StringBuilder("Singleton").toString()
 
     context.bindSingleton<CharSequence>(singleton)
 
@@ -78,7 +78,7 @@ class DependencyInjectionTest : FunSpec({
   }
 
   test("should bind singletons to multiple types") {
-    val singleton = java.lang.String("Singleton")
+    val singleton = StringBuilder("Singleton").toString()
 
     context.bindSingleton(String::class, CharSequence::class) { singleton }
 
@@ -90,7 +90,7 @@ class DependencyInjectionTest : FunSpec({
   }
 
   test("should bind singletons using provider's result") {
-    val singleton = java.lang.String("Singleton")
+    val singleton = StringBuilder("Singleton").toString()
 
     context.bindSingleton { singleton }
 
@@ -105,7 +105,7 @@ class DependencyInjectionTest : FunSpec({
   }
 
   test("should bind singletons using provider's result to custom type") {
-    val singleton = java.lang.String("Singleton")
+    val singleton = StringBuilder("Singleton").toString()
 
     context.bindSingleton<CharSequence> { singleton }
 
@@ -121,7 +121,7 @@ class DependencyInjectionTest : FunSpec({
   }
 
   test("should bind singleton using provider's result to given class") {
-    val singleton = java.lang.String("Singleton")
+    val singleton = StringBuilder("Singleton").toString()
 
     context.bindSingleton(CharSequence::class) { singleton }
 
@@ -143,7 +143,7 @@ class DependencyInjectionTest : FunSpec({
 
     context.contains<Random>() shouldBe false
     singletonProvider.shouldNotBeNull()
-    singletonProvider?.invoke() shouldBeSameInstanceAs singleton
+    singletonProvider.invoke() shouldBeSameInstanceAs singleton
   }
 
   test("should remove providers") {
@@ -178,7 +178,7 @@ class DependencyInjectionTest : FunSpec({
   }
 
   test("should bind providers to multiple types") {
-    context.bind(String::class, CharSequence::class) { java.lang.String("New") }
+    context.bind(String::class, CharSequence::class) { StringBuilder("New").toString() }
 
     context.contains<String>() shouldBe true
     context.contains<CharSequence>() shouldBe true
