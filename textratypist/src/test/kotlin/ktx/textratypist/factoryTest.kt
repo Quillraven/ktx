@@ -29,7 +29,7 @@ class BaseFactoryTest : ApplicationTest() {
     // Ensuring the child is not null and owned by the parent:
     child.shouldNotBeNull()
     (child in parent.children) shouldBe true
-    validate(child!!) // Additional validation specific to widget.
+    validate(child) // Additional validation specific to widget.
   }
 
   init {
