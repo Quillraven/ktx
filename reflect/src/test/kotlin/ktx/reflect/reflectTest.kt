@@ -622,7 +622,7 @@ class ReflectTest : FunSpec({
 
     // Then:
     annotation.shouldNotBeNull()
-    annotation?.get<Annotation>()?.value shouldBe "Test"
+    annotation.get<Annotation>().value shouldBe "Test"
   }
 
   test("should not find an annotation by type") {
@@ -645,7 +645,7 @@ class ReflectTest : FunSpec({
 
     // Then:
     annotation.shouldNotBeNull()
-    annotation?.get<Annotation>()?.value shouldBe "Test"
+    annotation.get<Annotation>().value shouldBe "Test"
   }
 
   test("should not find a declared annotation by type") {
