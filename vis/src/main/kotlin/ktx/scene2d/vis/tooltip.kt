@@ -18,7 +18,6 @@ import kotlin.contracts.contract
  * @param init will be invoked on the [Tooltip], allowing to customize it.
  * @return a new instance of [Tooltip] added to this [Actor].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun Actor.visTooltip(
   content: Actor,
@@ -41,7 +40,6 @@ fun Actor.visTooltip(
  * @param init will be invoked on the [Tooltip], allowing to customize it.
  * @return a new instance of [Tooltip] added to this [Actor].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun Actor.visTextTooltip(
   text: CharSequence,

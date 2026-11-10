@@ -47,7 +47,6 @@ import com.badlogic.gdx.utils.Array as GdxArray
  * @param init will be invoked on the [Window] widget. Inlined.
  * @return a new [Window] instance.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun RootWidget.window(
   title: String,
@@ -67,7 +66,6 @@ inline fun RootWidget.window(
  * @param init will be invoked on the [Dialog] widget. Inlined.
  * @return a new [Dialog] instance.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun RootWidget.dialog(
   title: String,
@@ -89,7 +87,6 @@ inline fun RootWidget.dialog(
  * @param S storage type.
  * @param A actor type.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S, A : Actor> KWidget<S>.actor(
   actor: A,
@@ -108,7 +105,6 @@ inline fun <S, A : Actor> KWidget<S>.actor(
  * Inlined.
  * @return a [Button] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.button(
   style: String = defaultStyle,
@@ -129,7 +125,6 @@ inline fun <S> KWidget<S>.button(
  * @return a [KButtonTable] instance (which manages an internal [ButtonGroup]) added to this group. All direct
  * [Button]-extending children of this widget will be added to the internal [ButtonGroup].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.buttonGroup(
   minCheckedCount: Int,
@@ -150,7 +145,6 @@ inline fun <S> KWidget<S>.buttonGroup(
  * Inlined.
  * @return a [CheckBox] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.checkBox(
   text: String,
@@ -168,7 +162,6 @@ inline fun <S> KWidget<S>.checkBox(
  * Inlined.
  * @return a [Container] instance added to this group. Note that this actor might store only a single child.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.container(init: KContainer<Actor>.(S) -> Unit = {}): KContainer<Actor> {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }
@@ -184,7 +177,6 @@ inline fun <S> KWidget<S>.container(init: KContainer<Actor>.(S) -> Unit = {}): K
  * create any new actors added to this group.
  * @return a [Container] instance added to this group. Note that this actor might store only a single child.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S, A : Actor> KWidget<S>.container(
   actor: A,
@@ -200,7 +192,6 @@ inline fun <S, A : Actor> KWidget<S>.container(
  * Inlined.
  * @return a [HorizontalGroup] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.horizontalGroup(init: KHorizontalGroup.(S) -> Unit = {}): KHorizontalGroup {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }
@@ -215,7 +206,6 @@ inline fun <S> KWidget<S>.horizontalGroup(init: KHorizontalGroup.(S) -> Unit = {
  * Inlined.
  * @return a [Image] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.image(
   drawableName: String,
@@ -233,7 +223,6 @@ inline fun <S> KWidget<S>.image(
  * Inlined.
  * @return a [Image] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.image(
   ninePatch: NinePatch,
@@ -250,7 +239,6 @@ inline fun <S> KWidget<S>.image(
  * Inlined.
  * @return a [Image] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.image(
   textureRegion: TextureRegion,
@@ -267,7 +255,6 @@ inline fun <S> KWidget<S>.image(
  * Inlined.
  * @return a [Image] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.image(
   texture: Texture,
@@ -284,7 +271,6 @@ inline fun <S> KWidget<S>.image(
  * Inlined.
  * @return a [Image] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.image(
   drawable: Drawable? = null,
@@ -302,7 +288,6 @@ inline fun <S> KWidget<S>.image(
  * Inlined.
  * @return a [ImageButton] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.imageButton(
   style: String = defaultStyle,
@@ -322,7 +307,6 @@ inline fun <S> KWidget<S>.imageButton(
  * Inlined.
  * @return a [ImageTextButton] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.imageTextButton(
   text: String,
@@ -343,7 +327,6 @@ inline fun <S> KWidget<S>.imageTextButton(
  * Inlined.
  * @return a [Label] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.label(
   text: CharSequence,
@@ -362,7 +345,6 @@ inline fun <S> KWidget<S>.label(
  * @return a List widget instance added to this group.
  * @param I type of items stored by this widget. Usually items are converted to string and displayed.
  */
-@Scene2dDsl
 fun <I> KWidget<*>.listWidgetOf(
   items: GdxArray<I>? = null,
   style: String = defaultStyle,
@@ -385,7 +367,6 @@ fun <I> KWidget<*>.listWidgetOf(
  * @return a List widget instance added to this group.
  * @param I type of items stored by this widget. Usually items are converted to string and displayed.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <I> KWidget<*>.listWidget(
   style: String = defaultStyle,
@@ -410,7 +391,6 @@ inline fun <I> KWidget<*>.listWidget(
  * @see ParticleEffectActor
  * @see ParticleEffect
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.particleEffect(
   particleEffect: ParticleEffect,
@@ -434,7 +414,6 @@ inline fun <S> KWidget<S>.particleEffect(
  * Inlined.
  * @return a [ProgressBar] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.progressBar(
   min: Float = 0f,
@@ -457,7 +436,6 @@ inline fun <S> KWidget<S>.progressBar(
  * Inlined.
  * @return a [ScrollPane] instance added to this group. Note that this actor may have only a single child.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.scrollPane(
   style: String = defaultStyle,
@@ -475,7 +453,6 @@ inline fun <S> KWidget<S>.scrollPane(
  * @return a [SelectBox] instance added to this group.
  * @param I type of items stored by this widget. Usually items are converted to string and displayed.
  */
-@Scene2dDsl
 fun <I> KWidget<*>.selectBoxOf(
   items: GdxArray<I>? = null,
   style: String = defaultStyle,
@@ -498,7 +475,6 @@ fun <I> KWidget<*>.selectBoxOf(
  * @return a [SelectBox] instance added to this group.
  * @param I type of items stored by this widget. Usually items are converted to string and displayed.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <I> KWidget<*>.selectBox(
   style: String = defaultStyle,
@@ -526,7 +502,6 @@ inline fun <I> KWidget<*>.selectBox(
  * Inlined.
  * @return a [Slider] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.slider(
   min: Float = 0f,
@@ -551,7 +526,6 @@ inline fun <S> KWidget<S>.slider(
  * Inlined.
  * @return a [SplitPane] instance added to this group. Note that this actor can store only two children.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.splitPane(
   vertical: Boolean = false,
@@ -569,7 +543,6 @@ inline fun <S> KWidget<S>.splitPane(
  * Inlined.
  * @return a [Stack] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.stack(init: KStack.(S) -> Unit = {}): KStack {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }
@@ -583,7 +556,6 @@ inline fun <S> KWidget<S>.stack(init: KStack.(S) -> Unit = {}): KStack {
  * Inlined.
  * @return a [Table] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.table(
   skin: Skin = Scene2DSkin.defaultSkin,
@@ -602,7 +574,6 @@ inline fun <S> KWidget<S>.table(
  * Inlined.
  * @return a [TextArea] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.textArea(
   text: String = "",
@@ -623,7 +594,6 @@ inline fun <S> KWidget<S>.textArea(
  * Inlined.
  * @return a [TextField] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.textField(
   text: String = "",
@@ -644,7 +614,6 @@ inline fun <S> KWidget<S>.textField(
  * Inlined.
  * @return a [TextButton] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.textButton(
   text: String,
@@ -665,7 +634,6 @@ inline fun <S> KWidget<S>.textButton(
  * Inlined.
  * @return a [Touchpad] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.touchpad(
   deadzone: Float,
@@ -685,7 +653,6 @@ inline fun <S> KWidget<S>.touchpad(
  * Inlined.
  * @return a [Tree] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.tree(
   style: String = defaultStyle,
@@ -702,7 +669,6 @@ inline fun <S> KWidget<S>.tree(
  * Inlined.
  * @return a [VerticalGroup] instance added to this group.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.verticalGroup(init: KVerticalGroup.(S) -> Unit = {}): KVerticalGroup {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }

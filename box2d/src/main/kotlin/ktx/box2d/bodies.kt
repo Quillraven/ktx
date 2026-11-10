@@ -55,7 +55,6 @@ class BodyDefinition : BodyDef() {
  * @see loop
  * @see edge
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <ShapeType : Shape> BodyDefinition.fixture(
   shape: ShapeType,
@@ -78,7 +77,6 @@ inline fun <ShapeType : Shape> BodyDefinition.fixture(
  * @param init inlined. Allows to modify [FixtureDef] properties. Receives [CircleShape] as first (`it`) argument.
  * @return [FixtureDefinition] with [Fixture] properties.
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.circle(
   radius: Float = 1f,
@@ -103,7 +101,6 @@ inline fun BodyDefinition.circle(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see PolygonShape.setAsBox
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.box(
   width: Float = 1f,
@@ -128,7 +125,6 @@ inline fun BodyDefinition.box(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see PolygonShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.polygon(
   vertices: FloatArray? = null,
@@ -147,7 +143,6 @@ inline fun BodyDefinition.polygon(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see PolygonShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.polygon(
   vararg vertices: Vector2,
@@ -166,7 +161,6 @@ inline fun BodyDefinition.polygon(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see ChainShape.createChain
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.chain(
   vararg vertices: Vector2,
@@ -187,7 +181,6 @@ inline fun BodyDefinition.chain(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see ChainShape.createChain
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.chain(
   vertices: FloatArray,
@@ -206,7 +199,6 @@ inline fun BodyDefinition.chain(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see ChainShape.createLoop
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.loop(
   vararg vertices: Vector2,
@@ -228,7 +220,6 @@ inline fun BodyDefinition.loop(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see ChainShape.createLoop
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.loop(
   vertices: FloatArray,
@@ -248,7 +239,6 @@ inline fun BodyDefinition.loop(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see EdgeShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.edge(
   from: Vector2,
@@ -273,7 +263,6 @@ inline fun BodyDefinition.edge(
  * @return [FixtureDefinition] with [Fixture] properties.
  * @see EdgeShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun BodyDefinition.edge(
   fromX: Float,
@@ -300,7 +289,6 @@ inline fun BodyDefinition.edge(
  * @see loop
  * @see edge
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S : Shape> Body.fixture(
   shape: S,
@@ -326,7 +314,6 @@ inline fun <S : Shape> Body.fixture(
  * @param init inlined. Allows to modify [FixtureDef] properties. Receives [CircleShape] as first (`it`) argument.
  * @return a fully constructed [Fixture] with [CircleShape].
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.circle(
   radius: Float = 1f,
@@ -351,7 +338,6 @@ inline fun Body.circle(
  * @return a fully constructed [Fixture] with box [PolygonShape].
  * @see PolygonShape.setAsBox
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.box(
   width: Float = 1f,
@@ -376,7 +362,6 @@ inline fun Body.box(
  * @return a fully constructed [Fixture] with [PolygonShape].
  * @see PolygonShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.polygon(
   vertices: FloatArray? = null,
@@ -395,7 +380,6 @@ inline fun Body.polygon(
  * @return a fully constructed [Fixture] with [PolygonShape].
  * @see PolygonShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.polygon(
   vararg vertices: Vector2,
@@ -415,7 +399,6 @@ inline fun Body.polygon(
  * @return a fully constructed [Fixture] with [ChainShape].
  * @see ChainShape.createChain
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.chain(
   vararg vertices: Vector2,
@@ -436,7 +419,6 @@ inline fun Body.chain(
  * @return a fully constructed [Fixture] with [ChainShape].
  * @see ChainShape.createChain
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.chain(
   vertices: FloatArray,
@@ -455,7 +437,6 @@ inline fun Body.chain(
  * @return a fully constructed [Fixture] with looped [ChainShape].
  * @see ChainShape.createLoop
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.loop(
   vararg vertices: Vector2,
@@ -477,7 +458,6 @@ inline fun Body.loop(
  * @return a fully constructed [Fixture] with looped [ChainShape].
  * @see ChainShape.createLoop
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.loop(
   vertices: FloatArray,
@@ -497,7 +477,6 @@ inline fun Body.loop(
  * @return a fully constructed [Fixture] with [EdgeShape].
  * @see EdgeShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.edge(
   from: Vector2,
@@ -522,7 +501,6 @@ inline fun Body.edge(
  * @return a fully constructed [Fixture] with [EdgeShape].
  * @see EdgeShape.set
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.edge(
   fromX: Float,

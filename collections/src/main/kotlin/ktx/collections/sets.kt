@@ -279,7 +279,7 @@ inline fun <reified Type : Any> GdxSet<Type>.toGdxArray(
 ): GdxArray<Type> {
   val array =
     com.badlogic.gdx.utils
-      .Array<Type>(ordered, initialCapacity, Type::class.java)
+      .Array<Type>(ordered, initialCapacity, gdxArraySupplier<Type>())
   array.addAll(this)
   return array
 }

@@ -16,7 +16,6 @@ import kotlin.contracts.contract
  * @param style name of the [FormValidator] style.
  * @return a new instance of a [FormValidator]
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun validator(
   targetToDisable: Disableable? = null,

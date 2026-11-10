@@ -29,7 +29,6 @@ fun createWorld(
  * @see BodyDefinition
  * @see FixtureDefinition
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun World.body(
   type: BodyType = BodyType.StaticBody,

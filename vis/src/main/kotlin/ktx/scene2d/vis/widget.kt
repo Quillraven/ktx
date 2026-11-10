@@ -299,7 +299,6 @@ class KVisList<T>(
   /**
    * Allows to add items to the list with builder-like syntax.
    */
-  @Scene2dDsl
   operator fun T.unaryMinus() {
     items.add(this)
   }
@@ -322,7 +321,6 @@ class KVisSelectBox<T>(
   /**
    * Allows to add items to the select box with builder-like syntax.
    */
-  @Scene2dDsl
   operator fun T.unaryMinus() {
     items.add(this)
   }

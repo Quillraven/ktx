@@ -21,7 +21,6 @@ import kotlin.contracts.contract
  * @param init allows to customize the [PopupMenu].
  * @return a new instance of [PopupMenu].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 @Suppress("UnusedReceiverParameter")
 inline fun scene2d.popupMenu(
@@ -41,7 +40,6 @@ inline fun scene2d.popupMenu(
  * that the menu bar table was stored in, or the table itself if the parent does not use containers.
  * @return a new instance of [MenuBar].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <S> KWidget<S>.menuBar(
   style: String = defaultStyle,
@@ -59,7 +57,6 @@ inline fun <S> KWidget<S>.menuBar(
  * @param style name of the [Menu.MenuStyle].
  * @param init allows to customize the [Menu].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun MenuBar.menu(
   title: String,
@@ -79,7 +76,6 @@ fun MenuBar.menu(
  * @param init allows to customize the [PopupMenu].
  * @return a new instance of [PopupMenu] set as a submenu of this [MenuItem].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun MenuItem.subMenu(
   style: String = defaultStyle,
@@ -99,7 +95,6 @@ fun MenuItem.subMenu(
  * @param init allows to customize the [MenuItem].
  * @return a new instance of [MenuItem] added to this [PopupMenu].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun PopupMenu.menuItem(
   text: String,
@@ -121,7 +116,6 @@ fun PopupMenu.menuItem(
  * @param init allows to customize the [MenuItem].
  * @return a new instance of [MenuItem] added to this [PopupMenu].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun PopupMenu.menuItem(
   text: String,
@@ -144,7 +138,6 @@ fun PopupMenu.menuItem(
  * @param init allows to customize the [MenuItem].
  * @return a new instance of [MenuItem] added to this [PopupMenu].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun PopupMenu.menuItem(
   text: String,
@@ -167,7 +160,6 @@ fun PopupMenu.menuItem(
  * @param init allows to customize the [MenuItem].
  * @return a new instance of [MenuItem] added to this [PopupMenu].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 fun PopupMenu.menuItem(
   text: String,

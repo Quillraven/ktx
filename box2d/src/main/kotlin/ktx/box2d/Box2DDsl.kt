@@ -1,7 +1,6 @@
 package ktx.box2d
 
 import kotlin.annotation.AnnotationTarget.CLASS
-import kotlin.annotation.AnnotationTarget.FUNCTION
 import kotlin.annotation.AnnotationTarget.TYPE
 import kotlin.annotation.AnnotationTarget.TYPEALIAS
 import kotlin.annotation.AnnotationTarget.TYPE_PARAMETER
@@ -12,5 +11,5 @@ import kotlin.annotation.AnnotationTarget.TYPE_PARAMETER
  * @see FixtureDefinition
  */
 @DslMarker
-@Target(CLASS, TYPE_PARAMETER, FUNCTION, TYPE, TYPEALIAS)
+@Target(CLASS, TYPE_PARAMETER, TYPE, TYPEALIAS)
 annotation class Box2DDsl

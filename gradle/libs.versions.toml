@@ -1,7 +1,7 @@
 [versions]
 # Build plugins
 kotlin = "2.4.21"
-dokka = "2.2.0"
+dokka = "2.3.0"
 mavenPublish = "0.37.0"
 ktlint = "1.8.0"
 
@@ -12,13 +12,13 @@ ashley = "1.7.4"
 artemisOdb = "2.3.0"
 visUi = "1.5.9"
 kotlinxCoroutines = "1.11.0"
-mockitoKotlin = "6.3.0"
+mockitoKotlin = "6.4.0"
 wireMock = "2.27.2"
-slf4j = "2.0.18"
+slf4j = "2.0.20"
 kotest = "6.2.6"
 junitPlatformLauncher = "1.14.4"
-freePortFinder = "1.0"
-textraTypist = "2.5.0"
+freePortFinder = "1.1.1"
+textraTypist = "2.6.0"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }

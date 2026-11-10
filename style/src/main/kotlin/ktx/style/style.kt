@@ -23,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle
 import com.badlogic.gdx.utils.GdxRuntimeException
 import com.badlogic.gdx.utils.ObjectMap
 import kotlin.annotation.AnnotationTarget.CLASS
-import kotlin.annotation.AnnotationTarget.FUNCTION
 import kotlin.annotation.AnnotationTarget.TYPE
 import kotlin.annotation.AnnotationTarget.TYPEALIAS
 import kotlin.annotation.AnnotationTarget.TYPE_PARAMETER
@@ -33,7 +32,7 @@ import kotlin.contracts.contract
 
 /** Should annotate builder methods of Scene2D [Skin]. */
 @DslMarker
-@Target(CLASS, TYPE_PARAMETER, FUNCTION, TYPE, TYPEALIAS)
+@Target(CLASS, TYPE_PARAMETER, TYPE, TYPEALIAS)
 annotation class SkinDsl
 
 /**
@@ -45,7 +44,6 @@ const val defaultStyle = "default"
  * @param init will be applied to the [Skin] instance. Inlined.
  * @return a new instance of [Skin].
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun skin(init: (@SkinDsl Skin).(Skin) -> Unit = {}): Skin {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }
@@ -206,7 +204,6 @@ fun Skin.color(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.button(
   name: String = defaultStyle,
@@ -224,7 +221,6 @@ inline fun Skin.button(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [CheckBoxStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.checkBox(
   name: String = defaultStyle,
@@ -242,7 +238,6 @@ inline fun Skin.checkBox(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ImageButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.imageButton(
   name: String = defaultStyle,
@@ -260,7 +255,6 @@ inline fun Skin.imageButton(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ImageTextButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.imageTextButton(
   name: String = defaultStyle,
@@ -278,7 +272,6 @@ inline fun Skin.imageTextButton(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [LabelStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.label(
   name: String = defaultStyle,
@@ -296,7 +289,6 @@ inline fun Skin.label(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ListStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.list(
   name: String = defaultStyle,
@@ -314,7 +306,6 @@ inline fun Skin.list(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ProgressBarStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.progressBar(
   name: String = defaultStyle,
@@ -332,7 +323,6 @@ inline fun Skin.progressBar(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ScrollPaneStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.scrollPane(
   name: String = defaultStyle,
@@ -350,7 +340,6 @@ inline fun Skin.scrollPane(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [SelectBoxStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.selectBox(
   name: String = defaultStyle,
@@ -368,7 +357,6 @@ inline fun Skin.selectBox(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [SliderStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.slider(
   name: String = defaultStyle,
@@ -386,7 +374,6 @@ inline fun Skin.slider(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [SplitPaneStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.splitPane(
   name: String = defaultStyle,
@@ -404,7 +391,6 @@ inline fun Skin.splitPane(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.textButton(
   name: String = defaultStyle,
@@ -422,7 +408,6 @@ inline fun Skin.textButton(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [TextFieldStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.textField(
   name: String = defaultStyle,
@@ -440,7 +425,6 @@ inline fun Skin.textField(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [TextFieldStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.textTooltip(
   name: String = defaultStyle,
@@ -458,7 +442,6 @@ inline fun Skin.textTooltip(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [TouchpadStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.touchpad(
   name: String = defaultStyle,
@@ -476,7 +459,6 @@ inline fun Skin.touchpad(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [TreeStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.tree(
   name: String = defaultStyle,
@@ -494,7 +476,6 @@ inline fun Skin.tree(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [WindowStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.window(
   name: String = defaultStyle,

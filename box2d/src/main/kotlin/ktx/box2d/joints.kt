@@ -48,7 +48,6 @@ import kotlin.contracts.contract
  * @see revoluteJointWith
  * @see prismaticJointWith
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <J : JointDef> Body.jointWith(
   body: Body,
@@ -72,7 +71,6 @@ inline fun <J : JointDef> Body.jointWith(
  * @see RevoluteJointDef
  * @see RevoluteJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.revoluteJointWith(
   body: Body,
@@ -92,7 +90,6 @@ inline fun Body.revoluteJointWith(
  * @see PrismaticJointDef
  * @see PrismaticJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.prismaticJointWith(
   body: Body,
@@ -112,7 +109,6 @@ inline fun Body.prismaticJointWith(
  * @see DistanceJointDef
  * @see DistanceJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.distanceJointWith(
   body: Body,
@@ -132,7 +128,6 @@ inline fun Body.distanceJointWith(
  * @see PulleyJointDef
  * @see PulleyJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.pulleyJointWith(
   body: Body,
@@ -159,7 +154,6 @@ inline fun Body.pulleyJointWith(
  * @see MouseJointDef
  * @see MouseJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.mouseJointWith(
   body: Body,
@@ -179,7 +173,6 @@ inline fun Body.mouseJointWith(
  * @see GearJointDef
  * @see GearJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.gearJointWith(
   body: Body,
@@ -199,7 +192,6 @@ inline fun Body.gearJointWith(
  * @see WheelJointDef
  * @see WheelJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.wheelJointWith(
   body: Body,
@@ -219,7 +211,6 @@ inline fun Body.wheelJointWith(
  * @see WeldJointDef
  * @see WeldJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.weldJointWith(
   body: Body,
@@ -239,7 +230,6 @@ inline fun Body.weldJointWith(
  * @see FrictionJointDef
  * @see FrictionJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.frictionJointWith(
   body: Body,
@@ -259,7 +249,6 @@ inline fun Body.frictionJointWith(
  * @see RopeJointDef
  * @see RopeJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.ropeJointWith(
   body: Body,
@@ -288,7 +277,6 @@ inline fun Body.ropeJointWith(
  * @see MotorJointDef
  * @see MotorJoint
  */
-@Box2DDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Body.motorJointWith(
   body: Body,

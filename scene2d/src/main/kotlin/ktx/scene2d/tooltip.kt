@@ -22,7 +22,6 @@ import kotlin.contracts.contract
  * [TextTooltip] as its parameter, so it can be modified with the *it* reference as well. See usage examples.
  * @return a new [TextTooltip] instance added to the actor.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Actor.textTooltip(
   text: String,
@@ -49,7 +48,6 @@ inline fun Actor.textTooltip(
  * [Tooltip] as its parameter, so it can be modified with the *it* reference. See usage examples.
  * @return a new [Tooltip] instance added to this actor.
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Actor.tooltip(
   background: String? = null,

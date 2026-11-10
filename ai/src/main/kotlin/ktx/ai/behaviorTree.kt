@@ -42,7 +42,6 @@ typealias GdxAiRandom<E> = com.badlogic.gdx.ai.btree.decorator.Random<E>
 @Target(
   AnnotationTarget.CLASS,
   AnnotationTarget.TYPE_PARAMETER,
-  AnnotationTarget.FUNCTION,
   AnnotationTarget.TYPE,
   AnnotationTarget.TYPEALIAS,
 )
@@ -58,7 +57,6 @@ annotation class GdxAiDsl
  * @return a new [BehaviorTree] instance.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> behaviorTree(
   rootTask: Task<E>? = null,
   blackboard: E? = null,
@@ -80,7 +78,6 @@ inline fun <E> behaviorTree(
  * @return the index where the task has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E, T : Task<E>> Task<E>.add(
   task: T,
   init: (@GdxAiDsl T).() -> Unit = {},
@@ -99,7 +96,6 @@ inline fun <E, T : Task<E>> Task<E>.add(
  * @return the index where the [DynamicGuardSelector] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.dynamicGuardSelector(
   tasks: Array<Task<E>> = Array(),
   init: (@GdxAiDsl DynamicGuardSelector<E>).() -> Unit = {},
@@ -121,7 +117,6 @@ inline fun <E> Task<E>.dynamicGuardSelector(
  * @return the index where the [Parallel] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.parallel(
   policy: Policy = Policy.Sequence,
   orchestrator: Orchestrator = Orchestrator.Resume,
@@ -143,7 +138,6 @@ inline fun <E> Task<E>.parallel(
  * @return the index where the [RandomSelector] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.randomSelector(
   tasks: Array<Task<E>> = Array(),
   init: (@GdxAiDsl RandomSelector<E>).() -> Unit = {},
@@ -163,7 +157,6 @@ inline fun <E> Task<E>.randomSelector(
  * @return the index where the [RandomSequence] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.randomSequence(
   tasks: Array<Task<E>> = Array(),
   init: (@GdxAiDsl RandomSequence<E>).() -> Unit = {},
@@ -183,7 +176,6 @@ inline fun <E> Task<E>.randomSequence(
  * @return the index where the [GdxAiSelector] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.selector(
   tasks: Array<Task<E>> = Array(),
   init: (@GdxAiDsl GdxAiSelector<E>).() -> Unit = {},
@@ -203,7 +195,6 @@ inline fun <E> Task<E>.selector(
  * @return the index where the [GdxAiSequence] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.sequence(
   tasks: Array<Task<E>> = Array(),
   init: (@GdxAiDsl GdxAiSequence<E>).() -> Unit = {},
@@ -223,7 +214,6 @@ inline fun <E> Task<E>.sequence(
  * @return the index where the [AlwaysFail] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.alwaysFail(
   task: Task<E>? = null,
   init: (@GdxAiDsl AlwaysFail<E>).() -> Unit = {},
@@ -243,7 +233,6 @@ inline fun <E> Task<E>.alwaysFail(
  * @return the index where the [AlwaysSucceed] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.alwaysSucceed(
   task: Task<E>? = null,
   init: (@GdxAiDsl AlwaysSucceed<E>).() -> Unit = {},
@@ -265,7 +254,6 @@ inline fun <E> Task<E>.alwaysSucceed(
  * @return the index where the [Include] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.include(
   subtree: String? = null,
   lazy: Boolean = false,
@@ -286,7 +274,6 @@ inline fun <E> Task<E>.include(
  * @return the index where the Invert has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.invert(
   task: Task<E>? = null,
   init: Invert<E>.() -> Unit = {},
@@ -307,7 +294,6 @@ inline fun <E> Task<E>.invert(
  * @return the index where the [GdxAiRandom] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.random(
   success: FloatDistribution = ConstantFloatDistribution.ZERO_POINT_FIVE,
   task: Task<E>? = null,
@@ -329,7 +315,6 @@ inline fun <E> Task<E>.random(
  * @return the index where the [Repeat] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.repeat(
   times: IntegerDistribution = ConstantIntegerDistribution.NEGATIVE_ONE,
   task: Task<E>? = null,
@@ -351,7 +336,6 @@ inline fun <E> Task<E>.repeat(
  * @return the index where the [SemaphoreGuard] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.semaphoreGuard(
   name: String? = null,
   task: Task<E>? = null,
@@ -372,7 +356,6 @@ inline fun <E> Task<E>.semaphoreGuard(
  * @return the index where the [UntilFail] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.untilFail(
   task: Task<E>? = null,
   init: (@GdxAiDsl UntilFail<E>).() -> Unit = {},
@@ -392,7 +375,6 @@ inline fun <E> Task<E>.untilFail(
  * @return the index where the [UntilSuccess] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.untilSuccess(
   task: Task<E>? = null,
   init: (@GdxAiDsl UntilSuccess<E>).() -> Unit = {},
@@ -411,7 +393,6 @@ inline fun <E> Task<E>.untilSuccess(
  * @return the index where the [Failure] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.failureLeaf(init: (@GdxAiDsl Failure<E>).() -> Unit = {}): Int {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }
   val failure = Failure<E>()
@@ -427,7 +408,6 @@ inline fun <E> Task<E>.failureLeaf(init: (@GdxAiDsl Failure<E>).() -> Unit = {})
  * @return the index where the [Success] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.successLeaf(init: (@GdxAiDsl Success<E>).() -> Unit = {}): Int {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }
   val success = Success<E>()
@@ -444,7 +424,6 @@ inline fun <E> Task<E>.successLeaf(init: (@GdxAiDsl Success<E>).() -> Unit = {})
  * @return the index where the [Wait] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.waitLeaf(
   seconds: Float,
   init: (@GdxAiDsl Wait<E>).() -> Unit = {},
@@ -464,7 +443,6 @@ inline fun <E> Task<E>.waitLeaf(
  * @return the index where the [Wait] has been added.
  */
 @OptIn(ExperimentalContracts::class)
-@GdxAiDsl
 inline fun <E> Task<E>.waitLeaf(
   seconds: FloatDistribution = ConstantFloatDistribution.ZERO,
   init: (@GdxAiDsl Wait<E>).() -> Unit = {},

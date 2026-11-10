@@ -3,6 +3,7 @@
 
 package ktx.collections
 
+import com.badlogic.gdx.utils.ArraySupplier
 import com.badlogic.gdx.utils.Pool
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
@@ -70,7 +71,7 @@ inline val GdxBooleanArray?.lastIndex: Int
 inline fun <reified Type : Any> gdxArrayOf(
   ordered: Boolean = true,
   initialCapacity: Int = defaultArraySize,
-): GdxArray<Type> = GdxArray(ordered, initialCapacity, Type::class.java)
+): GdxArray<Type> = GdxArray(ordered, initialCapacity, gdxArraySupplier<Type>())
 
 /**
  * @param elements will be initially stored in the array.
@@ -600,7 +601,7 @@ inline fun <Type, reified R : Any> Iterable<Type>.mapToGdxArray(
   initialCapacity: Int = if (this is Collection<*>) this.size else defaultArraySize,
   transform: (Type) -> R,
 ): GdxArray<R> {
-  val destination = GdxArray<R>(ordered, initialCapacity, R::class.java)
+  val destination = GdxArray<R>(ordered, initialCapacity, gdxArraySupplier<R>())
   for (item in this) destination.add(transform(item))
   return destination
 }
@@ -659,7 +660,7 @@ inline fun <reified Type : Any> Iterable<Type>.toGdxArray(
   ordered: Boolean = true,
   initialCapacity: Int = defaultArraySize,
 ): GdxArray<Type> {
-  val array = GdxArray<Type>(ordered, initialCapacity, Type::class.java)
+  val array = GdxArray<Type>(ordered, initialCapacity, gdxArraySupplier<Type>())
   array.addAll(this)
   return array
 }
@@ -674,7 +675,7 @@ inline fun <reified Type : Any> Array<Type>.toGdxArray(
   ordered: Boolean = true,
   initialCapacity: Int = this.size,
 ): GdxArray<Type> {
-  val array = GdxArray<Type>(ordered, initialCapacity, Type::class.java)
+  val array = GdxArray<Type>(ordered, initialCapacity, gdxArraySupplier<Type>())
   array.addAll(this, 0, this.size)
   return array
 }
@@ -765,3 +766,9 @@ fun gdxLongArrayOf(vararg elements: Long): GdxLongArray = GdxLongArray(elements)
  * @return a new instance of [GdxFloatArray].
  */
 fun gdxFloatArrayOf(vararg elements: Float): GdxFloatArray = GdxFloatArray(elements)
+
+/** Creates an [ArraySupplier] that allocates backing arrays of the reified [Type]. */
+@PublishedApi
+@Suppress("UNCHECKED_CAST")
+internal inline fun <reified Type : Any> gdxArraySupplier(): ArraySupplier<Array<Type>> =
+  ArraySupplier { size -> arrayOfNulls<Type>(size) as Array<Type> }

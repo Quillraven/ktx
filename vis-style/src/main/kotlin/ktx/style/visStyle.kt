@@ -36,7 +36,6 @@ import kotlin.contracts.contract
  * @param init will be applied to the [Sizes] instance. Inlined.
  * @return a new instance of [Sizes] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.sizes(
   name: String = defaultStyle,
@@ -54,7 +53,6 @@ inline fun Skin.sizes(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [BusyBarStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.busyBar(
   name: String = defaultStyle,
@@ -72,7 +70,6 @@ inline fun Skin.busyBar(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ColorPickerStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.colorPicker(
   name: String = defaultStyle,
@@ -90,7 +87,6 @@ inline fun Skin.colorPicker(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ColorPickerWidgetStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.colorPickerWidget(
   name: String = defaultStyle,
@@ -108,7 +104,6 @@ inline fun Skin.colorPickerWidget(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [FormValidatorStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.formValidator(
   name: String = defaultStyle,
@@ -126,7 +121,6 @@ inline fun Skin.formValidator(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [LinkLabelStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.linkLabel(
   name: String = defaultStyle,
@@ -144,7 +138,6 @@ inline fun Skin.linkLabel(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ListViewStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.listView(
   name: String = defaultStyle,
@@ -162,7 +155,6 @@ inline fun Skin.listView(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [MenuStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.menu(
   name: String = defaultStyle,
@@ -180,7 +172,6 @@ inline fun Skin.menu(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [MenuBarStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.menuBar(
   name: String = defaultStyle,
@@ -198,7 +189,6 @@ inline fun Skin.menuBar(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [MenuItemStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.menuItem(
   name: String = defaultStyle,
@@ -216,7 +206,6 @@ inline fun Skin.menuItem(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [MultiSplitPaneStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.multiSplitPane(
   name: String = defaultStyle,
@@ -234,7 +223,6 @@ inline fun Skin.multiSplitPane(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [PopupMenuStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.popupMenu(
   name: String = defaultStyle,
@@ -252,7 +240,6 @@ inline fun Skin.popupMenu(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [SeparatorStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.separator(
   name: String = defaultStyle,
@@ -270,7 +257,6 @@ inline fun Skin.separator(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [SimpleListAdapterStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.simpleListAdapter(
   name: String = defaultStyle,
@@ -288,7 +274,6 @@ inline fun Skin.simpleListAdapter(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [SpinnerStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.spinner(
   name: String = defaultStyle,
@@ -306,7 +291,6 @@ inline fun Skin.spinner(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [TabbedPaneStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.tabbedPane(
   name: String = defaultStyle,
@@ -324,7 +308,6 @@ inline fun Skin.tabbedPane(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [ToastStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.toast(
   name: String = defaultStyle,
@@ -342,7 +325,6 @@ inline fun Skin.toast(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [VisCheckBoxStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visCheckBox(
   name: String = defaultStyle,
@@ -360,7 +342,6 @@ inline fun Skin.visCheckBox(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [VisImageButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visImageButton(
   name: String = defaultStyle,
@@ -378,7 +359,6 @@ inline fun Skin.visImageButton(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [VisImageTextButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visImageTextButton(
   name: String = defaultStyle,
@@ -396,7 +376,6 @@ inline fun Skin.visImageTextButton(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [VisSplitPaneStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visSplitPane(
   name: String = defaultStyle,
@@ -414,7 +393,6 @@ inline fun Skin.visSplitPane(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [VisTextButtonStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visTextButton(
   name: String = defaultStyle,
@@ -432,7 +410,6 @@ inline fun Skin.visTextButton(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [VisTextFieldStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visTextField(
   name: String = defaultStyle,
@@ -450,7 +427,6 @@ inline fun Skin.visTextField(
  * @param init will be applied to the style instance. Inlined.
  * @return a new instance of [TooltipStyle] added to the [Skin] with the selected name.
  */
-@SkinDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Skin.visTooltip(
   name: String = defaultStyle,

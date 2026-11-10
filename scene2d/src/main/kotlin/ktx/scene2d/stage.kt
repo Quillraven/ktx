@@ -23,7 +23,6 @@ class StageWidget(
  * Allows to create and add [actors][Actor] directly to this [Stage].
  * @param init inlined. All defined top-level widgets will be added to this [Stage].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun Stage.actors(init: (@Scene2dDsl StageWidget).() -> Unit) {
   contract { callsInPlace(init, InvocationKind.EXACTLY_ONCE) }

@@ -73,7 +73,6 @@ object scene2d : RootWidget {
  * @param dsl will be immediately invoked. Must return an actor.
  * @return [Actor] returned by [dsl].
  */
-@Scene2dDsl
 @OptIn(ExperimentalContracts::class)
 inline fun <T : Actor> scene2d(dsl: RootWidget.() -> T): T {
   contract { callsInPlace(dsl, InvocationKind.EXACTLY_ONCE) }
@@ -425,7 +424,6 @@ class KNode<T : Actor>(
    * @param init will be invoked on this node.
    * @return this node.
    */
-  @Scene2dDsl
   inline operator fun invoke(init: KNode<T>.() -> Unit): KNode<T> {
     this.init()
     return this
@@ -454,7 +452,6 @@ class KSelectBox<T>(
   /**
    * Allows to add items to the select box with builder-like syntax.
    */
-  @Scene2dDsl
   operator fun T.unaryMinus() {
     items.add(this)
   }
