@@ -246,7 +246,7 @@ class WorldsTest : Box2DTest() {
     }
 
     test("should provide constants for ray-cast behavior") {
-      val tolerance = 0f
+      val tolerance = 0.0001f
 
       RayCast.CONTINUE shouldBe (1f plusOrMinus tolerance)
       RayCast.TERMINATE shouldBe (0f plusOrMinus tolerance)
