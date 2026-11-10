@@ -83,7 +83,6 @@ open class FreeTypeTest : FunSpec() {
       asset.finishLoading()
       val font = assetManager.get<BitmapFont>(otfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset.asset
     }
 
@@ -102,7 +101,6 @@ open class FreeTypeTest : FunSpec() {
       asset.finishLoading()
       val font = assetManager.get<BitmapFont>(otfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset.asset
       variable shouldBe 42
     }
@@ -116,7 +114,6 @@ open class FreeTypeTest : FunSpec() {
       asset.finishLoading()
       val font = assetManager.get<BitmapFont>(ttfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset.asset
     }
 
@@ -135,7 +132,6 @@ open class FreeTypeTest : FunSpec() {
       asset.finishLoading()
       val font = assetManager.get<BitmapFont>(ttfFile)
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
       font shouldBeSameInstanceAs asset.asset
       variable shouldBe 42
     }
@@ -150,7 +146,6 @@ open class FreeTypeTest : FunSpec() {
       val font = assetManager.get<BitmapFont>(otfFile)
 
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
     }
 
     test("should use FreeType loader to load TTF file into BitmapFont") {
@@ -163,7 +158,6 @@ open class FreeTypeTest : FunSpec() {
       val font = assetManager.get<BitmapFont>(ttfFile)
 
       font.shouldNotBeNull()
-      (font is BitmapFont) shouldBe true
     }
 
     test("should load OTF file into FreeTypeFontGenerator") {
@@ -175,7 +169,6 @@ open class FreeTypeTest : FunSpec() {
       val fontGenerator = assetManager.get<FreeTypeFontGenerator>(otfFile)
 
       fontGenerator.shouldNotBeNull()
-      (fontGenerator is FreeTypeFontGenerator) shouldBe true
     }
 
     test("should load TTF file into FreeTypeFontGenerator") {
@@ -187,7 +180,6 @@ open class FreeTypeTest : FunSpec() {
       val fontGenerator = assetManager.get<FreeTypeFontGenerator>(ttfFile)
 
       fontGenerator.shouldNotBeNull()
-      (fontGenerator is FreeTypeFontGenerator) shouldBe true
     }
 
     test("should generate font from TTF file") {
