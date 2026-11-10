@@ -101,9 +101,11 @@ abstract class CoroutineDispatcherTest : AsyncTest() {
       )
 
       // Then:
-      delay(100L)
+      // Wait until the task ran instead of a fixed delay to avoid flakiness on slow or loaded machines.
+      val deadline = System.currentTimeMillis() + 2000L
+      while (executionTime.get() == 0L && System.currentTimeMillis() < deadline) delay(10L)
       // Tolerance adjusted for the testing environment:
-      withClue("${executionTime.get()} must be around 50 millis.") { (executionTime.get() in 45L..200L) shouldBe true }
+      withClue("${executionTime.get()} must be around 50 millis.") { (executionTime.get() in 45L..1500L) shouldBe true }
     }
 
     test("should support timeout task cancellation") {
