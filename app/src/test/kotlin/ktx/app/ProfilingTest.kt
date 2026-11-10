@@ -2,9 +2,8 @@ package ktx.app
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.PerformanceCounter
+import io.kotest.assertions.withClue
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.doubles.plusOrMinus
-import io.kotest.matchers.floats.plusOrMinus
 import io.kotest.matchers.shouldBe
 import org.mockito.kotlin.mock
 
@@ -26,7 +25,9 @@ class ProfilingTest : FunSpec({
     performanceCounter.time.mean.windowSize shouldBe 10
     performanceCounter.time.count shouldBe 10
     repeats shouldBe 10
-    performanceCounter.time.mean.mean shouldBe (0.01f plusOrMinus 0.002f)
+    // Sleeping never takes less than requested, but can take much longer on slow or loaded machines:
+    val mean = performanceCounter.time.mean.mean
+    withClue("$mean must be between 0.0095 and 0.05 seconds.") { (mean in 0.0095f..0.05f) shouldBe true }
   }
 
   test("should profile operation with existing PerformanceCounter") {
@@ -41,7 +42,9 @@ class ProfilingTest : FunSpec({
     performanceCounter.name shouldBe "Thread.sleep"
     performanceCounter.time.count shouldBe 10
     repeats shouldBe 10
-    performanceCounter.time.mean.mean shouldBe (0.01f plusOrMinus 0.002f)
+    // Sleeping never takes less than requested, but can take much longer on slow or loaded machines:
+    val mean = performanceCounter.time.mean.mean
+    withClue("$mean must be between 0.0095 and 0.05 seconds.") { (mean in 0.0095f..0.05f) shouldBe true }
   }
 
   afterTest {
