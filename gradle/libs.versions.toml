@@ -13,12 +13,12 @@ artemisOdb = "2.3.0"
 visUi = "1.5.9"
 kotlinxCoroutines = "1.11.0"
 mockitoKotlin = "6.4.0"
-wireMock = "2.27.2"
+wireMock = "3.13.2"
 slf4j = "2.0.20"
-kotest = "6.2.6"
+kotest = "6.2.7"
 junitPlatformLauncher = "1.14.4"
 freePortFinder = "1.1.1"
-textraTypist = "2.6.0"
+textraTypist = "2.6.1"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -47,7 +47,7 @@ vis-ui = { module = "com.kotcrab.vis:vis-ui", version.ref = "visUi" }
 textra-typist = { module = "com.github.tommyettinger:textratypist", version.ref = "textraTypist" }
 
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
-wiremock = { module = "com.github.tomakehurst:wiremock", version.ref = "wireMock" }
+wiremock = { module = "org.wiremock:wiremock", version.ref = "wireMock" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
 
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }

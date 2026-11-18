@@ -9,10 +9,11 @@ _See also: [the official libGDX changelog](https://github.com/libgdx/libgdx/blob
 - **[FEATURE]** (`ktx-collections`) Added `IntSet.forEach`.
 - **[FEATURE]** (`ktx-collections`) Added `getOrElse` for `GdxMap`, `IntMap` and `LongMap`, and `contains`, `set` and
   `getOrPut` for `LongMap`.
-- **[UPDATE]** Updated to Gradle 9.9.0.
+- **[UPDATE]** Updated to Gradle 9.9.1.
 - **[UPDATE]** Updated to Kotlin 2.4.21.
-- **[UPDATE]** Updated to TextraTypist 2.6.0.
+- **[UPDATE]** Updated to TextraTypist 2.6.1.
 - **[UPDATE]** Updated to Dokka 2.3.0, Mockito-Kotlin 6.4.0, SLF4J 2.0.20 and free-port-finder 1.1.1.
+- **[UPDATE]** Updated to Kotest 6.2.7 and WireMock 3.13.2 (test dependencies only).
 - **[CHANGE]** (`ktx-ai`, `ktx-box2d`, `ktx-scene2d`, `ktx-style`, `ktx-vis`, `ktx-vis-style`) Removed the `@GdxAiDsl`,
   `@Box2DDsl`, `@Scene2dDsl` and `@SkinDsl` annotations from builder functions, as Kotlin 2.4 reports that DSL markers
   have no effect on functions (KT-81567). DSL scoping is unchanged, as it is driven by the annotated classes and

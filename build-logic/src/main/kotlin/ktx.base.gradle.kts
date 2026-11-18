@@ -47,6 +47,11 @@ tasks.named<KotlinCompile>("compileTestKotlin") {
   }
 }
 
+// Tests are compiled for JVM 11, so test dependencies may require Java 11 as well (e.g. WireMock 3).
+configurations.matching { it.name in setOf("testCompileClasspath", "testRuntimeClasspath") }.configureEach {
+  attributes.attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 11)
+}
+
 val linter: Configuration = configurations.create("linter") {
   isCanBeConsumed = false
   isCanBeResolved = true
