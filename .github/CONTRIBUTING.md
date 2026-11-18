@@ -167,8 +167,10 @@ Apply `dev` label and milestone corresponding to the libGDX version. An example 
 (mimicking the libGDX version that it was compiled against) with a suffix depending on the version status. Stable
 releases are marked with an `-rc` suffix, for example `1.14.2-rc2` or `1.14.2-rc3`, and are tagged on the `master`
 branch.
-- Push the changes to the `master` branch. The [publish](workflows/publish.yml) workflow runs automatically after a
-successful [build](workflows/build.yml) run and executes `./gradlew publishToMavenCentral`. As the version no longer
+- Push the changes to the `master` branch. Since changes to `version.txt` and Markdown files do not trigger the
+[build](workflows/build.yml) workflow, start it manually, for example with `gh workflow run build.yml --ref master`.
+The [publish](workflows/publish.yml) workflow runs automatically after a successful build run and executes
+`./gradlew publishToMavenCentral`. As the version no longer
 ends with the `-SNAPSHOT` suffix, the artifacts are released to _Maven Central_ thanks to the `automaticRelease`
 setting of the vanniktech Maven Publish plugin. You can track the deployment status at
 [central.sonatype.com](https://central.sonatype.com/) under _Publishing_.
